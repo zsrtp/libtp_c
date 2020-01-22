@@ -1,30 +1,155 @@
-CC  := powerpc-eabi
-SRC := src
-INCLUDE := include
-OBJ := build
-DMP := dmp
-DIR := $(lastword $(subst /, ,$(CURDIR)))
+#---------------------------------------------------------------------------------
+# Clear the implicit built in rules
+#---------------------------------------------------------------------------------
+.SUFFIXES:
+#---------------------------------------------------------------------------------
+ifeq ($(strip $(DEVKITPPC)),)
+$(error "Please set DEVKITPPC in your environment. export DEVKITPPC=<path to>devkitPro/devkitPPC)
+endif
 
-SOURCES := $(wildcard $(SRC)/*.c)
-OBJECTS := $(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SOURCES))
-DUMPS   := $(patsubst $(OBJ)/%.o, $(DMP)/%.dmp, $(OBJECTS))
+include $(DEVKITPPC)/gamecube_rules
 
-all: $(OBJECTS)
-#	@echo "Done."
+#---------------------------------------------------------------------------------
+# TARGET is the name of the output
+# BUILD is the directory where object files & intermediate files will be placed
+# SOURCES is a list of directories containing source code
+# INCLUDES is a list of directories containing extra header files
+#---------------------------------------------------------------------------------
+TARGET		:=	$(notdir $(CURDIR))
+BUILD		:=	build
+SOURCES		:=	src
+DATA		:=	data  
+INCLUDES	:=	include
 
-dump: $(DUMPS)
-#	@echo "Done."
+#---------------------------------------------------------------------------------
+# options for code generation
+#---------------------------------------------------------------------------------
 
-lib:
-	$(CC)-ar rvs $(DIR).a $(OBJ)/*.o
+CFLAGS	= -g -c -O2 -Wall $(MACHDEP) $(INCLUDE)
+CXXFLAGS	=	$(CFLAGS)
 
+#---------------------------------------------------------------------------------
+# list of directories containing libraries, this must be the top level containing
+# include and lib
+#---------------------------------------------------------------------------------
+LIBDIRS	:=
+
+#---------------------------------------------------------------------------------
+# no real need to edit anything past this point unless you need to add additional
+# rules for different file extensions
+#---------------------------------------------------------------------------------
+ifneq ($(BUILD),$(notdir $(CURDIR)))
+#---------------------------------------------------------------------------------
+
+export OUTPUT	:=	$(CURDIR)/$(TARGET)
+
+export VPATH	:=	$(foreach dir,$(SOURCES),$(CURDIR)/$(dir)) \
+					$(foreach dir,$(DATA),$(CURDIR)/$(dir))
+
+export DEPSDIR	:=	$(CURDIR)/$(BUILD)
+
+#---------------------------------------------------------------------------------
+# automatically build a list of object files for our project
+#---------------------------------------------------------------------------------
+CFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.c)))
+CPPFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.cpp)))
+sFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.s)))
+SFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.S)))
+BINFILES	:=	$(foreach dir,$(DATA),$(notdir $(wildcard $(dir)/*.*)))
+
+#---------------------------------------------------------------------------------
+# use CXX for linking C++ projects, CC for standard C
+#---------------------------------------------------------------------------------
+ifeq ($(strip $(CPPFILES)),)
+	export LD	:=	$(CC)
+else
+	export LD	:=	$(CXX)
+endif
+
+export OFILES	:=	$(addsuffix .o,$(BINFILES)) \
+					$(CPPFILES:.cpp=.o) $(CFILES:.c=.o) \
+					$(sFILES:.s=.o) $(SFILES:.S=.o)
+
+#---------------------------------------------------------------------------------
+# build a list of include paths
+#---------------------------------------------------------------------------------
+export INCLUDE	:=	$(foreach dir,$(INCLUDES), -iquote $(CURDIR)/$(dir)) \
+					$(foreach dir,$(LIBDIRS),-I$(dir)/include) \
+					-I$(CURDIR)/$(BUILD) \
+					-I$(LIBOGC_INC)
+
+#---------------------------------------------------------------------------------
+# build a list of library paths
+#---------------------------------------------------------------------------------
+export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(dir)/lib) \
+					-L$(LIBOGC_LIB)
+
+export OUTPUT	:=	$(CURDIR)/$(TARGET)
+.PHONY: $(BUILD) clean
+
+#---------------------------------------------------------------------------------
+$(BUILD):
+	@[ -d $@ ] || mkdir -p $@
+	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
+
+#---------------------------------------------------------------------------------
 clean:
-	rm -rf ./build/*.o
-	rm -rf ./dmp/*.dmp
-	rm -rf ./*.a
+	@echo clean ...
+	@rm -fr $(BUILD) $(OUTPUT).o $(OUTPUT).a
 
-$(OBJ)/%.o: $(SRC)/%.c
-	$(CC)-gcc -I$(INCLUDE) -c $< -o $@
+#---------------------------------------------------------------------------------
+else
 
-$(DMP)/%.dmp: $(OBJ)/%.o
-	$(CC)-objdump -D $< > $@
+DEPENDS	:=	$(OFILES:.o=.d)
+
+#---------------------------------------------------------------------------------
+# main targets
+#---------------------------------------------------------------------------------
+$(OUTPUT).a: $(OFILES)
+
+#---------------------------------------------------------------------------------
+endif
+#---------------------------------------------------------------------------------
+  
+# CC  := powerpc-eabi
+# SRC := src
+# INCLUDE := include
+# OBJ := build
+# DMP := dmp
+# DIR := $(lastword $(subst /, ,$(CURDIR)))
+
+# SOURCES := $(wildcard $(SRC)/*.c)
+# OBJECTS := $(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SOURCES))
+# DUMPS   := $(patsubst $(OBJ)/%.o, $(DMP)/%.dmp, $(OBJECTS))
+
+# all: $(OBJECTS)
+# #	@echo "Done."
+
+# dump: $(DUMPS)
+# #	@echo "Done."
+
+# lib:
+# 	$(CC)-ar rcs $(DIR).a $(OBJ)/*.o
+
+# clean:
+# 	rm -rf ./build/*.o
+# 	rm -rf ./dmp/*.dmp
+# 	rm -rf ./*.a
+
+# test:
+# 	powerpc-eabi-gcc -O3 -c -o build/lib.o src/lib.c
+# 	powerpc-eabi-ar rcs build/libtp_c.a build/lib.o
+
+# $(OBJ)/%.o: $(SRC)/%.c
+# 	$(CC)-gcc -O3 -I$(INCLUDE) -c $< -o $@
+
+# $(DMP)/%.dmp: $(OBJ)/%.o
+# 	$(PREFIX)-objdump -D $< > $@
+
+  
+# .PHONY: build
+# build:
+# 	@mkdir -p build 2>/dev/null
+# 	@powerpc-eabi-gcc -O3 -c -o build/lib.o src/lib.c
+# 	@powerpc-eabi-ar rcs build/libtp_c.a build/lib.o
+# 	romhack build --raw

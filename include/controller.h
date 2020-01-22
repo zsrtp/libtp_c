@@ -3,20 +3,21 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <assert.h>
 #include "addrs.h"
 
-#define DPAD_LEFT 0x0001
-#define DPAD_RIGHT 0x0002
-#define DPAD_DOWN 0x0004
-#define DPAD_UP 0x0008
-#define Z 0x0010
-#define R 0x0020
-#define L 0x0040
-#define A 0x0100
-#define B 0x0200
-#define X 0x0400
-#define Y 0x0800
-#define START 0x1000
+#define DPAD_LEFT ((uint16_t)0x0001)
+#define DPAD_RIGHT ((uint16_t)0x0002)
+#define DPAD_DOWN ((uint16_t)0x0004)
+#define DPAD_UP ((uint16_t)0x0008)
+#define Z ((uint16_t)0x0010)
+#define R ((uint16_t)0x0020)
+#define L ((uint16_t)0x0040)
+#define A ((uint16_t)0x0100)
+#define B ((uint16_t)0x0200)
+#define X ((uint16_t)0x0400)
+#define Y ((uint16_t)0x0800)
+#define START ((uint16_t)0x1000)
 
 typedef struct
 {
@@ -32,7 +33,10 @@ typedef struct
     uint16_t buttons_down;
     uint8_t _p2[18];
     uint16_t sval;
+    uint8_t _p3[0xA4];
 } PadButton;
+
+static_assert(sizeof(PadButton) == 0xC0, "PadButton needs to be of size 0xC0");
 
 #define tp_mPadButton (*(PadButton *)tp_mPadButton_addr)
 #define tp_mPadStatus (*(PadStatus *)tp_mPadStatus_addr)

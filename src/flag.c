@@ -11,7 +11,7 @@ void flag_deactivate(Flag flag) {
 }
 
 bool flag_is_active(Flag flag) {
-    return (*(uint8_t*)flag.addr) & flag.bit != 0;
+    return ((*(uint8_t*)flag.addr) & flag.bit) != 0;
 }
 
 void flag_toggle(Flag flag) {

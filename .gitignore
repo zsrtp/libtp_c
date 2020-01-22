@@ -1,3 +1,6 @@
 *.dmp
 *.o
 *.a
+gz2e01.iso
+build/
+.vscode/
