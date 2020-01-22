@@ -18,4 +18,4 @@
 #define tp_sConsole_addr 0x80450c90
 #define tp_linkRollConstants_addr 0x8038d7bc
 
-#endif // LIB_TP_ADDRS
+#endif  // LIB_TP_ADDRS

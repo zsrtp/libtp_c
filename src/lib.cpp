@@ -1,12 +1,11 @@
-#include <stdbool.h>
 #include "controller.h"
-#include "tp.h"
 #include "system.h"
+#include "tp.h"
 
 static bool visible = false;
 
 void render() {
-    if (is_pressed(B)){
+    if (Controller::B.is_pressed()) {
         visible = false;
         tp_osReport("Goodbye!");
         return;
@@ -14,14 +13,12 @@ void render() {
     tp_osReport("Hello!");
 }
 
-void game_loop()
-{
-    tp_gameInfo.link.heart_quarters = 12;
-    bool rt_down = is_down(R);
-    bool lt_down = is_down(L);
-    bool d_down = is_down(DPAD_DOWN);
+extern "C" void game_loop() {
+    bool rt_down = Controller::R.is_down();
+    bool lt_down = Controller::L.is_down();
+    bool d_down = Controller::DPAD_DOWN.is_down();
 
-    if(visible) {
+    if (visible) {
         render();
     } else if (rt_down && d_down && lt_down && !visible) {
         visible = true;

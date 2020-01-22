@@ -27,15 +27,15 @@
 #define SKY_BOOK_ID_INDEX 22
 #define SLINGSHOT_ID_INDEX 23
 
-typedef struct {
+struct ItemValues {
     uint8_t value[24];
-} ItemValues;
+};
 
-typedef struct {
+struct ItemWheel {
     uint8_t slot[24];
-} ItemWheel;
+};
 
-typedef struct {
+struct Inventory {
     ItemValues item_values;
     ItemWheel item_wheel;
     uint8_t _p0[3];
@@ -52,6 +52,6 @@ typedef struct {
     uint8_t bomb_bag_3_amnt;
     uint8_t _p4[8];
     uint8_t arrow_capacity;
-} Inventory;
+};
 
-#endif // LIB_TP_INVENTORY
+#endif  // LIB_TP_INVENTORY
