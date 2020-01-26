@@ -1,6 +1,8 @@
 #ifndef LIB_TP_FLAG
 #define LIB_TP_FLAG
 
+#include <stdint.h>
+
 class Flag {
    private:
     uint32_t addr;

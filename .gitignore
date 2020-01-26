@@ -2,5 +2,6 @@
 *.o
 *.a
 gz2e01.iso
+GZ2E01.map
 build/
 .vscode/

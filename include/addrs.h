@@ -18,4 +18,7 @@
 #define tp_sConsole_addr 0x80450c90
 #define tp_linkRollConstants_addr 0x8038d7bc
 
+// Items
+#define tp_clawshot_addr 0x8038e9c0
+
 #endif  // LIB_TP_ADDRS
