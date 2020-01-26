@@ -5,7 +5,6 @@
 #include "addrs.h"
 
 namespace Clawshot {
-
     struct ClawshotProperty {
         uint8_t _p0[4];                         //8038E9C0
         uint16_t arm_animation1;                //8038E9C4 affects first person anim while firing
@@ -29,15 +28,6 @@ namespace Clawshot {
     };
 
     #define tp_clawshot (*(Clawshot::ClawshotProperty *)tp_clawshot_addr)
-
-        float speed();
-        float extension_rate();
-        float retraction_rate();
-        float pull_rate();
-        void set_speed(float num);
-        void set_extension_rate(float num);
-        void set_retraction_rate(float num);
-        void set_pull_rate(float num);
 };
                     
 #endif // LIB_TP_ITEMS
