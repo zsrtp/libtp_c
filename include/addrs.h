@@ -23,4 +23,7 @@
 #define tp_clawshot_checkbg_addr 0x801087b0
 #define tp_ironboots_addr 0x8038e7f4
 
+// Actor
+#define tp_actor_addr 0x80450610
+
 #endif  // LIB_TP_ADDRS
