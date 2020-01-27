@@ -1,4 +1,5 @@
 #include "controller.h"
+#include "inventory.h"
 #include "system.h"
 #include "tp.h"
 

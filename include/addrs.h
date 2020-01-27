@@ -18,4 +18,7 @@
 #define tp_sConsole_addr 0x80450c90
 #define tp_linkRollConstants_addr 0x8038d7bc
 
+// Inventory
+#define tp_execItemGet_addr 0x80097e8c
+
 #endif  // LIB_TP_ADDRS
