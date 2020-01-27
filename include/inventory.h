@@ -30,32 +30,34 @@
 
 namespace Inventory {
     struct ItemValues {
-        uint8_t value[24];
         union {
-            uint8_t gale_boomerang_id;              // 8040625C
-            uint8_t lantern_id;                     // 8040625D
-            uint8_t spinner_id;                     // 8040625E
-            uint8_t iron_boots_id;                  // 8040625F
-            uint8_t hero_s_bow_id;                  // 80406260
-            uint8_t hawkeye_id;                     // 80406261
-            uint8_t ball_and_chain_id;              // 80406262
-            uint8_t _unk_0;                         // 80406263
-            uint8_t dominion_rod_id;                // 80406264
-            uint8_t clawshot_id;                    // 80406265
-            uint8_t double_clawshot_id;             // 80406266
-            uint8_t bottle_1_id;                    // 80406267
-            uint8_t bottle_2_id;                    // 80406268
-            uint8_t bottle_3_id;                    // 80406269
-            uint8_t bottle_4_id;                    // 8040626A
-            uint8_t bomb_bag_1_id;                  // 8040626B
-            uint8_t bomb_bag_2_id;                  // 8040626C
-            uint8_t bomb_bag_3_id;                  // 8040626D
-            uint8_t ooccoo_id;                      // 8040626E
-            uint8_t auru_s_memo_ashei_s_sketch_id;  // 8040626F
-            uint8_t fishing_rod_earring_id;         // 80406270
-            uint8_t horse_call_id;                  // 80406271
-            uint8_t ancient_sky_book_id;            // 80406272
-            uint8_t slingshot_id;                   // 80406273
+            uint8_t value[24];
+            struct {
+                uint8_t gale_boomerang_id;              // 8040625C
+                uint8_t lantern_id;                     // 8040625D
+                uint8_t spinner_id;                     // 8040625E
+                uint8_t iron_boots_id;                  // 8040625F
+                uint8_t hero_s_bow_id;                  // 80406260
+                uint8_t hawkeye_id;                     // 80406261
+                uint8_t ball_and_chain_id;              // 80406262
+                uint8_t _unk_0;                         // 80406263
+                uint8_t dominion_rod_id;                // 80406264
+                uint8_t clawshot_id;                    // 80406265
+                uint8_t double_clawshot_id;             // 80406266
+                uint8_t bottle_1_id;                    // 80406267
+                uint8_t bottle_2_id;                    // 80406268
+                uint8_t bottle_3_id;                    // 80406269
+                uint8_t bottle_4_id;                    // 8040626A
+                uint8_t bomb_bag_1_id;                  // 8040626B
+                uint8_t bomb_bag_2_id;                  // 8040626C
+                uint8_t bomb_bag_3_id;                  // 8040626D
+                uint8_t ooccoo_id;                      // 8040626E
+                uint8_t auru_s_memo_ashei_s_sketch_id;  // 8040626F
+                uint8_t fishing_rod_earring_id;         // 80406270
+                uint8_t horse_call_id;                  // 80406271
+                uint8_t ancient_sky_book_id;            // 80406272
+                uint8_t slingshot_id;                   // 80406273
+            };
         };
     };
 
