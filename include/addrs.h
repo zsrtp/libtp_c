@@ -26,4 +26,7 @@
 // Actor
 #define tp_actor_addr 0x80450610
 
+// Draw
+#define tp_draw_addr 0x8042ebc8
+
 #endif  // LIB_TP_ADDRS
