@@ -48,6 +48,7 @@ namespace Controller {
     struct PadStatus {
         uint16_t sval;
     };
+    static_assert(sizeof(PadStatus) == 0x2);
 
     struct PadButton {
         uint8_t analog_cardinal;
@@ -59,6 +60,7 @@ namespace Controller {
         uint16_t sval;
         uint8_t _p3[0xA4];
     };
+    static_assert(sizeof(PadButton) == 0xC0);
 
 #define tp_mPadButton (*(Controller::PadButton *)tp_mPadButton_addr)
 #define tp_mPadStatus (*(Controller::PadStatus *)tp_mPadStatus_addr)

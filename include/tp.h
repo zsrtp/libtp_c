@@ -14,10 +14,27 @@ namespace TP {
         uint8_t _p0[0x4F8];
         Vec3 link_momentum;
     };
+    static_assert(sizeof(Momentum) == 0x504);
+
+    struct LinkDebug {
+        Vec3 position;
+        uint8_t _p0[0xA];
+        uint16_t facing;
+        uint8_t _p1[0x44];
+        float speed;
+    };
+    static_assert(sizeof(LinkDebug) == 0x60);
+
+    struct GlobalCounters {
+        uint32_t game_counter;      // 80430CD8
+        uint32_t game_counter2;     // 80430CDC
+        uint32_t non_menu_counter;  // 80430CE0
+    };
+    static_assert(sizeof(GlobalCounters) == 0xC);
 
     struct GameInfo {
-        Link::Link link;                 // 804061c0
-        uint8_t _p0[0x7C];               // 804061e0
+        Link::Link link;                 // 804061C0
+        uint8_t _p0[0x7C];               // 804061E0
         Inventory::Inventory inventory;  // 8040625C
         uint8_t _p1[0x4D15];             // 804062B9
         Warp warp;                       // 8040AFCE
@@ -28,20 +45,7 @@ namespace TP {
         uint8_t _p4[0x726];              // 8040B87C
         uint16_t link_air_meter;         // 8040BFA2
     };
-
-    struct GlobalCounters {
-        uint32_t game_counter;
-        uint32_t game_counter2;
-        uint32_t non_menu_counter;
-    };
-
-    struct LinkDebug {
-        Vec3 position;
-        uint8_t _p0[0xA];
-        uint16_t facing;
-        uint8_t _p1[0x44];
-        float speed;
-    };
+    static_assert(sizeof(GameInfo) == 0x5DE4);
 
     struct ZelAudio {
         uint8_t _p0[0x4C4];         // 803DBF4C
@@ -50,11 +54,13 @@ namespace TP {
         uint8_t _p1[0xA42];         // 803DC412
         LinkDebug *link_debug_ptr;  // 803DCE54
     };
+    static_assert(sizeof(ZelAudio) == 0xF0C);
 
     struct LinkRollConstants {
-        uint8_t _p0[0x48];
-        float roll_factor;
+        uint8_t _p0[0x48];  // 8038D7BC
+        float roll_factor;  // 8038D804
     };
+    static_assert(sizeof(LinkRollConstants) == 0x4C);
 
 #define tp_globalCounters (*(TP::GlobalCounters *)(tp_globalCounters_addr))
 #define tp_zelAudio (*(TP::ZelAudio *)(tp_zelAudio_addr))

@@ -10,6 +10,7 @@ namespace Actor {
         bool freeze;        // 80450614
         uint8_t _p1[0x03];  // 80450615
     };
+    static_assert(sizeof(ActorProperty) == 0x8);
 };  // namespace Actor
 
 #define tp_actor (*(Actor::ActorProperty *)tp_actor_addr)

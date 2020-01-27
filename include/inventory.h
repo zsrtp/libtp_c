@@ -31,7 +31,7 @@
 namespace Inventory {
     struct ItemValues {
         union {
-            uint8_t value[24];
+            uint8_t value[24];  // 8040625C
             struct {
                 uint8_t gale_boomerang_id;              // 8040625C
                 uint8_t lantern_id;                     // 8040625D
@@ -60,10 +60,12 @@ namespace Inventory {
             };
         };
     };
+    static_assert(sizeof(ItemValues) == 0x18);
 
     struct ItemWheel {
-        uint8_t slot[24];
+        uint8_t slot[24];  // 80406274
     };
+    static_assert(sizeof(ItemWheel) == 0x18);
 
     struct Inventory {
         ItemValues item_values;      // 8040625C
@@ -83,6 +85,7 @@ namespace Inventory {
         uint8_t _p4[8];              // 804062b0
         uint8_t arrow_capacity;      // 804062b8
     };
+    static_assert(sizeof(Inventory) == 0x5D);
 
     typedef void (*tp_execItemGet)(uint8_t item);
 #define tp_execItemGet ((tp_execItemGet)tp_execItemGet_addr)

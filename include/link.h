@@ -29,6 +29,7 @@ namespace Link {
         bool is_wolf;               // 804061DE
         uint8_t _p8;                // 804061DF
     };
+    static_assert(sizeof(Link) == 0x20);
 
     Link *get_link();
     Vec3 *get_position();
