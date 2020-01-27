@@ -47,7 +47,40 @@ namespace Inventory {
         return Flag((uint32_t)&tp_gameInfo.inventory.collection_flags_0, 1);
     }
 
+    Flag silver_rupee_flag() {
+        return Flag((uint32_t)&tp_gameInfo.inventory.rupee_cs_flags, 7);
+    }
+
+    Flag orange_rupee_flag() {
+        return Flag((uint32_t)&tp_gameInfo.inventory.rupee_cs_flags, 6);
+    }
+
+    Flag purple_rupee_flag() {
+        return Flag((uint32_t)&tp_gameInfo.inventory.rupee_cs_flags, 5);
+    }
+
+    Flag red_rupee_flag() {
+        return Flag((uint32_t)&tp_gameInfo.inventory.rupee_cs_flags, 4);
+    }
+
+    Flag yellow_rupee_flag() {
+        return Flag((uint32_t)&tp_gameInfo.inventory.rupee_cs_flags, 3);
+    }
+
+    Flag blue_rupee_flag() {
+        return Flag((uint32_t)&tp_gameInfo.inventory.rupee_cs_flags, 2);
+    }
+
     void get_item(uint8_t item) {
         tp_execItemGet(item);
     }
+
+    void clear_rupee_flags() {
+        tp_gameInfo.inventory.rupee_cs_flags = 0x00;
+    }
+
+    void set_rupee_flags() {
+        tp_gameInfo.inventory.rupee_cs_flags = 0xFF;
+    }
+
 }  // namespace Inventory

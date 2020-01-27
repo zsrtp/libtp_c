@@ -96,6 +96,14 @@ namespace Inventory {
     Flag heros_clothes_flag();
     Flag magic_armor_flag();
     Flag zora_armor_flag();
+    Flag silver_rupee_flag();
+    Flag orange_rupee_flag();
+    Flag purple_rupee_flag();
+    Flag red_rupee_flag();
+    Flag yellow_rupee_flag();
+    Flag blue_rupee_flag();
+    void clear_rupee_flags();
+    void set_rupee_flags();
     // uint8_t get_by_slot_id(uint8_t slot_id);
     // void set_by_slot_id(uint8_t slot_id, uint8_t item_id);
     void get_item(uint8_t item);
