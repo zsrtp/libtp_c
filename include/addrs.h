@@ -29,4 +29,7 @@
 // Draw
 #define tp_draw_addr 0x8042ebc8
 
+// Inventory
+#define tp_execItemGet_addr 0x80097e8c
+
 #endif  // LIB_TP_ADDRS

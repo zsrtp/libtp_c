@@ -39,7 +39,7 @@ extern "C" uint32_t read_controller() {
     for (; idx < BUTTON_STATES; idx++) {
         buttonStates[idx].is_down = (buttonStates[idx].button & sButtons_down) != 0;
         if ((buttonStates[idx].button & sButtons_pressed) != 0) {
-            buttonStates[idx].pressed_frame = get_frame_count() + 1;
+            buttonStates[idx].pressed_frame = TP::get_frame_count() + 1;
         }
     }
     Cheats::apply_cheats();
@@ -72,7 +72,7 @@ namespace Controller {
     }
 
     bool Button::is_pressed() {
-        uint32_t delta = get_frame_count() - buttonStates[idx].pressed_frame;
+        uint32_t delta = TP::get_frame_count() - buttonStates[idx].pressed_frame;
         bool just_clicked = delta == 0;
         bool held_down_long_enough = delta > REPEAT_DELAY;
         bool is_repeat_frame = held_down_long_enough && (delta % REPEAT_TIME == 0);
