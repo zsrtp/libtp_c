@@ -18,9 +18,10 @@ namespace Cheats {
             tp_mPadStatus.sval = 0x0;
         }
 
-        tp_clawshot.speed = 100.0f;
-        tp_clawshot.pull_rate = 60.0f;
-        tp_clawshot.extension_rate = 2000.0f;
-        tp_clawshot.retraction_rate = 150.0f;          
+        tp_clawshot.speed = 2870.0f;
+        tp_clawshot.pull_rate = 500.0f;
+        tp_clawshot.extension_rate = 69120.0f;
+        tp_clawshot.retraction_rate = 2870.0f;
+        tp_clawshot_bg.is_target = 0x3C600004;
     }
 }  // namespace Cheats

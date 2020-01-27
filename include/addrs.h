@@ -20,5 +20,6 @@
 
 // Items
 #define tp_clawshot_addr 0x8038e9c0
+#define tp_clawshot_checkbg_addr 0x801087b0
 
 #endif  // LIB_TP_ADDRS
