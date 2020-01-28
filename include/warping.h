@@ -4,17 +4,17 @@
 #include <stdint.h>
 
 struct Entrance {
-    uint8_t stage[8];
-    uint8_t _p0;
-    uint8_t spawn;
-    uint8_t room;
-    uint8_t state;
+    uint8_t stage[8];   // 8040AFCE
+    uint8_t void_flag;  // 8040AFD6
+    uint8_t spawn;      // 8040AFD7
+    uint8_t room;       // 8040AFD8
+    uint8_t state;      // 8040AFD9
 };
 
 struct Warp {
-    Entrance entrance;
-    uint8_t _p0[2];
-    bool enabled;
+    Entrance entrance;  // 8040AFCE
+    uint8_t _p0[2];     // 8040AFDA
+    bool enabled;       // 8040AFDC
 };
 
 #endif  // LIB_TP_WARPING

@@ -66,22 +66,30 @@ namespace Inventory {
     };
 
     struct Inventory {
-        ItemValues item_values;      // 8040625C
-        ItemWheel item_wheel;        // 80406274
-        uint8_t _p0[3];              // 8040628C
-        uint8_t rupee_cs_flags;      // 8040628F
-        uint8_t _p1;                 // 80406290
-        uint8_t collection_flags_0;  // 80406291
-        uint8_t collection_flags_1;  // 80406292
-        uint8_t _p2[3];              // 80406293
-        uint8_t master_sword_flag;   // 80406296
-        uint8_t _p3[21];             // 80406297
-        uint8_t arrow_count;         // 804062aC
-        uint8_t bomb_bag_1_amnt;     // 804062aD
-        uint8_t bomb_bag_2_amnt;     // 804062aE
-        uint8_t bomb_bag_3_amnt;     // 804062aF
-        uint8_t _p4[8];              // 804062b0
-        uint8_t arrow_capacity;      // 804062b8
+        ItemValues item_values;                         // 8040625C
+        ItemWheel item_wheel;                           // 80406274
+        uint8_t _p0[0x03];                              // 8040628C
+        uint8_t rupee_cs_flags;                         // 8040628F
+        uint8_t _p1;                                    // 80406290
+        uint8_t collection_flags_0;                     // 80406291
+        uint8_t collection_flags_1;                     // 80406292
+        uint8_t _p2[0x03];                              // 80406293
+        uint8_t master_sword_flag;                      // 80406296 // bit 2 sets light sword
+        uint8_t _p3[0x021];                             // 80406297
+        uint8_t snail_dragonfly_any_dayfly_flags;       // 804062A5 
+        uint8_t phasmid_pillbug_mantis_ladybug_flags;   // 804062A6
+        uint8_t snail_dragonfly_any_dayfly_flags;       // 804062A7
+        uint8_t _p6[0x04];                              // 804062A8
+        uint8_t arrow_count;                            // 804062AC
+        uint8_t bomb_bag_1_amnt;                        // 804062AD
+        uint8_t bomb_bag_2_amnt;                        // 804062AE
+        uint8_t bomb_bag_3_amnt;                        // 804062AF
+        uint8_t _p4[0x08];                              // 804062B0
+        uint8_t arrow_capacity;                         // 804062B8
+        uint8_t _p5[0x13];                              // 804062B9
+        uint8_t poe_count;                              // 804062CC
+        uint8_t _p7[0x11];                              // 804062CD
+        uint16_t letters;                               // 804062DE
     };
 
     typedef void (*tp_execItemGet)(uint8_t item);
