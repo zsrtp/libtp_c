@@ -75,7 +75,7 @@ namespace Inventory {
         uint8_t collection_flags_1;                     // 80406292
         uint8_t _p2[0x03];                              // 80406293
         uint8_t master_sword_flag;                      // 80406296 // bit 2 sets light sword
-        uint8_t _p3[0x021];                             // 80406297
+        uint8_t _p3[0x21];                              // 80406297
         uint8_t snail_dragonfly_any_dayfly_flags;       // 804062A5 
         uint8_t phasmid_pillbug_mantis_ladybug_flags;   // 804062A6
         uint8_t snail_dragonfly_any_dayfly_flags;       // 804062A7
