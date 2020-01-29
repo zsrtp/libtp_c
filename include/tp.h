@@ -28,7 +28,7 @@ namespace TP {
         Epona::Epona epona;                         // 80406200
         Player::Player player;                      // 80406218
         uint8_t _p4[0x03];                          // 8040623A
-        uint8_t minimap_area_unlocked;              // 8040623D // bits - 0: n/a, 1: ordon, 2: faron, 3: eldin, 4: lanayru, 5: gerudo, 6: snowpeak, 7: n/a   
+        Minimap::Region region;                     // 8040623D        
         uint8_t _p5[0x02];                          // 8040623E
         Ooccoo::Ooccoo ooccoo;                      // 80406240
         uint8_t _p49[0x04];                         // 80406258
@@ -38,11 +38,13 @@ namespace TP {
         uint8_t _p10[0x01];                         // 80406384
         Epona::Filename epona_filename;             // 80406385
         uint8_t _p11[0x28];                         // 80406395
-        Minimap::Flags flags;                       // 804063BD
+        Minimap::Warps warps;                       // 804063BD
         uint8_t _p23[0x4B6];                        // 804064FF
         uint8_t epona_stolen_and_midna_charge_flag; // 804069B5 // bit 7 sets stolen, bit 0 gives midna charge
         uint8_t epona_tamed_and_map_warp_flag;      // 804069B6 // bit 0 sets tamed, bit 2 sets map warp
-        uint8_t _p24[0x05];                         // 804069B7
+        uint8_t _p24[0x03];                         // 804069B7
+        uint8_t meteor_warp_enabled;                // 804069BA // bit 4 enables meteor warp
+        uint8_t _p53;                               // 804069BB
         uint8_t midna_on_z;                         // 804069BC // bit 4 sets midna
         uint8_t transform_flag;                     // 804069BD // bit 2 sets transform
         uint8_t goron_flag;                         // 804069C4
