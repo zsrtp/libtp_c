@@ -8,6 +8,11 @@
 #include "link.h"
 #include "utils.h"
 #include "warping.h"
+#include "dungeon.h"
+#include "minimap.h"
+#include "epona.h"
+#include "ooccoo.h"
+#include "player.h"
 
 namespace TP {
     struct Momentum {
@@ -16,78 +21,24 @@ namespace TP {
     };
 
     struct GameInfo {
-        Link::Link link;                            // 804061C0
+        Link::Link link;                            // 804061C0 // mem card 1:1 copy starts here
         uint8_t _p0[0x10];                          // 804061E0
-        uint8_t midna_on_back_flag;                 // 804061F0 // bit 3 puts midna on back        
+        uint8_t midna_on_back_flag;                 // 804061F0 // bit 3 puts midna on back, bit 1 gets set when first time wolf       
         uint8_t _p1[0x0F];                          // 804061F1
-        float epona_x_pos;                          // 80406200
-        float epona_y_pos;                          // 80406204
-        float epona_z_pos;                          // 80406208
-        uint16_t epona_angle;                       // 8040620C
-        uint8_t epona_stage[8];                     // 8040620E
-        uint8_t _p2[0x01];                          // 80406216
-        uint8_t epona_room_id;                      // 80406217
-        uint8_t player_stage[8];                    // 80406218
-        uint8_t player_spawn_id;                    // 80406220
-        uint8_t player_room_id;                     // 80406221
-        uint8_t _p3[0x10];                          // 80406222
-        uint8_t player_previous_stage[0x08];        // 80406232
+        Epona::Epona epona;                         // 80406200
+        Player::Player player;                      // 80406218
         uint8_t _p4[0x03];                          // 8040623A
         uint8_t minimap_area_unlocked;              // 8040623D // bits - 0: n/a, 1: ordon, 2: faron, 3: eldin, 4: lanayru, 5: gerudo, 6: snowpeak, 7: n/a   
         uint8_t _p5[0x02];                          // 8040623E
-        float ooccoo_x_pos;                         // 80406240
-        float ooccoo_y_pos;                         // 80406244
-        float ooccoo_z_pos;                         // 80406248
-        uint16_t ooccoo_angle;                      // 8040624C
-        uint8_t ooccoo_stage[8];                    // 8040624E
-        uint8_t _p6[0x01];                          // 80406256
-        uint8_t ooccoo_room_id;                     // 80406257
+        Ooccoo::Ooccoo ooccoo;                      // 80406240
+        uint8_t _p49[0x04];                         // 80406258
         Inventory::Inventory inventory;             // 8040625C
-        uint8_t _p7[0x4C];                          // 804062E0 
-        uint16_t fishing_jrnl_hbass_no_caught;      // 8040632C
-        uint16_t fishing_jrnl_hloach_no_caught;     // 8040632E
-        uint16_t fishing_jrnl_hpike_no_caught;      // 80406330
-        uint16_t fishing_jrnl_ocatfish_no_caught;   // 80406332
-        uint16_t fishing_jrnl_reekfish_no_caught;   // 80406334
-        uint16_t fishing_jrnl_greengill_no_caught;  // 80406336
-        uint8_t _p8[0x14];                          // 80406338
-        uint8_t fishing_jrnl_hbass_largest;         // 8040634C
-        uint8_t fishing_jrnl_hbass_largest;         // 8040634D
-        uint8_t fishing_jrnl_hbass_largest;         // 8040634E
-        uint8_t fishing_jrnl_hbass_largest;         // 8040634F
-        uint8_t fishing_jrnl_hbass_largest;         // 80406350
-        uint8_t fishing_jrnl_hbass_largest;         // 80406351
         uint8_t _p9[0x22];                          // 80406352
-        uint8_t player_file_name[8];                // 80406374
-        uint8_t _p10[0x09];                         // 8040637C
-        uint8_t epona_file_name[8];                 // 80406385
-        uint8_t _p11[0x30];                         // 8040638D
-        uint8_t minimap_ordon_spring_flags;         // 804063BD // bit 4 gives the warp
-        uint8_t _p12[0x3D];                         // 804063BE
-        uint8_t minimap_nfaron_woods_flags;         // 804063FB // bit 2 gives the warp
-        uint8_t _p13[0x07];                         // 804063FC                          
-        uint8_t minimap_sfaron_woods_flags;         // 80406403 // bit 7 gives the warp
-        uint8_t _p14[0x14];                         // 80406404
-        uint8_t minimap_kak_village_flags;          // 80406418 // bit 7 gives the warp
-        uint8_t minimap_death_mountain_flags;       // 80406419 // bit 5 gives the warp
-        uint8_t _p15[0x1F];                         // 8040641A
-        uint8_t minimap_uzr_flags;                  // 80406439 // bit 5 gives the warp
-        uint8_t minimap_lake_hylia_flags;           // 8040643A // bit 2 gives the warp
-        uint8_t minimap_zoras_domain_flags;         // 8040643B // bit 2 gives the warp
-        uint8_t _p16[0x3D];                         // 8040643C
-        uint8_t minimap_kak_gorge_flags;            // 80406479 // bit 5 gives the warp
-        uint8_t _p17[0x01];                         // 8040647A
-        uint8_t minimap_castle_town_flags;          // 8040647B // bit 3 gives the warp
-        uint8_t _p18[0x0B];                         // 8040647C
-        uint8_t minimap_eldin_bridge_flags;         // 80406487 // bit 3 gives the warp
-        uint8_t _p19[0x1F];                         // 80406488
-        uint8_t minimap_sacred_grove_flags;         // 804064A7 // bit 4 gives the warp
-        uint8_t _p20[0x11];                         // 804064A8
-        uint8_t minimap_snowpeak_flags;             // 804064B9 // bit 5 gives the warp
-        uint8_t _p21[0x3F];                         // 804064BA
-        uint8_t minimap_gerudo_mesa_flags;          // 804064F9 // bit 5 gives the warp
-        uint8_t _p22[0x04];                         // 804064FA
-        uint8_t minimap_mirror_chamber_flags;       // 804064FE // bit 0 gives the warp
+        Player::Filename player_filename;           // 80406374
+        uint8_t _p10[0x01];                         // 80406384
+        Epona::Filename epona_filename;             // 80406385
+        uint8_t _p11[0x28];                         // 80406395
+        Minimap::Flags flags;                       // 804063BD
         uint8_t _p23[0x4B6];                        // 804064FF
         uint8_t epona_stolen_and_midna_charge_flag; // 804069B5 // bit 7 sets stolen, bit 0 gives midna charge
         uint8_t epona_tamed_and_map_warp_flag;      // 804069B6 // bit 0 sets tamed, bit 2 sets map warp
@@ -103,21 +54,15 @@ namespace TP {
         uint8_t _p27[0x03];                         // 804069D6
         uint16_t hidden_skills_flags;               // 804069D9
         uint8_t _p28[0x18];                         // 804069DB
-        uint8_t have_sense;                         // 804069F3 // bit 3 gives sense
-        uint8_t _p29[0x127];                        // 804069F4
-        uint8_t cits_physical_chest_flags;          // 80406B1B // controls the chests being physically opened
-        uint8_t _p30[0x04];                         // 80406B1C
-        uint8_t argorok_bridge_cs_flag;             // 80406B20 // bit 0 controls wheter or not cs has been seen (1 = seen & bridge destroyed)
-        uint8_t _p31[0x09];                         // 80406B21
-        uint8_t cits_event_flags;                   // 80406B2A
-        uint8_t _p32[0x09];                         // 80406B2B
-        uint8_t local_area_keys;                    // 80406B34
-        uint8_t _p33[0x07];                         // 80406B35
-        uint8_t cave_of_ordeals_27_34;              // 80406B3C
-        uint8_t cave_of_ordeals_18_26;              // 80406B3D
-        uint8_t cave_of_ordeals_09_17;              // 80406B3E
-        uint8_t cave_of_ordeals_01_08;              // 80406B3F
-        uint8_t _p34[0x434];                        // 80406B40
+        uint8_t have_sense_flag;                    // 804069F3 // bit 3 gives sense
+        uint8_t _p29[0x120];                        // 804069F4
+        uint8_t temp_flags_start;                   // 80406B14
+        uint8_t _p43[0x22];                         // 80406B19
+        uint8_t temp_flags_end;                     // 80406B3B
+        Dungeon::CaveOfOrdeals::Floors floors;      // 80406B3C
+        uint8_t _p34[0x114];                        // 80406B40
+        uint8_t _p51;                               // 80406C54 // end of mem card 1:1 copy
+        uint8_t _p52[0x31F];                        // 80406C55 // start of game RAM
         uint8_t respawn_room_id;                    // 80406F74
         uint8_t _p35[0x04];                         // 80406F75
         uint8_t respawn_next_spawn_id;              // 80406F79
