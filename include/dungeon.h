@@ -5,8 +5,14 @@
 
 namespace Dungeon {
     namespace CityInTheSky {
+        struct flags {
+            uint8_t flags_1;    // 80406673 // controls chests
+            uint8_t _p0[0x07];  // 80406674
+            uint8_t flags_2;    // 8040667B // controls first gate
+            uint8_t flags_3;    // 8040667C 
+        }; // struct Flags
+    }; // namespace CityInTheSky
 
-    };
     namespace CaveOfOrdeals {
         struct Floors {
             uint8_t floor_27_34; // 80406B3C

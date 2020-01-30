@@ -39,7 +39,9 @@ namespace TP {
         Epona::Filename epona_filename;             // 80406385
         uint8_t _p11[0x28];                         // 80406395
         Minimap::Warps warps;                       // 804063BD
-        uint8_t _p23[0x4B6];                        // 804064FF
+        uint8_t _p23[0x174];                        // 804064FF
+        Dungeon::CityInTheSky::flags flags;         // 80406673
+        uint8_t _p54[0x338];                        // 8040667D
         uint8_t epona_stolen_and_midna_charge_flag; // 804069B5 // bit 7 sets stolen, bit 0 gives midna charge
         uint8_t epona_tamed_and_map_warp_flag;      // 804069B6 // bit 0 sets tamed, bit 2 sets map warp
         uint8_t _p24[0x03];                         // 804069B7
