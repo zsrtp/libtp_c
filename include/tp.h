@@ -16,8 +16,8 @@
 
 namespace TP {
     struct Momentum {
-        uint8_t _p0[0x4F8]; // 8040B878
-        Vec3 link_momentum; // 8040BD70
+        uint8_t _p0[0x4F8];
+        Vec3 link_momentum;
     };
     static_assert(sizeof(Momentum) == 0x504);
 
@@ -116,10 +116,12 @@ namespace TP {
         uint8_t last_room_id;                        // 8040B36B
         uint8_t _p47[0x50C];                         // 8040B36C
         Momentum *momentum_ptr;                      // 8040B878
-        uint8_t _p48[0x226];                         // 8040BD7C
+        uint8_t _p48[0x726];                         // 8040B87C
         uint16_t link_air_meter;                     // 8040BFA2
-    };
-    //static_assert(sizeof(GameInfo) == 0x5DE4); // 1d914
+        uint8_t _p100[0x18028];                      // 8040BFA4
+    } __attribute__((packed));
+
+    //static_assert(sizeof(GameInfo) == 0x1DE10);
 
     struct ZelAudio {
         uint8_t _p0[0x4C4];         // 803DBF4C
@@ -159,4 +161,4 @@ namespace TP {
     }
 }  // namespace TP
 
-#endif  //LIB_TP_TP
+#endif  // LIB_TP_TP
