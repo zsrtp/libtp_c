@@ -68,22 +68,46 @@ namespace Inventory {
     static_assert(sizeof(ItemWheel) == 0x18);
 
     struct Inventory {
-        ItemValues item_values;      // 8040625C
-        ItemWheel item_wheel;        // 80406274
-        uint8_t _p0[3];              // 8040628C
-        uint8_t rupee_cs_flags;      // 8040628F
-        uint8_t _p1;                 // 80406290
-        uint8_t collection_flags_0;  // 80406291
-        uint8_t collection_flags_1;  // 80406292
-        uint8_t _p2[3];              // 80406293
-        uint8_t master_sword_flag;   // 80406296
-        uint8_t _p3[21];             // 80406297
-        uint8_t arrow_count;         // 804062aC
-        uint8_t bomb_bag_1_amnt;     // 804062aD
-        uint8_t bomb_bag_2_amnt;     // 804062aE
-        uint8_t bomb_bag_3_amnt;     // 804062aF
-        uint8_t _p4[8];              // 804062b0
-        uint8_t arrow_capacity;      // 804062b8
+        ItemValues item_values;                         // 8040625C
+        ItemWheel item_wheel;                           // 80406274
+        uint8_t _p0[0x03];                              // 8040628C
+        uint8_t rupee_cs_flags;                         // 8040628F
+        uint8_t _p1;                                    // 80406290
+        uint8_t equipment_flags_0;                      // 80406291 // bit 0 magic armor, bit 1 zora armor
+        uint8_t equipment_flags_1;                      // 80406292 // bit 0 ordon sword, bit 1 master sword, bit 2 ordon shield, bit 3 wooden shield, bit 4 hylian shield, bit 7 hero's clothes
+        uint8_t _p2[0x03];                              // 80406293
+        uint8_t light_sword_flag;                       // 80406296 // bit 2 sets light sword
+        uint8_t _p3[0x0E];                              // 80406297
+        uint8_t snail_dragonfly_any_dayfly_flags;       // 804062A5 
+        uint8_t phasmid_pillbug_mantis_ladybug_flags;   // 804062A6
+        uint8_t snail_dragonfly_any_dayfly_flags;       // 804062A7
+        uint8_t _p4[0x04];                              // 804062A8
+        uint8_t arrow_count;                            // 804062AC
+        uint8_t bomb_bag_1_amnt;                        // 804062AD
+        uint8_t bomb_bag_2_amnt;                        // 804062AE
+        uint8_t bomb_bag_3_amnt;                        // 804062AF
+        uint8_t _p5[0x04];                              // 804062B0
+        uint8_t slingshot_count;                        // 804062B4
+        uint8_t _p6[0x03];                              // 804062B5
+        uint8_t arrow_capacity;                         // 804062B8
+        uint8_t _p7[0x13];                              // 804062B9
+        uint8_t poe_count;                              // 804062CC
+        uint8_t _p8[0x11];                              // 804062CD
+        uint16_t letters;                               // 804062DE
+        uint8_t _p7[0x4C];                              // 804062E0 
+        uint16_t fishing_jrnl_hbass_no_caught;          // 8040632C
+        uint16_t fishing_jrnl_hloach_no_caught;         // 8040632E
+        uint16_t fishing_jrnl_hpike_no_caught;          // 80406330
+        uint16_t fishing_jrnl_ocatfish_no_caught;       // 80406332
+        uint16_t fishing_jrnl_reekfish_no_caught;       // 80406334
+        uint16_t fishing_jrnl_greengill_no_caught;      // 80406336
+        uint8_t _p8[0x14];                              // 80406338
+        uint8_t fishing_jrnl_hbass_largest;             // 8040634C
+        uint8_t fishing_jrnl_hbass_largest;             // 8040634D
+        uint8_t fishing_jrnl_hbass_largest;             // 8040634E
+        uint8_t fishing_jrnl_hbass_largest;             // 8040634F
+        uint8_t fishing_jrnl_hbass_largest;             // 80406350
+        uint8_t fishing_jrnl_hbass_largest;             // 80406351
     };
     static_assert(sizeof(Inventory) == 0x5D);
 

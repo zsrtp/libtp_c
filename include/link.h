@@ -23,7 +23,8 @@ namespace Link {
         uint8_t armor;              // 804061D3
         uint8_t sword;              // 804061D4
         uint8_t shield;             // 804061D5
-        uint8_t _p6[3];             // 804061D6
+        uint8_t scent;              // 804061D6 // bitfield for scents
+        uint8_t _p6[2];             // 804061D7
         uint8_t wallet_upgrade;     // 804061D9
         uint8_t _p7[4];             // 804061DA
         bool is_wolf;               // 804061DE
