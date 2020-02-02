@@ -5,6 +5,61 @@
 #include "addrs.h"
 
 namespace Items {
+    namespace Bottle {
+        struct BottleProperty {
+            uint8_t _p0[0x04];                   // 8038E90C
+            float _p1;                           // 8038E910
+            float _p2;                           // 8038E914
+            float _p3;                           // 8038E918
+            float _p4;                           // 8038E91C
+            uint8_t _p5[0x04];                   // 8038E920
+            float _p6;                           // 8038E924
+            float _p7;                           // 8038E928
+            float _p8;                           // 8038E92C
+            float _p9;                           // 8038E930
+            uint16_t wait_after_cork_pull;       // 8038E934
+            uint8_t _p10[0x02];                  // 8038E936
+            float cork_pull_anim_speed;          // 8038E938
+            float wait_before_cork_pull_anim;    // 8038E93C
+            float grabbing_cork_anim_speed;      // 8038E940
+            float _p11;                          // 8038E944
+            uint16_t wait_after_bottle_dump;     // 8038E948
+            uint8_t _p12[0x02];                  // 8038E94A
+            float bottle_dump_anim_speed;        // 8038E94C
+            float wait_before_dump_anim_1;       // 8038E950
+            float wait_before_dump_anim_2;       // 8038E954
+            float _p13;                          // 8038E958
+            uint16_t wait_after_bottle_scoop_1;  // 8038E95C
+            uint8_t _p14[0x02];                  // 8038E95E
+            float bottle_scoop_anim_speed_1;     // 8038E960
+            float link_lean_down_anim_speed;     // 8038E964
+            float bottle_scoop_anim_speed_2;     // 8038E968
+            float wait_after_bottle_scoop_2;     // 8038E96C
+            uint16_t wait_after_bottle_swing_1;  // 8038E970
+            uint8_t _p15[0x02];                  // 8038E972
+            float bottle_swing_anim_speed_1;     // 8038E974
+            float link_swing_anim_speed;         // 8038E978
+            float bottle_swing_anim_speed_2;     // 8038E97C
+            float wait_after_bottle_swing_2;     // 8038E980
+            uint16_t wait_before_show_text;      // 8038E984
+            uint8_t _p16[0x02];                  // 8038E986
+            float corking_anim_speed_1;          // 8038E988
+            float corking_anim_speed_2;          // 8038E98C
+            float corking_anim_speed_3;          // 8038E990
+            float _p17;                          // 8038E994
+            uint8_t _p18[0x04];                  // 8038E998
+            float _p18;                          // 8038E99C
+            float _p19;                          // 8038E9A0
+            float _p20;                          // 8038E9A4
+            float _p21;                          // 8038E9A8
+            uint8_t _p22[0x04];                  // 8038E9AC
+            float _p23;                          // 8038E9B0
+            float _p24;                          // 8038E9B4
+            float _p25;                          // 8038E9B8
+            float _p26;                          // 8038E9BC
+        };                                       // struct BottleProperty
+        static_assert(sizeof(BottlePropertyProperty) == 0xB4);
+    };  // namespace Bottle
     namespace GaleBoomerang {
         struct GaleBoomerangProperty {
             uint8_t _p0[0x04];                          // 8038E6C8
@@ -148,6 +203,7 @@ namespace Items {
 #define tp_clawshot_bg (*(Items::Clawshot::ClawshotBG *)tp_clawshot_checkbg_addr)
 #define tp_ironboots (*(Items::IronBoots::IronBootsProperty *)tp_ironboots_addr)
 #define tp_spinner (*(Items::Spinner::SpinnerProperty *)tp_spinner_addr)
+#define tp_bottle (*(Items::Bottle::BottleProperty *)tp_bottle_addr)
 #define tp_ball_and_chain (*(Items::BallAndChain::BallAndChainProperty *)tp_ball_and_chain_addr)
 
 #endif  // LIB_TP_ITEMS
