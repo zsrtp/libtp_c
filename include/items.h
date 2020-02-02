@@ -5,6 +5,18 @@
 #include "addrs.h"
 
 namespace Items {
+    namespace Spinner {
+        struct Spinner {
+            uint8_t _p0[0x18];       // 8038EA30
+            uint16_t turning;        // 8038EA48
+            uint8_t _p1[0x06];       // 8038EA4A
+            float vertical_speed_1;  // 8038EA50 // checked when y pos decreases at all
+            float vertical_speed_2;  // 8038EA50 // not sure what conditions are needed for this
+            uint8_t _p2[0x04];       // 8038EA58
+            float horizontal_speed;  // 8038EA5C
+            uint8_t _p3[0x04];
+        };  // struct Spinner
+    };      // namespace Spinner
     namespace Clawshot {
         struct ClawshotProperty {
             uint8_t _p0[0x04];                       //8038E9C0
@@ -47,7 +59,7 @@ namespace Items {
             uint8_t weight1;               // 8038E808 can't figure out this one :(
             uint8_t weight2;               // 8038E809
             uint8_t _p4[0x02];             // 8038E80A
-            float speed;                   // 8038E80C affects speed but doesn't appear to be float?
+            float speed;                   // 8038E80C affects speed but doesn't appear to be float? // this also affects speed while sinking in sand. shared i'm guess
             uint16_t stepping_anim_speed;  // 8038E810
             uint8_t _p5[0x02];             // 8038E812
             uint16_t ess_anim_speed;       // 8038E814
@@ -56,7 +68,12 @@ namespace Items {
             uint8_t _p7[0x17];             // 8038E829
         };
     };  // namespace IronBoots
-};      // namespace Items
+
+    namespace BallAndChain {
+        struct BallAndChainProperty {
+        };  // struct BallAndChainProperty
+    };      // namespace BallAndChain
+};          // namespace Items
 
 #define tp_clawshot (*(Items::Clawshot::ClawshotProperty *)tp_clawshot_addr)
 #define tp_clawshot_bg (*(Items::Clawshot::ClawshotBG *)tp_clawshot_checkbg_addr)
