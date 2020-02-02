@@ -14,9 +14,13 @@ namespace Epona {
         uint8_t epona_room_id;                      // 80406217
     }; // struct Epona
 
+    static_assert(sizeof(Epona) == 0x18);
+
     struct Filename {
         uint8_t epona_file_name[0x10];              // 80406385
     }; // struct filename
+
+    static_assert(sizeof(Filename) == 0x10);
 }; // namespace Epona
 
 #endif //LIB_TP_EPONA

@@ -15,6 +15,9 @@ void render() {
 }
 
 extern "C" void game_loop() {
+    char buffer[128];
+    sprintf(buffer, "%d", sizeof(TP::GameInfo));
+    tp_osReport(buffer);
     bool rt_down = Controller::R.is_down();
     bool lt_down = Controller::L.is_down();
     bool d_down = Controller::DPAD_DOWN.is_down();
