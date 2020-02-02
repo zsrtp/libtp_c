@@ -22,6 +22,8 @@
 #define tp_clawshot_addr 0x8038e9c0
 #define tp_clawshot_checkbg_addr 0x801087b0
 #define tp_ironboots_addr 0x8038e7f4
+#define tp_spinner_addr 0x8038ea30
+#define tp_ball_and_chain_addr 0x8038ea70
 
 // Actor
 #define tp_actor_addr 0x80450610
