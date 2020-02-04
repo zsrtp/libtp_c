@@ -12,9 +12,13 @@ namespace Player {
         uint8_t player_previous_stage[0x08];        // 80406232
     }; // struct Player
 
+    static_assert(sizeof(Player) == 0x22);
+
     struct Filename {
         uint8_t player_file_name[0x10];             // 80406374
     }; // struct Filename
+
+    static_assert(sizeof(Filename) == 0x10);
 }; // namespace Player
 
-#endif LIB_TP_PLAYER
+#endif // LIB_TP_PLAYER

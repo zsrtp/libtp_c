@@ -10,13 +10,13 @@ struct Entrance {
     uint8_t room;       // 8040AFD8
     uint8_t state;      // 8040AFD9
 };
-static_assert(sizeof(Entrance) == 12);
+static_assert(sizeof(Entrance) == 0x0C);
 
 struct Warp {
     Entrance entrance;  // 8040AFCE
     uint8_t _p0[2];     // 8040AFDA
     bool enabled;       // 8040AFDC
 };
-static_assert(sizeof(Warp) == 15);
+static_assert(sizeof(Warp) == 0x0F);
 
 #endif  // LIB_TP_WARPING

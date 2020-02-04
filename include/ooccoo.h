@@ -13,6 +13,8 @@ namespace Ooccoo {
         uint8_t ooccoo_spawn_id;                    // 80406256 // appears unused
         uint8_t ooccoo_room_id;                     // 80406257
     }; // struct Ooccoo
+
+    static_assert(sizeof(Ooccoo) == 0x18);
 }; // namespace Ooccoo
 
 #endif //LIB_TP_EPONA
