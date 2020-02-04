@@ -58,8 +58,14 @@ namespace Items {
             float _p25;                          // 8038E9B8
             float _p26;                          // 8038E9BC
         };                                       // struct BottleProperty
-        static_assert(sizeof(BottlePropertyProperty) == 0xB4);
+        static_assert(sizeof(BottleProperty) == 0xB4);
     };  // namespace Bottle
+    namespace Bow {
+        struct BowProperty {
+            
+        }; // struct BowProperty
+        static_assert(sizeof(BowProperty) == 0x70);
+    }; // namespace Bow
     namespace GaleBoomerang {
         struct GaleBoomerangProperty {
             uint8_t _p0[0x04];                          // 8038E6C8
