@@ -47,7 +47,7 @@ namespace Items {
             float corking_anim_speed_2;          // 8038E98C
             float corking_anim_speed_3;          // 8038E990
             float _p17;                          // 8038E994
-            uint8_t _p18[0x04];                  // 8038E998
+            uint8_t _p27[0x04];                  // 8038E998
             float _p18;                          // 8038E99C
             float _p19;                          // 8038E9A0
             float _p20;                          // 8038E9A4
