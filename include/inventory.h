@@ -133,8 +133,6 @@ namespace Inventory {
     Flag blue_rupee_flag();
     void clear_rupee_flags();
     void set_rupee_flags();
-    // uint8_t get_by_slot_id(uint8_t slot_id);
-    // void set_by_slot_id(uint8_t slot_id, uint8_t item_id);
     void get_item(uint8_t item);
 }  // namespace Inventory
 

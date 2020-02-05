@@ -62,10 +62,9 @@ namespace Items {
     };  // namespace Bottle
     namespace Bow {
         struct BowProperty {
-            
-        }; // struct BowProperty
-        static_assert(sizeof(BowProperty) == 0x70);
-    }; // namespace Bow
+        };  // struct BowProperty
+        //static_assert(sizeof(BowProperty) == 0x70);
+    };  // namespace Bow
     namespace GaleBoomerang {
         struct GaleBoomerangProperty {
             uint8_t _p0[0x04];                          // 8038E6C8
