@@ -104,7 +104,9 @@ namespace TP {
         uint8_t current_spawn_id;                    // 8040AFC9
         uint8_t _p40[0x04];                          // 8040AFCA
         Warp warp;                                   // 8040AFCE
-        uint8_t _p42[0x190];                         // 8040AFDD
+        uint8_t _p42[0xBF];                          // 8040AFDD
+        uint16_t cs_val;                             // 8040B09C // figure out what exactly this is later
+        uint8_t _p57[0xCF];                          // 8040B09E
         uint8_t freeze_game;                         // 8040B16D // this is cs event flag bool, fix later
         uint8_t _p43[0x05];                          // 8040B16E
         uint8_t current_event_id;                    // 8040B173
@@ -119,7 +121,7 @@ namespace TP {
         uint8_t _p48[0x726];                         // 8040B87C
         uint16_t link_air_meter;                     // 8040BFA2
         uint8_t _p100[0x18028];                      // 8040BFA4
-    } __attribute__((packed));
+    }__attribute__((packed));
 
     //static_assert(sizeof(GameInfo) == 0x1DE10);
 

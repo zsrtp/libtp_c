@@ -62,6 +62,10 @@ namespace Items {
     };  // namespace Bottle
     namespace Bow {
         struct BowProperty {
+            uint8_t _p0[0x04];
+            float bow_release_anim_speed;
+            uint8_t _p1[0x04];
+            
         };  // struct BowProperty
         //static_assert(sizeof(BowProperty) == 0x70);
     };  // namespace Bow
