@@ -1,15 +1,13 @@
 name: C/C++ CI
 
-on:
-  push:
-    branches: 
-      - pheenoh
+on: 
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    
     steps:
     - uses: pheenoh/devkitppc
     - name: Make
