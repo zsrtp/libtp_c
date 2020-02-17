@@ -22,13 +22,30 @@ namespace TP {
     static_assert(sizeof(Momentum) == 0x504);
 
     struct LinkDebug {
-        Vec3 position;
-        uint8_t _p0[0xA];
-        uint16_t facing;
-        uint8_t _p1[0x44];
-        float speed;
+        Vec3 position;                 // 0x0000
+        uint8_t _p0[0xA];              // 0x000C
+        uint16_t facing;               // 0x0016
+        uint8_t _p1[0x44];             // 0x0018
+        float speed;                   // 0x005C
+        uint8_t _p2[0x42];             // 0x0060
+        uint8_t status;                // 0x00A2
+        uint8_t _p3[0x14EF];           // 0x00A3
+        bool over_void;                // 0x1592
+        uint8_t _p4[0x1145];           // 0x1593
+        float sand_height_lost;        // 0x26D8
+        uint8_t _p5[0x412];            // 0x26DC
+        uint8_t air_timer;             // 0x2AEE
+        uint8_t _p6[0x29];             // 0x2AEF
+        uint16_t current_action_id;    // 0x2B18
+        uint8_t _p7[0x28];             // 0x2B1A
+        uint16_t action_value_2;       // 0x2B42
+        uint8_t _p8[0x184];            // 0x2B44
+        uint32_t action_value_1;       // 0x2CC8
+        uint8_t _p9[0x228];            // 0x2CCC
+        float last_ground_y_pos_fall;  // 0x2EF4
+        float last_ground_y_pos_void;  // 0x2EF8
     };
-    static_assert(sizeof(LinkDebug) == 0x60);
+    static_assert(sizeof(LinkDebug) == 0x2EFC);
 
     struct GlobalCounters {
         uint32_t game_counter;      // 80430CD8
@@ -120,9 +137,11 @@ namespace TP {
         Momentum *momentum_ptr;                      // 8040B878
         uint8_t _p48[0x726];                         // 8040B87C
         uint16_t link_air_meter;                     // 8040BFA2
-        uint8_t _p100[0x18028];                      // 8040BFA4
-    }__attribute__((packed));
-
+        uint8_t _p58[0xD3];                          // 8040BFA4
+        uint8_t air_time_depleted;                   // 8040C077
+        uint8_t _p100[0x17F58];                      // 8040C078
+    } __attribute__((packed));
+    // 80423fd0 next struct start
     //static_assert(sizeof(GameInfo) == 0x1DE10);
 
     struct ZelAudio {
@@ -131,8 +150,9 @@ namespace TP {
         uint8_t time_minutes;       // 803DC411
         uint8_t _p1[0xA42];         // 803DC412
         LinkDebug *link_debug_ptr;  // 803DCE54
+        uint8_t _p2[0x480];         // 803DCE58
     };
-    static_assert(sizeof(ZelAudio) == 0xF0C);
+    static_assert(sizeof(ZelAudio) == 0x138c);
 
     struct LinkRollConstants {
         uint8_t _p0[0x48];  // 8038D7BC
