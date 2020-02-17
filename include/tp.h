@@ -170,6 +170,10 @@ namespace TP {
         return tp_globalCounters.game_counter;
     }
 
+    uint8_t get_boss_flags() {
+        return tp_bossFlags;
+    }
+
     GameInfo *get_game_info() {
         return &tp_gameInfo;
     }
