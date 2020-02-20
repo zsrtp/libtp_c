@@ -19,4 +19,15 @@ struct Warp {
 };
 static_assert(sizeof(Warp) == 0x0F);
 
+// void set_next_stage(uint8_t new_stage[8]) {
+//     Entrance.stage = new_stage;
+// }
+
+// void set_next_spawn(uint8_t new_spawn) {
+//     Entrance.spawn = new_spawn;
+// }
+
+// void set_next_room(uint8_t new_room) {
+//     Entrance.room = new_room;
+// }
 #endif  // LIB_TP_WARPING

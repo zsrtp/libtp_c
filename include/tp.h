@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <cstddef>
+#include "flag.h"
 #include "addrs.h"
 #include "dungeon.h"
 #include "epona.h"
@@ -21,7 +22,7 @@ namespace TP {
     };
     static_assert(sizeof(Momentum) == 0x504);
 
-    struct LinkDebug {
+    struct LinkDebug {                 // offsets
         Vec3 position;                 // 0x0000
         uint8_t _p0[0xA];              // 0x000C
         uint16_t facing;               // 0x0016
@@ -95,9 +96,7 @@ namespace TP {
         uint8_t _p28[0x18];                          // 804069DB
         uint8_t have_sense_flag;                     // 804069F3 // bit 3 gives sense
         uint8_t _p29[0x120];                         // 804069F4
-        uint8_t temp_flags_start;                    // 80406B14
-        uint8_t _p55[0x26];                          // 80406B15
-        uint8_t temp_flags_end;                      // 80406B3B
+        Flags::TempFlags temp_flags;                 // 80406B14
         Dungeon::CaveOfOrdeals::Floors floors;       // 80406B3C
         uint8_t _p34[0x114];                         // 80406B40
         uint8_t _p51;                                // 80406C54 // end of mem card 1:1 copy
@@ -106,9 +105,7 @@ namespace TP {
         uint8_t _p35[0x04];                          // 80406F75
         uint8_t respawn_next_spawn_id;               // 80406F79
         uint16_t respawn_angle;                      // 80406F7A
-        float respawn_x_pos;                         // 80406F7C
-        float respawn_y_pos;                         // 80406F80
-        float respawn_z_pos;                         // 80406F84
+        Vec3 respawn_position;                       // 80406F7C
         uint8_t event_to_play;                       // 80406F88 // setting this to 0xFF skips most cutscenes
         uint8_t _p36[0x07];                          // 80406F89
         uint8_t respawn_item_id;                     // 80406F90 // the item in link's hand
@@ -140,7 +137,8 @@ namespace TP {
         uint8_t _p58[0xD3];                          // 8040BFA4
         uint8_t air_time_depleted;                   // 8040C077
         uint8_t _p100[0x17F58];                      // 8040C078
-    } __attribute__((packed));
+    }__attribute__((packed));
+    int a  = sizeof(GameInfo);
     // 80423fd0 next struct start
     //static_assert(sizeof(GameInfo) == 0x1DE10);
 
@@ -160,11 +158,18 @@ namespace TP {
     };
     static_assert(sizeof(LinkRollConstants) == 0x4C);
 
+    struct LoadingInfo {
+        uint32_t isLoading;  // 80450CE0
+        uint8_t _p0[0x04];   // 80450CE4
+    };
+    static_assert(sizeof(LoadingInfo) == 0x08);
+
 #define tp_globalCounters (*(TP::GlobalCounters *)(tp_globalCounters_addr))
 #define tp_zelAudio (*(TP::ZelAudio *)(tp_zelAudio_addr))
 #define tp_gameInfo (*(TP::GameInfo *)(tp_gameInfo_addr))
 #define tp_bossFlags (*(uint8_t *)(tp_sConsole_addr + 8))
 #define tp_linkRollConstants (*(TP::LinkRollConstants *)(tp_linkRollConstants_addr))
+#define tp_fopScnRq (*(TP::LoadingInfo *)(tp_fopScnRq_addr))
 
     uint32_t get_frame_count() {
         return tp_globalCounters.game_counter;
@@ -185,6 +190,19 @@ namespace TP {
             return NULL;
         }
     }
+
+    void set_respawn_angle(uint16_t angle) {
+        tp_gameInfo.respawn_angle = angle;
+    }
+
+    void set_respawn_position(Vec3 position) {
+        tp_gameInfo.respawn_position = position;
+    }
+
+    void set_respawn_animation(uint8_t animation_id) {
+        tp_gameInfo.respawn_animation = animation_id;
+    }
+
 }  // namespace TP
 
 #endif  // LIB_TP_TP

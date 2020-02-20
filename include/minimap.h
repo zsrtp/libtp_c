@@ -17,7 +17,8 @@ namespace Minimap {
         uint8_t uzr_warp;                           // 80406439 // bit 5 gives the warp
         uint8_t lake_hylia_warp;                    // 8040643A // bit 2 gives the warp
         uint8_t zoras_domain_warp;                  // 8040643B // bit 2 gives the warp
-        uint8_t _p16[0x3D];                         // 8040643C
+        uint8_t _p16[0x3C];                         // 8040643C
+        uint8_t kak_gorge_unk;                      // 80406478
         uint8_t kak_gorge_warp;                     // 80406479 // bit 5 gives the warp
         uint8_t _p17[0x01];                         // 8040647A
         uint8_t castle_town_warp;                   // 8040647B // bit 3 gives the warp
