@@ -2,14 +2,17 @@
 #define LIB_TP_SYSTEM
 
 #include <stdint.h>
+#include <stdio.h>
 #include "addrs.h"
 
 typedef void *(*tp_memalign_t)(int32_t align, uint32_t size);
+typedef void *(*tp_memcpy_t)(void *dest,void *src,size_t size);
 typedef void (*tp_free_t)(void *addr);
 //typedef uint32_t (*tp_strlen_t)(const char *string);
 typedef void (*tp_osReport_t)(const char *string, ...);
 
 #define tp_memalign ((tp_memalign_t)tp_memalign_addr)
+#define tp_memcpy ((tp_memcpy_t)tp_memcpy_addr)
 #define tp_free ((tp_free_t)tp_free_addr)
 //#define tp_strlen ((tp_strlen_t)tp_strlen_addr)
 

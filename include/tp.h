@@ -22,6 +22,13 @@ namespace TP {
     };
     static_assert(sizeof(Momentum) == 0x504);
 
+    struct LinkCollision {        // offsets
+        uint8_t _p0[0x199F];      // 0x0000
+        uint8_t door_collision;   // 0x199F // lock (must be lock!) to 0x40 for door storage collisions, lock to 0xF0 for sidehop hovering
+        uint8_t chest_collision;  // 0x19A0 // Set to 0xE4 or 0xF4 for chest storage collisions, set to 0x40 to disable collision
+    };
+    static_assert(sizeof(LinkCollision) == 0x19A1);
+
     struct LinkDebug {                 // offsets
         Vec3 position;                 // 0x0000
         uint8_t _p0[0xA];              // 0x000C
@@ -121,7 +128,7 @@ namespace TP {
         uint8_t _p42[0xBF];                          // 8040AFDD
         uint16_t cs_val;                             // 8040B09C // figure out what exactly this is later
         uint8_t _p57[0xCF];                          // 8040B09E
-        uint8_t freeze_game;                         // 8040B16D // this is cs event flag bool, fix later
+        uint8_t freeze_game;                         // 8040B16D // this is cs event flag, rename later maybe
         uint8_t _p43[0x05];                          // 8040B16E
         uint8_t current_event_id;                    // 8040B173
         uint8_t _p44[0x1C];                          // 8040B174
@@ -132,13 +139,15 @@ namespace TP {
         uint8_t last_room_id;                        // 8040B36B
         uint8_t _p47[0x50C];                         // 8040B36C
         Momentum *momentum_ptr;                      // 8040B878
-        uint8_t _p48[0x726];                         // 8040B87C
+        uint8_t _p48[0x6F0];                         // 8040B87C
+        LinkCollision *link_collision_ptr;                   // 8040BF6C
+        uint8_t _p59[0x34];                          // 8040BF6E
         uint16_t link_air_meter;                     // 8040BFA2
         uint8_t _p58[0xD3];                          // 8040BFA4
         uint8_t air_time_depleted;                   // 8040C077
         uint8_t _p100[0x17F58];                      // 8040C078
     }__attribute__((packed));
-    int a  = sizeof(GameInfo);
+    int a = sizeof(GameInfo);
     // 80423fd0 next struct start
     //static_assert(sizeof(GameInfo) == 0x1DE10);
 

@@ -6,6 +6,7 @@
 #define tp_free_addr 0x80263260
 #define tp_strlen_addr 0x80368be4
 #define tp_osReport_addr 0x80006abc
+#define tp_memcpy_addr 0x80003540
 
 // Controller
 #define tp_mPadButton_addr 0x80434420
