@@ -140,13 +140,13 @@ namespace TP {
         uint8_t _p47[0x50C];                         // 8040B36C
         Momentum *momentum_ptr;                      // 8040B878
         uint8_t _p48[0x6F0];                         // 8040B87C
-        LinkCollision *link_collision_ptr;                   // 8040BF6C
+        LinkCollision *link_collision_ptr;           // 8040BF6C
         uint8_t _p59[0x34];                          // 8040BF6E
         uint16_t link_air_meter;                     // 8040BFA2
         uint8_t _p58[0xD3];                          // 8040BFA4
         uint8_t air_time_depleted;                   // 8040C077
         uint8_t _p100[0x17F58];                      // 8040C078
-    }__attribute__((packed));
+    } __attribute__((packed));
     int a = sizeof(GameInfo);
     // 80423fd0 next struct start
     //static_assert(sizeof(GameInfo) == 0x1DE10);
@@ -173,12 +173,24 @@ namespace TP {
     };
     static_assert(sizeof(LoadingInfo) == 0x08);
 
+    struct TitleScreenPtr {
+        uint8_t _p0[0x59];            // 0x00
+        uint8_t trigger_on_next_load;  // 0x59
+    };
+
+    struct TitleScreenInfo {
+        TitleScreenPtr *title_screen_info;
+    };
+
+    
+
 #define tp_globalCounters (*(TP::GlobalCounters *)(tp_globalCounters_addr))
 #define tp_zelAudio (*(TP::ZelAudio *)(tp_zelAudio_addr))
 #define tp_gameInfo (*(TP::GameInfo *)(tp_gameInfo_addr))
 #define tp_bossFlags (*(uint8_t *)(tp_sConsole_addr + 8))
 #define tp_linkRollConstants (*(TP::LinkRollConstants *)(tp_linkRollConstants_addr))
 #define tp_fopScnRq (*(TP::LoadingInfo *)(tp_fopScnRq_addr))
+#define tp_titleScreenInfo (*(TP::TitleScreenInfo *)(tp_titleScreenPtr_addr))
 
     uint32_t get_frame_count() {
         return tp_globalCounters.game_counter;

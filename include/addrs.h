@@ -19,6 +19,7 @@
 #define tp_sConsole_addr 0x80450c90
 #define tp_linkRollConstants_addr 0x8038d7bc
 #define tp_fopScnRq_addr 0x80450CE0
+#define tp_titleScreenPtr_addr 0x803A3A38
 
 // Items
 #define tp_clawshot_addr 0x8038e9c0
