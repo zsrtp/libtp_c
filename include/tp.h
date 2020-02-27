@@ -174,7 +174,7 @@ namespace TP {
     static_assert(sizeof(LoadingInfo) == 0x08);
 
     struct TitleScreenPtr {
-        uint8_t _p0[0x59];            // 0x00
+        uint8_t _p0[0x59];             // 0x00
         uint8_t trigger_on_next_load;  // 0x59
     };
 
@@ -182,7 +182,23 @@ namespace TP {
         TitleScreenPtr *title_screen_info;
     };
 
-    
+    struct MatrixPtr {
+        uint8_t _p0[0x9C];   // 0x0000
+        float camera0;       // 0x009C
+        float camera1;       // 0x00A0
+        float camera2;       // 0x00A4
+        float camera3;       // 0x00A8
+        float camera4;       // 0x00AC
+        float camera5;       // 0x00B0
+        uint8_t _p1[0x134];  // 0x00B4
+        float camera6;       // 0x01E8
+        uint8_t _p2[0x25C];  // 0x01EC
+        float camera7;       // 0x0448
+    };
+
+    struct MatrixInfo {
+        MatrixPtr *matrix_info;
+    };
 
 #define tp_globalCounters (*(TP::GlobalCounters *)(tp_globalCounters_addr))
 #define tp_zelAudio (*(TP::ZelAudio *)(tp_zelAudio_addr))
@@ -191,6 +207,7 @@ namespace TP {
 #define tp_linkRollConstants (*(TP::LinkRollConstants *)(tp_linkRollConstants_addr))
 #define tp_fopScnRq (*(TP::LoadingInfo *)(tp_fopScnRq_addr))
 #define tp_titleScreenInfo (*(TP::TitleScreenInfo *)(tp_titleScreenPtr_addr))
+#define tp_matrixInfo (*(TP::MatrixInfo *)(tp_matrixPtr_addr))
 
     uint32_t get_frame_count() {
         return tp_globalCounters.game_counter;
