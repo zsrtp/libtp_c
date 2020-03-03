@@ -7,6 +7,7 @@
 #define tp_strlen_addr 0x80368be4
 #define tp_osReport_addr 0x80006abc
 #define tp_memcpy_addr 0x80003540
+#define tp_getLayerNo_addr 0x8002B434
 
 // Controller
 #define tp_mPadButton_addr 0x80434420
@@ -29,6 +30,7 @@
 #define tp_spinner_addr 0x8038ea30
 #define tp_ball_and_chain_addr 0x8038ea70
 #define tp_bottle_addr 0x8038e90c
+
 
 // Actor
 #define tp_actor_addr 0x80450610
