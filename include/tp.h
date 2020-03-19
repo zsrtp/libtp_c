@@ -228,6 +228,14 @@ namespace TP {
         return tp_bossFlags;
     }
 
+    void set_boss_flags() {
+        tp_bossFlags = 0xFF;
+    }
+    
+    void set_boss_flags(uint8_t value) {
+        tp_bossFlags = value;
+    }
+
     GameInfo *get_game_info() {
         return &tp_gameInfo;
     }
