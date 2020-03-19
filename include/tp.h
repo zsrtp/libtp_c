@@ -29,29 +29,36 @@ namespace TP {
     };
     static_assert(sizeof(LinkCollision) == 0x19A1);
 
-    struct LinkDebug {                 // offsets
-        Vec3 position;                 // 0x0000
-        uint8_t _p0[0xA];              // 0x000C
-        uint16_t facing;               // 0x0016
-        uint8_t _p1[0x44];             // 0x0018
-        float speed;                   // 0x005C
-        uint8_t _p2[0x42];             // 0x0060
-        uint8_t status;                // 0x00A2
-        uint8_t _p3[0x14EF];           // 0x00A3
-        bool over_void;                // 0x1592
-        uint8_t _p4[0x1145];           // 0x1593
-        float sand_height_lost;        // 0x26D8
-        uint8_t _p5[0x412];            // 0x26DC
-        uint8_t air_timer;             // 0x2AEE
-        uint8_t _p6[0x29];             // 0x2AEF
-        uint16_t current_action_id;    // 0x2B18
-        uint8_t _p7[0x28];             // 0x2B1A
-        uint16_t action_value_2;       // 0x2B42
-        uint8_t _p8[0x184];            // 0x2B44
-        uint32_t action_value_1;       // 0x2CC8
-        uint8_t _p9[0x228];            // 0x2CCC
-        float last_ground_y_pos_fall;  // 0x2EF4
-        float last_ground_y_pos_void;  // 0x2EF8
+    struct LinkDebug {                     // offsets
+        Vec3 position;                     // 0x0000
+        uint8_t _p0[0xA];                  // 0x000C
+        uint16_t facing;                   // 0x0016
+        uint8_t _p1[0x44];                 // 0x0018
+        float speed;                       // 0x005C
+        uint8_t _p2[0x40];                 // 0x0060
+        uint8_t current_boots;             // 0x00A0
+        uint8_t _p11;                      // 0x00A1
+        uint8_t status;                    // 0x00A2
+        uint8_t _p3[0x14EF];               // 0x00A3
+        bool over_void;                    // 0x1592
+        uint8_t _p4[0xDCC];                // 0x1593
+        uint8_t held_item_animation;       // 0x235F // might be incorrectly named // 0xF9 for big rock
+        uint16_t held_item_collision_ptr;  // 0x2360 // may be more than actr collision
+        uint8_t _p12[0x376];               // 0x2362
+        float sand_height_lost;            // 0x26D8
+        uint8_t _p5[0x412];                // 0x26DC
+        uint8_t air_timer;                 // 0x2AEE
+        uint8_t _p6[0x1E];                 // 0x2AEF
+        uint8_t current_item;              // 0x2B0D
+        uint8_t _p10[0x0A];                // 0x2B0E
+        uint16_t current_action_id;        // 0x2B18
+        uint8_t _p7[0x28];                 // 0x2B1A
+        uint16_t action_value_2;           // 0x2B42
+        uint8_t _p8[0x184];                // 0x2B44
+        uint32_t action_value_1;           // 0x2CC8
+        uint8_t _p9[0x228];                // 0x2CCC
+        float last_ground_y_pos_fall;      // 0x2EF4
+        float last_ground_y_pos_void;      // 0x2EF8
     };
     static_assert(sizeof(LinkDebug) == 0x2EFC);
 
@@ -141,13 +148,17 @@ namespace TP {
         Momentum *momentum_ptr;                      // 8040B878
         uint8_t _p48[0x6F0];                         // 8040B87C
         LinkCollision *link_collision_ptr;           // 8040BF6C
-        uint8_t _p59[0x34];                          // 8040BF6E
+        uint8_t _p59[0x32];                          // 8040BF70
         uint16_t link_air_meter;                     // 8040BFA2
-        uint8_t _p58[0xD3];                          // 8040BFA4
+        uint8_t _p58[0x02];                          // 8040BFA4
+        uint16_t link_air_meter_2;                   // 8040BFA6 // appears to be the same as 8040BFA2
+        uint8_t _p61[0x02];                          // 8040BFA8
+        uint16_t link_max_air_meter;                 // 8040BFAA
+        uint8_t _p62[0xCB];                          // 8040BFAC
         uint8_t air_time_depleted;                   // 8040C077
         uint8_t _p100[0x17F58];                      // 8040C078
     } __attribute__((packed));
-    int a = sizeof(GameInfo);
+    // int a = sizeof(GameInfo);
     // 80423fd0 next struct start
     //static_assert(sizeof(GameInfo) == 0x1DE10);
 
