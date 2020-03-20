@@ -24,7 +24,7 @@ namespace TP {
 
     struct LinkCollision {        // offsets
         uint8_t _p0[0x199F];      // 0x0000
-        uint8_t door_collision;   // 0x199F // lock (must be lock!) to 0x40 for door storage collisions, lock to 0xF0 for sidehop hovering
+        uint8_t door_collision;   // 0x199F // lock to 0x40 for door storage collisions, lock to 0xF0 for sidehop hovering
         uint8_t chest_collision;  // 0x19A0 // Set to 0xE4 or 0xF4 for chest storage collisions, set to 0x40 to disable collision
     };
     static_assert(sizeof(LinkCollision) == 0x19A1);
@@ -112,7 +112,9 @@ namespace TP {
         uint8_t _p29[0x120];                         // 804069F4
         Flags::TempFlags temp_flags;                 // 80406B14
         Dungeon::CaveOfOrdeals::Floors floors;       // 80406B3C
-        uint8_t _p34[0x114];                         // 80406B40
+        uint8_t _p34[0x37];                          // 80406B40
+        Dungeon::ArbitersGrounds::Flags ag_flags;    // 80406B77
+        uint8_t _p63[0xDC];                          // 80406B78
         uint8_t _p51;                                // 80406C54 // end of mem card 1:1 copy
         uint8_t _p52[0x31F];                         // 80406C55 // start of game RAM
         uint8_t respawn_room_id;                     // 80406F74
@@ -171,12 +173,6 @@ namespace TP {
         uint8_t _p2[0x480];         // 803DCE58
     };
     static_assert(sizeof(ZelAudio) == 0x138c);
-
-    struct LinkRollConstants {
-        uint8_t _p0[0x48];  // 8038D7BC
-        float roll_factor;  // 8038D804
-    };
-    static_assert(sizeof(LinkRollConstants) == 0x4C);
 
     struct LoadingInfo {
         uint32_t isLoading;  // 80450CE0

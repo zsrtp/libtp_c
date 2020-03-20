@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include "utils.h"
+#include "addrs.h"
 
 namespace Link {
     struct Link {
@@ -35,6 +36,101 @@ namespace Link {
     Link *get_link();
     Vec3 *get_position();
     uint16_t *get_air();
+
+    struct FrontRoll {
+        uint8_t _p0[0x18];                // 8038D7BC
+        float bonk_recovery_anim_factor;  // 8038D7D4
+        float bonk_recoil_anim_speed;     // 8038D7D8
+        uint8_t _p1[0x28];                // 8038D7DC
+        float roll_factor;                // 8038D804
+        uint8_t _p2[0x24];                // 8038d808
+    };
+    static_assert(sizeof(FrontRoll) == 0x70);
+
+
+
+    struct BackJump {
+        uint8_t _p0[0x38];  // 8038D82C
+    };
+    static_assert(sizeof(BackJump) == 0x38);
+
+    struct SideStep {
+        uint8_t _p0[0x68];  // 8038d864
+    };
+    static_assert(sizeof(SideStep) == 0x68);
+
+    struct Slide {
+        uint8_t _p0[0x78];  // 8038d8cc
+    };
+    static_assert(sizeof(Slide) == 0x78);
+
+    struct Swim {
+        uint8_t _p0[0x14];  // 8038ED2C
+        uint16_t diving_anim_frames;
+        uint8_t _p1[0x02];
+        float diving_anim_speed;
+        uint8_t _p2[0x04];
+        float diving_bob_anim_frames;
+        float _p3;
+        uint16_t underwater_dive_anim_frames;
+        uint8_t _p4[0x02];
+        float underwater_dive_anim_speed;
+        uint8_t _p5[0x04];
+        float prep_underwater_dive_anim_speed;
+        float _p6;
+        uint16_t surface_swim_anim_frames;
+        uint8_t _p7[0x02];
+        float surface_swim_anim_speed;
+        float surface_swim_anim_frames_2;
+        float start_swim_anim_frames;
+        float _p8;
+        uint8_t _p9[0x02];
+        uint8_t surface_rotation_speed;
+        uint8_t _p10[0x0D];
+        float distance_from_water_to_surface;
+        float resurface_anim_speed;
+        float forward_swim_speed;
+        float side_swim_speed;
+        float back_swim_speed;
+        float swim_up_speed;
+        float ib_swim_speed;
+        float _p11;
+        float _p12;
+        float _p13;
+        float _p14;
+        float _p15;
+        float idle_anim_speed;
+        float return_to_idle_from_swim_anim_frames;
+        float idle_bob_depth;
+        float ess_forward_swim_anim_speed;
+        float full_forward_swim_anim_speed;
+        float ess_side_swim_anim_speed;
+        float full_side_swim_anim_speed;
+        float ess_back_swim_anim_speed;
+        float full_back_swim_anim_speed;
+        float ready_after_dive_anim_speed;
+        float underwater_swim_anim_speed;
+        float ready_underwater_anim_frames;
+        float _p16;
+        float _p17;
+        float unk_transition_into_swimming;
+        float _p18;
+        float sinking_speed;
+        float _p19;
+        float _p20;
+        float swim_up_max_anim_speed;
+        float swim_up_init_anim_speed;
+        float initial_sinking_speed;
+        float swim_up_max_speed;
+        float dash_swim_max_speed;
+        float _p21;
+        float _p22;
+        float _p23;
+    };
+    static_assert(sizeof(Swim) == 0xFC);
+
 }  // namespace Link
+#define tp_link_swim (*(Link::Swim *)(tp_link_swim_addr))
+#define tp_link_frontroll (*(Link::FrontRoll *)(tp_link_frontroll_addr))
 
 #endif  // LIB_TP_LINK

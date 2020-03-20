@@ -4,6 +4,12 @@
 #include <stdint.h>
 
 namespace Dungeon {
+    namespace ArbitersGrounds {
+        struct Flags {
+            uint8_t flags_1; // 80406B77
+        };
+        static_assert(sizeof(Flags) == 0x01);
+    }; // namespace ArbitersGrounds
     namespace CityInTheSky {
         struct Flags {
             uint8_t flags_1;    // 80406673 // controls chests

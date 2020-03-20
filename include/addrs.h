@@ -4,42 +4,48 @@
 // System
 #define tp_memalign_addr 0x80263228
 #define tp_free_addr 0x80263260
-#define tp_strlen_addr 0x80368be4
-#define tp_osReport_addr 0x80006abc
+#define tp_strlen_addr 0x80368bE4
+#define tp_osReport_addr 0x80006ABC
 #define tp_memcpy_addr 0x80003540
 #define tp_getLayerNo_addr 0x8002B434
 
 // Controller
 #define tp_mPadButton_addr 0x80434420
-#define tp_mPadStatus_addr 0x804343f0
+#define tp_mPadStatus_addr 0x804343F0
 
 // TP
-#define tp_globalCounters_addr 0x80430cd8
-#define tp_zelAudio_addr 0x803dbf4c
-#define tp_gameInfo_addr 0x804061c0
-#define tp_sConsole_addr 0x80450c90
-#define tp_linkRollConstants_addr 0x8038d7bc
+#define tp_globalCounters_addr 0x80430CD8
+#define tp_zelAudio_addr 0x803DBF4C
+#define tp_gameInfo_addr 0x804061C0
+#define tp_sConsole_addr 0x80450C90
 #define tp_fopScnRq_addr 0x80450CE0
 #define tp_titleScreenPtr_addr 0x803A3A38
 #define tp_matrixPtr_addr 0x803F1E10
 
 // Items
-#define tp_clawshot_addr 0x8038e9c0
+#define tp_clawshot_addr 0x8038E9C0
 #define tp_clawshot_checkbg_addr 0x801087b0
-#define tp_ironboots_addr 0x8038e7f4
-#define tp_spinner_addr 0x8038ea30
-#define tp_ball_and_chain_addr 0x8038ea70
-#define tp_bottle_addr 0x8038e90c
-
+#define tp_ironboots_addr 0x8038E7F4
+#define tp_spinner_addr 0x8038EA30
+#define tp_ball_and_chain_addr 0x8038EA70
+#define tp_bottle_addr 0x8038E90C
 
 // Actor
 #define tp_actor_addr 0x80450610
+#define tp_actor_stopstatus_addr 0x80450CBC
 
 // Draw
-#define tp_draw_addr 0x8042ebc8
+#define tp_draw_addr 0x8042EBC8
+
+// Link
+#define tp_link_frontroll_addr 0x8038D7BC
+#define tp_link_sidestep_addr 0x8038D864
+#define tp_link_backjump_addr 0x8038D82C
+#define tp_link_slide_addr 0x8038D8CC
+#define tp_link_swim_addr 0x8038ED2C
 
 // Inventory
-#define tp_execItemGet_addr 0x80097e8c
+#define tp_execItemGet_addr 0x80097E8C
 
 // GX
 #define GXSetBlendMode_addr 0x8035FBF0
