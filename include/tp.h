@@ -41,9 +41,11 @@ namespace TP {
         uint8_t status;                    // 0x00A2
         uint8_t _p3[0x14EF];               // 0x00A3
         bool over_void;                    // 0x1592
-        uint8_t _p4[0xDCC];                // 0x1593
-        uint8_t held_item_animation;       // 0x235F // might be incorrectly named // 0xF9 for big rock
-        uint16_t held_item_collision_ptr;  // 0x2360 // may be more than actr collision
+        uint8_t _p4[0x64D];                // 0x1593
+        bool appears_clawshottable;        // 0x1BE0 // only the visual effect when using clawshot
+        uint8_t _p13[0x77E];               // 0x1BE1
+        uint8_t held_item_animation;       // 0x235F // 0xF9 for big rock
+        uint16_t held_item_collision_ptr;  // 0x2360 // may be more than collision
         uint8_t _p12[0x376];               // 0x2362
         float sand_height_lost;            // 0x26D8
         uint8_t _p5[0x412];                // 0x26DC
@@ -68,6 +70,12 @@ namespace TP {
         uint32_t non_menu_counter;  // 80430CE0
     };
     static_assert(sizeof(GlobalCounters) == 0xC);
+
+    struct EponaDebug {
+        uint8_t _p0[0x4CF];  // 0x0000
+        Vec3 position;       // 0x04D0
+    };
+    static_assert(sizeof(EponaDebug) == 0x04DC);
 
     struct GameInfo {
         Link::Link link;                             // 804061C0 // mem card 1:1 copy starts here
@@ -113,7 +121,7 @@ namespace TP {
         Flags::TempFlags temp_flags;                 // 80406B14
         Dungeon::CaveOfOrdeals::Floors floors;       // 80406B3C
         uint8_t _p34[0x37];                          // 80406B40
-        Dungeon::ArbitersGrounds::Flags ag_flags;    // 80406B77
+        uint8_t boss_room_event_flags;               // 80406B77
         uint8_t _p63[0xDC];                          // 80406B78
         uint8_t _p51;                                // 80406C54 // end of mem card 1:1 copy
         uint8_t _p52[0x31F];                         // 80406C55 // start of game RAM
@@ -135,7 +143,7 @@ namespace TP {
         uint8_t _p40[0x04];                          // 8040AFCA
         Warp warp;                                   // 8040AFCE
         uint8_t _p42[0xBF];                          // 8040AFDD
-        uint16_t cs_val;                             // 8040B09C // figure out what exactly this is later
+        uint16_t cs_val;                             // 8040B09C
         uint8_t _p57[0xCF];                          // 8040B09E
         uint8_t freeze_game;                         // 8040B16D // this is cs event flag, rename later maybe
         uint8_t _p43[0x05];                          // 8040B16E
@@ -150,7 +158,9 @@ namespace TP {
         Momentum *momentum_ptr;                      // 8040B878
         uint8_t _p48[0x6F0];                         // 8040B87C
         LinkCollision *link_collision_ptr;           // 8040BF6C
-        uint8_t _p59[0x32];                          // 8040BF70
+        uint8_t _p59[0x8];                           // 8040BF70
+        EponaDebug *epona_debug_ptr;                 // 8040BF78
+        uint8_t _p64[0x2A];                          // 8040BF7C
         uint16_t link_air_meter;                     // 8040BFA2
         uint8_t _p58[0x02];                          // 8040BFA4
         uint16_t link_air_meter_2;                   // 8040BFA6 // appears to be the same as 8040BFA2
@@ -227,7 +237,7 @@ namespace TP {
     void set_boss_flags() {
         tp_bossFlags = 0xFF;
     }
-    
+
     void set_boss_flags(uint8_t value) {
         tp_bossFlags = value;
     }

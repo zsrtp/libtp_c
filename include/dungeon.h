@@ -5,10 +5,10 @@
 
 namespace Dungeon {
     namespace ArbitersGrounds {
-        struct Flags {
-            uint8_t flags_1; // 80406B77
-        };
-        static_assert(sizeof(Flags) == 0x01);
+        // struct Flags {
+        //     
+        // };
+        // static_assert(sizeof(Flags) == 0x00);
     }; // namespace ArbitersGrounds
     namespace CityInTheSky {
         struct Flags {
