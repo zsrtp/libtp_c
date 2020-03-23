@@ -77,6 +77,18 @@ namespace TP {
     };
     static_assert(sizeof(EponaDebug) == 0x04DC);
 
+    struct LinkTunic {
+        uint8_t _p0[0x32A0];          // 0x0000
+        uint16_t tunic_top_red;       // 0x32A0
+        uint16_t tunic_top_green;     // 0x32A2
+        uint16_t tunic_top_blue;      // 0x32A4
+        uint16_t tunic_top_unk;       // 0x32A6 // might be a timer?
+        uint16_t tunic_bottom_red;    // 0x32A8
+        uint16_t tunic_bottom_green;  // 0x32AA
+        uint16_t tunic_bottom_blue;   // 0x32AC
+        uint16_t tunic_bottom_unk;    // 0x32AE // might be a timer?
+    };
+
     struct GameInfo {
         Link::Link link;                             // 804061C0 // mem card 1:1 copy starts here
         uint8_t _p0[0x10];                           // 804061E0
@@ -158,7 +170,8 @@ namespace TP {
         Momentum *momentum_ptr;                      // 8040B878
         uint8_t _p48[0x6F0];                         // 8040B87C
         LinkCollision *link_collision_ptr;           // 8040BF6C
-        uint8_t _p59[0x8];                           // 8040BF70
+        uint8_t _p59[0x4];                           // 8040BF70
+        LinkTunic *link_tunic_ptr;                   // 8040BF74
         EponaDebug *epona_debug_ptr;                 // 8040BF78
         uint8_t _p64[0x2A];                          // 8040BF7C
         uint16_t link_air_meter;                     // 8040BFA2
