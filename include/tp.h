@@ -154,7 +154,8 @@ namespace TP {
         uint8_t current_spawn_id;                    // 8040AFC9
         uint8_t _p40[0x04];                          // 8040AFCA
         Warp warp;                                   // 8040AFCE
-        uint8_t _p42[0xBF];                          // 8040AFDD
+        uint8_t loading_animation;                   // 8040AFDD
+        uint8_t _p42[0xBE];                          // 8040AFDE
         uint16_t cs_val;                             // 8040B09C
         uint8_t _p57[0xCF];                          // 8040B09E
         uint8_t freeze_game;                         // 8040B16D // this is cs event flag, rename later maybe
