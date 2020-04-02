@@ -43,7 +43,11 @@ namespace TP {
         uint8_t status;                    // 0x00A2
         uint8_t _p3[0x14EF];               // 0x00A3
         bool over_void;                    // 0x1592
-        uint8_t _p4[0x64D];                // 0x1593
+        uint8_t _p4[0x574];                // 0x1593
+        uint8_t unk_attack_1;              // 0x1B07
+        uint8_t _p15[0x03];                // 0x1B08
+        uint8_t unk_attack_2;              // 0x1B0B
+        uint8_t _p14[0xD4];                // 0x1B0C
         bool appears_clawshottable;        // 0x1BE0 // only the visual effect when using clawshot
         uint8_t _p13[0x77E];               // 0x1BE1
         uint8_t held_item_animation;       // 0x235F // 0xF9 for big rock
