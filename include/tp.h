@@ -99,7 +99,9 @@ namespace TP {
         Link::Link link;                             // 804061C0 // mem card 1:1 copy starts here
         uint8_t _p0[0x10];                           // 804061E0
         uint8_t midna_on_back_flag;                  // 804061F0 // bit 3 puts midna on back, bit 1 gets set when first time wolf
-        uint8_t _p1[0x0F];                           // 804061F1
+        uint8_t _p1[0x03];                           // 804061F1
+        float raw_game_time;                         // 804061F4 // used to determine hours/minutes in ZelAudio. range is 0.0 - 360.0, 90.0 - 285.0 is day, 285.0 - 90.0 is night.
+        uint8_t _unk0[0x08];                         // 804061F8
         Epona::Epona epona;                          // 80406200
         Player::Player player;                       // 80406218
         uint8_t _p4[0x03];                           // 8040623A
@@ -137,6 +139,8 @@ namespace TP {
         uint8_t have_sense_flag;                     // 804069F3 // bit 3 gives sense
         uint8_t _p29[0x120];                         // 804069F4
         Flags::TempFlags temp_flags;                 // 80406B14
+        uint8_t area_id;                             // 80406B38
+        uint8_t _p65[0x03];                          // 80406B39
         Dungeon::CaveOfOrdeals::Floors floors;       // 80406B3C
         uint8_t _p34[0x37];                          // 80406B40
         uint8_t boss_room_event_flags;               // 80406B77
@@ -149,7 +153,8 @@ namespace TP {
         uint16_t respawn_angle;                      // 80406F7A
         Vec3 respawn_position;                       // 80406F7C
         uint8_t event_to_play;                       // 80406F88 // setting this to 0xFF skips most cutscenes
-        uint8_t _p36[0x07];                          // 80406F89
+        uint8_t _p66[0x03];                          // 80406F89
+        float spawn_speed;                           // 80406F8C
         uint8_t respawn_item_id;                     // 80406F90 // the item in link's hand
         bool voided_as_wolf;                         // 80406F91
         uint8_t _p37;                                // 80406F92
@@ -200,7 +205,8 @@ namespace TP {
         uint8_t _p1[0x6C];                       // 803DC3A4
         uint8_t time_hours;                      // 803DC410
         uint8_t time_minutes;                    // 803DC411
-        uint8_t _p22[0x8A];                      // 803DC412
+        uint8_t day_of_week;                     // 803DC412
+        uint8_t _p22[0x89];                      // 803DC413
         float menu_sfx_volume;                   // 803DC49C
         float menu_sfx_reverb;                   // 803DC4A0
         float menu_sfx_speed;                    // 803DC4A4
@@ -336,6 +342,16 @@ namespace TP {
         MatrixPtr *matrix_info;
     };
 
+    struct RNG {
+        int32_t RNG0;
+        int32_t RNG1;
+        int32_t RNG2;
+        int32_t RNG02;
+        int32_t RNG12;
+        int32_t RNG22;
+    };
+
+#define tp_rng (*(TP::RNG *)(tp_rng_addr))
 #define tp_globalCounters (*(TP::GlobalCounters *)(tp_globalCounters_addr))
 #define tp_zelAudio (*(TP::ZelAudio *)(tp_zelAudio_addr))
 #define tp_gameInfo (*(TP::GameInfo *)(tp_gameInfo_addr))
@@ -384,7 +400,6 @@ namespace TP {
     void set_respawn_animation(uint8_t animation_id) {
         tp_gameInfo.respawn_animation = animation_id;
     }
-
 }  // namespace TP
 
 #endif  // LIB_TP_TP

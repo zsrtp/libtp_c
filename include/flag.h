@@ -53,11 +53,7 @@ namespace Flags {
         uint8_t temp_flag_bit_field_34;  // 80406B35
         uint8_t temp_flag_bit_field_35;  // 80406B36
         uint8_t temp_flag_bit_field_36;  // 80406B37
-        uint8_t temp_flag_bit_field_37;  // 80406B38
-        uint8_t temp_flag_bit_field_38;  // 80406B39
-        uint8_t temp_flag_bit_field_39;  // 80406B3A
-        uint8_t temp_flag_bit_field_40;  // 80406B3B
     };                                   // struct TempFlags
-    static_assert(sizeof(TempFlags) == 0x28);
+    static_assert(sizeof(TempFlags) == 0x24);
 };      // namespace Flags
 #endif  // LIB_TP_FLAG

@@ -8,6 +8,8 @@
 #define tp_osReport_addr 0x80006ABC
 #define tp_memcpy_addr 0x80003540
 #define tp_getLayerNo_addr 0x8002B434
+#define tp_getSave_addr 0x800350bc
+#define tp_putSave_addr 0x800350f0
 
 // Controller
 #define tp_mPadButton_addr 0x80434420
@@ -21,6 +23,7 @@
 #define tp_fopScnRq_addr 0x80450CE0
 #define tp_titleScreenPtr_addr 0x803A3A38
 #define tp_matrixPtr_addr 0x803F1E10
+#define tp_rng_addr 0x80451168
 
 // Items
 #define tp_clawshot_addr 0x8038E9C0
