@@ -41,11 +41,13 @@
 #define tp_draw_addr 0x8042EBC8
 
 // Link
-#define tp_link_frontroll_addr 0x8038D7BC
-#define tp_link_sidestep_addr 0x8038D864
-#define tp_link_backjump_addr 0x8038D82C
-#define tp_link_slide_addr 0x8038D8CC
-#define tp_link_swim_addr 0x8038ED2C
+#define tp_link_human_frontroll_addr 0x8038D7BC
+#define tp_link_human_sidestep_addr 0x8038D864
+#define tp_link_human_backjump_addr 0x8038D82C
+#define tp_link_human_slide_addr 0x8038D8CC
+#define tp_link_human_swim_addr 0x8038ED2C
+#define tp_link_wolf_general_addr 0x8038EE28
+#define tp_link_wolf_swim_addr 0x8038f8b4
 
 // Inventory
 #define tp_execItemGet_addr 0x80097E8C
