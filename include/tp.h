@@ -174,8 +174,8 @@ namespace TP {
         uint8_t current_event_id;                    // 8040B173
         uint8_t _p44[0x1C];                          // 8040B174
         bool last_cs_skipped_flag;                   // 8040B190
-        uint8_t _p45[0x1B6];                         // 8040B191
-        bool lock_camera;                            // 8040B347
+        uint8_t _p45[0x1B3];                         // 8040B191
+        uint32_t lock_camera;                        // 8040B344
         uint8_t _p46[0x23];                          // 8040B348
         uint8_t last_room_id;                        // 8040B36B
         uint8_t _p47[0x50C];                         // 8040B36C
