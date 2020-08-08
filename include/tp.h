@@ -149,7 +149,7 @@ namespace TP {
         uint8_t _p52[0x31F];                         // 80406C55 // start of game RAM
         uint8_t respawn_room_id;                     // 80406F74
         uint8_t _p35[0x04];                          // 80406F75
-        uint8_t respawn_next_spawn_id;               // 80406F79
+        uint8_t special_spawn_id;                    // 80406F79 // used by things like spawning in boat in lake hylia
         uint16_t respawn_angle;                      // 80406F7A
         Vec3 respawn_position;                       // 80406F7C
         uint8_t event_to_play;                       // 80406F88 // setting this to 0xFF skips most cutscenes
