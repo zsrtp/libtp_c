@@ -14,6 +14,7 @@
 // Controller
 #define tp_mPadButton_addr 0x80434420
 #define tp_mPadStatus_addr 0x804343F0
+#define tp_mPadSticks_addr 0x804343F2
 
 // TP
 #define tp_globalCounters_addr 0x80430CD8
