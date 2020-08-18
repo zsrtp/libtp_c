@@ -185,7 +185,7 @@ namespace TP {
         uint8_t _p59[0x4];                           // 8040BF70
         LinkTunic *link_tunic_ptr;                   // 8040BF74
         EponaDebug *epona_debug_ptr;                 // 8040BF78
-        uint8_t _p64[0x2A];                          // 8040BF7C
+        uint8_t _p64[0x26];                          // 8040BF7C
         uint16_t link_air_meter;                     // 8040BFA2
         uint8_t _p58[0x02];                          // 8040BFA4
         uint16_t link_air_meter_2;                   // 8040BFA6 // appears to be the same as 8040BFA2
