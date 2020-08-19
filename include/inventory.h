@@ -72,7 +72,7 @@ namespace Inventory {
         ItemWheel item_wheel;                             // 80406274
         uint8_t _p0[0x03];                                // 8040628C
         uint8_t rupee_cs_flags;                           // 8040628F
-        uint8_t _p1;                                      // 80406290
+        uint8_t wood_sword_flag;                          // 80406290 // bit 7 wooden sword
         uint8_t equipment_flags_0;                        // 80406291 // bit 0 magic armor, bit 1 zora armor
         uint8_t equipment_flags_1;                        // 80406292 // bit 0 ordon sword, bit 1 master sword, bit 2 ordon shield, bit 3 wooden shield, bit 4 hylian shield, bit 7 hero's clothes
         uint8_t _p2[0x03];                                // 80406293
