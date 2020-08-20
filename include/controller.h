@@ -33,6 +33,12 @@ namespace Controller {
     };
     static_assert(sizeof(PadSticks) == 0x4);
 
+    struct PadTriggers {
+        uint8_t trig_L;
+        uint8_t trig_R;
+    };
+    static_assert(sizeof(PadTriggers) == 0x2);
+
     struct PadButton {
         uint8_t analog_cardinal;
         uint8_t c_cardinal;
@@ -48,6 +54,7 @@ namespace Controller {
 #define tp_mPadButton (*(Controller::PadButton *)tp_mPadButton_addr)
 #define tp_mPadStatus (*(Controller::PadStatus *)tp_mPadStatus_addr)
 #define tp_mPadSticks (*(Controller::PadSticks *)tp_mPadSticks_addr)
+#define tp_mPadTriggers (*(Controller::PadTriggers *)tp_mPadTriggers_addr)
 
     uint16_t buttons_down();
     uint16_t buttons_pressed();
