@@ -49,8 +49,8 @@ namespace Flags {
         uint8_t temp_flag_bit_field_30;  // 80406B31
         uint8_t temp_flag_bit_field_31;  // 80406B32
         uint8_t temp_flag_bit_field_32;  // 80406B33
-        uint8_t temp_flag_bit_field_33;  // 80406B34
-        uint8_t temp_flag_bit_field_34;  // 80406B35
+        uint8_t temp_flag_bit_field_33;  // 80406B34 // handles local area keys
+        uint8_t temp_flag_bit_field_34;  // 80406B35 // in dungeons: map is bit 0, compass bit 1, boss key bit 2
         uint8_t temp_flag_bit_field_35;  // 80406B36
         uint8_t temp_flag_bit_field_36;  // 80406B37
     };                                   // struct TempFlags
