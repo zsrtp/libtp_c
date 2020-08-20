@@ -81,7 +81,9 @@ namespace Inventory {
         uint8_t snail_dragonfly_ant_dayfly_flags;         // 804062A5
         uint8_t phasmid_pillbug_mantis_ladybug_flags;     // 804062A6
         uint8_t beetle_butterfly_stag_grasshopper_flags;  // 804062A7
-        uint8_t _p4[0x04];                                // 804062A8
+        uint8_t gm_key_shards;                            // 804062A8 // bit 1 sets shard 1, bit 2 shard 2, bit 3 shard 3
+        uint8_t spr_key_items;                            // 804062A9 // bit 4 sets pumpkin, bit 5 cheese, bit 6 bedroom key
+		uint8_t _p4[0x02];                                // 804062AA
         uint8_t arrow_count;                              // 804062AC
         uint8_t bomb_bag_1_amnt;                          // 804062AD
         uint8_t bomb_bag_2_amnt;                          // 804062AE
