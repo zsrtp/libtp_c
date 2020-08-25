@@ -50,10 +50,46 @@ namespace Flags {
         uint8_t temp_flag_bit_field_31;  // 80406B32
         uint8_t temp_flag_bit_field_32;  // 80406B33
         uint8_t temp_flag_bit_field_33;  // 80406B34 // handles local area keys
-        uint8_t temp_flag_bit_field_34;  // 80406B35 // in dungeons: map is bit 0, compass bit 1, boss key bit 2
+        uint8_t temp_flag_bit_field_34;  // 80406B35 // in dungeons: map is bit 0, compass bit 1, boss key bit 2 
         uint8_t temp_flag_bit_field_35;  // 80406B36
         uint8_t temp_flag_bit_field_36;  // 80406B37
     };                                   // struct TempFlags
     static_assert(sizeof(TempFlags) == 0x24);
+
+    struct GlobalFlags {
+        uint8_t flags_0;   // 0x00
+        uint8_t flags_1;   // 0x01
+        uint8_t flags_2;   // 0x02
+        uint8_t flags_3;   // 0x03
+        uint8_t flags_4;   // 0x04
+        uint8_t flags_5;   // 0x05
+        uint8_t flags_6;   // 0x06
+        uint8_t flags_7;   // 0x07
+        uint8_t flags_8;   // 0x08
+        uint8_t flags_9;   // 0x09
+        uint8_t flags_10;  // 0x0A
+        uint8_t flags_11;  // 0x0B
+        uint8_t flags_12;  // 0x0C
+        uint8_t flags_13;  // 0x0D
+        uint8_t flags_14;  // 0x0E
+        uint8_t flags_15;  // 0x0F
+        uint8_t flags_16;  // 0x10
+        uint8_t flags_17;  // 0x11
+        uint8_t flags_18;  // 0x12
+        uint8_t flags_19;  // 0x13
+        uint8_t flags_20;  // 0x14
+        uint8_t flags_21;  // 0x15
+        uint8_t flags_22;  // 0x16
+        uint8_t flags_23;  // 0x17
+        uint8_t flags_24;  // 0x18
+        uint8_t flags_25;  // 0x19
+        uint8_t flags_26;  // 0x1A
+        uint8_t flags_27;  // 0x1B
+        uint8_t flags_28;  // 0x1C // handles small key count
+        uint8_t flags_29;  // 0x1D // handles key items; bit 0 map, bit 1 compass, bit 2 boss key. bit 3 boss beaten, bit 4 obtained heart container, bit 6 obtained ooccoo, bit 7 miniboss defeated
+        uint8_t flags_30;  // 0x1E
+        uint8_t flags_31;  // 0x1F
+    };
+    static_assert(sizeof(GlobalFlags) == 0x20);
 };      // namespace Flags
 #endif  // LIB_TP_FLAG

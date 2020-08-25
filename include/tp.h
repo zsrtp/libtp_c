@@ -5,12 +5,14 @@
 #include <cstddef>
 #include "flag.h"
 #include "addrs.h"
+#include "cave.h"
 #include "dungeon.h"
 #include "epona.h"
 #include "inventory.h"
 #include "link.h"
 #include "minimap.h"
 #include "ooccoo.h"
+#include "overworld.h"
 #include "player.h"
 #include "utils.h"
 #include "warping.h"
@@ -25,9 +27,10 @@ namespace TP {
     struct LinkCollision {             // offsets
         uint8_t _p0[0x56C];            // 0x0000
         uint16_t invincibility_timer;  // 0x056C
-        uint8_t _p1[0x1432];           // 0x056D
-        uint8_t door_collision;        // 0x199F // lock to 0x40 for door storage collisions, lock to 0xF0 for sidehop hovering
-        uint8_t chest_collision;       // 0x19A0 // Set to 0xE4 or 0xF4 for chest storage collisions, set to 0x40 to disable collision
+        uint8_t _p1[0x1430];           // 0x056D
+        uint8_t door_collision;	    // 0x199E // lock to 0x40 for door storage collisions, lock to 0xF0 for sidehop hovering
+        uint8_t chest_collision;       // 0x199F // Set to 0xE4 or 0xF4 for chest storage collisions
+        uint8_t no_collision;          // 0x19A0 // Set to 0x40 to disable collision
     };
     static_assert(sizeof(LinkCollision) == 0x19A2);
 
@@ -114,11 +117,12 @@ namespace TP {
         Player::Filename player_filename;            // 80406374
         uint8_t _p10;                                // 80406384
         Epona::Filename epona_filename;              // 80406385
-        uint8_t _p11[0x28];                          // 80406395
-        Minimap::Warps warps;                        // 804063BD
-        uint8_t _p23[0x174];                         // 804064FF
-        Dungeon::CityInTheSky::Flags flags;          // 80406673
-        uint8_t _p54[0x338];                         // 8040667D
+        uint8_t _p11[0x1B];                          // 80406395
+        Overworld::OverworldFlags overworld_flags;   // 804063B0
+        uint8_t _p23[0x80];                          // 804064FF
+        Dungeon::DungeonFlags dungeon_flags;         // 804065B0
+        Cave::CaveFlags cave_flags;                  // 804066D0
+        uint8_t _p54[0x285];                         // 80406730
         uint8_t epona_stolen_and_midna_charge_flag;  // 804069B5 // bit 7 sets stolen, bit 0 gives midna charge
         uint8_t epona_tamed_and_map_warp_flag;       // 804069B6 // bit 0 sets tamed, bit 2 sets map warp
         uint8_t _p24[0x03];                          // 804069B7
@@ -141,7 +145,7 @@ namespace TP {
         Flags::TempFlags temp_flags;                 // 80406B14
         uint8_t area_id;                             // 80406B38
         uint8_t _p65[0x03];                          // 80406B39
-        Dungeon::CaveOfOrdeals::Floors floors;       // 80406B3C
+        Cave::CaveOfOrdeals::Floors floors;          // 80406B3C
         uint8_t _p34[0x37];                          // 80406B40
         uint8_t boss_room_event_flags;               // 80406B77
         uint8_t _p63[0xDC];                          // 80406B78
@@ -185,7 +189,7 @@ namespace TP {
         uint8_t _p59[0x4];                           // 8040BF70
         LinkTunic *link_tunic_ptr;                   // 8040BF74
         EponaDebug *epona_debug_ptr;                 // 8040BF78
-        uint8_t _p64[0x2A];                          // 8040BF7C
+        uint8_t _p64[0x26];                          // 8040BF7C
         uint16_t link_air_meter;                     // 8040BFA2
         uint8_t _p58[0x02];                          // 8040BFA4
         uint16_t link_air_meter_2;                   // 8040BFA6 // appears to be the same as 8040BFA2
