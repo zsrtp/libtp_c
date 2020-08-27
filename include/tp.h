@@ -28,7 +28,7 @@ namespace TP {
         uint8_t _p0[0x56C];            // 0x0000
         uint16_t invincibility_timer;  // 0x056C
         uint8_t _p1[0x1430];           // 0x056D
-        uint8_t door_collision;	    // 0x199E // lock to 0x40 for door storage collisions, lock to 0xF0 for sidehop hovering
+        uint8_t door_collision;        // 0x199E // lock to 0x40 for door storage collisions, lock to 0xF0 for sidehop hovering
         uint8_t chest_collision;       // 0x199F // Set to 0xE4 or 0xF4 for chest storage collisions
         uint8_t no_collision;          // 0x19A0 // Set to 0x40 to disable collision
     };
@@ -119,29 +119,11 @@ namespace TP {
         Epona::Filename epona_filename;              // 80406385
         uint8_t _p11[0x1B];                          // 80406395
         Overworld::OverworldFlags overworld_flags;   // 804063B0
-        uint8_t _p23[0x80];                          // 804064FF
+        uint8_t _p23[0x80];                          // 80406530
         Dungeon::DungeonFlags dungeon_flags;         // 804065B0
         Cave::CaveFlags cave_flags;                  // 804066D0
-        uint8_t _p54[0x285];                         // 80406730
-        uint8_t epona_stolen_and_midna_charge_flag;  // 804069B5 // bit 7 sets stolen, bit 0 gives midna charge
-        uint8_t epona_tamed_and_map_warp_flag;       // 804069B6 // bit 0 sets tamed, bit 2 sets map warp
-        uint8_t _p24[0x03];                          // 804069B7
-        uint8_t meteor_warp_enabled;                 // 804069BA // bit 4 enables meteor warp
-        uint8_t _p53;                                // 804069BB
-        uint8_t midna_on_z;                          // 804069BC // bit 4 sets midna
-        uint8_t transform_flag;                      // 804069BD // bit 2 sets transform
-        uint8_t _p56[0x06];                          // 804069BE
-        uint8_t goron_flag;                          // 804069C4
-        uint8_t epona_visible_flag;                  // 804069C5 // bit 7, makes her visible in ordon spring
-        uint8_t _p25[0x08];                          // 804069C6
-        uint8_t midna_state_flag;                    // 804069CE // bit 3 makes midna healthy
-        uint8_t _p26[0x06];                          // 804069CF
-        uint8_t dominion_rod_state;                  // 804069D5 // bit 7 controls dominion rod being restored
-        uint8_t _p27[0x03];                          // 804069D6
-        uint16_t hidden_skills_flags;                // 804069D9 // bit 5 sets great spin, bit 6 jump strike, bit 7 mortal draw, bit 8 helm splitter, bit 9 backslice, bit 10 ending blow, bit 11 shield attack
-        uint8_t _p28[0x18];                          // 804069DB
-        uint8_t have_sense_flag;                     // 804069F3 // bit 3 gives sense
-        uint8_t _p29[0x120];                         // 804069F4
+        uint8_t _p54[0x280];                         // 80406730
+        Flags::EventFlags event_flags;               // 804069B0
         Flags::TempFlags temp_flags;                 // 80406B14
         uint8_t area_id;                             // 80406B38
         uint8_t _p65[0x03];                          // 80406B39

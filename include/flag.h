@@ -91,5 +91,30 @@ namespace Flags {
         uint8_t flags_31;  // 0x1F
     };
     static_assert(sizeof(GlobalFlags) == 0x20);
+
+    struct EventFlags {
+        uint8_t event_flags;                         // 804069B0
+        uint8_t _p01[0x04];                          // 804069B1
+        uint8_t epona_stolen_and_midna_charge_flag;  // 804069B5 // bit 7 sets stolen, bit 0 gives midna charge
+        uint8_t epona_tamed_and_map_warp_flag;       // 804069B6 // bit 0 sets tamed, bit 2 sets map warp
+        uint8_t _p02[0x03];                          // 804069B7
+        uint8_t meteor_warp_enabled;                 // 804069BA // bit 4 enables meteor warp
+        uint8_t _p03;                                // 804069BB
+        uint8_t midna_on_z;                          // 804069BC // bit 4 sets midna
+        uint8_t transform_flag;                      // 804069BD // bit 2 sets transform
+        uint8_t _p04[0x06];                          // 804069BE
+        uint8_t goron_flag;                          // 804069C4
+        uint8_t epona_visible_flag;                  // 804069C5 // bit 7, makes her visible in ordon spring
+        uint8_t _p05[0x08];                          // 804069C6
+        uint8_t midna_state_flag;                    // 804069CE // bit 3 makes midna healthy
+        uint8_t _p06[0x06];                          // 804069CF
+        uint8_t dominion_rod_state;                  // 804069D5 // bit 7 controls dominion rod being restored
+        uint8_t _p07[0x03];                          // 804069D6
+        uint16_t hidden_skills_flags;                // 804069D9 // bit 5 sets great spin, bit 6 jump strike, bit 7 mortal draw, bit 8 helm splitter, bit 9 backslice, bit 10 ending blow, bit 11 shield attack
+        uint8_t _p08[0x18];                          // 804069DB
+        uint8_t have_sense_flag;                     // 804069F3 // bit 3 gives sense
+        uint8_t _p09[0x11F];                         // 804069F4
+    };
+    static_assert(sizeof(EventFlags) == 0x164);
 };      // namespace Flags
 #endif  // LIB_TP_FLAG
