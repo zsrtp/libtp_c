@@ -166,7 +166,9 @@ namespace TP {
         uint8_t last_room_id;                        // 8040B36B
         uint8_t _p47[0x50C];                         // 8040B36C
         Momentum *momentum_ptr;                      // 8040B878
-        uint8_t _p48[0x6F0];                         // 8040B87C
+        uint8_t _p48[0x330];                         // 8040B87C
+        uint8_t target_mode;                         // 8040BBAC // all the bits except the bit 0 and the bit 4 (they self reset to 0) keep their value if we modify them, but only the bit 5 seem to have an effect (target mode), and setting bit 4 resets the bit 5 to 0
+        uint8_t _p54[0x3BF];                         // 8040BBAD
         LinkCollision *link_collision_ptr;           // 8040BF6C
         uint8_t _p59[0x4];                           // 8040BF70
         LinkTunic *link_tunic_ptr;                   // 8040BF74
