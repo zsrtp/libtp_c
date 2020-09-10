@@ -11,6 +11,26 @@
 #define tp_getSave_addr 0x800350bc
 #define tp_putSave_addr 0x800350f0
 
+// Math
+#define tp_atan_addr 0x8036bca4
+#define tp_ceil_addr 0x8036bebc
+#define tp_copysign_addr 0x8036c000
+#define tp_cos_addr 0x8036c028
+#define tp_floor_addr 0x8036c0fc
+#define tp_frexp_addr 0x8036c244
+#define tp_ldexp_addr 0x8036c2d0
+#define tp_modf_addr 0x8036c494
+#define tp_sin_addr 0x8036c590
+#define tp_tan_addr 0x8036c668
+#define tp_acos_addr 0x8036c6e0
+#define tp_asin_addr 0x8036c700
+#define tp_atan2_addr 0x8036c720
+#define tp_exp_addr 0x8036c740
+#define tp_fmod_addr 0x8036c760
+#define tp_pow_addr 0x8036c780
+#define tp_fastSqrt_addr 0x80182a24
+#define tp_sqrt_addr 0x8036ca54
+
 // Controller
 #define tp_mPadButton_addr 0x80434420
 #define tp_mPadStatus_addr 0x804343F0
