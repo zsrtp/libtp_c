@@ -122,7 +122,7 @@ namespace TP {
         uint8_t _p23[0x80];                          // 80406530
         Dungeon::DungeonFlags dungeon_flags;         // 804065B0
         Cave::CaveFlags cave_flags;                  // 804066D0
-        uint8_t _p54[0x280];                         // 80406730
+        uint8_t _p55[0x280];                         // 80406730
         Flags::EventFlags event_flags;               // 804069B0
         Flags::TempFlags temp_flags;                 // 80406B14
         uint8_t area_id;                             // 80406B38

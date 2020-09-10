@@ -74,6 +74,9 @@
 // Inventory
 #define tp_execItemGet_addr 0x80097E8C
 
+// Scene
+#define tp_setTimePass_addr 0x80024DB0
+
 // GX
 #define GXSetBlendMode_addr 0x8035FBF0
 #define GXBegin_addr 0x8035C764
