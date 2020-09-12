@@ -50,7 +50,7 @@ namespace Flags {
         uint8_t temp_flag_bit_field_31;  // 80406B32
         uint8_t temp_flag_bit_field_32;  // 80406B33
         uint8_t temp_flag_bit_field_33;  // 80406B34 // handles local area keys
-        uint8_t temp_flag_bit_field_34;  // 80406B35 // in dungeons: map is bit 0, compass bit 1, boss key bit 2 
+        uint8_t temp_flag_bit_field_34;  // 80406B35 // in dungeons: map is bit 0, compass bit 1, boss key bit 2
         uint8_t temp_flag_bit_field_35;  // 80406B36
         uint8_t temp_flag_bit_field_36;  // 80406B37
     };                                   // struct TempFlags
@@ -109,12 +109,14 @@ namespace Flags {
         uint8_t midna_state_flag;                    // 804069CE // bit 3 makes midna healthy
         uint8_t _p06[0x06];                          // 804069CF
         uint8_t dominion_rod_state;                  // 804069D5 // bit 7 controls dominion rod being restored
-        uint8_t _p07[0x03];                          // 804069D6
+        uint8_t _p07;                                // 804069D6
+        uint8_t _p10;                                // 804069D7
+        uint8_t _p11;                                // 804069D8
         uint16_t hidden_skills_flags;                // 804069D9 // bit 5 sets great spin, bit 6 jump strike, bit 7 mortal draw, bit 8 helm splitter, bit 9 backslice, bit 10 ending blow, bit 11 shield attack
         uint8_t _p08[0x18];                          // 804069DB
         uint8_t have_sense_flag;                     // 804069F3 // bit 3 gives sense
         uint8_t _p09[0x11F];                         // 804069F4
-    };
-    static_assert(sizeof(EventFlags) == 0x164);
+    }__attribute__((packed));
+    static_assert(sizeof(EventFlags) == 0x163);
 };      // namespace Flags
 #endif  // LIB_TP_FLAG

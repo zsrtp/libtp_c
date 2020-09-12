@@ -182,7 +182,7 @@ namespace TP {
         uint8_t _p62[0xCB];                          // 8040BFAC
         uint8_t air_time_depleted;                   // 8040C077
         uint8_t _p100[0x17F58];                      // 8040C078
-    } __attribute__((packed));
+    };
     // int a = sizeof(GameInfo);
     // 80423fd0 next struct start
     //static_assert(sizeof(GameInfo) == 0x1DE10);
