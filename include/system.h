@@ -15,6 +15,8 @@ typedef int (*tp_getLayerNo_t)(const char *stageName, int roomId, int layerOverr
 typedef void (*tp_osReport_t)(const char *string, ...);
 typedef void (*tp_getSave_t)(TP::GameInfo *gameinfo, int32_t areaID);
 typedef void (*tp_putSave_t)(TP::GameInfo *gameinfo, int32_t areaID);
+typedef void (*tp_jutgamepadread_t)(void);
+
 
 
 #define tp_memset ((tp_memset_t)tp_memset_addr)
@@ -24,6 +26,7 @@ typedef void (*tp_putSave_t)(TP::GameInfo *gameinfo, int32_t areaID);
 #define tp_getLayerNo ((tp_getLayerNo_t)tp_getLayerNo_addr)
 #define tp_getSave ((tp_getSave_t)tp_getSave_addr)
 #define tp_putSave ((tp_putSave_t)tp_putSave_addr)
+#define tp_jutgamepadread ((tp_jutgamepadread_t)tp_jutgamepadread_addr)
 
 //#define tp_strlen ((tp_strlen_t)tp_strlen_addr)
 
