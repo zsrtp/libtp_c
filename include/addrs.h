@@ -40,6 +40,7 @@
 #define tp_mPadAStick_addr 0x804344E0
 #define tp_mPadACStick_addr 0x80434520
 #define tp_mPadATriggers_addr 0x80434430
+#define tp_cPadInfo_addr 0x803DD2E8
 
 // TP
 #define tp_globalCounters_addr 0x80430CD8
