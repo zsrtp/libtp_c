@@ -2,7 +2,7 @@
 #define LIB_TP_SYSTEM
 
 #include <stdint.h>
-#include <stdio.h>
+
 #include "addrs.h"
 #include "tp.h"
 
@@ -11,11 +11,14 @@ typedef void *(*tp_memalign_t)(int32_t align, uint32_t size);
 typedef void *(*tp_memcpy_t)(void *dest,void *src,size_t size);
 typedef void (*tp_free_t)(void *addr);
 typedef int (*tp_getLayerNo_t)(const char *stageName, int roomId, int layerOverride);
-//typedef uint32_t (*tp_strlen_t)(const char *string);
 typedef void (*tp_osReport_t)(const char *string, ...);
 typedef void (*tp_getSave_t)(TP::GameInfo *gameinfo, int32_t areaID);
 typedef void (*tp_putSave_t)(TP::GameInfo *gameinfo, int32_t areaID);
 typedef void (*tp_jutgamepadread_t)(void);
+typedef int (*tp_sprintf_t)(const char* string, const char* format, ...);
+typedef char* (*tp_strcpy_t)(char* dst, const char* src);
+typedef size_t (*tp_strlen_t)(const char* str);
+typedef int (*tp_strcmp_t)(const char* lhs, const char* rhs);
 
 
 
@@ -27,6 +30,10 @@ typedef void (*tp_jutgamepadread_t)(void);
 #define tp_getSave ((tp_getSave_t)tp_getSave_addr)
 #define tp_putSave ((tp_putSave_t)tp_putSave_addr)
 #define tp_jutgamepadread ((tp_jutgamepadread_t)tp_jutgamepadread_addr)
+#define tp_sprintf ((tp_sprintf_t)tp_sprintf_addr)
+#define tp_strcpy ((tp_strcpy_t)tp_strcpy_addr)
+#define tp_strlen ((tp_strlen_t)tp_strlen_addr)
+#define tp_strcmp ((tp_strcmp_t)tp_strcmp_addr)
 
 //#define tp_strlen ((tp_strlen_t)tp_strlen_addr)
 

@@ -7,7 +7,7 @@
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 
 #include <stdint.h>
-#include <stdio.h>
+
 #include "addrs.h"
 #include "tp.h"
 
