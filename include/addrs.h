@@ -5,12 +5,15 @@
 #define tp_memset_addr 0x8026f95c
 #define tp_memalign_addr 0x80263228
 #define tp_free_addr 0x80263260
-#define tp_strlen_addr 0x80368bE4
 #define tp_osReport_addr 0x80006ABC
 #define tp_memcpy_addr 0x80003540
 #define tp_getLayerNo_addr 0x8002B434
 #define tp_getSave_addr 0x800350bc
 #define tp_putSave_addr 0x800350f0
+#define tp_sprintf_addr 0x803664dc
+#define tp_strcpy_addr 0x80368b2c
+#define tp_strlen_addr 0x80368be4
+#define tp_strcmp_addr 0x80368994
 
 // Math
 #define tp_atan_addr 0x8036bca4
@@ -40,6 +43,7 @@
 #define tp_mPadAStick_addr 0x804344E0
 #define tp_mPadACStick_addr 0x80434520
 #define tp_mPadATriggers_addr 0x80434430
+#define tp_JUTGamePadRead_addr 0x802e08e4
 #define tp_cPadInfo_addr 0x803DD2E8
 
 // TP
