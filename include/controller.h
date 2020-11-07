@@ -57,6 +57,14 @@ namespace Controller {
     };
     static_assert(sizeof(PadButton) == 0xC0);
 
+    struct CPadInfo{
+        uint8_t _p0[0x30];
+        uint32_t input;
+        uint32_t triggerInput;
+        uint8_t _p1[0xC8];
+    };
+    static_assert(sizeof(CPadInfo) == 0x100);
+
 #define tp_mPadButton (*(Controller::PadButton *)tp_mPadButton_addr)
 #define tp_mPadStatus (*(Controller::PadStatus *)tp_mPadStatus_addr)
 #define tp_mPadSticks (*(Controller::PadSticks *)tp_mPadSticks_addr)
@@ -64,6 +72,7 @@ namespace Controller {
 #define tp_mPadATriggers (*(Controller::ATriggers *)tp_mPadATriggers_addr)
 #define tp_mPadAStick (*(Vec2 *)tp_mPadAStick_addr)
 #define tp_mPadACStick (*(Vec2 *)tp_mPadACStick_addr)
+#define tp_cPadInfo (*(Controller::CPadInfo *)tp_cPadInfo_addr)
 
     uint16_t buttons_down();
     uint16_t buttons_pressed();
