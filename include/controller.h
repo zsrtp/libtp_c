@@ -58,7 +58,7 @@ namespace Controller {
         Vec2 c_analog;
         uint8_t _p0[0x38];
     };
-    static_assert(sizeof(PadMStick) == 0x40);
+    static_assert(sizeof(PadSStick) == 0x40);
 
     struct CPadInfo{
         uint8_t _p0[0x30];
