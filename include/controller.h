@@ -23,27 +23,15 @@ namespace Controller {
 
     struct PadStatus {
         uint16_t sval;
-    };
-    static_assert(sizeof(PadStatus) == 0x2);
-
-    struct PadSticks {
         int8_t control_x;
         int8_t control_y;
         int8_t c_x;
         int8_t c_y;
-    };
-    static_assert(sizeof(PadSticks) == 0x4);
-
-    struct PadTriggers {
         uint8_t trig_L;
         uint8_t trig_R;
+        uint8_t _p01[0x27];
     };
-    static_assert(sizeof(PadTriggers) == 0x2);
-    
-    struct ATriggers {
-        float l, r;
-    };
-    static_assert(sizeof(ATriggers) == 0x8);
+    static_assert(sizeof(PadStatus) == 0x30);
 
     struct PadButton {
         uint8_t analog_cardinal;
@@ -51,11 +39,26 @@ namespace Controller {
         uint16_t buttons;
         uint8_t _p1[2];
         uint16_t buttons_down;
-        uint8_t _p2[18];
+        uint8_t _p2[8];
+        float l_analog;
+        float r_analog;
+        uint8_t _p4[2];
         uint16_t sval;
         uint8_t _p3[0xA4];
     };
     static_assert(sizeof(PadButton) == 0xC0);
+
+    struct PadMStick{
+        Vec2 control_analog;
+        uint8_t _p0[0x38];
+    };
+    static_assert(sizeof(PadMStick) == 0x40);
+
+    struct PadSStick{
+        Vec2 c_analog;
+        uint8_t _p0[0x38];
+    };
+    static_assert(sizeof(PadMStick) == 0x40);
 
     struct CPadInfo{
         uint8_t _p0[0x30];
@@ -65,13 +68,10 @@ namespace Controller {
     };
     static_assert(sizeof(CPadInfo) == 0x100);
 
-#define tp_mPadButton (*(Controller::PadButton *)tp_mPadButton_addr)
 #define tp_mPadStatus (*(Controller::PadStatus *)tp_mPadStatus_addr)
-#define tp_mPadSticks (*(Controller::PadSticks *)tp_mPadSticks_addr)
-#define tp_mPadTriggers (*(Controller::PadTriggers *)tp_mPadTriggers_addr)
-#define tp_mPadATriggers (*(Controller::ATriggers *)tp_mPadATriggers_addr)
-#define tp_mPadAStick (*(Vec2 *)tp_mPadAStick_addr)
-#define tp_mPadACStick (*(Vec2 *)tp_mPadACStick_addr)
+#define tp_mPadButton (*(Controller::PadButton *)tp_mPadButton_addr)
+#define tp_mPadMStick (*(Controller::PadMStick *)tp_mPadMStick_addr)
+#define tp_mPadSStick (*(Controller::PadSStick *)tp_mPadSStick_addr)
 #define tp_cPadInfo (*(Controller::CPadInfo *)tp_cPadInfo_addr)
 
     uint16_t buttons_down();
