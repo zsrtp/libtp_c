@@ -36,13 +36,10 @@
 #define tp_sqrt_addr 0x8036ca54
 
 // Controller
-#define tp_mPadButton_addr 0x80434420
 #define tp_mPadStatus_addr 0x804343F0
-#define tp_mPadSticks_addr 0x804343F2
-#define tp_mPadTriggers_addr 0x804343F6
-#define tp_mPadAStick_addr 0x804344E0
-#define tp_mPadACStick_addr 0x80434520
-#define tp_mPadATriggers_addr 0x80434430
+#define tp_mPadButton_addr 0x80434420
+#define tp_mPadMStick_addr 0x804344E0
+#define tp_mPadSStick_addr 0x80434520
 #define tp_JUTGamePadRead_addr 0x802e08e4
 #define tp_cPadInfo_addr 0x803DD2E8
 
