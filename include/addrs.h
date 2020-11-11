@@ -2,6 +2,7 @@
 #define LIB_TP_ADDRS
 
 // System
+#if (NTSCU)
 #define tp_memset_addr 0x8026f95c
 #define tp_memalign_addr 0x80263228
 #define tp_free_addr 0x80263260
@@ -120,5 +121,6 @@
 #define GXSetScissor_addr 0x803604D0
 #define GXGetScissor_addr 0x80360548
 #define wgPipe_addr 0xCC008000
+#endif
 
 #endif  // LIB_TP_ADDRS
