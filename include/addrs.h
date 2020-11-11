@@ -118,4 +118,15 @@
 #define GXGetScissor_addr 0x80360548
 #define wgPipe_addr 0xCC008000
 
+//misc functions (sort later)
+#define tp_cDyl_InitAsync_addr 0x80018764
+#define tp_fapGm_Execute_addr 0x80018a6c
+#define tp_draw_console_addr 0x802e8384
+#define tp_PADRead_addr 0x8034eea0
+#define tp_setSpecialGravity_addr 0x800bb770
+#define tp_checkCastleTownUseItem_addr 0x800c0678
+#define tp_query042_addr 0x8024bfec
+#define tp_cc_at_check_addr 0x80087c04
+
+
 #endif  // LIB_TP_ADDRS
