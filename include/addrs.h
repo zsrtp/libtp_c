@@ -343,7 +343,7 @@
 #define tp_setTimePass_addr 0x80024db0
 
 // GX
-#define GXSetBlendMode_addr 0x80024db0
+#define GXSetBlendMode_addr 0x8036208c
 #define GXBegin_addr 0x8035ec00
 #define GXSetVtxAttrFmt_addr 0x8035da60
 #define GXLoadPosMtxImm_addr 0x803626e8
