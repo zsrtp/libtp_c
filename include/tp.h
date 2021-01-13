@@ -16,6 +16,7 @@
 #include "player.h"
 #include "utils.h"
 #include "warping.h"
+template <size_t S> class Sizer { };
 
 namespace TP {
     struct Momentum {
@@ -24,6 +25,17 @@ namespace TP {
     };
     static_assert(sizeof(Momentum) == 0x504);
 
+#ifdef WII_NTSCU_10
+    struct LinkCollision {             // offsets
+        uint8_t _p0[0x570];            // 0x0000
+        uint16_t invincibility_timer;  // 0x0570
+        uint8_t _p1[0x1432];           // 0x0572 // TODO check the alignment for the next attributes
+        uint8_t door_collision;        // 0x199F // lock to 0x40 for door storage collisions, lock to 0xF0 for sidehop hovering
+        uint8_t chest_collision;       // 0x19A0 // Set to 0xE4 or 0xF4 for chest storage collisions, set to 0x40 to disable collision
+        uint8_t no_collision;          // 0x19A0 // Set to 0x40 to disable collision
+    };
+    // static_assert(sizeof(LinkCollision) == 0x19A2);
+#else
     struct LinkCollision {             // offsets
         uint8_t _p0[0x56C];            // 0x0000
         uint16_t invincibility_timer;  // 0x056C
@@ -33,6 +45,7 @@ namespace TP {
         uint8_t no_collision;          // 0x19A0 // Set to 0x40 to disable collision
     };
     static_assert(sizeof(LinkCollision) == 0x19A2);
+#endif
 
     struct LinkDebug {                     // offsets
         Vec3 position;                     // 0x0000
@@ -41,6 +54,9 @@ namespace TP {
         uint8_t _p1[0x44];                 // 0x0018
         float speed;                       // 0x005C
         uint8_t _p2[0x40];                 // 0x0060
+#ifdef WII_NTSCU_10
+        uint8_t _p2_2[0x4];
+#endif
         uint8_t current_boots;             // 0x00A0
         uint8_t _p11;                      // 0x00A1
         uint8_t status;                    // 0x00A2
@@ -50,28 +66,63 @@ namespace TP {
         uint8_t unk_attack_1;              // 0x1B07
         uint8_t _p15[0x03];                // 0x1B08
         uint8_t unk_attack_2;              // 0x1B0B
+#ifdef WII_NTSCU_10
+        float link_animation_speed;        //           0x1B10
+        uint8_t _p14[0xA4];                // 0x1B0C -> 0x1B14
+        bool show_aim_pointer;             //           0x1BB8
+#else
         uint8_t _p14[0xD4];                // 0x1B0C
+#endif
         bool appears_clawshottable;        // 0x1BE0 // only the visual effect when using clawshot
+#ifdef WII_NTSCU_10
+        uint8_t _p14_2;                    //           0x1BBA
+        bool appears_targetable;           //           0x1BBB // only the visual effect when using Gale
+        uint8_t _p13[0x7A8];               // 0x1BE1 -> 0x1BBC
+        uint32_t held_item_animation;      // 0x235F -> 0x2364 // 0xF9 for big rock
+        uint32_t held_item_collision_ptr;  // 0x2360 -> 0x2368 // may be more than collision
+        uint8_t _p12[0x374];               // 0x2362 -> 0x236C
+#else
         uint8_t _p13[0x77E];               // 0x1BE1
         uint8_t held_item_animation;       // 0x235F // 0xF9 for big rock
         uint16_t held_item_collision_ptr;  // 0x2360 // may be more than collision
         uint8_t _p12[0x376];               // 0x2362
+#endif
         float sand_height_lost;            // 0x26D8
         uint8_t _p5[0x412];                // 0x26DC
         uint8_t air_timer;                 // 0x2AEE
+#ifdef WII_NTSCU_10
+        uint8_t _p6[0x1D];                 // 0x2AEF -> 0x2AF7
+#else
         uint8_t _p6[0x1E];                 // 0x2AEF
+#endif
         uint8_t current_item;              // 0x2B0D
         uint8_t _p10[0x0A];                // 0x2B0E
         uint16_t current_action_id;        // 0x2B18
         uint8_t _p7[0x28];                 // 0x2B1A
         uint16_t action_value_2;           // 0x2B42
+#ifdef WII_NTSCU_10
+        uint8_t _p8[0xB6];                 // 0x2B44 -> 0x2B4C
+        uint16_t idle_timer;               //           0x2C02
+        uint8_t _p8_1[0xCC];               //           0x2C04
+#else
         uint8_t _p8[0x184];                // 0x2B44
+#endif
         uint32_t action_value_1;           // 0x2CC8
+#ifdef WII_NTSCU_10
+        uint8_t _p8_2[0x4];                //           0x2CD4
+        uint32_t equipped_item_usable;     //           0x2CD8 // bit 2 sets if buttons are globaly enabled
+        uint8_t _p9[0x25C];                // 0x2CCC -> 0x2CDC
+#else
         uint8_t _p9[0x228];                // 0x2CCC
+#endif
         float last_ground_y_pos_fall;      // 0x2EF4
         float last_ground_y_pos_void;      // 0x2EF8
     };
+#ifdef WII_NTSCU_10
+    static_assert(sizeof(LinkDebug) == 0x2F40);
+#else
     static_assert(sizeof(LinkDebug) == 0x2EFC);
+#endif
 
     struct GlobalCounters {
         uint32_t game_counter;      // 80430CD8
@@ -87,7 +138,11 @@ namespace TP {
     static_assert(sizeof(EponaDebug) == 0x04DC);
 
     struct LinkTunic {
+#ifdef WII_NTSCU_10
+        uint8_t _p0[0x32A8];          // 0x0000
+#else
         uint8_t _p0[0x32A0];          // 0x0000
+#endif
         uint16_t tunic_top_red;       // 0x32A0
         uint16_t tunic_top_green;     // 0x32A2
         uint16_t tunic_top_blue;      // 0x32A4
@@ -96,6 +151,16 @@ namespace TP {
         uint16_t tunic_bottom_green;  // 0x32AA
         uint16_t tunic_bottom_blue;   // 0x32AC
         uint16_t tunic_bottom_unk;    // 0x32AE // might be a timer?
+#ifdef WII_NTSCU_10
+        uint16_t tunic_red;           // 0x32B8 // when non 0, overwrites tunic_top and tunic_bottom with tunic and not_tunic
+        uint16_t tunic_green;         // 0x32BA
+        uint16_t tunic_blue;          // 0x32BC
+        uint16_t tunic_unk;           // 0x32BE
+        uint16_t not_tunic_red;       // 0x32C0
+        uint16_t not_tunic_green;     // 0x32C2
+        uint16_t not_tunic_blue;      // 0x32C4
+        uint16_t not_tunic_unk;       // 0x32C6
+#endif
     };
 
     struct GameInfo {
@@ -335,6 +400,12 @@ namespace TP {
         int32_t RNG22;
     };
 
+#ifdef WII_NTSCU_10
+    struct HomeMenuSts {
+        uint8_t is_visible; //              8053A968 // No idea if it is actually its true purpose, but it seems to work
+    };
+#endif
+
 #define tp_rng (*(TP::RNG *)(tp_rng_addr))
 #define tp_globalCounters (*(TP::GlobalCounters *)(tp_globalCounters_addr))
 #define tp_zelAudio (*(TP::ZelAudio *)(tp_zelAudio_addr))
@@ -344,6 +415,9 @@ namespace TP {
 #define tp_fopScnRq (*(TP::LoadingInfo *)(tp_fopScnRq_addr))
 #define tp_titleScreenInfo (*(TP::TitleScreenInfo *)(tp_titleScreenPtr_addr))
 #define tp_matrixInfo (*(TP::MatrixInfo *)(tp_matrixPtr_addr))
+#ifdef WII_NTSCU_10
+#define tp_homeMenuSts (*(TP::HomeMenuSts *)(tp_homeMenuSts_addr))
+#endif
 
     uint32_t get_frame_count() {
         return tp_globalCounters.game_counter;

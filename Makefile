@@ -21,12 +21,13 @@ SOURCES		:=	src
 DATA		:=	data  
 INCLUDES	:=	include
 REGION		:=  "NTSCU"
+PLATFORM	:=  "GCN"
 
 #---------------------------------------------------------------------------------
 # options for code generation
 #---------------------------------------------------------------------------------
 
-CFLAGS	= -g -c -O2 -Wall $(MACHDEP) $(INCLUDE) -D $(REGION)
+CFLAGS	= -g -c -O2 -Wall $(MACHDEP) $(INCLUDE) -D $(PLATFORM)_$(REGION)
 CXXFLAGS	=	$(CFLAGS)
 
 #---------------------------------------------------------------------------------

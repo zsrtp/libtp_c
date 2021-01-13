@@ -18,7 +18,9 @@ typedef double (*tp_cos_t)(double x);
 typedef double (*tp_floor_t)(double x);
 typedef double (*tp_frexp_t)(double x, int *exponent);
 typedef double (*tp_ldexp_t)(double x, int exponent);
+#ifndef WII_NTSCU_10
 typedef double (*tp_modf_t)(double x, double *iptr);
+#endif
 typedef double (*tp_sin_t)(double x);
 typedef double (*tp_tan_t)(double x);
 typedef double (*tp_acos_t)(double x);
@@ -37,7 +39,9 @@ typedef double (*tp_sqrt_t)(double x);
 #define tp_floor ((tp_floor_t)tp_floor_addr)
 #define tp_frexp ((tp_frexp_t)tp_frexp_addr)
 #define tp_ldexp ((tp_ldexp_t)tp_ldexp_addr)
+#ifndef WII_NTSCU_10
 #define tp_modf ((tp_modf_t)tp_modf_addr)
+#endif
 #define tp_sin ((tp_sin_t)tp_sin_addr)
 #define tp_tan ((tp_tan_t)tp_tan_addr)
 #define tp_acos ((tp_acos_t)tp_acos_addr)
