@@ -392,7 +392,7 @@
 // System
 #define tp_memset_addr 0x8000443c
 #define tp_memalign_addr 0x8024df80
-#define tp_free_addr 0x803beecc
+#define tp_free_addr 0x8024dfa0
 #define tp_osReport_addr 0x800090a8
 #define tp_memcpy_addr 0x80004338
 #define tp_getLayerNo_addr 0x8002f640

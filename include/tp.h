@@ -34,7 +34,7 @@ namespace TP {
         uint8_t chest_collision;       // 0x19A0 // Set to 0xE4 or 0xF4 for chest storage collisions, set to 0x40 to disable collision
         uint8_t no_collision;          // 0x19A0 // Set to 0x40 to disable collision
     };
-    // static_assert(sizeof(LinkCollision) == 0x19A2);
+    static_assert(sizeof(LinkCollision) == 0x19a8);
 #else
     struct LinkCollision {             // offsets
         uint8_t _p0[0x56C];            // 0x0000
@@ -182,7 +182,19 @@ namespace TP {
         Player::Filename player_filename;            // 80406374
         uint8_t _p10;                                // 80406384
         Epona::Filename epona_filename;              // 80406385
+#ifdef WII_PLATFORM
+        uint8_t _p11[0x0D];                          // 80406395 -> 80492AFD
+        bool lockon_type;                            //             80492B0A // 0 : hold, 1 : switch
+        uint8_t _p12[0x03];                          //             80492B0B
+        uint16_t hori_pointer_calib;                 //             80492B0E // Default is 0x015E
+        uint8_t vert_pointer_calib;                  //             80492B10 // Default is 0x00
+        bool icon_shortcut;                          //             80492B11
+        bool camera_control;                         //             80492B12 // 0 : normal, 1 : inverted
+        bool pointer;                                //             80492B13
+        uint8_t _p14[0x04];                          //             80492B14
+#else
         uint8_t _p11[0x1B];                          // 80406395
+#endif
         Overworld::OverworldFlags overworld_flags;   // 804063B0
         uint8_t _p23[0x80];                          // 80406530
         Dungeon::DungeonFlags dungeon_flags;         // 804065B0
@@ -225,12 +237,17 @@ namespace TP {
         uint8_t current_event_id;                    // 8040B173
         uint8_t _p44[0x1C];                          // 8040B174
         bool last_cs_skipped_flag;                   // 8040B190
+#ifdef GCN_PLATFORM
         uint8_t _p45[0x1B3];                         // 8040B191
+#endif
+#ifdef WII_PLATFORM
+        uint8_t _p45[0x1B4];                         // 8040B191 -> 804978FC
+#endif
         uint32_t lock_camera;                        // 8040B344
         uint8_t _p46[0x23];                          // 8040B348
-        uint8_t last_room_id;                        // 8040B36B
-        uint8_t _p47[0x50C];                         // 8040B36C
-        Momentum *momentum_ptr;                      // 8040B878
+        uint8_t last_room_id;                        // 8040B36B -> 80497AD7
+        uint8_t _p47[0x50C];                         // 8040B36C -> 80497AD8
+        Momentum *momentum_ptr;                      // 8040B878 -> 80497FE4
         uint8_t _p48[0x330];                         // 8040B87C
         uint8_t target_mode;                         // 8040BBAC // all the bits except the bit 0 and the bit 4 (they self reset to 0) keep their value if we modify them, but only the bit 5 seem to have an effect (target mode), and setting bit 4 resets the bit 5 to 0
         uint8_t _p54[0x3BF];                         // 8040BBAD
@@ -253,7 +270,11 @@ namespace TP {
     //static_assert(sizeof(GameInfo) == 0x1DE10);
 
     struct ZelAudio {
+#ifdef WII_PLATFORM
+        uint8_t _p0[0x468];                      // 803DBF4C -> 8044a6ac // TODO recheck all wii alignment for ZelAudio
+#else
         uint8_t _p0[0x454];                      // 803DBF4C
+#endif
         float bg_audio;                          // 803DC3A0
         uint8_t _p1[0x6C];                       // 803DC3A4
         uint8_t time_hours;                      // 803DC410
@@ -354,9 +375,17 @@ namespace TP {
         float hyrule_castle_bg_music_reverb;     // 803DCC20
         float hyrule_castle_bg_music_speed;      // 803DCC24
         float hyrule_castle_bg_music_lr_stereo;  // 803DCC28
+#ifdef WII_PLATFORM
+        uint8_t _p3[0x22C];                      // 803DCC2C -> 8044B3A0
+#else
         uint8_t _p3[0x228];                      // 803DCC2C
-        LinkDebug *link_debug_ptr;               // 803DCE54
+#endif
+        LinkDebug *link_debug_ptr;               // 803DCE54 -> 8044B5CC
+#ifdef WII_PLATFORM
+        uint8_t _p2[0x480];                      // 803DCE58 -> 8044B5D0
+#else
         uint8_t _p2[0x47C];                      // 803DCE58
+#endif
     };
 
     // alignment padding is being a pain
