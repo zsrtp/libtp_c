@@ -90,12 +90,8 @@ namespace TP {
         float sand_height_lost;            // 0x26D8
         uint8_t _p5[0x412];                // 0x26DC
         uint8_t air_timer;                 // 0x2AEE
-#ifdef WII_NTSCU_10
         uint8_t _p6[0x1D];                 // 0x2AEF -> 0x2AF7
-#else
-        uint8_t _p6[0x1E];                 // 0x2AEF
-#endif
-        uint8_t current_item;              // 0x2B0D
+        uint16_t current_item;              // 0x2B0D
         uint8_t _p10[0x0A];                // 0x2B0E
         uint16_t current_action_id;        // 0x2B18
         uint8_t _p7[0x28];                 // 0x2B1A
