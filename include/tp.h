@@ -232,11 +232,12 @@ namespace TP {
         uint8_t _p43[0x05];                          // 8040B16E
         uint8_t current_event_id;                    // 8040B173
         uint8_t _p44[0x1C];                          // 8040B174
-        bool last_cs_skipped_flag;                   // 8040B190
 #ifdef GCN_PLATFORM
+        bool last_cs_skipped_flag;                   // 8040B190
         uint8_t _p45[0x1B3];                         // 8040B191
 #endif
 #ifdef WII_PLATFORM
+        uint32_t cs_skip_counter;                    // 8040B190 -> 804978F8
         uint8_t _p45[0x1B4];                         // 8040B191 -> 804978FC
 #endif
         uint32_t lock_camera;                        // 8040B344
@@ -246,13 +247,18 @@ namespace TP {
         Momentum *momentum_ptr;                      // 8040B878 -> 80497FE4
         uint8_t _p48[0x330];                         // 8040B87C
         uint8_t target_mode;                         // 8040BBAC // all the bits except the bit 0 and the bit 4 (they self reset to 0) keep their value if we modify them, but only the bit 5 seem to have an effect (target mode), and setting bit 4 resets the bit 5 to 0
+#ifdef GCN_PLATFORM
         uint8_t _p54[0x3BF];                         // 8040BBAD
-        LinkCollision *link_collision_ptr;           // 8040BF6C
+#endif
+#ifdef WII_PLATFORM
+        uint8_t _p54[0x3CB];                         // 8040BBAD
+#endif
+        LinkCollision *link_collision_ptr;           // 8040BF6C -> 804986E4
         uint8_t _p59[0x4];                           // 8040BF70
         LinkTunic *link_tunic_ptr;                   // 8040BF74
         EponaDebug *epona_debug_ptr;                 // 8040BF78
         uint8_t _p64[0x26];                          // 8040BF7C
-        uint16_t link_air_meter;                     // 8040BFA2
+        uint16_t link_air_meter;                     // 8040BFA2 -> 8049871A
         uint8_t _p58[0x02];                          // 8040BFA4
         uint16_t link_air_meter_2;                   // 8040BFA6 // appears to be the same as 8040BFA2
         uint8_t _p61[0x02];                          // 8040BFA8
