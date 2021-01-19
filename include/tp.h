@@ -167,22 +167,22 @@ namespace TP {
 #ifdef WII_NTSCU_10
     struct LinkTunic {
         uint8_t _p0[0x32A8];          // 0x0000
-        uint16_t tunic_top_red;       // 0x32A0
-        uint16_t tunic_top_green;     // 0x32A2
-        uint16_t tunic_top_blue;      // 0x32A4
-        uint16_t tunic_top_unk;       // 0x32A6 // might be a timer?
-        uint16_t tunic_bottom_red;    // 0x32A8
-        uint16_t tunic_bottom_green;  // 0x32AA
-        uint16_t tunic_bottom_blue;   // 0x32AC
-        uint16_t tunic_bottom_unk;    // 0x32AE // might be a timer?
-        uint16_t tunic_red;           // 0x32B8 // when non 0, overwrites tunic_top and tunic_bottom with tunic and not_tunic
-        uint16_t tunic_green;         // 0x32BA
-        uint16_t tunic_blue;          // 0x32BC
-        uint16_t tunic_unk;           // 0x32BE
-        uint16_t not_tunic_red;       // 0x32C0
-        uint16_t not_tunic_green;     // 0x32C2
-        uint16_t not_tunic_blue;      // 0x32C4
-        uint16_t not_tunic_unk;       // 0x32C6
+        int16_t tunic_top_red;        // 0x32A0
+        int16_t tunic_top_green;      // 0x32A2
+        int16_t tunic_top_blue;       // 0x32A4
+        int16_t tunic_top_unk;        // 0x32A6 // might be a timer?
+        int16_t tunic_bottom_red;     // 0x32A8
+        int16_t tunic_bottom_green;   // 0x32AA
+        int16_t tunic_bottom_blue;    // 0x32AC
+        int16_t tunic_bottom_unk;     // 0x32AE // might be a timer?
+        int16_t tunic_red;            // 0x32B8 // when non 0, overwrites tunic_top and tunic_bottom with tunic and not_tunic
+        int16_t tunic_green;          // 0x32BA
+        int16_t tunic_blue;           // 0x32BC
+        int16_t tunic_unk;            // 0x32BE
+        int16_t not_tunic_red;        // 0x32C0
+        int16_t not_tunic_green;      // 0x32C2
+        int16_t not_tunic_blue;       // 0x32C4
+        int16_t not_tunic_unk;        // 0x32C6
     };
 #endif
 
