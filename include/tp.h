@@ -175,14 +175,14 @@ namespace TP {
         int16_t tunic_bottom_green;   // 0x32AA
         int16_t tunic_bottom_blue;    // 0x32AC
         int16_t tunic_bottom_unk;     // 0x32AE // might be a timer?
+        int16_t not_tunic_red;        // 0x32B0
+        int16_t not_tunic_green;      // 0x32B2
+        int16_t not_tunic_blue;       // 0x32B4
+        int16_t not_tunic_unk;        // 0x32B6
         int16_t tunic_red;            // 0x32B8 // when non 0, overwrites tunic_top and tunic_bottom with tunic and not_tunic
         int16_t tunic_green;          // 0x32BA
         int16_t tunic_blue;           // 0x32BC
         int16_t tunic_unk;            // 0x32BE
-        int16_t not_tunic_red;        // 0x32C0
-        int16_t not_tunic_green;      // 0x32C2
-        int16_t not_tunic_blue;       // 0x32C4
-        int16_t not_tunic_unk;        // 0x32C6
     };
 #endif
 
