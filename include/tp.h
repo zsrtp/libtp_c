@@ -309,10 +309,8 @@ namespace TP {
         uint8_t _p55[0x280];                         // 80406730
         Flags::EventFlags event_flags;               // 804069B0
         Flags::TempFlags temp_flags;                 // 80406B14
-        uint8_t area_id;                             // 80406B38
-        uint8_t _p65[0x03];                          // 80406B39
-        Cave::CaveOfOrdeals::Floors floors;          // 80406B3C
-        uint8_t _p34[0x37];                          // 80406B40
+        Dungeon::danBit dungeon_temp_flags;          // 80406B38
+        uint8_t _p34[0x3];                           // 80406B74
         uint8_t boss_room_event_flags;               // 80406B77
         uint8_t _p63[0xDC];                          // 80406B78
         uint8_t _p51;                                // 80406C54 // end of mem card 1:1 copy
