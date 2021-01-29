@@ -29,12 +29,11 @@ namespace TP {
     struct LinkCollision {             // offsets
         uint8_t _p0[0x570];            // 0x0000
         uint16_t invincibility_timer;  // 0x0570
-        uint8_t _p1[0x1432];           // 0x0572 // TODO check the alignment for the next attributes
+        uint8_t _p1[0x1430];           // 0x0572 // TODO check the alignment for the next attributes
         uint8_t door_collision;        // 0x199F // lock to 0x40 for door storage collisions, lock to 0xF0 for sidehop hovering
         uint8_t chest_collision;       // 0x19A0 // Set to 0xE4 or 0xF4 for chest storage collisions, set to 0x40 to disable collision
-        uint8_t no_collision;          // 0x19A0 // Set to 0x40 to disable collision
     };
-    static_assert(sizeof(LinkCollision) == 0x19a8);
+    static_assert(sizeof(LinkCollision) == 0x19a4);
 #else
     struct LinkCollision {             // offsets
         uint8_t _p0[0x56C];            // 0x0000
@@ -116,7 +115,7 @@ namespace TP {
         uint32_t held_item_animation;      // 0x235F -> 0x2364 // 0xF9 for big rock
         uint32_t held_item_collision_ptr;  // 0x2360 -> 0x2368 // may be more than collision
         uint8_t _p12[0x374];               // 0x2362 -> 0x236C
-        float sand_height_lost;            // 0x26D8
+        float sand_height_lost;            // 0x26D8 -> 0x26E0
         uint8_t _p5[0x412];                // 0x26DC
         uint8_t air_timer;                 // 0x2AEE
         uint8_t _p6[0x1D];                 // 0x2AEF -> 0x2AF7
@@ -167,22 +166,22 @@ namespace TP {
 #ifdef WII_NTSCU_10
     struct LinkTunic {
         uint8_t _p0[0x32A8];          // 0x0000
-        int16_t tunic_top_red;        // 0x32A0
-        int16_t tunic_top_green;      // 0x32A2
-        int16_t tunic_top_blue;       // 0x32A4
-        int16_t tunic_top_unk;        // 0x32A6 // might be a timer?
-        int16_t tunic_bottom_red;     // 0x32A8
-        int16_t tunic_bottom_green;   // 0x32AA
-        int16_t tunic_bottom_blue;    // 0x32AC
-        int16_t tunic_bottom_unk;     // 0x32AE // might be a timer?
-        int16_t not_tunic_red;        // 0x32B0
-        int16_t not_tunic_green;      // 0x32B2
-        int16_t not_tunic_blue;       // 0x32B4
-        int16_t not_tunic_unk;        // 0x32B6
-        int16_t tunic_red;            // 0x32B8 // when non 0, overwrites tunic_top and tunic_bottom with tunic and not_tunic
-        int16_t tunic_green;          // 0x32BA
-        int16_t tunic_blue;           // 0x32BC
-        int16_t tunic_unk;            // 0x32BE
+        int16_t tunic_top_red;        // 0x32A8
+        int16_t tunic_top_green;      // 0x32AA
+        int16_t tunic_top_blue;       // 0x32AC
+        int16_t tunic_top_unk;        // 0x32AE // might be a timer?
+        int16_t tunic_bottom_red;     // 0x32B0
+        int16_t tunic_bottom_green;   // 0x32B2
+        int16_t tunic_bottom_blue;    // 0x32B4
+        int16_t tunic_bottom_unk;     // 0x32B6 // might be a timer?
+        int16_t not_tunic_red;        // 0x32B8 // when non 0, overwrites tunic_top and tunic_bottom with tunic and not_tunic
+        int16_t not_tunic_green;      // 0x32BA
+        int16_t not_tunic_blue;       // 0x32BC
+        int16_t not_tunic_unk;        // 0x32BE
+        int16_t tunic_red;            // 0x32C0
+        int16_t tunic_green;          // 0x32C2
+        int16_t tunic_blue;           // 0x32C4
+        int16_t tunic_unk;            // 0x32C6
     };
 #endif
 

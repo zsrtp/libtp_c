@@ -125,7 +125,7 @@ namespace Controller {
 #define tp_mPadMStick (*(Controller::PadMStick *)tp_mPadMStick_addr)
 #define tp_mPadSStick (*(Controller::PadSStick *)tp_mPadSStick_addr)
 #define tp_cPadInfo (*(Controller::CPadInfo *)tp_cPadInfo_addr)
-#ifdef WII_NTSCU_10
+#ifdef WII_PLATFORM
 #define tp_mPad (*(Controller::MoteStatus *)tp_mPad_addr)
 #endif
 
