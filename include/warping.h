@@ -12,12 +12,23 @@ struct Entrance {
 };
 static_assert(sizeof(Entrance) == 0x0C);
 
+#ifdef GCN_PLATFORM
 struct Warp {
     Entrance entrance;  // 8040AFCE
     uint8_t _p0[2];     // 8040AFDA
     bool enabled;       // 8040AFDC
 };
 static_assert(sizeof(Warp) == 0x0F);
+#endif
+#ifdef WII_PLATFORM
+struct Warp {
+    Entrance entrance;  // 8040AFCE
+    uint8_t _p0;        // 8040AFDA -> 80497742
+    bool enabled;       // 8040AFDC -> 80497743
+    uint8_t _p1;        // 8040AFDA -> 80497742
+};
+static_assert(sizeof(Warp) == 0x0F);
+#endif
 
 // void set_next_stage(uint8_t new_stage[8]) {
 //     Entrance.stage = new_stage;

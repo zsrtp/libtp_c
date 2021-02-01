@@ -7,7 +7,15 @@ ifeq ($(strip $(DEVKITPPC)),)
 $(error "Please set DEVKITPPC in your environment. export DEVKITPPC=<path to>devkitPro/devkitPPC)
 endif
 
+PLATFORM    :=  $(if $(PLATFORM),$(PLATFORM),GCN)
+REGION		:=  $(if $(REGION),$(REGION),NTSCU)
+
+ifeq ("$(PLATFORM)","GCN")
 include $(DEVKITPPC)/gamecube_rules
+endif
+ifeq ("$(PLATFORM)","WII")
+include $(DEVKITPPC)/wii_rules
+endif
 
 #---------------------------------------------------------------------------------
 # TARGET is the name of the output
@@ -20,13 +28,12 @@ BUILD		:=	build
 SOURCES		:=	src
 DATA		:=	data  
 INCLUDES	:=	include
-REGION		:=  "NTSCU"
 
 #---------------------------------------------------------------------------------
 # options for code generation
 #---------------------------------------------------------------------------------
 
-CFLAGS	= -g -c -O2 -Wall $(MACHDEP) $(INCLUDE) -D $(REGION)
+CFLAGS	= -g -c -O2 -Wall $(MACHDEP) $(INCLUDE) -D $(PLATFORM)_$(REGION) -D $(PLATFORM)_PLATFORM
 CXXFLAGS	=	$(CFLAGS)
 
 #---------------------------------------------------------------------------------

@@ -6,6 +6,7 @@
 #include "addrs.h"
 
 namespace Link {
+#ifdef GCN_PLATFORM
     struct Link {
         uint16_t heart_pieces;              // 804061C0
         uint16_t heart_quarters;            // 804061C2
@@ -31,6 +32,35 @@ namespace Link {
         uint8_t _p8;                        // 804061DF
     };
     static_assert(sizeof(Link) == 0x20);
+#endif
+#ifdef WII_PLATFORM
+    struct Link {
+        uint16_t heart_pieces;              // 804061C0
+        uint16_t heart_quarters;            // 804061C2
+        uint16_t rupees;                    // 804061C4
+        uint16_t max_lantern_oil;           // 804061C6
+        uint16_t current_lantern_oil;       // 804061C8
+        uint8_t _unk0;                      // 804061CA
+        uint8_t item_on_right;              // 804061CB -> 80492933
+        uint8_t item_on_left;               // 804061CC -> 80492934
+        uint8_t item_on_down;               // 804061CD -> 80492935
+        uint8_t item_on_B;                  // 804061CE -> 80492936
+        uint8_t slot_right_combo_item;      // 804061CF -> 80492937
+        uint8_t slot_left_combo_item;       // 804061D0 -> 80492938
+        uint8_t slot_down_combo_item;       // 804061D1 -> 80492939
+        uint8_t slot_B_combo_item;          // 804061D2 -> 8049293A
+        uint8_t armor;                      // 804061D3
+        uint8_t sword;                      // 804061D4
+        uint8_t shield;                     // 804061D5
+        uint8_t scent;                      // 804061D6 // bitfield for scents
+        uint8_t _p6[2];                     // 804061D7
+        uint8_t wallet_upgrade;             // 804061D9
+        uint8_t _p7[4];                     // 804061DA
+        bool is_wolf;                       // 804061DE
+        uint8_t _p8;                        // 804061DF
+    };
+    static_assert(sizeof(Link) == 0x20);
+#endif
 
     Link *get_link();
     Vec3 *get_position();

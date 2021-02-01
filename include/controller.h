@@ -33,6 +33,58 @@ namespace Controller {
     };
     static_assert(sizeof(PadStatus) == 0x30);
 
+#ifdef WII_NTSCU_10
+
+    namespace Mote {
+        const uint16_t DPAD_LEFT = 0x0001;
+        const uint16_t DPAD_RIGHT = 0x0002;
+        const uint16_t DPAD_DOWN = 0x0004;
+        const uint16_t DPAD_UP = 0x0008;
+        const uint16_t PLUS = 0x0010;
+        const uint16_t TWO = 0x0100;
+        const uint16_t ONE = 0x0200;
+        const uint16_t B = 0x0400;
+        const uint16_t A = 0x0800;
+        const uint16_t MINUS = 0x1000;
+        const uint16_t Z = 0x2000;
+        const uint16_t C = 0x4000;
+        const uint16_t HOME = 0x8000;
+    }  // namespace Pad
+
+    struct Pointer {
+        Vec2 pos;                   // 8044BB84
+        uint8_t _p1[0x20];          // 8044BB8C
+        float scr_dist;             // 8044BBAC // Relative distance of the remote to the sensor bar
+    };
+    static_assert(sizeof(Pointer) == 0x2C);
+
+    struct MoteStatus {
+        uint8_t _unk1[4];           // 8044BB60
+        uint8_t _p1[2];             // 8044BB64
+        uint16_t buttons;           // 8044BB66
+        uint8_t _p2[2];             // 8044BB68
+        uint16_t buttons_down;      // 8044BB6A
+        uint8_t _p3[2];             // 8044BB6C
+        uint16_t buttons_up;        // 8044BB6E
+        Vec3 wiimote_acc;           // 8044BB70
+        float wiimote_acc_strength; // 8044BB7C
+        float wiimote_shake;        // 8044BB80 // Unsure of the real meaning of this, needs more verification
+        Pointer pointer;            // 8044BB84
+        uint8_t _p4[8];             // 8044BBB0
+        float horizontal;           // 8044BBB8 // Goes from 0.0 to 1.0, shows how much the remote is horizontal
+        float vertical;             // 8044BBBC // Goes from -1.0 to 1.0, shows how much the remote is vertical (up is 1.0, down is -1.0)
+        uint8_t _p5[4];             // 8044BBC0
+        Vec2 stick;                 // 8044BBC4
+        Vec3 nunchuck_acc;          // 8044BBCC
+        float nunchuck_acc_strength;// 8044BBD8
+        float nunchuck_shake;       // 8044BBDC // Unsure of the real meaning of this, needs more verification
+        uint8_t _p6[0x1CF0];        // 8044BBE0
+        float stick_amplitude;      // 8044D8D0
+        uint8_t _p7[0x5AAC];        // 8044D8D4
+    };
+    static_assert(sizeof(MoteStatus) == 0x7820);
+#endif
+
     struct PadButton {
         uint8_t analog_cardinal;
         uint8_t c_cardinal;
@@ -73,6 +125,9 @@ namespace Controller {
 #define tp_mPadMStick (*(Controller::PadMStick *)tp_mPadMStick_addr)
 #define tp_mPadSStick (*(Controller::PadSStick *)tp_mPadSStick_addr)
 #define tp_cPadInfo (*(Controller::CPadInfo *)tp_cPadInfo_addr)
+#ifdef WII_PLATFORM
+#define tp_mPad (*(Controller::MoteStatus *)tp_mPad_addr)
+#endif
 
     uint16_t buttons_down();
     uint16_t buttons_pressed();
