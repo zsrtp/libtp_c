@@ -212,7 +212,9 @@ namespace TP {
         Cave::CaveFlags cave_flags;                  // 804066D0
         uint8_t _p55[0x280];                         // 80406730
         Flags::EventFlags event_flags;               // 804069B0
-        Flags::TempFlags temp_flags;                 // 80406B14
+        uint8_t dSv_reserve[80];                     // 80406AB0
+        uint8_t minigame_flags[24];                  // 80406B00
+        Flags::TempFlags temp_flags;                 // 80406B18
         Dungeon::danBit dungeon_temp_flags;          // 80406B38
         uint8_t _p34[0x3];                           // 80406B74
         uint8_t boss_room_event_flags;               // 80406B77
@@ -308,7 +310,9 @@ namespace TP {
         Cave::CaveFlags cave_flags;                  // 804066D0
         uint8_t _p55[0x280];                         // 80406730
         Flags::EventFlags event_flags;               // 804069B0
-        Flags::TempFlags temp_flags;                 // 80406B14
+        uint8_t dSv_reserve[80];                     // 80406AB0
+        uint8_t minigame_flags[24];                  // 80406B00
+        Flags::TempFlags temp_flags;                 // 80406B18
         Dungeon::danBit dungeon_temp_flags;          // 80406B38
         uint8_t _p34[0x3];                           // 80406B74
         uint8_t boss_room_event_flags;               // 80406B77
