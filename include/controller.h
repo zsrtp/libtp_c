@@ -33,7 +33,7 @@ namespace Controller {
     };
     static_assert(sizeof(PadStatus) == 0x30);
 
-#ifdef WII_NTSCU_10
+#ifdef WII_PLATFORM
 
     namespace Mote {
         const uint16_t DPAD_LEFT = 0x0001;

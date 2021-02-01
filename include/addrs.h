@@ -518,4 +518,134 @@
 #define tp_cc_at_check_addr 0x800846b4
 #endif
 
+#ifdef WII_PAL
+// System
+#define tp_memset_addr 0x8000443c
+#define tp_memalign_addr 0x8024db10
+#define tp_free_addr 0x8024db30
+#define tp_osReport_addr 0x800091e0
+#define tp_memcpy_addr 0x80004338
+#define tp_getLayerNo_addr 0x8002f77c
+#define tp_getSave_addr 0x80039518
+#define tp_putSave_addr 0x80039548
+#define tp_sprintf_addr 0x803ae1a0
+#define tp_strcpy_addr 0x803ae3b0
+#define tp_strlen_addr 0x803a89f4
+#define tp_strcmp_addr 0x803ae4e0
+
+// Math
+#define tp_atan_addr 0x803b239c
+#define tp_ceil_addr 0x803b25dc
+#define tp_copysign_addr 0x803b271c
+#define tp_cos_addr 0x803b2748
+#define tp_floor_addr 0x803b281c
+#define tp_frexp_addr 0x803b2960
+#define tp_ldexp_addr 0x803b29e8
+#define tp_sin_addr 0x803b2b54
+#define tp_tan_addr 0x803b2c2c
+#define tp_acos_addr 0x803b2ca4
+#define tp_asin_addr 0x803b2ca8
+#define tp_atan2_addr 0x803b2cac
+#define tp_exp_addr 0x803b2cb0
+#define tp_fmod_addr 0x803b2cb4
+#define tp_pow_addr 0x803b2cb8
+#define tp_fastSqrt_addr 0x8025c5ac
+#define tp_sqrt_addr 0x803b2f04
+
+// Controller
+#define tp_mPadStatus_addr 0x804a9890
+#define tp_mPadButton_addr 0x804a98c0
+#define tp_mPadMStick_addr 0x804a9980
+#define tp_mPadSStick_addr 0x804a99c0
+#define tp_mPad_addr 0x80433a68
+#define tp_JUTGamePadRead_addr 0x802df164
+#define tp_cPadInfo_addr 0x80433968
+
+// TP
+#define tp_globalCounters_addr 0x804a5cf8
+#define tp_zelAudio_addr 0x804325ac
+#define tp_gameInfo_addr 0x8047a828
+#define tp_sConsole_addr 0x805210a8
+#define tp_fopScnRq_addr 0x805210f0
+#define tp_titleScreenPtr_addr 0x804692e0
+#define tp_matrixPtr_addr 0x80466268
+#define tp_rng_addr 0x80521638
+#define tp_homeMenuSts_addr 0x80521130
+
+// Items
+#define tp_clawshot_addr 0x803d0b9c
+#define tp_clawshot_checkbg_addr 0x800fd364
+#define tp_ironboots_addr 0x803d09d0
+#define tp_spinner_addr 0x803d0c0c
+#define tp_ball_and_chain_addr 0x803d0c4c
+#define tp_bottle_addr 0x803d0ae8
+
+// Actor
+#define tp_actor_addr 0x80521190
+#define tp_actor_stopstatus_addr 0x805210d4
+
+// Draw
+#define tp_draw_addr 0x804a34f8
+
+// Link
+#define tp_link_human_frontroll_addr 0x803cf998
+#define tp_link_human_sidestep_addr 0x803cfa40
+#define tp_link_human_backjump_addr 0x803cfa08
+#define tp_link_human_slide_addr 0x803cfaa8
+#define tp_link_human_swim_addr 0x803d0f08
+#define tp_link_wolf_general_addr 0x803d1004
+#define tp_link_wolf_swim_addr 0x803d1a90
+
+// Inventory
+#define tp_execItemGet_addr 0x800920d8
+
+// Scene
+#define tp_setTimePass_addr 0x8002bfb0
+
+// GX
+#define GXSetBlendMode_addr 0x8034b134
+#define GXBegin_addr 0x80348044
+#define GXSetVtxAttrFmt_addr 0x80346ecc
+#define GXLoadPosMtxImm_addr 0x8034b718
+#define GXSetNumIndStages_addr 0x8034a6a4
+#define GXSetTevDirect_addr 0x8034a6c4
+#define GXSetAlphaCompare_addr 0x8034aba0
+#define GXSetZMode_addr 0x8034b1dc
+#define GXSetTevOp_addr 0x8034a764
+#define GXSetNumChans_addr 0x8034930c
+#define GXSetNumTevStages_addr 0x8034adc0
+#define GXSetNumTexGens_addr 0x80347528
+#define GXSetTevOrder_addr 0x8034ac64
+#define GXSetTevColorIn_addr 0x8034a7f8
+#define GXSetTevAlphaIn_addr 0x8034a838
+#define GXSetTevColorOp_addr 0x8034a878
+#define GXSetTevAlphaOp_addr 0x8034a8d0
+#define GXSetCullMode_addr 0x8034830c
+#define GXLoadTexMtxImm_addr 0x8034b7e0
+#define GXSetChanCtrl_addr 0x80349330
+#define GXSetCurrentMtx_addr 0x8034b7c0
+#define GXSetTexCoordGen2_addr 0x80347300
+#define GXSetLineWidth_addr 0x80348268
+#define GXClearVtxDesc_addr 0x80346e98
+#define GXSetVtxDesc_addr 0x8034684c
+#define GXFlush_addr 0x803475d8
+#define GXInitTexObj_addr 0x803495b8
+#define GXLoadTexObj_addr 0x80349afc
+#define GXInvalidateTexAll_addr 0x80349ce0
+#define GXSetProjection_addr 0x8034b628
+#define GXSetScissor_addr 0x8034b970
+#define GXGetScissor_addr 0x8034b9d8
+#define wgPipe_addr 0xCC008000
+
+//misc functions (sort later)
+#define tp_cDyl_InitAsync_addr 0x8001e4b8
+#define tp_fapGm_Execute_addr 0x8001e868
+#define tp_draw_console_addr 0x802e61ac
+#define tp_PADRead_addr 0x80364f8c
+#define tp_setSpecialGravity_addr 0x800b2d2c
+#define tp_checkCastleTownUseItem_addr 0x800b7210
+#define tp_query042_addr 0x802383bc
+#define tp_cc_at_check_addr 0x80084a40
+#endif
+
 #endif  // LIB_TP_ADDRS
