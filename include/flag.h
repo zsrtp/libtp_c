@@ -27,8 +27,8 @@ namespace Flags {
 	static_assert(sizeof(GlobalFlags) == 0x20);
 
 	struct EventFlags {
-		uint8_t flags[0x168];
+		uint8_t flags[0x100];
 	}__attribute__((packed));
-	static_assert(sizeof(EventFlags) == 0x168);
+	static_assert(sizeof(EventFlags) == 0x100);
 };      // namespace Flags
 #endif  // LIB_TP_FLAG
