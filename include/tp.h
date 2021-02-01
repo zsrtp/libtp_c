@@ -25,7 +25,7 @@ namespace TP {
     };
     static_assert(sizeof(Momentum) == 0x504);
 
-#ifdef WII_NTSCU_10
+#ifdef WII_PLATFORM
     struct LinkCollision {             // offsets
         uint8_t _p0[0x570];            // 0x0000
         uint16_t invincibility_timer;  // 0x0570
@@ -87,7 +87,7 @@ namespace TP {
     static_assert(sizeof(LinkDebug) == 0x2EFC);
 #endif
 
-#ifdef WII_NTSCU_10
+#ifdef WII_PLATFORM
     struct LinkDebug {                     // offsets
         Vec3 position;                     // 0x0000
         uint8_t _p0[0xA];                  // 0x000C
@@ -163,7 +163,7 @@ namespace TP {
         int16_t tunic_bottom_unk;    // 0x32AE // might be a timer?
     };
 #endif
-#ifdef WII_NTSCU_10
+#ifdef WII_PLATFORM
     struct LinkTunic {
         uint8_t _p0[0x32A8];          // 0x0000
         int16_t tunic_top_red;        // 0x32A8
@@ -190,7 +190,8 @@ namespace TP {
         Link::Link link;                             // 804061C0 // mem card 1:1 copy starts here
         uint8_t _p0[0x10];                           // 804061E0
         uint8_t midna_on_back_flag;                  // 804061F0 // bit 3 puts midna on back, bit 1 gets set when first time wolf
-        uint8_t _p1[0x03];                           // 804061F1
+        uint8_t twilight_cleared_flag;               // 804061F1 // bit 0 = Faron, bit 1 = eldin, bit 2 = lanayru
+        uint8_t _p1[0x02];                           // 804061F2
         float raw_game_time;                         // 804061F4 // used to determine hours/minutes in ZelAudio. range is 0.0 - 360.0, 90.0 - 285.0 is day, 285.0 - 90.0 is night.
         uint8_t _unk0[0x08];                         // 804061F8
         Epona::Epona epona;                          // 80406200
@@ -280,7 +281,8 @@ namespace TP {
         Link::Link link;                             // 804061C0 // mem card 1:1 copy starts here
         uint8_t _p0[0x10];                           // 804061E0
         uint8_t midna_on_back_flag;                  // 804061F0 // bit 3 puts midna on back, bit 1 gets set when first time wolf
-        uint8_t _p1[0x03];                           // 804061F1
+        uint8_t twilight_cleared_flag;               // 804061F1 // bit 0 = Faron, bit 1 = eldin, bit 2 = lanayru
+        uint8_t _p1[0x02];                           // 804061F2
         float raw_game_time;                         // 804061F4 // used to determine hours/minutes in ZelAudio. range is 0.0 - 360.0, 90.0 - 285.0 is day, 285.0 - 90.0 is night.
         uint8_t _unk0[0x08];                         // 804061F8
         Epona::Epona epona;                          // 80406200
@@ -351,11 +353,11 @@ namespace TP {
         uint8_t _p46[0x23];                          // 8040B348
         uint8_t last_room_id;                        // 8040B36B -> 80497AD7
         uint8_t _p47[0x50C];                         // 8040B36C -> 80497AD8
-        Momentum *momentum_ptr;                      // 8040B878 -> 80497FE4
+        Momentum *momentum_ptr;                      // 8040B878 -> 80497FE4 -> 8047fee4
         uint8_t _p48[0x330];                         // 8040B87C
         uint8_t target_mode;                         // 8040BBAC // all the bits except the bit 0 and the bit 4 (they self reset to 0) keep their value if we modify them, but only the bit 5 seem to have an effect (target mode), and setting bit 4 resets the bit 5 to 0
         uint8_t _p54[0x3CB];                         // 8040BBAD
-        LinkCollision *link_collision_ptr;           // 8040BF6C -> 804986E4
+        LinkCollision *link_collision_ptr;           // 8040BF6C -> 804986E4 -> 804805e4
         uint8_t _p59[0x4];                           // 8040BF70
         LinkTunic *link_tunic_ptr;                   // 8040BF74
         EponaDebug *epona_debug_ptr;                 // 8040BF78
@@ -372,6 +374,8 @@ namespace TP {
     // int a = sizeof(GameInfo);
     // 80423fd0 next struct start
     //static_assert(sizeof(GameInfo) == 0x1DE10);
+
+    // constexpr const int _ = ((size_t)(&((GameInfo *)0)->inventory));
 #endif
 
 #ifdef GCN_PLATFORM
@@ -478,7 +482,7 @@ namespace TP {
         float hyrule_castle_bg_music_speed;      // 803DCC24
         float hyrule_castle_bg_music_lr_stereo;  // 803DCC28
         uint8_t _p3[0x228];                      // 803DCC2C
-        LinkDebug *link_debug_ptr;               // 803DCE54 -> 8044B5CC
+        LinkDebug *link_debug_ptr;               // 803DCE54 -> 8044B5CC -> 804334D0
         uint8_t _p2[0x47C];                      // 803DCE58
     };
 
@@ -488,9 +492,13 @@ namespace TP {
 
 #ifdef WII_PLATFORM
     struct ZelAudio {
-        uint8_t _p0[0x468];                      // 803DBF4C -> 8044a6ac // TODO recheck all wii alignment for ZelAudio
+        uint8_t _p0[0x468];                      // 803DBF4C -> 8044a6ac -> 804325AC // TODO recheck all wii alignment for ZelAudio
         float bg_audio;                          // 803DC3A0
+#ifdef WII_PAL
+        uint8_t _p1[0x70];                       // 803DC3A4
+#else
         uint8_t _p1[0x6C];                       // 803DC3A4
+#endif
         uint8_t time_hours;                      // 803DC410
         uint8_t time_minutes;                    // 803DC411
         uint8_t day_of_week;                     // 803DC412
@@ -636,7 +644,7 @@ namespace TP {
         int32_t RNG22;
     };
 
-#ifdef WII_NTSCU_10
+#ifdef WII_PLATFORM
     struct HomeMenuSts {
         uint8_t is_visible; //              8053A968 // No idea if it is actually its true purpose, but it seems to work
     };
