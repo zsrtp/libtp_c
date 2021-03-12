@@ -70,7 +70,9 @@ namespace TP {
         uint16_t held_item_collision_ptr;  // 0x2360 // may be more than collision
         uint8_t _p12[0x376];               // 0x2362
         float sand_height_lost;            // 0x26D8
-        uint8_t _p5[0x412];                // 0x26DC
+        uint8_t _p5[0x3FE];                // 0x26DC
+        bool riding_epona;                 // 0x2ADA
+        uint8_t _p16[0x13];                // 0x2ADB
         uint8_t air_timer;                 // 0x2AEE
         uint8_t _p6[0x1D];                 // 0x2AEF -> 0x2AF7
         uint16_t current_item;              // 0x2B0D
@@ -116,7 +118,9 @@ namespace TP {
         uint32_t held_item_collision_ptr;  // 0x2360 -> 0x2368 // may be more than collision
         uint8_t _p12[0x374];               // 0x2362 -> 0x236C
         float sand_height_lost;            // 0x26D8 -> 0x26E0
-        uint8_t _p5[0x412];                // 0x26DC
+        uint8_t _p5[0x3FE];                // 0x26DC
+        bool riding_epona;                 // 0x2ADA
+        uint8_t _p16[0x13];                // 0x2ADB
         uint8_t air_timer;                 // 0x2AEE
         uint8_t _p6[0x1D];                 // 0x2AEF -> 0x2AF7
         uint16_t current_item;              // 0x2B0D
@@ -234,7 +238,9 @@ namespace TP {
         bool voided_as_wolf;                         // 80406F91
         uint8_t _p37;                                // 80406F92
         uint8_t respawn_animation;                   // 80406F93
-        uint8_t _p38[0x402C];                        // 80406F94
+        uint8_t _p38[0x4];                           // 80406F94
+        uint8_t one_time_events[256];                // 80406F98
+        uint8_t _p101[0x3F28];                       // 80407098
         uint8_t current_stage[8];                    // 8040AFC0
         uint8_t _p39;                                // 8040AFC8
         uint8_t current_spawn_id;                    // 8040AFC9
@@ -333,7 +339,9 @@ namespace TP {
         bool voided_as_wolf;                         // 80406F91
         uint8_t _p37;                                // 80406F92
         uint8_t respawn_animation;                   // 80406F93
-        uint8_t _p38[0x402C];                        // 80406F94
+        uint8_t _p38[0x4];                           // 80406F94
+        uint8_t one_time_events[256];                // 80406F98
+        uint8_t _p101[0x3F28];                       // 80407098
         uint8_t current_stage[8];                    // 8040AFC0
         uint8_t _p39;                                // 8040AFC8
         uint8_t current_spawn_id;                    // 8040AFC9
