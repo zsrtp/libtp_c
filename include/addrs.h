@@ -152,6 +152,9 @@
 #define dSv_event_c__offEventBit_addr 0x800349a4
 #define dSv_event_c__onEventBit_addr 0x8003498c
 
+//d_meter2_info
+#define g_meter2_info_addr 0x80430188
+
 //d_com_inf_game
 #define dComIfGs_setSelectItemIndex_addr 0x8002dcc4
 #define dComIfGs_getMixItemIndex_addr 0x8002ddc8
@@ -320,7 +323,6 @@
 #define dSv_memBit_c__isSwitch_addr 0x80035490
 #define dSv_memBit_c__onSwitch_addr 0x80034940
 #define dSv_memBit_c__offSwitch_addr 0x80034968
-
 #define dSv_memBit_c__isDungeonItem_addr 0x80034a64
 #define dSv_memBit_c__onDungeonItem_addr 0x80034a48
 #define dSv_player_get_item_c__onFirstBit_addr 0x80033f08
@@ -328,6 +330,9 @@
 #define dSv_event_c__isEventBit_addr 0x80034aec
 #define dSv_event_c__offEventBit_addr 0x80034ad4
 #define dSv_event_c__onEventBit_addr 0x80034abc
+
+//d_meter2_info
+#define g_meter2_info_addr 0x80432148
 
 //d_com_inf_game
 #define dComIfGs_setSelectItemIndex_addr 0x8002dd6c
@@ -504,6 +509,9 @@
 #define dSv_event_c__isEventBit_addr 0x800349bc
 #define dSv_event_c__offEventBit_addr 0x800349a4
 #define dSv_event_c__onEventBit_addr 0x8003498c
+
+//d_meter2_info
+#define g_meter2_info_addr 0x8042a2c8
 
 //d_com_inf_game
 #define dComIfGs_setSelectItemIndex_addr 0x8002dcc4
@@ -682,6 +690,9 @@
 #define dSv_event_c__offEventBit_addr 0x80038bdc
 #define dSv_event_c__onEventBit_addr 0x80038bc4
 #define dSv_player_get_item_c__isFirstBit_addr 0x8003827c
+
+//d_meter2_info
+#define g_meter2_info_addr 0x804bcb78
 
 //d_com_inf_game
 #define dComIfGs_setSelectItemIndex_addr 0x8800323d4

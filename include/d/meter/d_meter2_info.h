@@ -111,7 +111,7 @@ private:
     /* 0xF3 */ uint8_t unk243[5];
 };
 
-#define g_meter2_info (*(dMeter2Info_c *)(0x80430188))
+#define g_meter2_info (*(dMeter2Info_c *)(g_meter2_info_addr))
 
 inline dMeterMap_c* dMeter2Info_getMeterMapClass() {
     return g_meter2_info.getMeterMapClass();
