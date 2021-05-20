@@ -1,20 +1,15 @@
-#ifndef LIB_TP_UTIL
-#define LIB_TP_UTIL
+#ifndef UTILS_H
+#define UTILS_H
 
-struct Vec2 {
-    float x, y;
-};
-static_assert(sizeof(Vec2) == 0x8);
+#include "d/com/d_com_inf_game.h"
 
-struct Vec3 {
-    float x, y, z;
-};
-static_assert(sizeof(Vec3) == 0xC);
+// Toggles save event flags
+void setEventFlag(uint16_t flag) {
+    if (dComIfGs_isEventBit(flag)) {
+        dComIfGs_offEventBit(flag);
+    } else {
+        dComIfGs_onEventBit(flag);
+    }
+}
 
-struct CameraMatrix {
-    Vec3 target;
-    Vec3 pos;
-};
-static_assert(sizeof(CameraMatrix) == 0x18);
-
-#endif  // LIB_TP_UTIL
+#endif
