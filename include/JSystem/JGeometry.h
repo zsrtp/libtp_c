@@ -90,7 +90,7 @@ struct TBox2 : TBox<TVec2<T> > {
     inline const TBox2& operator=(const TBox2& rhs) { *(TBox<TVec2<T> >*)this = rhs; }
     void set(const TBox2& other) { set(other.i, other.f); }
     void set(const TVec2<float>& i, const TVec2<float> f) { this->i.set(i), this->f.set(f); }
-    // void set(float x0, float y0, float x1, float y1) { i.set(x0, y0); f.set(x1, y1); }
+    void set(float x0, float y0, float x1, float y1) { this->i.set(x0, y0); this->f.set(x1, y1); }
 };
 
 }  // namespace JGeometry
