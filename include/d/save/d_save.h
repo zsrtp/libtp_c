@@ -774,7 +774,7 @@ public:
     /* 0xF30 */ uint64_t mSaveTotalTime;
 };
 #pragma pack(pop)
-
+static_assert(sizeof(dSv_info_c) == 0xF38);
 
 
 // Functions
