@@ -774,7 +774,7 @@ public:
     /* 0xF30 */ uint64_t mSaveTotalTime;
 };
 #pragma pack(pop)
-
+static_assert(sizeof(dSv_info_c) == 0xF38);
 
 
 // Functions
@@ -846,5 +846,8 @@ typedef bool (*dSv_memBit_c__isDungeonItem_t)(void* addr, int32_t flag);
 
 typedef void (*dSv_memBit_c__onDungeonItem_t)(void* addr, int32_t flag);
 #define dSv_memBit_c__onDungeonItem ((dSv_memBit_c__onDungeonItem_t)dSv_memBit_c__onDungeonItem_addr)
+
+typedef void (*dSv_player_return_place_c__set_t)(void* addr, char const* i_name, int8_t roomNo, uint8_t pointNo);
+#define dSv_player_return_place_c__set ((dSv_player_return_place_c__set_t)dSv_player_return_place_c__set_addr)
 
 #endif /* D_SAVE_D_SAVE_H */
