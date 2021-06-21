@@ -840,6 +840,53 @@
 #define tp_checkCastleTownUseItem_addr 0x800b7210
 #define tp_query042_addr 0x802383bc
 #define tp_cc_at_check_addr 0x80084a40
+
+//d_save
+#define dSv_player_item_c__setItem_addr 0x80037904
+#define dSv_player_item_c__getItem_addr 0x8003a15c
+#define dSv_player_item_record_c__setBombNum_addr 0x800384e4
+#define dSv_player_item_record_c__getBombNum_addr 0x800384f0
+#define dSv_player_status_a_c__getSelectItemIndex_addr 0x80037494
+#define dSv_player_status_b_c__isTransformLV_addr 0x80037608
+#define dSv_player_status_b_c__onTransformLV_addr 0x800375ec
+#define dSv_light_drop_c__setLightDropNum_addr 0x800387ec
+#define dSv_light_drop_c__getLightDropNum_addr 0x80038804
+#define dSv_info_c__onSwitch_addr 0x80039670
+#define dSv_info_c__offSwitch_addr 0x80039730
+#define dSv_memBit_c__isSwitch_addr 0x80038d34
+#define dSv_memBit_c__onSwitch_addr 0x80038ce4
+#define dSv_memBit_c__offSwitch_addr 0x80038d0c
+#define dSv_memBit_c__isDungeonItem_addr 0x80038e04
+#define dSv_memBit_c__onDungeonItem_addr 0x80038de8
+#define dSv_player_get_item_c__onFirstBit_addr 0x800383f0
+#define dSv_player_get_item_c__offFirstBit_addr 0x8003841c
+#define dSv_event_c__isEventBit_addr 0x80038e70
+#define dSv_event_c__offEventBit_addr 0x80038e58
+#define dSv_event_c__onEventBit_addr 0x80038e40
+#define dSv_player_get_item_c__isFirstBit_addr 0x80038448
+#define dSv_player_return_place_c__set_addr 0x80037680
+
+//d_meter2_info
+#define g_meter2_info_addr 0x804a4ab8
+
+//d_com_inf_game
+#define dComIfGs_setSelectItemIndex_addr 0x880032590
+#define dComIfGs_getMixItemIndex_addr 0x8003267c
+#define dComIfGs_setMixItemIndex_addr 0x800325d4
+
+//d_stage
+#define dStage_nextStage_c__set_addr 0x80028b40
+
+//d_menu_window
+#define dMw_c__isEventCheck_addr 0x801e2760
+
+//JKernel
+#define JKernel__operator_new_addr 0x802cd92c
+#define JKRArchive__getResource2_addr 0x802d49a0
+
+//J2DPicture
+#define J2DPicture__J2DPicture4_addr 0x802f9d10
+#define J2DPicture__draw_addr 0x802fb078
 #endif
 
 #endif  // LIB_TP_ADDRS

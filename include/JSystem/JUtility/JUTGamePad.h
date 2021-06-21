@@ -66,7 +66,7 @@ namespace Controller {
         uint16_t buttons_down;      // 8044BB6A
         uint8_t _p3[2];             // 8044BB6C
         uint16_t buttons_up;        // 8044BB6E
-        Vec3 wiimote_acc;           // 8044BB70
+        Vec wiimote_acc;            // 8044BB70
         float wiimote_acc_strength; // 8044BB7C
         float wiimote_shake;        // 8044BB80 // Unsure of the real meaning of this, needs more verification
         Pointer pointer;            // 8044BB84
@@ -75,7 +75,7 @@ namespace Controller {
         float vertical;             // 8044BBBC // Goes from -1.0 to 1.0, shows how much the remote is vertical (up is 1.0, down is -1.0)
         uint8_t _p5[4];             // 8044BBC0
         Vec2 stick;                 // 8044BBC4
-        Vec3 nunchuck_acc;          // 8044BBCC
+        Vec nunchuck_acc;           // 8044BBCC
         float nunchuck_acc_strength;// 8044BBD8
         float nunchuck_shake;       // 8044BBDC // Unsure of the real meaning of this, needs more verification
         uint8_t _p6[0x1CF0];        // 8044BBE0
