@@ -2,14 +2,13 @@
 #define D_METER_D_METER2_INFO_H
 
 #include "../msg/d_msg_flow.h"
+#include "../menu/d_menu_window.h"
 
 class dMeterMap_c {};
 
 struct CPaneMgr {};
 
 class dMeter2_c {};
-
-class dMw_c {};
 
 class dMeter2Info_c {
 public:

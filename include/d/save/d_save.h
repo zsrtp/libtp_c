@@ -773,6 +773,8 @@ public:
 };
 #pragma pack(pop)
 
+static_assert(sizeof(dSv_info_c) == 0xF38);
+
 #ifdef WII_PLATFORM
 struct HomeMenuSts {
     uint8_t is_visible; //              8053A968 // No idea if it is actually its true purpose, but it seems to work
@@ -848,6 +850,9 @@ typedef bool (*dSv_memBit_c__isDungeonItem_t)(void* addr, int32_t flag);
 
 typedef void (*dSv_memBit_c__onDungeonItem_t)(void* addr, int32_t flag);
 #define dSv_memBit_c__onDungeonItem ((dSv_memBit_c__onDungeonItem_t)dSv_memBit_c__onDungeonItem_addr)
+
+typedef void (*dSv_player_return_place_c__set_t)(void* addr, char const* i_name, int8_t roomNo, uint8_t pointNo);
+#define dSv_player_return_place_c__set ((dSv_player_return_place_c__set_t)dSv_player_return_place_c__set_addr)
 
 #ifdef WII_PLATFORM
 typedef bool (*dSv_player_get_item_c__isFirstBit_t)(void* addr, uint8_t idx);

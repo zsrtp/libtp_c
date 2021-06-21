@@ -151,6 +151,7 @@
 #define dSv_event_c__isEventBit_addr 0x800349bc
 #define dSv_event_c__offEventBit_addr 0x800349a4
 #define dSv_event_c__onEventBit_addr 0x8003498c
+#define dSv_player_return_place_c__set_addr 0x80032d1c
 
 //d_meter2_info
 #define g_meter2_info_addr 0x80430188
@@ -166,6 +167,9 @@
 
 //d_stage
 #define dStage_nextStage_c__set_addr 0x80023e28
+
+//d_menu_window
+#define dMw_c__isEventCheck_addr 0x801fcf84
 
 //m_Do_audio
 #define mDoAud_seStartLevel_addr 0x8014113c
@@ -330,6 +334,7 @@
 #define dSv_event_c__isEventBit_addr 0x80034aec
 #define dSv_event_c__offEventBit_addr 0x80034ad4
 #define dSv_event_c__onEventBit_addr 0x80034abc
+#define dSv_player_return_place_c__set_addr 0x80032dc4
 
 //d_meter2_info
 #define g_meter2_info_addr 0x80432148
@@ -345,6 +350,9 @@
 
 //d_stage
 #define dStage_nextStage_c__set_addr 0x80023ed0
+
+//d_menu_window
+#define dMw_c__isEventCheck_addr 0x801fd248
 
 //m_Do_audio
 #define mDoAud_seStartLevel_addr 0x80141348
@@ -509,6 +517,7 @@
 #define dSv_event_c__isEventBit_addr 0x800349bc
 #define dSv_event_c__offEventBit_addr 0x800349a4
 #define dSv_event_c__onEventBit_addr 0x8003498c
+#define dSv_player_return_place_c__set_addr 0x80032d1c
 
 //d_meter2_info
 #define g_meter2_info_addr 0x8042a2c8
@@ -524,6 +533,9 @@
 
 //d_stage
 #define dStage_nextStage_c__set_addr 0x80023e28
+
+//d_menu_window
+#define dMw_c__isEventCheck_addr 0x801fd67c
 
 //m_Do_audio
 #define mDoAud_seStartLevel_addr 0x80141188
@@ -690,6 +702,7 @@
 #define dSv_event_c__offEventBit_addr 0x80038bdc
 #define dSv_event_c__onEventBit_addr 0x80038bc4
 #define dSv_player_get_item_c__isFirstBit_addr 0x8003827c
+#define dSv_player_return_place_c__set_addr 0x800374b4
 
 //d_meter2_info
 #define g_meter2_info_addr 0x804bcb78
@@ -701,6 +714,9 @@
 
 //d_stage
 #define dStage_nextStage_c__set_addr 0x8002897c
+
+//d_menu_window
+#define dMw_c__isEventCheck_addr 0x801e3334
 
 //JKernel
 #define JKernel__operator_new_addr 0x802e2b2c
