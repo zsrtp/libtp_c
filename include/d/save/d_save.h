@@ -350,10 +350,8 @@ public:
     /* 0x06 */ uint16_t mMaxOil;
     /* 0x08 */ uint16_t mOil;
     /* 0x0A */ uint8_t unk10;
-    /* 0x0B */ uint8_t mSelectItem[3];
-    /* 0x0E */ uint8_t mMixItem[3];
-    /* 0x11 */ uint8_t unk17;
-    /* 0x12 */ uint8_t unk18;
+    /* 0x0B */ uint8_t mSelectItem[4];
+    /* 0x0F */ uint8_t mMixItem[4];
     /* 0x13 */ uint8_t mSelectEquip[6];
     /* 0x19 */ uint8_t mWalletSize;
     /* 0x1A */ uint8_t mMaxMagic;
@@ -774,8 +772,14 @@ public:
     /* 0xF30 */ uint64_t mSaveTotalTime;
 };
 #pragma pack(pop)
+
 static_assert(sizeof(dSv_info_c) == 0xF38);
 
+#ifdef WII_PLATFORM
+struct HomeMenuSts {
+    uint8_t is_visible; //              8053A968 // No idea if it is actually its true purpose, but it seems to work
+};
+#endif // WII_PLATFORM
 
 // Functions
 typedef void (*dSv_player_item_c__setItem_t)(void* addr, int32_t slot, uint8_t item);
@@ -849,5 +853,12 @@ typedef void (*dSv_memBit_c__onDungeonItem_t)(void* addr, int32_t flag);
 
 typedef void (*dSv_player_return_place_c__set_t)(void* addr, char const* i_name, int8_t roomNo, uint8_t pointNo);
 #define dSv_player_return_place_c__set ((dSv_player_return_place_c__set_t)dSv_player_return_place_c__set_addr)
+
+#ifdef WII_PLATFORM
+typedef bool (*dSv_player_get_item_c__isFirstBit_t)(void* addr, uint8_t idx);
+#define dSv_player_get_item_c__isFirstBit ((dSv_player_get_item_c__isFirstBit_t)dSv_player_get_item_c__isFirstBit_addr)
+
+#define tp_homeMenuSts (*(HomeMenuSts *)(tp_homeMenuSts_addr))
+#endif // WII_PLATFORM
 
 #endif /* D_SAVE_D_SAVE_H */

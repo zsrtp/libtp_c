@@ -33,8 +33,8 @@ public:
     bool& isPauseFlag() { return mPauseFlag; }
     void* getMsgObjectClass() { return mMsgObjectClass; }
     dStage_roomControl_c* getRoomControl() { return mRoomControl; }
-    dEvt_control_c getEvent() { return mEvent; }
-    dEvent_manager_c getEventManager() { return mEvtManager; }
+    dEvt_control_c& getEvent() { return mEvent; }
+    dEvent_manager_c& getEventManager() { return mEvtManager; }
     daHorse_c* getHorseActor() { return mHorseActor; }
     uint8_t& getItemLifeCountType() { return mItemLifeCountType; }
     void setItem(uint8_t slot, uint8_t i_no) {
@@ -639,11 +639,11 @@ inline void dComIfGs_getSave(int i_stageNo) {
 
 #ifdef WII_PLATFORM
 inline dEvt_control_c& dComIfGp_getEvent() {
-    g_dComIfG_gameInfo.play.getEvent();
+    return g_dComIfG_gameInfo.play.getEvent();
 }
 
 inline dEvent_manager_c& dComIfGp_getEventManager() {
-    g_dComIfG_gameInfo.play.getEventManager();
+    return g_dComIfG_gameInfo.play.getEventManager();
 }
 #else
 typedef dEvt_control_c& (*dComIfGp_getEvent_t)(void);
@@ -675,7 +675,7 @@ inline void dComIfGs_setBombNum(uint8_t idx, uint8_t num) {
 
 #ifdef WII_PLATFORM
 bool dComIfGs_isItemFirstBit(uint8_t flag) {
-    dSv_player_get_item_c__isFirstBit(&g_dComIfG_gameInfo.mInfo.getPlayer().getPlayerGetItem(), flag);
+    return dSv_player_get_item_c__isFirstBit(&g_dComIfG_gameInfo.mInfo.getPlayer().getPlayerGetItem(), flag);
 }
 #else
 typedef bool (*dComIfGs_isItemFirstBit_t)(uint8_t item);

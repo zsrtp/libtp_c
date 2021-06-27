@@ -167,8 +167,13 @@ public:
     uint8_t mRoomNo;
     uint8_t mLayer;
     uint8_t field_0xc;
+#ifdef GCN_PLATFORM
     uint8_t field_0xd;
     int8_t enabled;
+#elif defined(WII_PLATFORM)
+    int8_t enabled;
+    uint8_t field_0xe;
+#endif
     uint8_t wipe;
     uint8_t wipe_speed;
 };
