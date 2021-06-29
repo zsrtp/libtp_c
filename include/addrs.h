@@ -15,6 +15,9 @@
 #define tp_strcpy_addr 0x80368b2c
 #define tp_strlen_addr 0x80368be4
 #define tp_strcmp_addr 0x80368994
+#if PR_TEST
+#define tp_myExceptionCallback_addr 0x8000b7c8
+#endif
 
 // Math
 #define tp_atan_addr 0x8036bca4
