@@ -10,6 +10,10 @@ endif
 PLATFORM    :=  $(if $(PLATFORM),$(PLATFORM),GCN)
 REGION		:=  $(if $(REGION),$(REGION),NTSCU)
 
+ifdef PR_TEST
+RUN_PR_TEST := -D PR_TEST=1
+endif
+
 ifeq ("$(PLATFORM)","GCN")
 include $(DEVKITPPC)/gamecube_rules
 endif
@@ -33,7 +37,7 @@ INCLUDES	:=	include
 # options for code generation
 #---------------------------------------------------------------------------------
 
-CFLAGS	= -g -c -O2 -Wall $(MACHDEP) $(INCLUDE) -D $(PLATFORM)_$(REGION) -D $(PLATFORM)_PLATFORM
+CFLAGS	= -g -c -O2 -Wall $(MACHDEP) $(INCLUDE) -D $(PLATFORM)_$(REGION) -D $(PLATFORM)_PLATFORM $(RUN_PR_TEST)
 CXXFLAGS	=	$(CFLAGS)
 
 #---------------------------------------------------------------------------------
