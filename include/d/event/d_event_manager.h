@@ -3,22 +3,19 @@
 
 #include "d_event_data.h"
 
-struct dEvDtData_c {};
-
-#pragma pack(push, 1)
 class dEvent_exception_c {
 public:
-    uint32_t field_0x0;
+    uint32_t mEventInfoIdx;
     uint8_t field_0x4;
     uint8_t field_0x5;
     uint8_t field_0x6;
     uint8_t field_0x7;
-    uint32_t field_0x8;
+    uint32_t mState;
 };
-#pragma pack(pop)
+static_assert(sizeof(dEvent_exception_c) == 0xC);
 
-#pragma pack(push, 1)
-struct dEvent_manager_c {
+class dEvent_manager_c {
+public:
     /* 0x0000 */ dEvDtBase_c mEventList[11];
     /* 0x018C */ int32_t mCameraPlay;
     /* 0x0190 */ dEvent_exception_c mEventException;
@@ -32,6 +29,6 @@ struct dEvent_manager_c {
     /* 0x01BC */ dEvDtFlag_c mFlags;
     /* 0x06BC */ bool mDataLoaded;
 };
-#pragma pack(pop)
+static_assert(sizeof(dEvent_manager_c) == 0x6C0);
 
 #endif /* D_EVENT_D_EVENT_MANAGER_H */

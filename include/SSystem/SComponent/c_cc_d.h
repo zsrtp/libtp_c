@@ -44,11 +44,20 @@ public:
     /* 0x0C */ void* vtable;
 };
 
-class cCcD_DivideArea {
+class cCcD_DivideArea : public cM3dGAab {
 public:
-    cM3dGAab mAab;
-    void* vtable;
-};
+    /* 0x1C */ bool mXDiffIsZero;
+    /* 0x20 */ float mScaledXDiff;
+    /* 0x24 */ float mInvScaledXDiff;
+    /* 0x28 */ bool mYDiffIsZero;
+    /* 0x2C */ float mScaledYDiff;
+    /* 0x30 */ float mInvScaledYDiff;
+    /* 0x34 */ bool mZDiffIsZero;
+    /* 0x38 */ float mScaledZDiff;
+    /* 0x3C */ float mInvScaledZDiff;
+};  // Size = 0x40
+
+static_assert(sizeof(cCcD_DivideArea) == 0x40);
 
 struct cCcD_SrcObjTg {};
 

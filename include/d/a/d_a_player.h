@@ -88,7 +88,7 @@ public:
 
 class daPy_py_c : public fopAc_ac_c {
 public:
-    /* 0x0538 */ uint8_t field_0x538[0x32];
+    /* 0x0568 */ uint8_t field_0x538[2];
 #ifdef WII_PLATFORM
     uint8_t unk_field0[4]; // might be part of fopAc_ac_c, fix later
 #endif

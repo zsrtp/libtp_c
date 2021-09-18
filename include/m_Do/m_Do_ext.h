@@ -65,13 +65,10 @@ public:
 };  // Size = 0x1C
 #pragma pack(pop)
 
-#pragma pack(push, 1)
 class mDoExt_McaMorfCallBack1_c {
 public:
-private:
     void* vtable;
 };
-#pragma pack(pop)
 
 class mDoExt_AnmRatioPack {
 public:

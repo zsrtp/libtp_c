@@ -17,33 +17,47 @@
 struct dTimer_c {
 };
 
-#pragma pack(push, 1)
+struct J2DGrafContext {};
+
+class __d_timer_info_c {
+public:
+    dTimer_c* mTimerPtr;
+    int32_t mTimerNowTimeMs;
+    int32_t mTimerLimitTimeMs;
+    int32_t mTimerMode;
+    uint8_t mTimerType;
+};
+
+struct camera_class {};
+
 class dComIfG_camera_info_class {
 public:
-private:
-    uint8_t field_0x0[12];
-    cXyz field_0xc;
-    cXyz field_0x18;
+    /* 0x00 */ camera_class* mCamera;
+    /* 0x04 */ uint8_t field_0x4;
+    /* 0x05 */ uint8_t field_0x5[3];
+    /* 0x08 */ uint32_t mCameraAttentionStatus;
+    /* 0x0C */ float mCameraZoomScale;
+    /* 0x10 */ float mCameraZoomForcus;
+    /* 0x14 */ char* mCameraParamFileName;
+    /* 0x18 */ cXyz mCameraPos;
+    /* 0x24 */ cXyz mCameraTarget;
+    /* 0x30 */ float field_0x30;
+    /* 0x34 */ int16_t field_0x34;
 };
-#pragma pack(pop)
 
-#pragma pack(push, 1)
 class dComIfG_play_c {
 public:
     bool& isPauseFlag() { return mPauseFlag; }
     void* getMsgObjectClass() { return mMsgObjectClass; }
-    dStage_roomControl_c* getRoomControl() { return mRoomControl; }
+    dStage_roomControl_c& getRoomControl() { return mRoomControl; }
     dEvt_control_c& getEvent() { return mEvent; }
     dEvent_manager_c& getEventManager() { return mEvtManager; }
-    daHorse_c* getHorseActor() { return mHorseActor; }
+    void* getPlayerPtr(int idx) { return mPlayerPtr[idx]; }
     uint8_t& getItemLifeCountType() { return mItemLifeCountType; }
     void setItem(uint8_t slot, uint8_t i_no) {
         mItemSlot = slot;
         mItemID = i_no;
     }
-
-    void setUnkWarashibe1(uint8_t num) { mItemSlot = num; }
-    void setUnkWarashibe2(uint8_t num) { mItemID = num; }
 
     void setZStatus(uint8_t status, uint8_t flag) {
         mZStatus = status;
@@ -86,22 +100,19 @@ public:
 public:
     /* 0x00000 */ dBgS mDBgS;
     /* 0x01404 */ dCcS mDCcS;
-    /* 0x03EC4 */ uint8_t field_0x3ec4[4];  // might be part of dCcS
     /* 0x03EC8 */ dStage_startStage_c mStartStage;
-    /* 0x03ED5 */ uint8_t field_0x3ed5;  // probably padding
     /* 0x03ED6 */ dStage_nextStage_c mNextStage;
-    /* 0x03EE7 */ uint8_t field_0x3ee7;  // probably padding
     /* 0x03EE8 */ dStage_stageDt_c mStageData;
-    /* 0x03F8C */ dStage_roomControl_c* mRoomControl;
+    /* 0x03F8C */ dStage_roomControl_c mRoomControl;
     /* 0x03F90 */ dEvt_control_c mEvent;
+    #ifdef WII_PLATFORM
+    /* 0x03F94 */ u8 field_0x3f94[4];
+    #endif
     /* 0x040C0 */ dEvent_manager_c mEvtManager;
-    /* 0x0477D */ uint8_t field_0x477d[3];
     /* 0x04780 */ dAttention_c mAttention;
-#ifdef WII_PLATFORM
-    /* 0x04C88 */ uint8_t field_0x4c88[0x24]; // fix later
-#else
-    /* 0x04C88 */ uint8_t field_0x4c88[0x14];
-#endif
+    #ifdef WII_PLATFORM
+    /* 0x04CA4 */ u8 field_0x4ca4[8];
+    #endif
     /* 0x04C9C */ dVibration_c mVibration;
     /* 0x04D2C */ uint8_t field_0x4d2c[4];
     /* 0x04D30 */ JKRArchive* mFieldMapArchive2;
@@ -135,25 +146,11 @@ public:
     /* 0x04E0C */ uint8_t mWindowNum;
     /* 0x04E0D */ uint8_t mLayerOld;
     /* 0x04E0E */ uint16_t mStatus;
-    /* 0x04E10 */ dDlst_window_c mWindow;
-    /* 0x04E3C */ dComIfG_camera_info_class* mCameraInfo;
-    /* 0x04E40 */ int8_t mCameraWinID;
-    /* 0x04E41 */ int8_t mCameraPlayer1ID;
-    /* 0x04E42 */ int8_t mCameraPlayer2ID;
-    /* 0x04E43 */ uint8_t field_0x4e43;
-    /* 0x04E44 */ int mCameraAttentionStatus;
-    /* 0x04E48 */ float mCameraZoomScale;
-    /* 0x04E4C */ float mCameraZoomForcus;
-    /* 0x04E50 */ void* mCameraParamFileName;
-    /* 0x04E54 */ cXyz mCameraPos;
-    /* 0x04E60 */ cXyz mCameraTarget;
-    /* 0x04E6C */ float mCameraUnk1;
-    /* 0x04E70 */ int16_t mCameraUnk2;
-    /* 0x04E72 */ int16_t field_0x4e72;
-    /* 0x04E74 */ daAlink_c* mPlayer;
+    /* 0x04E10 */ dDlst_window_c mWindow[1];
+    /* 0x04E3C */ dComIfG_camera_info_class mCameraInfo[1];
+    /* 0x04E74 */ daAlink_c* mPlayer[1];
     /* 0x04E78 */ int8_t mPlayerCameraID[4];
-    /* 0x04E7C */ daAlink_c* mPlayerPtr;
-    /* 0x04E80 */ daHorse_c* mHorseActor;
+    /* 0x04E7C */ void* mPlayerPtr[2];
     /* 0x04E84 */ void* mMsgObjectClass;
     /* 0x04E88 */ float mItemLifeCount;
     /* 0x04E8C */ int mItemRupeeCount;
@@ -220,18 +217,18 @@ public:
     /* 0x04F07 */ uint8_t mCStickStatusForce;
     /* 0x04F08 */ uint8_t mSButtonStatusForce;
     /* 0x04F09 */ uint8_t mZStatusForce;
-    /* 0x04F0A */ uint8_t mRSetFlag;  // related to RStatus
-    /* 0x04F0B */ uint8_t mASetFlag;  // related to AStatus
+    /* 0x04F0A */ uint8_t mRSetFlag;
+    /* 0x04F0B */ uint8_t mASetFlag;
     /* 0x04F0C */ uint8_t field_0x4f0c;
-    /* 0x04F0D */ uint8_t mNunSetFlag;      // related to NunStatus
-    /* 0x04F0E */ uint8_t mBottleSetFlag;   // related to BottleStatus
-    /* 0x04F0F */ uint8_t mRemoConSetFlag;  // related to RemoConStatus
+    /* 0x04F0D */ uint8_t mNunSetFlag;
+    /* 0x04F0E */ uint8_t mBottleSetFlag;
+    /* 0x04F0F */ uint8_t mRemoConSetFlag;
     /* 0x04F10 */ uint8_t field_0x4f10[2];
-    /* 0x04F12 */ uint8_t mDoSetFlag;       // related to DoStatus
-    /* 0x04F13 */ uint8_t m3DSetFlag;       // related to 3DStatus
-    /* 0x04F14 */ uint8_t mCStickSetFlag;   // related to CStickStatus
-    /* 0x04F15 */ uint8_t mSButtonSetFlag;  // related to SButtonStatus
-    /* 0x04F16 */ uint8_t mZSetFlag;        // related to ZStatus
+    /* 0x04F12 */ uint8_t mDoSetFlag;
+    /* 0x04F13 */ uint8_t m3DSetFlag;
+    /* 0x04F14 */ uint8_t mCStickSetFlag;
+    /* 0x04F15 */ uint8_t mSButtonSetFlag;
+    /* 0x04F16 */ uint8_t mZSetFlag;
     /* 0x04F17 */ uint8_t mRSetFlagForce;
     /* 0x04F18 */ uint8_t mASetFlagForce;
     /* 0x04F19 */ uint8_t field_0x4f19;
@@ -250,14 +247,14 @@ public:
     /* 0x04F27 */ uint8_t mXSetFlagForce;
     /* 0x04F28 */ uint8_t mYStatus;
     /* 0x04F29 */ uint8_t mYStatusForce;
-    /* 0x04F2A */ uint8_t mYSetFlag;  // related to YStatus
+    /* 0x04F2A */ uint8_t mYSetFlag;
     /* 0x04F2B */ uint8_t mYSetFlagForce;
     /* 0x04F2C */ uint8_t mNunZStatus;
-    /* 0x04F2D */ uint8_t mNunZSetFlag;  // related to NunZStatus
+    /* 0x04F2D */ uint8_t mNunZSetFlag;
     /* 0x04F2E */ uint8_t field_0x4fc6;  // related to NunZStatusForce
     /* 0x04F2F */ uint8_t field_0x4fc7;  // related to NunZStatusForce
     /* 0x04F30 */ uint8_t mNunCStatus;
-    /* 0x04F31 */ uint8_t mNunCSetFlag;  // related to NunCStatus
+    /* 0x04F31 */ uint8_t mNunCSetFlag;
     /* 0x04F32 */ uint8_t field_0x4fca;  // related to NunCStatusForce
     /* 0x04F33 */ uint8_t field_0x4fcb;  // related to NunCStatusForce
     /* 0x04F34 */ uint8_t mSelectItem[8];
@@ -296,8 +293,8 @@ public:
     /* 0x04F90 */ JKRExpHeap* mMsgExpHeap;
     /* 0x04F94 */ char field_0x4F94[8];  // related to setWarpItemData
     /* 0x04F9C */ cXyz field_0x4f9c;     // related to setWarpItemData
-    /* 0x04FA8 */ uint8_t field_0x4fa8[2];
-    /* 0x04FAA */ uint8_t field_0x4faa;  // related to setWarpItemData
+    /* 0x04FA8 */ int16_t field_0x4fa8;
+    /* 0x04FAA */ int8_t field_0x4faa;  // related to setWarpItemData
     /* 0x04FAB */ uint8_t field_0x4fab;  // related to setWarpItemData
     /* 0x04FAC */ uint8_t field_0x4fac;  // related to setWarpItemData
     /* 0x04FAD */ uint8_t field_0x4fad[3];
@@ -315,39 +312,24 @@ public:
     /* 0x04FDC */ fopAc_ac_c* mMesgCamInfoActor10;
     /* 0x04FE0 */ int mPlayerStatus;
     /* 0x04FE4 */ uint8_t field_0x4fe4[0x14];
-    /* 0x04FF8 */ dTimer_c* mTimerPtr;
-    /* 0x04FFC */ int mTimerNowTimeMs;
-    /* 0x05000 */ int mTimerLimitTimeMs;
-    /* 0x05004 */ int mTimerMode;
-    /* 0x05008 */ uint8_t mTimerType;
+    /* 0x04FF8 */ __d_timer_info_c mTimerInfo;
     /* 0x0500C */ dDlst_window_c* mCurrentWindow;
     /* 0x05010 */ void* mCurrentView;
     /* 0x05014 */ void* mCurrentViewport;
-    /* 0x05018 */ void* mCurrentGrafPort;
+    /* 0x05018 */ J2DGrafContext* mCurrentGrafPort;
     /* 0x0501C */ void* mItemTable;
-    /* 0x0501D */ uint8_t field_0x501d[7];
+    /* 0x0501D */ uint8_t field_0x501d[4];
     /* 0x05024 */ char mLastPlayStageName[8];
 };
-#pragma pack(pop)
 
-#pragma pack(push, 1)
 class dComIfG_inf_c {
 public:
-    dSv_player_c& getPlayer() { return mInfo.getPlayer(); }
-    dSv_save_c& getSaveFile() { return mInfo.getSavedata(); }
-    //uint32_t getNowVibration() { return play.getNowVibration(); }
-    //dDlst_peekZ_c& getdlstPeekZ() { return draw_list_list.dlstPeekZ; }
-    dComIfG_play_c& getPlay() { return play; }
-    dSv_memory_c& getMemory() { return mInfo.getMemory(); }
-    dSv_event_c& getEvent() { return mInfo.getTmp(); }
-    dSv_info_c& getInfo() { return mInfo; }
-    //inline dDlst_list_c& getDrawlist() { return draw_list_list; }
-
-    /* 0x00000 */ dSv_info_c mInfo;
+    /* 0x00000 */ dSv_info_c info;
     /* 0x00F38 */ dComIfG_play_c play;
-    uint8_t field_0x5F64[0x17EAC];
-};
-#pragma pack(pop)
+    /* 0x05F64 */ uint8_t field_0x5F64[0x17EAC];
+};  // Size: 0x1DE10
+
+static_assert(sizeof(dComIfG_inf_c) == 0x1DE10);
 
 #define g_dComIfG_gameInfo (*(dComIfG_inf_c *)(tp_gameInfo_addr))
 
@@ -370,211 +352,211 @@ typedef int (*tp_getLayerNo_t)(const char *stageName, int roomId, int layerOverr
 
 // Inline Functions
 inline void dComIfGs_setItem(int slot_no, uint8_t item_no) {
-    dSv_player_item_c__setItem(&g_dComIfG_gameInfo.mInfo.getPlayer().getPlayerItem(), slot_no, item_no);
+    dSv_player_item_c__setItem(&g_dComIfG_gameInfo.info.getPlayer().getItem(), slot_no, item_no);
 }
 inline uint8_t dComIfGs_getItem(int slot_no, bool is_combo_item) {
-    return dSv_player_item_c__getItem(&g_dComIfG_gameInfo.mInfo.getPlayer().getPlayerItem(), slot_no, is_combo_item);
+    return dSv_player_item_c__getItem(&g_dComIfG_gameInfo.info.getPlayer().getItem(), slot_no, is_combo_item);
 }
 inline void dComIfGp_setRStatus(uint8_t status, uint8_t flag) {
-    g_dComIfG_gameInfo.getPlay().setRStatus(status, flag);
+    g_dComIfG_gameInfo.play.setRStatus(status, flag);
 }
 inline void dComIfGp_setDoStatus(uint8_t status, uint8_t flag) {
-    g_dComIfG_gameInfo.getPlay().setDoStatus(status, flag);
+    g_dComIfG_gameInfo.play.setDoStatus(status, flag);
 }
 inline void dComIfGp_setAStatus(uint8_t status, uint8_t flag) {
-    g_dComIfG_gameInfo.getPlay().setAStatus(status, flag);
+    g_dComIfG_gameInfo.play.setAStatus(status, flag);
 }
 inline void dComIfGp_setZStatus(uint8_t status, uint8_t flag) {
-    g_dComIfG_gameInfo.getPlay().setZStatus(status, flag);
+    g_dComIfG_gameInfo.play.setZStatus(status, flag);
 }
 inline void dComIfGp_setItemMagicCount(int16_t amount) {
-    g_dComIfG_gameInfo.getPlay().setItemMagicCount(amount);
+    g_dComIfG_gameInfo.play.setItemMagicCount(amount);
 }
 inline void dComIfGp_setItemMaxMagicCount(int16_t max) {
-    g_dComIfG_gameInfo.getPlay().setItemMaxMagicCount(max);
+    g_dComIfG_gameInfo.play.setItemMaxMagicCount(max);
 }
 inline void dComIfGp_setItemArrowNumCount(int16_t amount) {
-    g_dComIfG_gameInfo.getPlay().setItemArrowNumCount(amount);
+    g_dComIfG_gameInfo.play.setItemArrowNumCount(amount);
 }
 inline void dComIfGp_setItemPachinkoNumCount(int16_t amount) {
-    g_dComIfG_gameInfo.getPlay().setItemPachinkoNumCount(amount);
+    g_dComIfG_gameInfo.play.setItemPachinkoNumCount(amount);
 }
 inline void dComIfGp_setItemKeyNumCount(int16_t amount) {
-    g_dComIfG_gameInfo.getPlay().setItemKeyNumCount(amount);
+    g_dComIfG_gameInfo.play.setItemKeyNumCount(amount);
 }
 inline void dComIfGp_setItemMaxLifeCount(int16_t max) {
-    g_dComIfG_gameInfo.getPlay().setItemMaxLifeCount(max);
+    g_dComIfG_gameInfo.play.setItemMaxLifeCount(max);
 }
 /* inline void dComIfGs_onDungeonItemMap(void) {
-    g_dComIfG_gameInfo.getMemory().getMemBit().onDungeonItemMap();
+    g_dComIfG_gameInfo.info.getMemory().getBit().onDungeonItemMap();
 }
 inline void dComIfGs_onDungeonItemCompass(void) {
-    g_dComIfG_gameInfo.getMemory().getMemBit().onDungeonItemCompass();
+    g_dComIfG_gameInfo.info.getMemory().getBit().onDungeonItemCompass();
 }
 inline void dComIfGs_onDungeonItemWarp(void) {
-    g_dComIfG_gameInfo.getMemory().getMemBit().onDungeonItemWarp();
+    g_dComIfG_gameInfo.info.getMemory().getBit().onDungeonItemWarp();
 }*/
 inline void dComIfGs_setOxygen(int amount) {
-    g_dComIfG_gameInfo.getPlay().setOxygen(amount);
+    g_dComIfG_gameInfo.play.setOxygen(amount);
 }
 inline void dComIfGs_setNowOxygen(int amount) {
-    g_dComIfG_gameInfo.getPlay().setNowOxygen(amount);
+    g_dComIfG_gameInfo.play.setNowOxygen(amount);
 }
 inline void dComIfGs_setMaxOxygen(int max) {
-    g_dComIfG_gameInfo.getPlay().setMaxOxygen(max);
+    g_dComIfG_gameInfo.play.setMaxOxygen(max);
 }
 inline void dComIfGs_setOil(uint16_t amount) {
-    g_dComIfG_gameInfo.getSaveFile().getPlayerStatusA().setOil(amount);
+    g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusA().setOil(amount);
 }
 inline void dComIfGs_setMaxOil(uint16_t max) {
-    g_dComIfG_gameInfo.getSaveFile().getPlayerStatusA().setMaxOil(max);
+    g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusA().setMaxOil(max);
 }
 inline void dComIfGs_setWalletSize(uint8_t size) {
-    g_dComIfG_gameInfo.getSaveFile().getPlayerStatusA().setWalletSize(size);
+    g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusA().setWalletSize(size);
 }
 inline void dComIfGs_setMagic(uint8_t amount) {
-    g_dComIfG_gameInfo.getSaveFile().getPlayerStatusA().setMagic(amount);
+    g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusA().setMagic(amount);
 }
 inline void dComIfGs_setMaxMagic(uint8_t max) {
-    g_dComIfG_gameInfo.getSaveFile().getPlayerStatusA().setMaxMagic(max);
+    g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusA().setMaxMagic(max);
 }
 inline void dComIfGs_setRupee(uint16_t amount) {
-    g_dComIfG_gameInfo.getSaveFile().getPlayerStatusA().setRupee(amount);
+    g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusA().setRupee(amount);
 }
 inline void dComIfGs_setLife(uint16_t amount) {
-    g_dComIfG_gameInfo.getSaveFile().getPlayerStatusA().setLife(amount);
+    g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusA().setLife(amount);
 }
 inline void dComIfGs_setMaxLife(uint8_t max) {
-    g_dComIfG_gameInfo.getSaveFile().getPlayerStatusA().setMaxLife(max);
+    g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusA().setMaxLife(max);
 }
 /*
 inline void dComIfGs_onDungeonItemBossKey(void) {
-    g_dComIfG_gameInfo.getMemory().getMemBit().onDungeonItemBossKey();
+    g_dComIfG_gameInfo.info.getMemory().getBit().onDungeonItemBossKey();
 }
 inline void dComIfGs_setCollectSword(uint8_t sword_id) {
-    g_dComIfG_gameInfo.getSaveFile().getPlayerCollect().setCollect(COLLECT_SWORD, sword_id);
+    g_dComIfG_gameInfo.info.getSavedata().getCollect().setCollect(COLLECT_SWORD, sword_id);
 }
 inline void dComIfGs_setCollectShield(uint8_t shield_id) {
-    g_dComIfG_gameInfo.getSaveFile().getPlayerCollect().setCollect(COLLECT_SHIELD, shield_id);
+    g_dComIfG_gameInfo.info.getSavedata().getCollect().setCollect(COLLECT_SHIELD, shield_id);
 }
 inline void dComIfGs_setCollectClothes(uint8_t clothes_id) {
-    g_dComIfG_gameInfo.getSaveFile().getPlayerCollect().setCollect(COLLECT_CLOTHING, clothes_id);
+    g_dComIfG_gameInfo.info.getSavedata().getCollect().setCollect(COLLECT_CLOTHING, clothes_id);
 }
 inline void dComIfGs_setRodTypeLevelUp(void) {
-    g_dComIfG_gameInfo.getSaveFile().getPlayerItem().setRodTypeLevelUp();
+    g_dComIfG_gameInfo.info.getSavedata().getItem().setRodTypeLevelUp();
 }*/
 inline void dComIfGs_setArrowNum(uint8_t amount) {
-    g_dComIfG_gameInfo.getSaveFile().getPlayerItemRecord().setArrowNum(amount);
+    g_dComIfG_gameInfo.info.getPlayer().getItemRecord().setArrowNum(amount);
 }
 inline void dComIfGs_setPachinkoNum(uint8_t amount) {
-    g_dComIfG_gameInfo.getSaveFile().getPlayerItemRecord().setPachinkoNum(amount);
+    g_dComIfG_gameInfo.info.getPlayer().getItemRecord().setPachinkoNum(amount);
 }
 inline void dComIfGs_setArrowMax(uint8_t max) {
-    g_dComIfG_gameInfo.getSaveFile().getPlayerItemMax().setArrowNum(max);
+    g_dComIfG_gameInfo.info.getPlayer().getItemMax().setArrowNum(max);
 }
 inline uint8_t dComIfGs_getPachinkoNum() {
-    return g_dComIfG_gameInfo.getSaveFile().getPlayerItemRecord().getPachinkoNum();
+    return g_dComIfG_gameInfo.info.getPlayer().getItemRecord().getPachinkoNum();
 }
 inline uint8_t dComIfGs_getPachinkoMax(void) {
     return 50;
 }
 /*
 inline void dComIfGs_setEmptyBombBag(void) {
-    g_dComIfG_gameInfo.getSaveFile().getPlayerItem().setEmptyBombBag();
+    g_dComIfG_gameInfo.info.getSavedata().getItem().setEmptyBombBag();
 }
 inline void dComIfGs_setEmptyBombBag(uint8_t type, uint8_t amount) {
-    g_dComIfG_gameInfo.getSaveFile().getPlayerItem().setEmptyBombBag(type, amount);
+    g_dComIfG_gameInfo.info.getSavedata().getItem().setEmptyBombBag(type, amount);
 }
 inline void dComIfGs_setEmptyBombBagItemIn(uint8_t type, bool unk) {
-    g_dComIfG_gameInfo.getSaveFile().getPlayerItem().setEmptyBombBagItemIn(type, unk);
+    g_dComIfG_gameInfo.info.getSavedata().getItem().setEmptyBombBagItemIn(type, unk);
 }
 inline void dComIfGs_setEmptyBottle(void) {
-    g_dComIfG_gameInfo.getSaveFile().getPlayerItem().setEmptyBottle();
+    g_dComIfG_gameInfo.info.getSavedata().getItem().setEmptyBottle();
 }
 inline void dComIfGs_setEmptyBottle(uint8_t type) {
-    g_dComIfG_gameInfo.getSaveFile().getPlayerItem().setEmptyBottle(type);
+    g_dComIfG_gameInfo.info.getSavedata().getItem().setEmptyBottle(type);
 }
 inline void dComIfGs_setEmptyBottleItemIn(uint8_t type) {
-    g_dComIfG_gameInfo.getSaveFile().getPlayerItem().setEmptyBottleItemIn(type);
+    g_dComIfG_gameInfo.info.getSavedata().getItem().setEmptyBottleItemIn(type);
 }
 inline void dComIfGs_onEventBit(uint16_t id) {
-    g_dComIfG_gameInfo.getSaveFile().getEventFlags().onEventBit(id);
+    g_dComIfG_gameInfo.info.getSavedata().getEventFlags().onEventBit(id);
 }
 inline void dComIfGs_onLightDropFlag(uint8_t area_id) {
-    g_dComIfG_gameInfo.getSaveFile().getLightDrop().onLightDropGetFlag(area_id);
+    g_dComIfG_gameInfo.info.getSavedata().getLightDrop().onLightDropGetFlag(area_id);
 }
 inline void dComIfGs_onSwitch(int param1, int param2) {
     g_dComIfG_gameInfo.getInfo().onSwitch(param1, param2);
 }
 inline int dComIfGs_isCollectSword(uint8_t sword_id) {
-    return g_dComIfG_gameInfo.getSaveFile().getPlayerCollect().isCollect(COLLECT_SWORD, sword_id);
+    return g_dComIfG_gameInfo.info.getSavedata().getCollect().isCollect(COLLECT_SWORD, sword_id);
 }
 inline int dComIfGs_isCollectClothing(uint8_t clothing_id) {
-    return g_dComIfG_gameInfo.getSaveFile().getPlayerCollect().isCollect(COLLECT_CLOTHING,
+    return g_dComIfG_gameInfo.info.getSavedata().getCollect().isCollect(COLLECT_CLOTHING,
                                                                          clothing_id);
 }
 inline uint8_t dComIfGs_checkBottle(uint8_t type) {
-    return g_dComIfG_gameInfo.getSaveFile().getPlayerItem().checkBottle(type);
+    return g_dComIfG_gameInfo.info.getSavedata().getItem().checkBottle(type);
 }
 inline int dComIfGs_isLightDropGetFlag(uint8_t area_id) {
-    return g_dComIfG_gameInfo.getSaveFile().getLightDrop().isLightDropGetFlag(area_id);
+    return g_dComIfG_gameInfo.info.getSavedata().getLightDrop().isLightDropGetFlag(area_id);
 }*/
 inline uint8_t dComIfGs_getArrowMax(void) {
-    return g_dComIfG_gameInfo.getSaveFile().getPlayer().getPlayerItemMax().getArrowNum();
+    return g_dComIfG_gameInfo.info.getSavedata().getPlayer().getItemMax().getArrowNum();
 }
 inline uint8_t dComIfGs_getCollectSmell(void) {
-    return g_dComIfG_gameInfo.getSaveFile().getPlayer().getPlayerStatusA().getSelectEquip(3);
+    return g_dComIfG_gameInfo.info.getSavedata().getPlayer().getPlayerStatusA().getSelectEquip(3);
 }
 inline uint8_t dComIfGs_getPohSpiritNum(void) {
-    return g_dComIfG_gameInfo.getSaveFile().getPlayer().getPlayerCollect().getPohNum();
+    return g_dComIfG_gameInfo.info.getSavedata().getPlayer().getCollect().getPohNum();
 }
 inline void dComIfGs_setPohSpiritNum(uint8_t num) {
-    return g_dComIfG_gameInfo.getSaveFile().getPlayer().getPlayerCollect().setPohNum(num);
+    return g_dComIfG_gameInfo.info.getSavedata().getPlayer().getCollect().setPohNum(num);
 }
 inline uint8_t dComIfGs_getKeyNum(void) {
-    return g_dComIfG_gameInfo.getMemory().getMemBit().getKeyNum();
+    return g_dComIfG_gameInfo.info.getMemory().getBit().getKeyNum();
 }
 /*
 inline void dComIfGs_onItemFirstBit(uint8_t i_no) {
-    g_dComIfG_gameInfo.getSaveFile().getPlayerGetItem().onFirstBit(i_no);
+    g_dComIfG_gameInfo.info.getSavedata().getGetItem().onFirstBit(i_no);
 }*/
 inline uint16_t dComIfGs_getMaxLife(void) {
-    return g_dComIfG_gameInfo.getSaveFile().getPlayerStatusA().getMaxLife();
+    return g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusA().getMaxLife();
 }
 /*
 inline void dComIfGs_offEventBit(uint16_t event) {
-    g_dComIfG_gameInfo.getSaveFile().getEventFlags().offEventBit(event);
+    g_dComIfG_gameInfo.info.getSavedata().getEventFlags().offEventBit(event);
 }*/
 inline const char* dComIfGs_getLastWarpMarkStageName(void) {
-    return g_dComIfG_gameInfo.getSaveFile().getPlayerLastMarkInfo().getName();
+    return g_dComIfG_gameInfo.info.getPlayer().getPlayerLastMarkInfo().getName();
 }
 inline cXyz dComIfGs_getLastWarpMarkPlayerPos(void) {
-    return g_dComIfG_gameInfo.getSaveFile().getPlayerLastMarkInfo().getPos();
+    return g_dComIfG_gameInfo.info.getPlayer().getPlayerLastMarkInfo().getPos();
 }
 inline int16_t dComIfGs_getLastWarpMarkPlayerAngleY(void) {
-    return g_dComIfG_gameInfo.getSaveFile().getPlayerLastMarkInfo().getAngleY();
+    return g_dComIfG_gameInfo.info.getPlayer().getPlayerLastMarkInfo().getAngleY();
 }
 inline int8_t dComIfGs_getLastWarpMarkRoomNo(void) {
-    return g_dComIfG_gameInfo.getSaveFile().getPlayerLastMarkInfo().getRoomNo();
+    return g_dComIfG_gameInfo.info.getPlayer().getPlayerLastMarkInfo().getRoomNo();
 }
 inline char dComIfGs_getLastWarpAcceptStage(void) {
-    return g_dComIfG_gameInfo.getSaveFile().getPlayerLastMarkInfo().getWarpAcceptStage();
+    return g_dComIfG_gameInfo.info.getPlayer().getPlayerLastMarkInfo().getWarpAcceptStage();
 }
 inline uint8_t dComIfGs_getSelectEquipClothes(void) {
-    return g_dComIfG_gameInfo.getSaveFile().getPlayerStatusA().getSelectEquip(COLLECT_CLOTHING);
+    return g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusA().getSelectEquip(COLLECT_CLOTHING);
 }
 inline uint8_t dComIfGs_getSelectEquipSword(void) {
-    return g_dComIfG_gameInfo.getSaveFile().getPlayerStatusA().getSelectEquip(COLLECT_SWORD);
+    return g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusA().getSelectEquip(COLLECT_SWORD);
 }
 inline uint8_t dComIfGs_getSelectEquipShield(void) {
-    return g_dComIfG_gameInfo.getSaveFile().getPlayerStatusA().getSelectEquip(COLLECT_SHIELD);
+    return g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusA().getSelectEquip(COLLECT_SHIELD);
 }
 /*
 inline uint8_t dComIfGs_getLightDropNum(uint8_t area_id) {
-    return g_dComIfG_gameInfo.getSaveFile().getLightDrop().getLightDropNum(area_id);
+    return g_dComIfG_gameInfo.info.getSavedata().getLightDrop().getLightDropNum(area_id);
 }*/
 inline uint8_t dComIfGs_getSelectItemIndex(int idx) {
-    return dSv_player_status_a_c__getSelectItemIndex(&g_dComIfG_gameInfo.mInfo.getPlayer().getPlayerStatusA(), idx);
+    return dSv_player_status_a_c__getSelectItemIndex(&g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusA(), idx);
 }
 
 typedef void (*dComIfGs_setSelectItemIndex_t)(int32_t idx, uint8_t item);
@@ -587,14 +569,14 @@ typedef void (*dComIfGs_setMixItemIndex_t)(int32_t idx, uint8_t item);
 #define dComIfGs_setMixItemIndex ((dComIfGs_setMixItemIndex_t)dComIfGs_setMixItemIndex_addr)
 
 inline void dComIfGp_setItem(uint8_t slot, uint8_t i_no) {
-    g_dComIfG_gameInfo.getPlay().setItem(slot, i_no);
+    g_dComIfG_gameInfo.play.setItem(slot, i_no);
 }
 /*
 inline uint32_t dComIfGp_getNowVibration(void) {
-    return g_dComIfG_gameInfo.getPlay().getNowVibration();
+    return g_dComIfG_gameInfo.play.getNowVibration();
 }
 inline char* dComIfGp_getStartStageName(void) {
-    return g_dComIfG_gameInfo.getPlay().getStartStageName();
+    return g_dComIfG_gameInfo.play.getStartStageName();
 }*/
 
 inline void dComIfGp_setNextStage(const char* stage, int8_t room, int16_t point, int8_t layer, int8_t wipe, uint8_t wipe_speed) {
@@ -602,39 +584,39 @@ inline void dComIfGp_setNextStage(const char* stage, int8_t room, int16_t point,
 }
 
 inline void dComIfGs_setTransformStatus(uint8_t status) {
-    g_dComIfG_gameInfo.mInfo.getPlayer().getPlayerStatusA().setTransformStatus(status);
+    g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusA().setTransformStatus(status);
 }
 
 inline uint8_t dComIfGs_getTransformStatus() {
-    return g_dComIfG_gameInfo.mInfo.getPlayer().getPlayerStatusA().getTransformStatus();
+    return g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusA().getTransformStatus();
 }
 
 inline daAlink_c* dComIfGp_getPlayer() {
-    return g_dComIfG_gameInfo.play.mPlayer;
+    return g_dComIfG_gameInfo.play.mPlayer[0];
 }
 
 inline uint8_t dComIfGs_getLightDropNum(uint8_t area) {
-    return dSv_light_drop_c__getLightDropNum(&g_dComIfG_gameInfo.mInfo.getPlayer().getLightDrop(), area);
+    return dSv_light_drop_c__getLightDropNum(&g_dComIfG_gameInfo.info.getPlayer().getLightDrop(), area);
 }
 
 inline void dComIfGs_setLightDropNum(uint8_t area, uint8_t num) {
-    dSv_light_drop_c__setLightDropNum(&g_dComIfG_gameInfo.mInfo.getPlayer().getLightDrop(), area, num);
+    dSv_light_drop_c__setLightDropNum(&g_dComIfG_gameInfo.info.getPlayer().getLightDrop(), area, num);
 }
 
 inline void dComIfGs_onSwitch(int i_no, int i_roomNo) {
-    dSv_info_c__onSwitch(&g_dComIfG_gameInfo.mInfo, i_no, i_roomNo);
+    dSv_info_c__onSwitch(&g_dComIfG_gameInfo.info, i_no, i_roomNo);
 }
 
 inline void dComIfGs_offSwitch(int i_no, int i_roomNo) {
-    dSv_info_c__offSwitch(&g_dComIfG_gameInfo.mInfo, i_no, i_roomNo);
+    dSv_info_c__offSwitch(&g_dComIfG_gameInfo.info, i_no, i_roomNo);
 }
 
 inline void dComIfGs_putSave(int i_stageNo) {
-    tp_putSave(&g_dComIfG_gameInfo.mInfo, i_stageNo);
+    tp_putSave(&g_dComIfG_gameInfo.info, i_stageNo);
 }
 
 inline void dComIfGs_getSave(int i_stageNo) {
-    tp_getSave(&g_dComIfG_gameInfo.mInfo, i_stageNo);
+    tp_getSave(&g_dComIfG_gameInfo.info, i_stageNo);
 }
 
 #ifdef WII_PLATFORM
@@ -654,28 +636,28 @@ typedef dEvent_manager_c& (*dComIfGp_getEventManager_t)(void);
 #endif
 
 inline void dComIfGs_setTime(float pTime) {
-    g_dComIfG_gameInfo.mInfo.getPlayer().getPlayerStatusB().setTime(pTime);
+    g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusB().setTime(pTime);
 }
 
 inline float dComIfGs_getTime() {
-    return g_dComIfG_gameInfo.mInfo.getPlayer().getPlayerStatusB().getTime();
+    return g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusB().getTime();
 }
 
 inline dSv_save_c& dComIfGs_getSavedata() {
-    return g_dComIfG_gameInfo.mInfo.mSavedata;
+    return g_dComIfG_gameInfo.info.mSavedata;
 }
 
 inline uint16_t dComIfGs_getLife() {
-    return g_dComIfG_gameInfo.getSaveFile().getPlayerStatusA().getLife();
+    return g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusA().getLife();
 }
 
 inline void dComIfGs_setBombNum(uint8_t idx, uint8_t num) {
-    dSv_player_item_record_c__setBombNum(&g_dComIfG_gameInfo.mInfo.getPlayer().getPlayerItemRecord(), idx, num);
+    dSv_player_item_record_c__setBombNum(&g_dComIfG_gameInfo.info.getPlayer().getItemRecord(), idx, num);
 }
 
 #ifdef WII_PLATFORM
 bool dComIfGs_isItemFirstBit(uint8_t flag) {
-    return dSv_player_get_item_c__isFirstBit(&g_dComIfG_gameInfo.mInfo.getPlayer().getPlayerGetItem(), flag);
+    return dSv_player_get_item_c__isFirstBit(&g_dComIfG_gameInfo.info.getPlayer().getGetItem(), flag);
 }
 #else
 typedef bool (*dComIfGs_isItemFirstBit_t)(uint8_t item);
@@ -683,64 +665,64 @@ typedef bool (*dComIfGs_isItemFirstBit_t)(uint8_t item);
 #endif
 
 inline uint8_t dComIfGs_getWalletSize() {
-    return g_dComIfG_gameInfo.getSaveFile().getPlayerStatusA().getWalletSize();
+    return g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusA().getWalletSize();
 }
 
 inline void dComIfGs_onItemFirstBit(uint8_t item) {
-    dSv_player_get_item_c__onFirstBit(&g_dComIfG_gameInfo.mInfo.getPlayer().getPlayerGetItem(), item);
+    dSv_player_get_item_c__onFirstBit(&g_dComIfG_gameInfo.info.getPlayer().getGetItem(), item);
 }
 
 inline void dComIfGs_offItemFirstBit(uint8_t item) {
-    dSv_player_get_item_c__offFirstBit(&g_dComIfG_gameInfo.mInfo.getPlayer().getPlayerGetItem(), item);
+    dSv_player_get_item_c__offFirstBit(&g_dComIfG_gameInfo.info.getPlayer().getGetItem(), item);
 }
 
 inline bool dComIfGs_isEventBit(uint16_t flag) {
-    return dSv_event_c__isEventBit(&g_dComIfG_gameInfo.mInfo.mSavedata.mEvent, flag);
+    return dSv_event_c__isEventBit(&g_dComIfG_gameInfo.info.mSavedata.mEvent, flag);
 }
 
 inline void dComIfGs_onEventBit(uint16_t flag) {
-    dSv_event_c__onEventBit(&g_dComIfG_gameInfo.mInfo.mSavedata.mEvent, flag);
+    dSv_event_c__onEventBit(&g_dComIfG_gameInfo.info.mSavedata.mEvent, flag);
 }
 
 inline void dComIfGs_offEventBit(uint16_t flag) {
-    dSv_event_c__offEventBit(&g_dComIfG_gameInfo.mInfo.mSavedata.mEvent, flag);
+    dSv_event_c__offEventBit(&g_dComIfG_gameInfo.info.mSavedata.mEvent, flag);
 }
 
 inline void dComIfGs_setKeyNum(uint8_t num) {
-    g_dComIfG_gameInfo.mInfo.getMemory().getMemBit().setKeyNum(num);
+    g_dComIfG_gameInfo.info.getMemory().getBit().setKeyNum(num);
 }
 
 inline bool dComIfGs_isTransformLV(int32_t flag) {
-    return dSv_player_status_b_c__isTransformLV(&g_dComIfG_gameInfo.mInfo.getPlayer().getPlayerStatusB(), flag);
+    return dSv_player_status_b_c__isTransformLV(&g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusB(), flag);
 }
 
 inline void dComIfGs_onTransformLV(int32_t flag) {
-    dSv_player_status_b_c__onTransformLV(&g_dComIfG_gameInfo.mInfo.getPlayer().getPlayerStatusB(), flag);
+    dSv_player_status_b_c__onTransformLV(&g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusB(), flag);
 }
 
 inline void dComIfGs_offTransformLV(int32_t flag) {
-    g_dComIfG_gameInfo.mInfo.getPlayer().getPlayerStatusB().offTransformLV(flag);
+    g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusB().offTransformLV(flag);
 }
 
 inline bool dComIfGs_isDungeonItemMap() {
-    return dSv_memBit_c__isDungeonItem(&g_dComIfG_gameInfo.getMemory().getMemBit(), dSv_memBit_c::MAP_FLAG);
+    return dSv_memBit_c__isDungeonItem(&g_dComIfG_gameInfo.info.getMemory().getBit(), dSv_memBit_c::MAP);
 }
 
 inline bool dComIfGs_isDungeonItemBossKey() {
-    return dSv_memBit_c__isDungeonItem(&g_dComIfG_gameInfo.getMemory().getMemBit(), dSv_memBit_c::BOSS_KEY_FLAG);
+    return dSv_memBit_c__isDungeonItem(&g_dComIfG_gameInfo.info.getMemory().getBit(), dSv_memBit_c::BOSS_KEY);
 }
 
 inline uint8_t dComIfGs_getArrowNum() {
-    return g_dComIfG_gameInfo.getSaveFile().getPlayer().getPlayerItemRecord().getArrowNum();
+    return g_dComIfG_gameInfo.info.getSavedata().getPlayer().getItemRecord().getArrowNum();
 }
 
 inline uint8_t dComIfGs_getBombNum(uint8_t bagIdx) {
-    return dSv_player_item_record_c__getBombNum(&g_dComIfG_gameInfo.mInfo.getPlayer().getPlayerItemRecord(), bagIdx);
+    return dSv_player_item_record_c__getBombNum(&g_dComIfG_gameInfo.info.getPlayer().getItemRecord(), bagIdx);
 }
 
 #ifdef WII_PLATFORM
 uint16_t dComIfGs_getRupee() {
-    return g_dComIfG_gameInfo.mInfo.getPlayer().getPlayerStatusA().getRupee();
+    return g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusA().getRupee();
 }
 #else
 typedef uint16_t (*dComIfGs_getRupee_t)(void);

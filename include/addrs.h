@@ -182,6 +182,9 @@
 #define J2DPicture__J2DPicture4_addr 0x802fc708
 #define J2DPicture__draw_addr 0x802fdc70
 
+//d_a_alink
+#define daAlink_c__checkStageName_addr 0x8009da60
+
 #endif
 
 #ifdef GCN_PAL
@@ -364,6 +367,9 @@
 //J2DPicture
 #define J2DPicture__J2DPicture4_addr 0x802fd508
 #define J2DPicture__draw_addr 0x802fea70
+
+//d_a_alink
+#define daAlink_c__checkStageName_addr 0x8009dc6c
 
 #endif
 
@@ -548,6 +554,9 @@
 #define J2DPicture__J2DPicture4_addr 0x802feba4
 #define J2DPicture__draw_addr 0x8030010c
 
+//d_a_alink
+#define daAlink_c__checkStageName_addr 0x8009da98
+
 #endif
 
 #ifdef WII_NTSCU_10
@@ -725,6 +734,9 @@
 //J2DPicture
 #define J2DPicture__J2DPicture4_addr 0x8030ef10
 #define J2DPicture__draw_addr 0x80310278
+
+//d_a_alink
+#define daAlink_c__checkStageName_addr 0x80096734
 
 #endif
 

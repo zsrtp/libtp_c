@@ -531,7 +531,7 @@ public:
     /* 0x02FD7 */ uint8_t field_0x2fd7;
     /* 0x02FD8 */ uint8_t field_0x2fd8;
     /* 0x02FD9 */ uint8_t field_0x2fd9[3];
-    /* 0x02FDC */ uint16_t field_0x2fdc;
+    /* 0x02FDC */ uint16_t mHeldItem;
     /* 0x02FDE */ uint16_t field_0x2fde;
     /* 0x02FE0 */ uint16_t field_0x2fe0;
     /* 0x02FE2 */ int16_t field_0x2fe2;
@@ -1278,5 +1278,8 @@ public:
 
 #define tp_clawshot (*(Clawshot::ClawshotProperty *)tp_clawshot_addr)
 #define tp_clawshot_bg (*(Clawshot::ClawshotBG *)tp_clawshot_checkbg_addr)
+
+typedef int (*daAlink_c__checkStageName_t)(const char*);
+#define daAlink_c__checkStageName ((daAlink_c__checkStageName_t)daAlink_c__checkStageName_addr)
 
 #endif /* D_A_D_A_ALINK_H */

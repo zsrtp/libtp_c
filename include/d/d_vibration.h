@@ -3,7 +3,6 @@
 
 #include "save/d_save.h"
 
-#pragma pack(push, 1)
 class dVibration_c {
 public:
     uint32_t field_0x0;
@@ -43,6 +42,5 @@ public:
     uint32_t field_0x88;
     uint32_t field_0x8c;
 };
-#pragma pack(pop)
 
 #endif /* D_D_VIBRATION_H */

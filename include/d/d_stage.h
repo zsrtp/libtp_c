@@ -72,9 +72,17 @@ struct dStage_DMap_c {};
 
 struct dStage_MapEventInfo_c {};
 
-class dStage_stageDt_c {
+class dStage_dt_c {
 public:
-    uint8_t field_0x0[0x8];
+    void setRoomNo(int8_t roomNo) { mRoomNo = roomNo; }
+    int8_t getRoomNo() { return mRoomNo; }
+
+    /* 0x00 */ void* vtable;
+    /* 0x04 */ int8_t mRoomNo;
+};
+
+class dStage_stageDt_c : public dStage_dt_c {
+public:
     stage_camera_class* mCamera;
     stage_arrow_class* mArrow;
     stage_actor_class* mPlayer;
@@ -117,10 +125,10 @@ public:
     stage_tgsc_class* mDoor;
     dStage_Elst_c* mElst;
 };
+static_assert(sizeof(dStage_stageDt_c) == 0xA4);
 
-class dStage_roomDt_c {
+class dStage_roomDt_c : public dStage_dt_c {
 public:
-    uint8_t field_0x0[0x8];
     stage_pure_lightvec_info_class* mLightVecInfo;
     int mLightVecInfoNum;
     stage_map_info_class* mMapInfo;
@@ -149,41 +157,21 @@ public:
     int mVrboxcolNumInfo;
 };  // Size: 0x6C
 
-#pragma pack(push, 1)
 class dStage_roomControl_c {
 public:
     struct roomDzs_c {
     };
 
-    uint8_t field_0x0[164];
+    uint8_t field_0x0[4];
 };
-#pragma pack(pop)
 
-#pragma pack(push, 1)
-class dStage_nextStage_c {
-public:
-    char mStage[8];
-    int16_t mPoint;
-    uint8_t mRoomNo;
-    uint8_t mLayer;
-    uint8_t field_0xc;
-#ifdef GCN_PLATFORM
-    uint8_t field_0xd;
-    int8_t enabled;
-#elif defined(WII_PLATFORM)
-    int8_t enabled;
-    uint8_t field_0xe;
-#endif
-    uint8_t wipe;
-    uint8_t wipe_speed;
-};
-#pragma pack(pop)
-
-#pragma pack(push, 1)
 class dStage_startStage_c {
 public:
     inline char* getName() { return mStage; }
     int8_t getLayer() { return mLayer; }
+    void setLayer(int8_t layer) { mLayer = layer; }
+    void setPoint(int16_t point) { mPoint = point; }
+    void setRoomNo(int8_t room) { mRoomNo = room; }
 
     /* 0x0 */ char mStage[8];
     /* 0x8 */ int16_t mPoint;
@@ -191,7 +179,15 @@ public:
     /* 0xB */ int8_t mLayer;
     /* 0xC */ int8_t mDarkArea;
 };
-#pragma pack(pop)
+static_assert(sizeof(dStage_startStage_c) == 0xE);
+
+class dStage_nextStage_c : public dStage_startStage_c {
+public:
+    int8_t enabled;
+    uint8_t wipe;
+    uint8_t wipe_speed;
+};
+static_assert(sizeof(dStage_nextStage_c) == 0x12);
 
 class dStage_roomStatus_c : dStage_roomDt_c {
 public:
@@ -204,10 +200,10 @@ public:
 };  // Size: 0x404
 
 // unknown name
-struct objectNameInfo {
+struct dStage_objectNameInf {
     char mName[8];
-    int16_t mProcTypeID;
-    int8_t unkA;
+    int16_t mProcName;
+    int8_t mSubtype;
 };  // Size: 0xC
 
 enum TimePass {
