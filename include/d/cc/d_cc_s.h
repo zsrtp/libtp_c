@@ -5,11 +5,11 @@
 #include "d_cc_d.h"
 #include "d_cc_mass_s.h"
 
-class dCcS {
+class dCcS : public cCcS {
 public:
-    /* 0x0000 */ cCcS mCCcS;
-    /* 0x2834 */ uint8_t field_0x2834[0x18];
     /* 0x284C */ dCcMassS_Mng mMass_Mng;
-};
+};  // Size = 0x2AC4
+
+static_assert(sizeof(dCcS) == 0x2AC4);
 
 #endif /* D_CC_D_CC_S_H */

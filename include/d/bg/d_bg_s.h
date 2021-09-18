@@ -5,22 +5,23 @@
 #include "../../SSystem/SComponent/c_bg_s_lin_chk.h"
 #include "../bg/d_bg_w.h"
 
-#pragma pack(push, 1)
 class cBgS_ChkElm {
     /* 0x00 */ dBgW_Base* bgw_base_pointer;
     /* 0x04 */ uint8_t used;
     /* 0x05 */ uint8_t padding[3];
     /* 0x08 */ uint32_t field_0x8;
     /* 0x0C */ void* actor_pointer;
-    /* 0x10 */ uint32_t field_0x10;
-};
-#pragma pack(pop)
+    /* 0x10 */ void* vtable;
+};  // Size = 0x14
 
-#pragma pack(push, 1)
+static_assert(sizeof(cBgS_ChkElm) == 0x14);
+
 class cBgS {
     /* 0x0000 */ cBgS_ChkElm cbgs_elements[256];
-};
-#pragma pack(pop)
+    /* 0x1400 */ void* vtable;
+};  // Size = 0x1404
+
+static_assert(sizeof(cBgS) == 0x1404);
 
 class dBgS_HIO {
     /* 0x00 */ uint8_t vtable[4];
@@ -35,12 +36,6 @@ class dBgS_HIO {
 };
 
 class dBgS_Acch;
-#pragma pack(push, 1)
-class dBgS {
-public:
-    /* 0x0000 */ cBgS cbgs;
-    /* 0x1400 */ void* vtable;
-};
-#pragma pack(pop)
+class dBgS : public cBgS {};
 
 #endif /* D_BG_D_BG_S_H */

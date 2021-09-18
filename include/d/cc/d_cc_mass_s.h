@@ -3,34 +3,40 @@
 
 #include "../../SSystem/SComponent/c_cc_d.h"
 
+typedef void (*dCcMassS_ObjCallback)(fopAc_ac_c*, cXyz*, uint32_t);
+
 class dCcMassS_Obj {
 public:
-    uint8_t field_0x0[12];
-    cCcD_DivideInfo cccd_divideinfo;
-    void* vtable;
-};
+    /* 0x00 */ cCcD_Obj* mpObj;
+    /* 0x04 */ uint8_t mPriority;
+    /* 0x08 */ dCcMassS_ObjCallback mpCallback;
+    /* 0x0C */ cCcD_DivideInfo mDivideInfo;
+    /* 0x1C */ void* vtable;
+};  // Size = 0x20
+
+static_assert(sizeof(dCcMassS_Obj) == 0x20);
 
 class dCcMassS_Mng {
 public:
-    /* 0x0000 */ cCcD_DivideArea cccd_dividearea;
-    /* 0x0020 */ uint8_t field_0x20[36];
-    /* 0x0044 */ dCcMassS_Obj dccmasss_obj;
-    /* 0x0064 */ uint8_t field_0x64[292];
-    /* 0x0188 */ dCcMassS_Obj dccmasss_obj2;
-    /* 0x01A8 */ uint8_t field_0x1a8[32];
-    /* 0x01C8 */ cCcD_CylAttr cccd_cylattr;
-    /* 0x0200 */ uint8_t field_0x200[2];
+    /* 0x0000 */ cCcD_DivideArea mDivideArea;
+    /* 0x0040 */ int32_t mMassObjCount;
+    /* 0x0044 */ dCcMassS_Obj mMassObjs[10];
+    /* 0x0184 */ int32_t mMassAreaCount;
+    /* 0x0188 */ dCcMassS_Obj mMassAreas[2];
+    /* 0x01C8 */ cCcD_CylAttr mCylAttr;
+    /* 0x0200 */ uint8_t field_0x200;
+    /* 0x0200 */ uint8_t field_0x201;
     /* 0x0202 */ uint8_t field_0x202;
-    /* 0x0203 */ uint8_t field_0x203;
-    /* 0x0204 */ float cam_x_pos;
-    /* 0x0208 */ float cam_y_pos;
-    /* 0x020C */ float cam_z_pos;
-    /* 0x0210 */ float field_0x210;
-    /* 0x0214 */ float field_0x214;
-    /* 0x0218 */ float field_0x218;
-    /* 0x021C */ uint8_t field_0x21c[8];
-    /* 0x0224 */ cCcD_CpsAttr cccd_cpsattr;
-    /* 0x0288 */ cCcD_DivideInfo cccd_divideinfo;
+    /* 0x0203 */ uint8_t mResultCam;
+    /* 0x0204 */ Vec mCamTopPos;
+    /* 0x0210 */ float mCamTopDist;
+    /* 0x0214 */ Vec mCamBottomPos;
+    /* 0x0220 */ float mCamBottomDist;
+    /* 0x0224 */ cCcD_CpsAttr mCpsAttr;
+    /* 0x0264 */ cCcD_DivideInfo mDivideInfo;
+    /* 0x0274 */ void* vtable;
 };
+
+static_assert(sizeof(dCcMassS_Mng) == 0x278);
 
 #endif /* D_CC_D_CC_MASS_S_H */

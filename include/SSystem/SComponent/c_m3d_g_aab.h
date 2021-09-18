@@ -19,6 +19,6 @@ public:
     const float GetMinX(void) const { return mMin.GetX(); }
     const float GetMinY(void) const { return mMin.GetY(); }
     const float GetMinZ(void) const { return mMin.GetZ(); }
-};
+};  // Size = 0x1C
 
 #endif /* C_M3D_G_AAB_H */
