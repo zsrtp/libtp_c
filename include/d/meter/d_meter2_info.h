@@ -26,7 +26,6 @@ public:
     dMeterMap_c* getMeterMapClass() { return mMeterMap; }
     void offUseButton(int pButton) { mUseButton &= ~(uint16_t)pButton; }
 
-private:
     /* 0x00 */ void* vtable;
     /* 0x04 */ uint8_t unk4[4];
     /* 0x08 */ uint32_t unk8;
