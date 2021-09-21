@@ -28,13 +28,14 @@ public:
         mpNextSibling = NULL;
         mpFirstChild = NULL;
     }
+    void* vtable;
     J3DPacket* mpNextSibling;
     J3DPacket* mpFirstChild;
+    void* mpUserData;
 };
 
 class J3DDrawPacket : public J3DPacket {
 public:
-    void* mpUserData;
     int mFlags;
     char mPad0[0x0C];  // unk
     J3DDisplayListObj* mpDisplayListObj;

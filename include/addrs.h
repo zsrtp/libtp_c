@@ -167,6 +167,8 @@
 #define dComIfGp_getEventManager_addr 0x8014134c
 #define dComIfGs_isItemFirstBit_addr 0x80141264
 #define dComIfGs_getRupee_addr 0x80141990
+#define dComIfGs_onZoneSwitch_addr 0x8002d94c
+#define dComIfGs_onOneZoneSwitch_addr 0x8002da9c
 
 //d_stage
 #define dStage_nextStage_c__set_addr 0x80023e28
@@ -187,6 +189,18 @@
 
 //d_a_alink
 #define daAlink_c__checkStageName_addr 0x8009da60
+
+//f_op_actor_mng
+#define fopAcM_create_addr 0x80019D98
+
+//f_op_actor_iter
+#define fopAcIt_Judge_addr 0x800197f8
+
+//f_pc_searcher
+#define fpcSch_JudgeForPName_addr 0x80023578
+
+//d_kankyo
+#define g_env_light_addr 0x8042ca54
 
 #endif
 
@@ -353,6 +367,8 @@
 #define dComIfGp_getEventManager_addr 0x80141558
 #define dComIfGs_isItemFirstBit_addr 0x80141470
 #define dComIfGs_getRupee_addr 0x80141b9c
+#define dComIfGs_onZoneSwitch_addr 0x8002d9f4
+#define dComIfGs_onOneZoneSwitch_addr 0x8002db44
 
 //d_stage
 #define dStage_nextStage_c__set_addr 0x80023ed0
@@ -373,6 +389,18 @@
 
 //d_a_alink
 #define daAlink_c__checkStageName_addr 0x8009dc6c
+
+//f_op_actor_mng
+#define fopAcM_create_addr 0x80019e40
+
+//f_op_actor_iter
+#define fopAcIt_Judge_addr 0x800198a0
+
+//f_pc_searcher
+#define fpcSch_JudgeForPName_addr 0x80023620
+
+//d_kankyo
+#define g_env_light_addr 0x8042ea14
 
 #endif
 
@@ -539,6 +567,8 @@
 #define dComIfGp_getEventManager_addr 0x80141398
 #define dComIfGs_isItemFirstBit_addr 0x801412b0
 #define dComIfGs_getRupee_addr 0x801419dc
+#define dComIfGs_onZoneSwitch_addr 0x8002d94c
+#define dComIfGs_onOneZoneSwitch_addr 0x8002da9c
 
 //d_stage
 #define dStage_nextStage_c__set_addr 0x80023e28
@@ -559,6 +589,18 @@
 
 //d_a_alink
 #define daAlink_c__checkStageName_addr 0x8009da98
+
+//f_op_actor_mng
+#define fopAcM_create_addr 0x80019d98
+
+//f_op_actor_iter
+#define fopAcIt_Judge_addr 0x800197f8
+
+//f_pc_searcher
+#define fpcSch_JudgeForPName_addr 0x80023578
+
+//d_kankyo
+#define g_env_light_addr 0x80426b94
 
 #endif
 
@@ -723,6 +765,8 @@
 #define dComIfGs_setSelectItemIndex_addr 0x8800323d4
 #define dComIfGs_getMixItemIndex_addr 0x800324c0
 #define dComIfGs_setMixItemIndex_addr 0x80032418
+#define dComIfGs_onZoneSwitch_addr 0x8003207c
+#define dComIfGs_onOneZoneSwitch_addr 0x800321b0
 
 //d_stage
 #define dStage_nextStage_c__set_addr 0x8002897c
@@ -740,6 +784,18 @@
 
 //d_a_alink
 #define daAlink_c__checkStageName_addr 0x80096734
+
+//f_op_actor_mng
+#define fopAcM_create_addr 0x8001f868
+
+//f_op_actor_iter
+#define fopAcIt_Judge_addr 0x8001f460
+
+//f_pc_searcher
+#define fpcSch_JudgeForPName_addr 0x80028150
+
+//d_kankyo
+#define g_env_light_addr 0x804b944c
 
 #endif
 

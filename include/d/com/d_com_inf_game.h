@@ -729,6 +729,12 @@ typedef uint16_t (*dComIfGs_getRupee_t)(void);
 #define dComIfGs_getRupee ((dComIfGs_getRupee_t)dComIfGs_getRupee_addr)
 #endif
 
+typedef void (*dComIfGs_onOneZoneSwitch_t)(int, int);
+#define dComIfGs_onOneZoneSwitch ((dComIfGs_onOneZoneSwitch_t)dComIfGs_onOneZoneSwitch_addr)
+
+typedef void (*dComIfGs_onZoneSwitch_t)(int, int);
+#define dComIfGs_onZoneSwitch ((dComIfGs_onZoneSwitch_t)dComIfGs_onZoneSwitch_addr)
+
 class dComIfAc_gameInfo {
 public:
     uint8_t field_0x0[4];
