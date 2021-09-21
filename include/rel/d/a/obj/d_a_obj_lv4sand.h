@@ -4,7 +4,7 @@
 #include "../../../../f_op/f_op_actor.h"
 
 /*
- * Stallord Arena Rail Wall Class
+ * Stallord Arena Sand
  * (members wip)
  */
 class daObjLv4Sand_c : public fopAc_ac_c {

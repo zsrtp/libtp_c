@@ -4,7 +4,7 @@
 #include "../../../../f_op/f_op_actor.h"
 
 /*
- * Stallord Base Class
+ * Stallord
  * (members wip)
  */
 class daB_DS_c : public fopAc_ac_c {
