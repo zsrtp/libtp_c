@@ -106,12 +106,12 @@ public:
     /* 0x03F8C */ dStage_roomControl_c mRoomControl;
     /* 0x03F90 */ dEvt_control_c mEvent;
     #ifdef WII_PLATFORM
-    /* 0x03F94 */ u8 field_0x3f94[4];
+    /* 0x03F94 */ uint8_t field_0x3f94[4];
     #endif
     /* 0x040C0 */ dEvent_manager_c mEvtManager;
     /* 0x04780 */ dAttention_c mAttention;
     #ifdef WII_PLATFORM
-    /* 0x04CA4 */ u8 field_0x4ca4[8];
+    /* 0x04CA4 */ uint8_t field_0x4ca4[8];
     #endif
     /* 0x04C9C */ dVibration_c mVibration;
     /* 0x04D2C */ uint8_t field_0x4d2c[4];
@@ -329,7 +329,9 @@ public:
     /* 0x05F64 */ uint8_t field_0x5F64[0x17EAC];
 };  // Size: 0x1DE10
 
+#ifdef GCN_PLATFORM
 static_assert(sizeof(dComIfG_inf_c) == 0x1DE10);
+#endif
 
 #define g_dComIfG_gameInfo (*(dComIfG_inf_c *)(tp_gameInfo_addr))
 
