@@ -976,4 +976,199 @@
 #define J2DPicture__draw_addr 0x802fb078
 #endif
 
+#ifdef WII_NTSCU_12
+// System
+#define tp_memset_addr 0x8000443c
+#define tp_memalign_addr 0x8024d6a8
+#define tp_free_addr 0x8024d6c8
+#define tp_osReport_addr 0x80009218
+#define tp_memcpy_addr 0x80004338
+#define tp_getLayerNo_addr 0x8002f6c8
+#define tp_getSave_addr 0x8003944c
+#define tp_putSave_addr 0x8003947c
+#define tp_sprintf_addr 0x803add1c
+#define tp_strcpy_addr 0x803adf2c
+#define tp_strlen_addr 0x803a8570
+#define tp_strcmp_addr 0x803ae05c
+
+// Math
+#define tp_atan_addr 0x803b1f18
+#define tp_ceil_addr 0x803b2158
+#define tp_copysign_addr 0x803b2298
+#define tp_cos_addr 0x803b22c4
+#define tp_floor_addr 0x803b2398
+#define tp_frexp_addr 0x803b24dc
+#define tp_ldexp_addr 0x803b2564
+#define tp_sin_addr 0x803b26d0
+#define tp_tan_addr 0x803b27a8
+#define tp_acos_addr 0x803b2820
+#define tp_asin_addr 0x803b2824
+#define tp_atan2_addr 0x803b2828
+#define tp_exp_addr 0x803b282c
+#define tp_fmod_addr 0x803b2830
+#define tp_pow_addr 0x803b2834
+#define tp_fastSqrt_addr 0x8025c144
+#define tp_sqrt_addr 0x803b2a80
+
+// Controller
+#define tp_mPadStatus_addr 0x804a8f70
+#define tp_mPadButton_addr 0x804a8fa0
+#define tp_mPadMStick_addr 0x804a9060
+#define tp_mPadSStick_addr 0x804a90a0
+#define tp_mPad_addr 0x80433168
+#define tp_JUTGamePadRead_addr 0x802ded34
+#define tp_cPadInfo_addr 0x80433068
+
+// TP
+#define tp_globalCounters_addr 0x804a53e0
+#define tp_zelAudio_addr 0x80431cac
+#define tp_gameInfo_addr 0x80479f30
+#define tp_sConsole_addr 0x805208e8
+#define tp_fopScnRq_addr 0x80520930
+#define tp_titleScreenPtr_addr 0x804689e8
+#define tp_matrixPtr_addr 0x80465970
+#define tp_rng_addr 0x80520e78
+#define tp_homeMenuSts_addr 0x80520970
+
+// Items
+#define tp_clawshot_addr 0x803cfe5c
+#define tp_clawshot_checkbg_addr 0x800fd338
+#define tp_ironboots_addr 0x803cfc90
+#define tp_spinner_addr 0x803cfecc
+#define tp_ball_and_chain_addr 0x803cff0c
+#define tp_bottle_addr 0x803cfda8
+
+// Actor
+#define tp_actor_addr 0x805209d0
+#define tp_actor_stopstatus_addr 0x80520914
+
+// Draw
+#define tp_draw_addr 0x804a2be0
+
+// Link
+#define tp_link_human_frontroll_addr 0x803cec58
+#define tp_link_human_sidestep_addr 0x803ced00
+#define tp_link_human_backjump_addr 0x803cecc8
+#define tp_link_human_slide_addr 0x803ced68
+#define tp_link_human_swim_addr 0x803d01c8
+#define tp_link_wolf_general_addr 0x803d02c4
+#define tp_link_wolf_swim_addr 0x803d0d50
+
+// Inventory
+#define tp_execItemGet_addr 0x80092070
+
+// Scene
+#define tp_setTimePass_addr 0x8002befc
+
+// GX
+#define GXSetBlendMode_addr 0x8034ad04
+#define GXBegin_addr 0x80347c14
+#define GXSetVtxAttrFmt_addr 0x80346a9c
+#define GXLoadPosMtxImm_addr 0x8034b2e8
+#define GXSetNumIndStages_addr 0x8034a274
+#define GXSetTevDirect_addr 0x8034a294
+#define GXSetAlphaCompare_addr 0x8034a770
+#define GXSetZMode_addr 0x8034adac
+#define GXSetTevOp_addr 0x8034a334
+#define GXSetNumChans_addr 0x80348edc
+#define GXSetNumTevStages_addr 0x8034a990
+#define GXSetNumTexGens_addr 0x803470f8
+#define GXSetTevOrder_addr 0x8034a834
+#define GXSetTevColorIn_addr 0x8034a3c8
+#define GXSetTevAlphaIn_addr 0x8034a408
+#define GXSetTevColorOp_addr 0x8034a448
+#define GXSetTevAlphaOp_addr 0x8034a4a0
+#define GXSetCullMode_addr 0x80347edc
+#define GXLoadTexMtxImm_addr 0x8034b3b0
+#define GXSetChanCtrl_addr 0x80348f00
+#define GXSetCurrentMtx_addr 0x8034b390
+#define GXSetTexCoordGen2_addr 0x80346ed0
+#define GXSetLineWidth_addr 0x80347e38
+#define GXClearVtxDesc_addr 0x80346a68
+#define GXSetVtxDesc_addr 0x8034641c
+#define GXFlush_addr 0x803471a8
+#define GXInitTexObj_addr 0x80349188
+#define GXLoadTexObj_addr 0x803496cc
+#define GXInvalidateTexAll_addr 0x803498b0
+#define GXSetProjection_addr 0x8034b1f8
+#define GXSetScissor_addr 0x8034b540
+#define GXGetScissor_addr 0x8034b5a8
+#define wgPipe_addr 0xCC008000
+
+//misc functions (sort later)
+#define tp_cDyl_InitAsync_addr 0x8001e3ec
+#define tp_fapGm_Execute_addr 0x8001e79c
+#define tp_draw_console_addr 0x802e5d7c
+#define tp_PADRead_addr 0x80364b08
+#define tp_setSpecialGravity_addr 0x800b2cf0
+#define tp_checkCastleTownUseItem_addr 0x800b71d4
+#define tp_query042_addr 0x80238468
+#define tp_cc_at_check_addr 0x800849d8
+
+//d_save
+#define dSv_player_item_c__setItem_addr 0x80037850
+#define dSv_player_item_c__getItem_addr 0x8003a090
+#define dSv_player_item_record_c__setBombNum_addr 0x80038430
+#define dSv_player_item_record_c__getBombNum_addr 0x8003843c
+#define dSv_player_status_a_c__getSelectItemIndex_addr 0x800373e0
+#define dSv_player_status_b_c__isTransformLV_addr 0x80037554
+#define dSv_player_status_b_c__onTransformLV_addr 0x80037538
+#define dSv_light_drop_c__setLightDropNum_addr 0x80038738
+#define dSv_light_drop_c__getLightDropNum_addr 0x80038750
+#define dSv_info_c__onSwitch_addr 0x800395a4
+#define dSv_info_c__offSwitch_addr 0x80039664
+#define dSv_memBit_c__isSwitch_addr 0x80038c68
+#define dSv_memBit_c__onSwitch_addr 0x80038c18
+#define dSv_memBit_c__offSwitch_addr 0x80038c40
+#define dSv_memBit_c__isDungeonItem_addr 0x80038d38
+#define dSv_memBit_c__onDungeonItem_addr 0x80038d1c
+#define dSv_player_get_item_c__onFirstBit_addr 0x8003833c
+#define dSv_player_get_item_c__offFirstBit_addr 0x80038368
+#define dSv_event_c__isEventBit_addr 0x80038da4
+#define dSv_event_c__offEventBit_addr 0x80038d8c
+#define dSv_event_c__onEventBit_addr 0x80038d74
+#define dSv_player_get_item_c__isFirstBit_addr 0x80038394
+#define dSv_player_return_place_c__set_addr 0x800375cc
+
+//d_meter2_info
+#define g_meter2_info_addr 0x804a41a0
+
+//d_com_inf_game
+#define dComIfGs_setSelectItemIndex_addr 0x800324dc
+#define dComIfGs_getMixItemIndex_addr 0x800325c8
+#define dComIfGs_setMixItemIndex_addr 0x80032520
+#define dComIfGs_onZoneSwitch_addr 0x80032184
+#define dComIfGs_onOneZoneSwitch_addr 0x800322b8
+
+//d_stage
+#define dStage_nextStage_c__set_addr 0x80028a8c
+
+//d_menu_window
+#define dMw_c__isEventCheck_addr 0x801e2a58
+
+//JKernel
+#define JKernel__operator_new_addr 0x802cd4fc
+#define JKRArchive__getResource2_addr 0x802d367c
+
+//J2DPicture
+#define J2DPicture__J2DPicture4_addr 0x802f98e0
+#define J2DPicture__draw_addr 0x802fac48
+
+//d_a_alink
+#define daAlink_c__checkStageName_addr 0x80096b4c
+
+//f_op_actor_mng
+#define fopAcM_create_addr 0x8001f954
+
+//f_op_actor_iter
+#define fopAcIt_Judge_addr 0x8001f54c
+
+//f_pc_searcher
+#define fpcSch_JudgeForPName_addr 0x80028260
+
+//d_kankyo
+#define g_env_light_addr 0x804a0a54
+
+#endif
+
 #endif  // LIB_TP_ADDRS
