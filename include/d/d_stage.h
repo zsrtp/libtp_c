@@ -11,8 +11,7 @@ struct stage_vrbox_info_class {};
 
 struct stage_tresure_class {};
 
-struct stage_tgsc_data_class {
-};
+struct stage_tgsc_data_class {};
 
 struct stage_tgsc_class {};
 
@@ -159,8 +158,7 @@ public:
 
 class dStage_roomControl_c {
 public:
-    struct roomDzs_c {
-    };
+    struct roomDzs_c {};
 
     uint8_t field_0x0[4];
 };
@@ -178,16 +176,23 @@ public:
     /* 0xA */ int8_t mRoomNo;
     /* 0xB */ int8_t mLayer;
     /* 0xC */ int8_t mDarkArea;
+#ifdef WII_PLATFORM
+    /* 0xD */ int8_t enabled;
+#endif  // WII_PLATFORM
 };
 static_assert(sizeof(dStage_startStage_c) == 0xE);
 
 class dStage_nextStage_c : public dStage_startStage_c {
 public:
+#ifndef WII_PLATFORM
     int8_t enabled;
+#endif  // WII_PLATFORM
     uint8_t wipe;
     uint8_t wipe_speed;
 };
+#ifndef WII_PLATFORM
 static_assert(sizeof(dStage_nextStage_c) == 0x12);
+#endif  // WII_PLATFORM
 
 class dStage_roomStatus_c : dStage_roomDt_c {
 public:
