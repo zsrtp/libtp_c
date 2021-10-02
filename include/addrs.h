@@ -960,6 +960,8 @@
 #define dComIfGs_setSelectItemIndex_addr 0x880032590
 #define dComIfGs_getMixItemIndex_addr 0x8003267c
 #define dComIfGs_setMixItemIndex_addr 0x800325d4
+#define dComIfGs_onZoneSwitch_addr 0x800338ac
+#define dComIfGs_onOneZoneSwitch_addr 0x800339e0
 
 //d_stage
 #define dStage_nextStage_c__set_addr 0x80028b40
