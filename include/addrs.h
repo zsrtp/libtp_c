@@ -960,6 +960,8 @@
 #define dComIfGs_setSelectItemIndex_addr 0x880032590
 #define dComIfGs_getMixItemIndex_addr 0x8003267c
 #define dComIfGs_setMixItemIndex_addr 0x800325d4
+#define dComIfGs_onZoneSwitch_addr 0x800338ac
+#define dComIfGs_onOneZoneSwitch_addr 0x800339e0
 
 //d_stage
 #define dStage_nextStage_c__set_addr 0x80028b40
@@ -974,6 +976,21 @@
 //J2DPicture
 #define J2DPicture__J2DPicture4_addr 0x802f9d10
 #define J2DPicture__draw_addr 0x802fb078
+
+//d_a_alink
+#define daAlink_c__checkStageName_addr 0x80098268
+
+//f_op_actor_mng
+#define fopAcM_create_addr 0x80021024
+
+//f_op_actor_iter
+#define fopAcIt_Judge_addr 0x80020c1c
+
+//f_pc_searcher
+#define fpcSch_JudgeForPName_addr 0x80029944
+
+//d_kankyo
+#define g_env_light_addr 0x8047b274
 #endif
 
 #ifdef WII_NTSCU_12
