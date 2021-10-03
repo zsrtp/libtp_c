@@ -6,7 +6,6 @@
 
 class JPAEmitterCallBack {
 public:
-    virtual void draw();
 };
 
 class dPa_levelEcallBack : public JPAEmitterCallBack {
