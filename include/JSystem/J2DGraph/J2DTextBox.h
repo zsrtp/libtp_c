@@ -20,23 +20,18 @@ enum J2DTextBoxHBinding {
 class JUTFont;
 class J2DTextBox;
 
-#define mDoExt_getMesgFont_addr 0x800149f0
 typedef JUTFont* (*mDoExt_getMesgFont_t)(void);
 #define mDoExt_getMesgFont ((mDoExt_getMesgFont_t)mDoExt_getMesgFont_addr)
 
-#define J2DTextBox__J2DTextBox1_addr 0x802ff660
 typedef void (*J2DTextBox__J2DTextBox1_t)(J2DTextBox* thisx);
 #define J2DTextBox__J2DTextBox1 ((J2DTextBox__J2DTextBox1_t)J2DTextBox__J2DTextBox1_addr)
 
-#define J2DTextBox__setFont_addr 0x80300278
 typedef void (*J2DTextBox__setFont_t)(J2DTextBox* thisx, JUTFont* font);
 #define J2DTextBox__setFont ((J2DTextBox__setFont_t)J2DTextBox__setFont_addr)
 
-#define J2DTextBox__setString_addr 0x80300660
 typedef void (*J2DTextBox__setString_t)(J2DTextBox* thisx, const char* str, ...);
 #define J2DTextBox__setString ((J2DTextBox__setString_t)J2DTextBox__setString_addr)
 
-#define J2DTextBox__draw2_addr 0x80300490
 typedef void (*J2DTextBox__draw2_t)(J2DTextBox* thisx, float x, float y, float size, J2DTextBoxHBinding binding);
 #define J2DTextBox__draw2 ((J2DTextBox__draw2_t)J2DTextBox__draw2_addr)
 

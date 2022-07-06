@@ -29,7 +29,6 @@ public:
     J3DPacket* mpCallBackPacket;
 };
 
-#define J3DDrawBuffer__entryImm_addr 0x8032548c
 typedef void (*J3DDrawBuffer__entryImm_t)(J3DDrawBuffer*, J3DPacket* packet, uint16_t);
 #define J3DDrawBuffer__entryImm ((J3DDrawBuffer__entryImm_t)J3DDrawBuffer__entryImm_addr)
 

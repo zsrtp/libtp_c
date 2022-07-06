@@ -67,7 +67,6 @@ protected:
 typedef void* (*JKernel__operator_new_t)(uint32_t size);
 #define JKernel__operator_new ((JKernel__operator_new_t)JKernel__operator_new_addr)
 
-#define JKernel__operator_delete_addr 0x802ced3c
 typedef void (*JKernel__operator_delete_t)(void*);
 #define JKernel__operator_delete ((JKernel__operator_delete_t)JKernel__operator_delete_addr)
 

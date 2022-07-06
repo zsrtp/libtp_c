@@ -74,7 +74,6 @@ public:
     static void* getState_(TState* state) { return getState_buf_(state); }
 };
 
-#define JKRHeap__alloc_addr 0x802ce474
 typedef void* (*JKRHeap__alloc_t)(uint32_t size, int align, JKRHeap* heap);
 #define JKRHeap__alloc ((JKRHeap__alloc_t)JKRHeap__alloc_addr)
 

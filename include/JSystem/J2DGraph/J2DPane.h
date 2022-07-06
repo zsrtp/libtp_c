@@ -5,12 +5,12 @@
 #include "../JSupport/JSUList.h"
 #include "../JGeometry.h"
 #include "../../dolphin/mtx/mtx.h"
+#include "../../addrs.h"
 
 struct J2DAnmTransform{};
 
 class J2DPane;
 
-#define J2DPane__J2DPane1_addr 0x802f5bf8
 typedef void (*J2DPane__J2DPane1_t)(J2DPane* thisx);
 #define J2DPane__J2DPane1 ((J2DPane__J2DPane1_t)J2DPane__J2DPane1_addr)
 

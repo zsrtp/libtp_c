@@ -79,7 +79,6 @@ struct J3DSys {
     }
 };
 
-#define j3dSys_addr 0x80434ac8
 #define j3dSys (*(J3DSys *)(j3dSys_addr))
 
 #endif /* J3DSYS_H */
