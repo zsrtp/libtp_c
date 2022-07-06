@@ -12,6 +12,7 @@
 #define tp_getSave_addr 0x800350bc
 #define tp_putSave_addr 0x800350f0
 #define tp_sprintf_addr 0x803664dc
+#define tp_vsnprintf_addr 0x80366690
 #define tp_strcpy_addr 0x80368b2c
 #define tp_strlen_addr 0x80368be4
 #define tp_strcmp_addr 0x80368994
@@ -182,6 +183,13 @@
 //JKernel
 #define JKernel__operator_new_addr 0x802cec4c
 #define JKRArchive__getResource2_addr 0x802d5c64
+#define tp_zeldaHeap_addr 0x80450c2c
+#define tp_gameHeap_addr 0x80450c28
+#define tp_archiveHeap_addr 0x80450c34
+#define JKRExpHeap__getUsedSize_addr 0x802cfce8
+#define JKRHeap__getFreeSize_addr 0x802ce72c
+#define JKRHeap__getTotalFreeSize_addr 0x802ce784
+#define JKRExpHeap__do_getTotalFreeSize_addr 0x802cfc84
 
 //J2DPicture
 #define J2DPicture__J2DPicture4_addr 0x802fc708
@@ -201,6 +209,15 @@
 
 //d_kankyo
 #define g_env_light_addr 0x8042ca54
+
+//d_s_play
+#define sPauseTimer_addr 0x80451125
+
+// d_cc_s
+#define dCcS__draw_addr 0x800872d0
+
+//m_Do_graphic
+#define dScnPly_BeforeOfPaint_addr 0x80008424
 
 #endif
 
@@ -382,6 +399,13 @@
 //JKernel
 #define JKernel__operator_new_addr 0x802cfa4c
 #define JKRArchive__getResource2_addr 0x802d6a64
+#define tp_zeldaHeap_addr 0x80452bec
+#define tp_gameHeap_addr 0x80452be8
+#define tp_archiveHeap_addr 0x80452bf4
+#define JKRExpHeap__getUsedSize_addr 0x802d0ae8
+#define JKRHeap__getFreeSize_addr 0x802cf52c
+#define JKRHeap__getTotalFreeSize_addr 0x802cf584
+#define JKRExpHeap__do_getTotalFreeSize_addr 0x802d0a84
 
 //J2DPicture
 #define J2DPicture__J2DPicture4_addr 0x802fd508
@@ -401,6 +425,9 @@
 
 //d_kankyo
 #define g_env_light_addr 0x8042ea14
+
+//d_s_play
+#define sPauseTimer_addr 0x804530ED
 
 #endif
 
@@ -582,6 +609,13 @@
 //JKernel
 #define JKernel__operator_new_addr 0x802d10e8
 #define JKRArchive__getResource2_addr 0x802d8100
+#define tp_zeldaHeap_addr 0x8044ad6c
+#define tp_gameHeap_addr 0x8044ad68
+#define tp_archiveHeap_addr 0x8044ad74
+#define JKRExpHeap__getUsedSize_addr 0x802d2184
+#define JKRHeap__getFreeSize_addr 0x802d0bc8
+#define JKRHeap__getTotalFreeSize_addr 0x802d0c20
+#define JKRExpHeap__do_getTotalFreeSize_addr 0x802d2120
 
 //J2DPicture
 #define J2DPicture__J2DPicture4_addr 0x802feba4
@@ -601,6 +635,9 @@
 
 //d_kankyo
 #define g_env_light_addr 0x80426b94
+
+//d_s_play
+#define sPauseTimer_addr 0x8044b265
 
 #endif
 
@@ -778,6 +815,14 @@
 #define JKernel__operator_new_addr 0x802e2b2c
 #define JKRArchive__getResource2_addr 0x802e8cac
 
+#define tp_zeldaHeap_addr 0x8053a884
+#define tp_gameHeap_addr 0x8053a880
+#define tp_archiveHeap_addr 0x8053a88c
+#define JKRExpHeap__getUsedSize_addr 0x802e3ba4
+#define JKRHeap__getFreeSize_addr 0x802e2680
+#define JKRHeap__getTotalFreeSize_addr 0x802e2690
+#define JKRExpHeap__do_getTotalFreeSize_addr 0x802e3b40
+
 //J2DPicture
 #define J2DPicture__J2DPicture4_addr 0x8030ef10
 #define J2DPicture__draw_addr 0x80310278
@@ -796,6 +841,9 @@
 
 //d_kankyo
 #define g_env_light_addr 0x804b944c
+
+//d_s_play
+#define sPauseTimer_addr 0x8053ae1d
 
 #endif
 

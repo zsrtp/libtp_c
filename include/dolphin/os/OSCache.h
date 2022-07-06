@@ -1,4 +1,3 @@
-// Taken from https://github.com/zsrtp/GC-Randomizer/blob/stable/include/gc/OSCache.h
 #ifndef OSCACHE_H
 #define OSCACHE_H
 

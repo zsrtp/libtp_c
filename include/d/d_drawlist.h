@@ -29,7 +29,7 @@ public:
 
 class dDlst_base_c {
 public:
-    virtual void draw();
+    void* vtable;
 };
 
 class dDlst_list_c {

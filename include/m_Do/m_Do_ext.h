@@ -3,12 +3,18 @@
 
 #include <stdint.h>
 #include "../dolphin/gx/GXTexture.h"
+#include "../JSystem/J3DGraphBase/J3DPacket.h"
+#include "../JSystem/J3DGraphBase/J3DSys.h"
+#include "../m_Do/m_Do_mtx.h"
+#include "../SSystem/SComponent/c_xyz.h"
+#include "../SSystem/SComponent/c_sxyz.h"
+#include "gcn_c/include/gfx.h"
 
 struct J3DAnmTransform {};
 
 class J3DGXColorS10 {
 public:
-    _GXColorS10 mColor;
+    GXColorS10 mColor;
 };
 
 #pragma pack(push, 1)

@@ -11,9 +11,7 @@ class Z2SoundObjBase : protected Z2SoundHandles {
 public:
     bool isAlive() const { return mIsInitialized; }
 
-    virtual void framework(uint32_t, int8_t);
-
-    // Z2SoundObjBase_vtable* vtable;
+    /* 0x10 */ void* vtable;
     /* 0x14 */ Z2SoundStarter* mSoundStarter;
     /* 0x18 */ Vec* mSoundPos;
     /* 0x1C */ uint16_t field_0x1c;
@@ -23,7 +21,7 @@ public:
 
 class Z2SoundObjSimple : protected Z2SoundObjBase {
 public:
-    virtual void init(Vec* pSoundPos, uint8_t pNumHandles);
+
 };
 
 class Z2SoundObjAnime : protected Z2SoundObjBase {
@@ -40,7 +38,6 @@ public:
     /* 0x44 */ bool field_0x44;
 };
 
-class Z2DopplerSoundObjBase : protected Z2SoundHandles {
-};
+class Z2DopplerSoundObjBase : protected Z2SoundHandles {};
 
 #endif /* Z2SOUNDOBJECT_H */
