@@ -218,6 +218,7 @@
 
 //f_op_actor_mng
 #define fopAcM_create_addr 0x80019D98
+#define g_fopAcTg_Queue_addr 0x803A35E0
 
 //f_op_actor_iter
 #define fopAcIt_Judge_addr 0x800197f8
@@ -463,6 +464,7 @@
 
 //f_op_actor_mng
 #define fopAcM_create_addr 0x80019e40
+#define g_fopAcTg_Queue_addr 0x803a52c0
 
 //f_op_actor_iter
 #define fopAcIt_Judge_addr 0x800198a0
@@ -702,6 +704,7 @@
 
 //f_op_actor_mng
 #define fopAcM_create_addr 0x80019d98
+#define g_fopAcTg_Queue_addr 0x8039d740
 
 //f_op_actor_iter
 #define fopAcIt_Judge_addr 0x800197f8
@@ -936,6 +939,7 @@
 
 //f_op_actor_mng
 #define fopAcM_create_addr 0x8001f868
+#define g_fopAcTg_Queue_addr 0x8047e138
 
 //f_op_actor_iter
 #define fopAcIt_Judge_addr 0x8001f460

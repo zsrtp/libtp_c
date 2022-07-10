@@ -73,4 +73,6 @@ typedef void (*fopAcM_create_t)(int16_t, uint32_t, const cXyz*, int, const csXyz
                                 int8_t);
 #define fopAcM_create ((fopAcM_create_t)fopAcM_create_addr)
 
+#define g_fopAcTg_Queue (*(node_list_class *)(g_fopAcTg_Queue_addr))
+
 #endif
