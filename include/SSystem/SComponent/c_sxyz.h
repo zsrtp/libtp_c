@@ -12,7 +12,11 @@ public:
     /* 80018BD0 */ ~csXyz() {}
     /* inline   */ csXyz() {}
     /* inline   */ csXyz(const csXyz& other) : SVec(other){};
-    /* 802673F4 */ csXyz(int16_t, int16_t, int16_t);
+    /* 802673F4 */ csXyz(int16_t x, int16_t y, int16_t z) {
+        mX = x;
+        mY = y;
+        mZ = z;
+    }
     /* 80267404 */ csXyz operator+(csXyz&);
     /* 8026745C */ void operator+=(csXyz&);
     /* 80267490 */ csXyz operator-(csXyz&);

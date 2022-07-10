@@ -21,7 +21,7 @@
 class J2DScreen {};
 class J2DAnmBase {};
 class J3DAnmBase {};
-class JKRExpHeap {};
+class JKRExpHeap;
 class J3DModelData {};
 
 class daAlink_lockCursor_c : public dDlst_base_c {
@@ -275,12 +275,12 @@ public:
 
 
     /* 0x0062C */ void* field_0x062C;
-    /* 0x00630 */ void* field_0x0630;
-    /* 0x00634 */ void* field_0x0634;
+    /* 0x00630 */ int field_0x0630;
+    /* 0x00634 */ char* mArcName;
     /* 0x00638 */ JKRExpHeap** field_0x0638;
     /* 0x0063C */ void* field_0x063C;
-    /* 0x00640 */ void* field_0x0640;
-    /* 0x00644 */ void* field_0x0644;
+    /* 0x00640 */ int field_0x0640;
+    /* 0x00644 */ char* mShieldArcName;
     /* 0x00648 */ JKRExpHeap** field_0x0648;
     /* 0x0064C */ J3DModelData* field_0x064C;
     /* 0x00650 */ J3DModel* field_0x0650;
@@ -293,14 +293,14 @@ public:
     /* 0x0066C */ J3DModel* field_0x066c;
     /* 0x00670 */ J3DModel* field_0x0670;
     /* 0x00674 */ J3DModel* field_0x0674;
-    /* 0x00678 */ J3DModel* field_0x0678;
+    /* 0x00678 */ J3DModel* mShieldModel;
     /* 0x0067C */ J3DAnmBase* field_0x067c;
     /* 0x00680 */ J3DAnmBase* field_0x0680;
     /* 0x00684 */ J3DModel* field_0x0684;
     /* 0x00688 */ J3DModel* field_0x0688;
     /* 0x0068C */ J3DAnmBase* field_0x068c;
     /* 0x00690 */ mDoExt_baseAnm** field_0x0690;
-    /* 0x00694 */ void* field_0x0694;  // J3DDeformData
+    /* 0x00694 */ void* field_0x0694;
     /* 0x00698 */ void* field_0x0698;
     /* 0x0069C */ void* field_0x069c;
     /* 0x006A0 */ J3DModel* field_0x06a0;
@@ -309,12 +309,12 @@ public:
     /* 0x006AC */ mDoExt_bckAnm* field_0x06ac;
     /* 0x006B0 */ mDoExt_bckAnm* field_0x06b0;
     /* 0x006B4 */ J3DAnmTransform* field_0x06b4;
-    /* 0x006B8 */ J3DModel* field_0x06b8;
+    /* 0x006B8 */ J3DModel* mSwordModel;
     /* 0x006BC */ J3DModel* field_0x06bc;
     /* 0x006C0 */ J3DModelData* field_0x06c0;
-    /* 0x006C4 */ J3DAnmBase* field_0x06c4;
-    /* 0x006C8 */ J3DAnmBase* field_0x06c8;
-    /* 0x006CC */ J3DAnmBase* field_0x06cc;
+    /* 0x006C4 */ J3DAnmBase* m_nSwordBtk;
+    /* 0x006C8 */ J3DAnmBase* m_mSwordBtk;
+    /* 0x006CC */ J3DAnmBase* m_mSwordBck;
     /* 0x006D0 */ void* field_0x06d0;
     /* 0x006D4 */ void* field_0x06d4;
     /* 0x006D8 */ void* field_0x06d8;
@@ -329,7 +329,7 @@ public:
     /* 0x006FC */ J3DModel* field_0x06fc;
     /* 0x00700 */ J3DModel* field_0x0700;
     /* 0x00704 */ J3DAnmBase* field_0x0704;
-    /* 0x00708 */ J3DModel* field_0x0708;
+    /* 0x00708 */ J3DModel* mHeldItemModel;
     /* 0x0070C */ J3DModel* field_0x070c;
     /* 0x00710 */ J3DModel* field_0x0710;
     /* 0x00714 */ J3DModel* field_0x0714;
@@ -342,7 +342,7 @@ public:
     /* 0x00730 */ mDoExt_bckAnm field_0x730;
     /* 0x0074C */ mDoExt_bckAnm field_0x74C;
     /* 0x00768 */ uint8_t field_0x0768[0x5C];
-    /* 0x007C4 */ daPy_actorKeep_c field_0x07C4[10];
+    /* 0x007C4 */ daPy_actorKeep_c mWolfLockAcKeep[10];
     /* 0x00814 */ dCcD_Stts field_0x814;
     /* 0x00850 */ dCcD_Cyl field_0x850[3];
     /* 0x00C04 */ dCcD_Cyl field_0xC04[3];
@@ -388,10 +388,10 @@ public:
     /* 0x02170 */ uint8_t field_0x2170[0x18];
     /* 0x02188 */ dEyeHL_c mEyeHL1;
     /* 0x0219C */ dEyeHL_c mEyeHL2;
-    /* 0x021B0 */ daPy_anmHeap_c mAnmHeap8[2];
+    /* 0x021B0 */ daPy_anmHeap_c mItemHeap[2];
     /* 0x021D8 */ daPy_anmHeap_c mAnmHeap9;
     /* 0x021EC */ uint8_t field_0x21ec[4];
-    /* 0x021F0 */ daAlink_blur_c mBlur;
+    /* 0x021F0 */ daAlink_blur_c m_swordBlur;
     /* 0x027C8 */ dAlink_bottleWaterPcallBack_c field_0x27c8;
     /* 0x027E0 */ dAttention_c* mAttention;
     /* 0x027E4 */ dAttList_c* mAttList;
@@ -401,19 +401,19 @@ public:
     /* 0x027F4 */ fopAc_ac_c* field_0x27f4;
     /* 0x027F8 */ fopAc_ac_c* field_0x27f8;
     /* 0x027FC */ fopAc_ac_c* field_0x27fc;
-    /* 0x02800 */ fopAc_ac_c* field_0x2800;
+    /* 0x02800 */ fopAc_ac_c* mMidnaMsg;
     /* 0x02804 */ fopAc_ac_c* field_0x2804;
     /* 0x02808 */ fopAc_ac_c* field_0x2808;
     /* 0x0280C */ daPy_actorKeep_c field_0x280c;
     /* 0x02814 */ daPy_actorKeep_c mRideActor;  // daspinnerc?
     /* 0x0281C */ daPy_actorKeep_c field_0x281c;
     /* 0x02824 */ daPy_actorKeep_c mItemActor;  // name might be wrong
-    /* 0x0282C */ daPy_actorKeep_c field_0x282c;
-    /* 0x02834 */ daPy_actorKeep_c field_0x2834;
-    /* 0x0283C */ daPy_actorKeep_c field_0x283c;
+    /* 0x0282C */ daPy_actorKeep_c mGrabItemActor;
+    /* 0x02834 */ daPy_actorKeep_c mThrowBoomerangActor;
+    /* 0x0283C */ daPy_actorKeep_c mCopyRodAcKeep;
     /* 0x02844 */ daPy_actorKeep_c field_0x2844;
     /* 0x0284C */ daPy_actorKeep_c field_0x284c;
-    /* 0x02854 */ daPy_actorKeep_c field_0x2854;
+    /* 0x02854 */ daPy_actorKeep_c mCargoCarryActor;
     /* 0x0285C */ daPy_actorKeep_c field_0x285c;
     /* 0x02864 */ dMsgFlow_c mMsgFlow;
     /* 0x028B0 */ uint8_t field_0x28b0[0x40];
@@ -433,11 +433,11 @@ public:
     /* 0x02BAC */ cXyz field_0x2bac;
     /* 0x02BB8 */ Mtx mInvMtx;
     /* 0x02BE8 */ Mtx field_0x2be8;
-    /* 0x02C18 */ Mtx field_0x2c18;
+    /* 0x02C18 */ Mtx mRootMtx;
     /* 0x02C48 */ Mtx field_0x2c48;
     /* 0x02C78 */ Mtx field_0x2c78;
     /* 0x02CA8 */ Z2CreatureLink mZ2Link;
-    /* 0x02D75 */ uint8_t field_0x2d75[3];  // padding?
+    /* 0x02D75 */ uint8_t field_0x2d75[3];  // padding
     /* 0x02D78 */ void* field_0x2d78;
     /* 0x02D7C */ daPy_frameCtrl_c* field_0x2d7c;
     /* 0x02D80 */ int field_0x2d80;
@@ -467,17 +467,17 @@ public:
     /* 0x02F97 */ uint8_t field_0x2f97;
     /* 0x02F98 */ uint8_t field_0x2f98;
     /* 0x02F99 */ uint8_t field_0x2f99;
-    /* 0x02F9A */ int8_t field_0x2f9a;
+    /* 0x02F9A */ int8_t mVoiceReverbIntensity;
     /* 0x02F9B */ uint8_t field_0x2f9b;
     /* 0x02F9C */ uint8_t mSelectItemId;
     /* 0x02F9D */ uint8_t field_0x2f9d;
     /* 0x02F9E */ uint8_t field_0x2f9e;
     /* 0x02F9F */ uint8_t field_0x2f9f;
     /* 0x02FA0 */ uint8_t field_0x2fa0;
-    /* 0x02FA1 */ uint8_t field_0x2fa1;
-    /* 0x02FA2 */ uint8_t field_0x2fa2;
+    /* 0x02FA1 */ uint8_t mRunCutComboCount;
+    /* 0x02FA2 */ uint8_t mActiveBombNum;
     /* 0x02FA3 */ uint8_t field_0x2fa3;
-    /* 0x02FA4 */ uint8_t field_0x2fa4;
+    /* 0x02FA4 */ uint8_t mRollCrashFlg;
     /* 0x02FA5 */ uint8_t field_0x2fa5;
     /* 0x02FA6 */ uint8_t field_0x2fa6;
     /* 0x02FA7 */ uint8_t field_0x2fa7;
@@ -490,8 +490,8 @@ public:
     /* 0x02FAE */ uint8_t field_0x2fae;
     /* 0x02FAF */ uint8_t field_0x2faf;
     /* 0x02FB0 */ uint8_t field_0x2fb0;
-    /* 0x02FB1 */ uint8_t field_0x2fb1;
-    /* 0x02FB2 */ uint8_t field_0x2fb2;
+    /* 0x02FB1 */ uint8_t mWolfLockNum;
+    /* 0x02FB2 */ uint8_t mMidnaTalkDelayTimer;
     /* 0x02FB3 */ uint8_t field_0x2fb3;
     /* 0x02FB4 */ uint8_t field_0x2fb4;
     /* 0x02FB5 */ uint8_t field_0x2fb5;
@@ -527,11 +527,11 @@ public:
     /* 0x02FD3 */ uint8_t field_0x2fd3;
     /* 0x02FD4 */ uint8_t field_0x2fd4;
     /* 0x02FD5 */ uint8_t field_0x2fd5;
-    /* 0x02FD6 */ uint8_t field_0x2fd6;
+    /* 0x02FD6 */ uint8_t mSwordChangeWaitTimer;
     /* 0x02FD7 */ uint8_t field_0x2fd7;
     /* 0x02FD8 */ uint8_t field_0x2fd8;
     /* 0x02FD9 */ uint8_t field_0x2fd9[3];
-    /* 0x02FDC */ uint16_t mHeldItem;
+    /* 0x02FDC */ uint16_t mEquipItem;
     /* 0x02FDE */ uint16_t field_0x2fde;
     /* 0x02FE0 */ uint16_t field_0x2fe0;
     /* 0x02FE2 */ int16_t field_0x2fe2;
@@ -559,7 +559,7 @@ public:
     /* 0x0300E */ int16_t field_0x300e;
     /* 0x03010 */ int16_t field_0x3010;
     /* 0x03012 */ int16_t field_0x3012;
-    /* 0x03014 */ int16_t field_0x3014;
+    /* 0x03014 */ int16_t mFallVoiceInit;
     /* 0x03016 */ uint8_t field_0x3016[2];
     /* 0x03018 */ int16_t field_0x3018;
     /* 0x0301A */ int16_t field_0x301a;
@@ -617,7 +617,7 @@ public:
     /* 0x03088 */ int16_t field_0x3088;
     /* 0x0308A */ int16_t field_0x308a;
     /* 0x0308C */ int16_t field_0x308c;
-    /* 0x0308E */ int16_t field_0x308e;
+    /* 0x0308E */ int16_t mFastShotTime;
     /* 0x03090 */ int16_t field_0x3090;
     /* 0x03092 */ int16_t field_0x3092;
     /* 0x03094 */ int16_t field_0x3094;
@@ -630,7 +630,7 @@ public:
     /* 0x030A6 */ int16_t field_0x30a6;
     /* 0x030A8 */ uint16_t field_0x30a8;
     /* 0x030AA */ uint16_t field_0x30aa;
-    /* 0x030AC */ int16_t field_0x30ac;
+    /* 0x030AC */ int16_t mWolfEyeUp;
     /* 0x030AE */ uint16_t field_0x30ae;
     /* 0x030B0 */ int16_t field_0x30b0;
     /* 0x030B2 */ int16_t field_0x30b2;
@@ -657,7 +657,7 @@ public:
     /* 0x030EE */ int16_t field_0x30ee;
     /* 0x030F0 */ uint16_t field_0x30f0;
     /* 0x030F2 */ uint8_t field_0x30f2[2];
-    /* 0x030F4 */ int16_t field_0x30f4;
+    /* 0x030F4 */ int16_t mSwordFlourishTimer;
     /* 0x030F6 */ int16_t field_0x30f6;
     /* 0x030F8 */ int16_t field_0x30f8;
     /* 0x030FA */ int16_t field_0x30fa;
@@ -694,7 +694,7 @@ public:
     /* 0x03172 */ uint8_t field_0x3172[2];
     /* 0x03174 */ int field_0x3174;
     /* 0x03178 */ int field_0x3178;
-    /* 0x0317C */ dAttention_c* field_0x317c;
+    /* 0x0317C */ int field_0x317c;
     /* 0x03180 */ int field_0x3180;
     /* 0x03184 */ int field_0x3184;
     /* 0x03184 */ int field_0x3188;
@@ -756,11 +756,11 @@ public:
     /* 0x033A8 */ float field_0x33a8;
     /* 0x033AC */ float field_0x33ac;
     /* 0x033B0 */ float field_0x33b0;
-    /* 0x033B4 */ float field_0x33b4;
+    /* 0x033B4 */ float mWaterY;
     /* 0x033B8 */ float field_0x33b8;
     /* 0x033BC */ float field_0x33bc;
     /* 0x033C0 */ float field_0x33c0;
-    /* 0x033C4 */ float field_0x33c4;
+    /* 0x033C4 */ float mFallHeight;
     /* 0x033C8 */ float field_0x33c8;
     /* 0x033CC */ float field_0x33cc;
     /* 0x033D0 */ float field_0x33d0;
@@ -804,14 +804,14 @@ public:
     /* 0x03468 */ float field_0x3468;
     /* 0x0346C */ float field_0x346c;
     /* 0x03470 */ float field_0x3470;
-    /* 0x03474 */ float field_0x3474;
+    /* 0x03474 */ float mSwordUpColorIntensity;
     /* 0x03478 */ float field_0x3478;
     /* 0x0347C */ float field_0x347c;
     /* 0x03480 */ float field_0x3480;
     /* 0x03484 */ float field_0x3484;
     /* 0x03488 */ float field_0x3488;
     /* 0x0348C */ float field_0x348c;
-    /* 0x03490 */ float field_0x3490;
+    /* 0x03490 */ float mSearchBallScale;
     /* 0x03494 */ float field_0x3494;
     /* 0x03498 */ cXyz field_0x3498;
     /* 0x034A4 */ cXyz field_0x34a4;
@@ -821,7 +821,7 @@ public:
     /* 0x034D4 */ cXyz field_0x34d4;
     /* 0x034E0 */ cXyz field_0x34e0;
     /* 0x034EC */ cXyz field_0x34ec;
-    /* 0x034F8 */ cXyz field_0x34f8;
+    /* 0x034F8 */ cXyz mLastJumpPos;
     /* 0x03504 */ cXyz field_0x3504;
     /* 0x03510 */ cXyz field_0x3510;
     /* 0x0351C */ cXyz field_0x351c;
@@ -848,7 +848,7 @@ public:
     /* 0x0363C */ cXyz field_0x363c[4];
     /* 0x0366C */ cXyz field_0x366c[4];
     /* 0x0369C */ cXyz field_0x369c;
-    /* 0x036A8 */ cXyz field_0x36a8;
+    /* 0x036A8 */ cXyz mMagneBootsTopVec;
     /* 0x036B4 */ cXyz field_0x36b4;
     /* 0x036C0 */ cXyz field_0x36c0[4];
     /* 0x036F0 */ cXyz field_0x36f0[4];
@@ -879,56 +879,66 @@ public:
     /* 0x03844 */ csXyz* mIronBallChainAngle;
     /* 0x03848 */ void* field_0x3848;
     /* 0x0384C */ float* field_0x384c;
+    /* 0x03850 */ uint32_t field_0x3850;
+    /* 0x03854 */ uint32_t field_0x3854;
+    /* 0x03858 */ uint32_t field_0x3858;
 };
 
 struct daAlinkHIO_anm_c {
-    /* 0x00 */ int16_t field_0x00;
-    /* 0x04 */ float field_0x04;
-    /* 0x08 */ float field_0x08;
-    /* 0x0C */ float field_0x0c;
-    /* 0x10 */ float field_0x10;
-};  // size = 0x14
+    /* 0x00 */ int16_t field_0x00;  // end f?
+    /* 0x04 */ float field_0x04;  // speed?
+    /* 0x08 */ float field_0x08;  // start?
+    /* 0x0C */ float field_0x0c;  // interpolation?
+    /* 0x10 */ float field_0x10;  // CF?
+};                              // size = 0x14
 
 struct daAlinkHIO_basic_c1 {
-    /* 0x00 */ int16_t field_0x00;
-    /* 0x02 */ int16_t mNeckAimAngleX;
-    /* 0x04 */ int16_t mNeckAimAngleY;
-    /* 0x06 */ int16_t mNeckAimAngleZ;
+    /* 0x00 */ bool mOneHitKill;
+    /* 0x02 */ int16_t mNeckMaxHorizontal;
+    /* 0x04 */ int16_t mNeckMaxUp;
+    /* 0x06 */ int16_t mNeckMaxDown;
     /* 0x08 */ int16_t field_0x08;
-    /* 0x0A */ int16_t field_0x0a;
-    /* 0x0C */ int16_t field_0x0c;
-    /* 0x0E */ int16_t field_0x0e;
-    /* 0x10 */ int16_t mMetamorphoseFarAngle;
+    /* 0x0A */ int16_t mHotspringRecoverTime;
+    /* 0x0C */ int16_t mWiiCamSpeedV;
+    /* 0x0E */ int16_t mWiiCamSpeedH;
+    /* 0x10 */ int16_t mTransformBlockFarAngle;
     /* 0x14 */ float field_0x14;
     /* 0x18 */ float mAnmBlendFactor;
     /* 0x1C */ float mWaitTurnSpeed;
-    /* 0x20 */ float field_0x20;
-    /* 0x24 */ float field_0x24;
-    /* 0x28 */ float field_0x28;
-    /* 0x2C */ float field_0x2c;
-    /* 0x30 */ float field_0x30;
-    /* 0x34 */ float field_0x34;
-    /* 0x38 */ float field_0x38;
-    /* 0x3C */ float field_0x3c;
-    /* 0x40 */ float field_0x40;
-    /* 0x44 */ float field_0x44;
-    /* 0x48 */ float field_0x48;
-    /* 0x4C */ float field_0x4c;
-    /* 0x50 */ float mMetamorphoseNearDis;
-    /* 0x54 */ float mMetamorphoseFarDis;
+    /* 0x20 */ float mStandDefenseBlend;
+    /* 0x24 */ float mWaterSurfaceEffectHeight;
+    /* 0x28 */ float mWolfWaterSurfaceEffectHeight;
+    /* 0x2C */ float mMaxWindInfluenceDist;
+    /* 0x30 */ float mNoWindInfluenceDist;
+    /* 0x34 */ float mMaxWindSpeed;
+    /* 0x38 */ float mLavaDeathDepth;
+    /* 0x3C */ float mLinkWolfTransformSpeed;
+    /* 0x40 */ float mWolfLinkTransformSpeed;
+    /* 0x44 */ float mIndoorSpeedFactor;
+    /* 0x48 */ float mSandSinkSpeed;
+    /* 0x4C */ float mSandSurfaceSpeed;
+    /* 0x50 */ float mTransformBlockNearDis;
+    /* 0x54 */ float mTransformBlockFarDis;
 };
 
-class daAlinkHIO_basic_c0 {
+
+class daAlinkHIO_backJump_c1 {
 public:
-    //static daAlinkHIO_basic_c1 const m;
-};
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ daAlinkHIO_anm_c field_0x14;
+    /* 0x28 */ float field_0x28;
+    /* 0x2C */ float field_0x2C;
+    /* 0x30 */ float field_0x30;
+    /* 0x34 */ float field_0x34;
+};  // Size: 0x38
+
 
 class daAlinkHIO_autoJump_c1 {
 public:
-    /* 0x00 */ daAlinkHIO_anm_c field_0x00;
-    /* 0x14 */ daAlinkHIO_anm_c field_0x14;
-    /* 0x28 */ daAlinkHIO_anm_c field_0x28;
-    /* 0x3C */ daAlinkHIO_anm_c field_0x3c;
+    /* 0x00 */ daAlinkHIO_anm_c mJump;
+    /* 0x14 */ daAlinkHIO_anm_c mLand;
+    /* 0x28 */ daAlinkHIO_anm_c mDive;
+    /* 0x3C */ daAlinkHIO_anm_c mDiveUnk;
     /* 0x50 */ uint8_t field_0x50;
     /* 0x52 */ int16_t field_0x52;
     /* 0x54 */ int16_t field_0x54;
@@ -940,8 +950,8 @@ public:
     /* 0x68 */ float field_0x68;
     /* 0x6C */ float field_0x6c;
     /* 0x70 */ float field_0x70;
-    /* 0x74 */ float field_0x74;
-    /* 0x78 */ float field_0x78;
+    /* 0x74 */ float mGravity;
+    /* 0x78 */ float mMaxFallSpeed;
     /* 0x7C */ float field_0x7c;
     /* 0x80 */ float field_0x80;
     /* 0x84 */ float field_0x84;
@@ -956,12 +966,1078 @@ public:
     /* 0xA8 */ float field_0xa8;
     /* 0xAC */ float field_0xac;
     /* 0xB0 */ float field_0xb0;
-};  // size = 0xB4
+};  // Size: 0xB4
 
-class daAlinkHIO_autoJump_c0 {
+
+class daAlinkHIO_smallJump_c1 {
 public:
-    //static daAlinkHIO_autoJump_c1 const m;
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+	/* 0x28 */ daAlinkHIO_anm_c field_0x28;
+	/* 0x3C */ float field_0x3C;
+	/* 0x40 */ float field_0x40;
+	/* 0x44 */ float field_0x44;
+};  // Size: 0x48
+
+
+class daAlinkHIO_cut_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c mEquipAnm;
+    /* 0x14 */ daAlinkHIO_anm_c mReleaseAnm;
+    /* 0x28 */ daAlinkHIO_anm_c mRecoilAnm;
+    /* 0x3C */ daAlinkHIO_anm_c mStabAnm;
+    /* 0x50 */ bool mForceHitCombo;
+    /* 0x52 */ int16_t mComboDuration;
+    /* 0x54 */ int16_t mBlurAlpha;
+    /* 0x56 */ int16_t mNormalSwingDuration;
+    /* 0x58 */ int16_t mDashBlurAlpha;
+    /* 0x5A */ int16_t mUnkTime;  // might be related to flourish
+    /* 0x5C */ int16_t mFlourishTime;
+    /* 0x5E */ int16_t mUnkBodyDownwards;  // ?
+    /* 0x60 */ int16_t mUnkBodyUpwards;    // ?
+    /* 0x62 */ int16_t mSpinSlashWait;     // ? maybe related to wii?
+    /* 0x64 */ float mRecoilSpeed;
+    /* 0x68 */ float mRecoilDeceleration;
+    /* 0x6C */ float mFlourishAnmSpeed;
+    /* 0x70 */ float mFlourishEndAnmSpeed;
+    /* 0x74 */ float mSwordLength;
+    /* 0x78 */ float mSwordRadius;
+    /* 0x7C */ float mSwordLengthHorseback;
+    /* 0x80 */ float mSwordRadiusHorseback;
+    /* 0x84 */ float mRunCutLength;
+    /* 0x88 */ float mRunCutRadius;
+    /* 0x8C */ float mUnkReleaseASpeed;
+    /* 0x90 */ float mSwordLengthHorsebackFight;
+    /* 0x94 */ float mSwordRadiusHorsebackFight;
+    /* 0x98 */ float mFlourishControlStartFrame;
+};  // Size: 0x9C
+
+
+class daAlinkHIO_cutTurn_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+	/* 0x28 */ daAlinkHIO_anm_c field_0x28;
+	/* 0x3C */ float field_0x3C;
+	/* 0x40 */ float field_0x40;
+	/* 0x44 */ float field_0x44;
+	/* 0x48 */ float field_0x48;
+	/* 0x4C */ float field_0x4C;
+	/* 0x50 */ float field_0x50;
+	/* 0x54 */ float field_0x54;
+	/* 0x58 */ float field_0x58;
+	/* 0x5C */ float field_0x5C;
+	/* 0x60 */ float field_0x60;
+	/* 0x64 */ float field_0x64;
+	/* 0x68 */ float field_0x68;
+	/* 0x6C */ float field_0x6C;
+	/* 0x70 */ float field_0x70;
+	/* 0x74 */ float field_0x74;
+	/* 0x78 */ float field_0x78;
+	/* 0x7C */ float field_0x7C;
+	/* 0x80 */ float field_0x80;
+	/* 0x84 */ float field_0x84;
+	/* 0x88 */ float field_0x88;
+	/* 0x8C */ float field_0x8C;
+	/* 0x90 */ float field_0x90;
+	/* 0x94 */ float field_0x94;
+};  // Size: 0x98
+
+
+class daAlinkHIO_cutJump_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c mCutAnm;
+    /* 0x14 */ daAlinkHIO_anm_c mLandAnm;
+    /* 0x28 */ float mBaseJumpSpeedH;
+    /* 0x2C */ float mBaseJumpSpeedV;
+    /* 0x30 */ float mAirJumpSpeedH;
+    /* 0x34 */ float mAirJumpSpeedV;
+    /* 0x38 */ float mStartAttackFrame;
+    /* 0x3C */ float mEndAttackFrame;
+    /* 0x40 */ float mJumpSpinDelay;
+};  // Size: 0x44
+
+
+class daAlinkHIO_cutLargeJump_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c mChargeAnm;      // ?
+    /* 0x14 */ daAlinkHIO_anm_c mChargeMoveAnm;  // ?
+    /* 0x28 */ daAlinkHIO_anm_c mCutAnm;
+    /* 0x3C */ daAlinkHIO_anm_c mLandAnm;
+    /* 0x50 */ float mCutSpeedH;
+    /* 0x54 */ float mCutSpeedV;
+    /* 0x58 */ float mJumpAttackStartF;
+    /* 0x5C */ float mJumpAttackEndF;
+    /* 0x60 */ float mCutInitF;
+    /* 0x64 */ float mLandAttackInitF;
+    /* 0x68 */ float mLandAttackEndF;
+    /* 0x6C */ float mLandAttackRadius;
+    /* 0x70 */ float mSpinSlashUnkCF;
+};  // Size: 0x74
+
+
+class daAlinkHIO_cutNmV_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ float field_0x14;
+	/* 0x18 */ float field_0x18;
+	/* 0x1C */ float field_0x1C;
+};  // Size: 0x20
+
+
+class daAlinkHIO_cutNmSR_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ float field_0x14;
+	/* 0x18 */ float field_0x18;
+	/* 0x1C */ float field_0x1C;
+};  // Size: 0x20
+
+
+class daAlinkHIO_cutNmSL_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ float field_0x14;
+	/* 0x18 */ float field_0x18;
+	/* 0x1C */ float field_0x1C;
+};  // Size: 0x20
+
+
+class daAlinkHIO_cutNmR_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ float field_0x14;
+	/* 0x18 */ float field_0x18;
+	/* 0x1C */ float field_0x1C;
+};  // Size: 0x20
+
+
+class daAlinkHIO_cutNmL_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ float field_0x14;
+	/* 0x18 */ float field_0x18;
+	/* 0x1C */ float field_0x1C;
+};  // Size: 0x20
+
+
+class daAlinkHIO_cutHead_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+	/* 0x28 */ daAlinkHIO_anm_c field_0x28;
+	/* 0x3C */ float field_0x3C;
+	/* 0x40 */ float field_0x40;
+	/* 0x44 */ float field_0x44;
+	/* 0x48 */ float field_0x48;
+	/* 0x4C */ float field_0x4C;
+	/* 0x50 */ float field_0x50;
+	/* 0x54 */ float field_0x54;
+	/* 0x58 */ float field_0x58;
+	/* 0x5C */ float field_0x5C;
+};  // Size: 0x60
+
+
+class daAlinkHIO_cutFnV_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ float field_0x14;
+	/* 0x18 */ float field_0x18;
+	/* 0x1C */ float field_0x1C;
+	/* 0x20 */ float field_0x20;
+	/* 0x24 */ float field_0x24;
+	/* 0x28 */ float field_0x28;
+};  // Size: 0x2C
+
+
+class daAlinkHIO_cutFnSm_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ int16_t field_0x14;
+	/* 0x16 */ int16_t field_0x16;
+	/* 0x18 */ float field_0x18;
+	/* 0x1C */ float field_0x1C;
+	/* 0x20 */ float field_0x20;
+	/* 0x24 */ float field_0x24;
+	/* 0x28 */ float field_0x28;
+};  // Size: 0x2C
+
+
+class daAlinkHIO_cutFnSl_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ int16_t field_0x14;
+	/* 0x16 */ int16_t field_0x16;
+	/* 0x18 */ float field_0x18;
+	/* 0x1C */ float field_0x1C;
+	/* 0x20 */ float field_0x20;
+	/* 0x24 */ float field_0x24;
+	/* 0x28 */ float field_0x28;
+};  // Size: 0x2C
+
+
+class daAlinkHIO_cutFnS_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ int16_t field_0x14;
+	/* 0x16 */ int16_t field_0x16;
+	/* 0x18 */ float field_0x18;
+	/* 0x1C */ float field_0x1C;
+	/* 0x20 */ float field_0x20;
+	/* 0x24 */ float field_0x24;
+	/* 0x28 */ float field_0x28;
+};  // Size: 0x2C
+
+
+class daAlinkHIO_cutFnR_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ float field_0x14;
+	/* 0x18 */ float field_0x18;
+	/* 0x1C */ float field_0x1C;
+	/* 0x20 */ float field_0x20;
+	/* 0x24 */ float field_0x24;
+	/* 0x28 */ float field_0x28;
+};  // Size: 0x2C
+
+
+class daAlinkHIO_cutFnL_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ float field_0x14;
+	/* 0x18 */ float field_0x18;
+	/* 0x1C */ float field_0x1C;
+	/* 0x20 */ float field_0x20;
+	/* 0x24 */ float field_0x24;
+	/* 0x28 */ float field_0x28;
+};  // Size: 0x2C
+
+
+class daAlinkHIO_cutFnJU_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+	/* 0x28 */ float field_0x28;
+	/* 0x2C */ float field_0x2C;
+	/* 0x30 */ float field_0x30;
+	/* 0x34 */ float field_0x34;
+	/* 0x38 */ float field_0x38;
+	/* 0x3C */ float field_0x3C;
+	/* 0x40 */ float field_0x40;
+	/* 0x44 */ float field_0x44;
+	/* 0x48 */ float field_0x48;
+	/* 0x4C */ float field_0x4C;
+	/* 0x50 */ float field_0x50;
+};  // Size: 0x54
+
+
+class daAlinkHIO_cutDown_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+	/* 0x28 */ daAlinkHIO_anm_c field_0x28;
+	/* 0x3C */ daAlinkHIO_anm_c field_0x3C;
+	/* 0x50 */ daAlinkHIO_anm_c field_0x50;
+	/* 0x64 */ int16_t field_0x64;
+	/* 0x66 */ int16_t field_0x66;
+	/* 0x68 */ float field_0x68;
+	/* 0x6C */ float field_0x6C;
+	/* 0x70 */ float field_0x70;
+};  // Size: 0x74
+
+
+class daAlinkHIO_cutDaR_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ float field_0x14;
+	/* 0x18 */ float field_0x18;
+};  // Size: 0x1C
+
+
+class daAlinkHIO_cutDaL_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ float field_0x14;
+	/* 0x18 */ float field_0x18;
+};  // Size: 0x1C
+
+
+class daAlinkHIO_cutDaCharge_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ float field_0x14;
+	/* 0x18 */ float field_0x18;
+};  // Size: 0x1C
+
+
+class daAlinkHIO_move_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c mSlideAnm;
+    /* 0x14 */ int16_t mMaxTurnAngle;
+    /* 0x16 */ int16_t mMinTurnAngle;
+    /* 0x18 */ int16_t mTurnAngleRate;
+    /* 0x1C */ float mWaitAnmSpeed;
+    /* 0x20 */ float mWalkAnmSpeed;
+    /* 0x24 */ float mRunAnmSpeed;
+    /* 0x28 */ float mWalkChangeRate;
+    /* 0x2C */ float mRunChangeRate;
+    /* 0x30 */ float mMaxSpeed;
+    /* 0x34 */ float mAcceleration;
+    /* 0x38 */ float mDeceleration;
+    /* 0x3C */ float mSlideThresholdSpeed;  // speed needed to trigger a slide
+    /* 0x40 */ float mSlideSpeed;
+    /* 0x44 */ float mSlideDeceleration;
+    /* 0x48 */ float mFootPositionRatio;
+    /* 0x4C */ float mUnkInterpolation;
+    /* 0x50 */ float mMinWalkFrame;
+    /* 0x54 */ float mMinTiredWalkFrame;
+};  // Size: 0x58
+
+
+class daAlinkHIO_sideStep_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c mSideJumpAnm;
+    /* 0x14 */ daAlinkHIO_anm_c mSideLandAnm;
+    /* 0x28 */ daAlinkHIO_anm_c mBackJumpAnm;
+    /* 0x3C */ daAlinkHIO_anm_c mBackLandAnm;
+    /* 0x50 */ float mSideJumpSpeedH;
+    /* 0x54 */ float mSideJumpSpeedV;
+    /* 0x58 */ float mBackJumpSpeedH;
+    /* 0x5C */ float mBackJumpSpeedV;
+    /* 0x60 */ float mFallHeight;
+    /* 0x64 */ float mFallInterpolation;
+};  // Size: 0x68
+
+
+class daAlinkHIO_atnMove_c1 {
+public:
+    /* 0x00 */ int16_t mMaxTurnAngle;
+    /* 0x02 */ int16_t mMinTurnAngle;
+    /* 0x04 */ int16_t mTurnAngleRate;
+    /* 0x08 */ float mWaitAnmSpeed;
+    /* 0x0C */ float mWalkAnmSpeed;
+    /* 0x10 */ float mRunAnmSpeed;
+    /* 0x14 */ float mWalkChangeRate;
+    /* 0x18 */ float mRunChangeRate;
+    /* 0x1C */ float mMaxSpeed;
+    /* 0x20 */ float mAcceleration;
+    /* 0x24 */ float mDeceleration;
+    /* 0x28 */ float mBackWalkAnmSpeed;
+    /* 0x2C */ float mBackRunAnmSpeed;
+    /* 0x30 */ float mBackWalkChangeRate;
+    /* 0x34 */ float mBackRunChangeRate;
+    /* 0x38 */ float mMaxBackwardsSpeed;
+    /* 0x3C */ float mBackAcceleration;
+    /* 0x40 */ float mBackDeceleration;
+    /* 0x44 */ float mMinWalkFrame;
+    /* 0x48 */ float mMinBackWalkFrame;
+    /* 0x4C */ float mWalkForwardAnmSpeed;
+    /* 0x50 */ float mRunForwardAnmSpeed;
+};  // Size: 0x54
+
+
+class daAlinkHIO_noActAtnMove_c1 {
+public:
+	/* 0x00 */ int16_t field_0x0;
+	/* 0x02 */ int16_t field_0x2;
+	/* 0x04 */ int16_t field_0x4;
+	/* 0x08 */ float field_0x8;
+	/* 0x0C */ float field_0xC;
+	/* 0x10 */ float field_0x10;
+	/* 0x14 */ float field_0x14;
+	/* 0x18 */ float field_0x18;
+	/* 0x1C */ float field_0x1C;
+	/* 0x20 */ float field_0x20;
+	/* 0x24 */ float field_0x24;
+	/* 0x28 */ float field_0x28;
+	/* 0x2C */ float field_0x2C;
+	/* 0x30 */ float field_0x30;
+	/* 0x34 */ float field_0x34;
+	/* 0x38 */ float field_0x38;
+	/* 0x3C */ float field_0x3C;
+	/* 0x40 */ float field_0x40;
+	/* 0x44 */ float field_0x44;
+	/* 0x48 */ float field_0x48;
+	/* 0x4C */ float field_0x4C;
+	/* 0x50 */ float field_0x50;
+};  // Size: 0x54
+
+
+class daAlinkHIO_wallMove_c1 {
+public:
+    /* 0x00 */ float mMinAnmSpeed;
+    /* 0x04 */ float mMaxAnmSpeed;
+    /* 0x08 */ float mInterpolation;
+    /* 0x0C */ float mMinSpeed;
+    /* 0x10 */ float mMaxSpeed;
 };
+
+
+class daAlinkHIO_turnMove_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c mTurnAnm;
+    /* 0x14 */ int16_t mTurnSpeedRate;
+    /* 0x16 */ int16_t mMaxTurnSpeed;
+    /* 0x18 */ int16_t mMinTurnSpeed;
+    /* 0x1A */ int16_t mMaxHalfTurnSpeed;
+    /* 0x1C */ float mHalfTurnAnmSpeed;
+    /* 0x20 */ float mTwirlCutDelayF;
+    /* 0x24 */ float mSideRollAnmSpeed;
+    /* 0x28 */ float mSideRollSpeed;
+};  // Size: 0x2C
+
+
+class daAlinkHIO_slide_c1 {
+public:
+    // most of these havent been verified yet
+    /* 0x00 */ daAlinkHIO_anm_c mForwardSlideAnm;
+    /* 0x14 */ daAlinkHIO_anm_c mBackwardSlideAnm;
+    /* 0x28 */ daAlinkHIO_anm_c mForwardLandAnm;  // this and 0x3C might have names reversed?
+    /* 0x3C */ daAlinkHIO_anm_c mBackwardLandAnm;
+    /* 0x50 */ float mMaxSpeed;
+    /* 0x54 */ float mAcceleration;
+    /* 0x58 */ float mSlideAngle;
+    /* 0x5C */ float mClimbAngle;
+    /* 0x60 */ float mClimbAnmMinSpeed;
+    /* 0x64 */ float mMaxClimbSpeed;
+    /* 0x68 */ float mLavaFloorSlideAngle;      // ?
+    /* 0x6C */ float mLavaFloorWeakSlideAngle;  // ?
+    /* 0x70 */ float mLavaFloorWeakSlideSpeed;
+    /* 0x74 */ float mMaxClimbAnmSpeed;
+};  // Size: 0x78
+
+
+class daAlinkHIO_frontRoll_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c mRollAnm;
+    /* 0x14 */ daAlinkHIO_anm_c mCrashAnm;
+    /* 0x28 */ daAlinkHIO_anm_c mCrashHitAnm;  // ?
+    /* 0x3C */ int16_t mCrashAngleThreshold;
+    /* 0x3E */ int16_t mTurnRate;
+    /* 0x40 */ int16_t mTurnMaxAngle;
+    /* 0x42 */ int16_t mTurnMinAngle;
+    /* 0x44 */ float mInitSpeed;
+    /* 0x48 */ float mSpeedRate;
+    /* 0x4C */ float mMinSpeed;
+    /* 0x50 */ float mCrashSpeedThreshold;
+    /* 0x54 */ float mCrashInitF;
+    /* 0x58 */ float mCrashEndF;
+    /* 0x5C */ float mCrashSpeedH;
+    /* 0x60 */ float mCrashSpeedV;
+    /* 0x64 */ float mBootsAttackInitF;
+    /* 0x68 */ float mBootsAttackEndF;
+    /* 0x6C */ float mBootsAttackRadius;
+};  // Size: 0x70
+
+
+class daAlinkHIO_swim_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c mResurfaceAnm;
+    /* 0x14 */ daAlinkHIO_anm_c mDiveAnm;
+    /* 0x28 */ daAlinkHIO_anm_c mUnderwaterDiveAnm;
+    /* 0x3C */ daAlinkHIO_anm_c mDashAnm;
+    /* 0x50 */ int16_t mTurnRate;
+    /* 0x52 */ int16_t mTurnMin;
+    /* 0x54 */ int16_t mTurnMax;
+    /* 0x56 */ int16_t mUnderwaterTurnRate;
+    /* 0x58 */ int16_t mUnderwaterTurnMin;
+    /* 0x5A */ int16_t mUnderwaterTurnMax;
+    /* 0x5C */ int16_t val1a;   // related to dash
+    /* 0x5E */ int16_t val1a_;  // related to dash
+    /* 0x60 */ float mInitHeight;
+    /* 0x64 */ float mResurfaceHeight;
+    /* 0x68 */ float mMaxForwardSpeed;
+    /* 0x6C */ float mMaxStrafeSpeed;
+    /* 0x70 */ float mMaxBackwardSpeed;
+    /* 0x74 */ float mMaxUnderwaterSpeed;
+    /* 0x78 */ float mUnderwaterMaxSinkSpeed;
+    /* 0x7C */ float mAcceleration;
+    /* 0x80 */ float mDeceleration;
+    /* 0x84 */ float mMaxSinkSpeed;
+    /* 0x88 */ float mMaxFloatUpSpeed;
+    /* 0x8C */ float mBuoyancy;  // ?
+    /* 0x90 */ float mWaitAnmSpeed;
+    /* 0x94 */ float mWaitInterpolation;
+    /* 0x98 */ float mWaitVibrationIntensity;
+    /* 0x9C */ float mForwardMinAnmSpeed;
+    /* 0xA0 */ float mForwardMaxAnmSpeed;
+    /* 0xA4 */ float mStrafeMinAnmSpeed;
+    /* 0xA8 */ float mStrafeMaxAnmSpeed;
+    /* 0xAC */ float mBackwardMinAnmSpeed;
+    /* 0xB0 */ float mBackwardMaxAnmSpeed;
+    /* 0xB4 */ float mUnderwaterMinAnmSpeed;
+    /* 0xB8 */ float mUnderwaterMaxAnmSpeed;
+    /* 0xBC */ float mMoveInterpolation;
+    /* 0xC0 */ float mClimbHeight;
+    /* 0xC4 */ float mUnderwaterClimbHeight;
+    /* 0xC8 */ float mForwardMinSpeed;
+    /* 0xCC */ float mInitMaxSinkSpeed;
+    /* 0xD0 */ float mBootsMaxSinkSpeed;
+    /* 0xD4 */ float mNormalFloatDepth;
+    /* 0xD8 */ float mZoraFloatDepth;
+    /* 0xDC */ float mUnderwaterButtonSpeed;
+    /* 0xE0 */ float mUnderwaterButtonAnmSpeed;  // ?
+    /* 0xE4 */ float mBootsGravity;
+    /* 0xE8 */ float mSurfaceSwimSpeedRate;
+    /* 0xEC */ float mDashMaxSpeed;  // ?
+    /* 0xF0 */ float mDashDeceleration;
+    /* 0xF4 */ float mDashMinAnmSpeed;
+    /* 0xF8 */ float mDashMaxAnmSpeed;
+};  // Size: 0xFC
+
+
+class daAlinkHIO_ladder_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ daAlinkHIO_anm_c field_0x14;
+    /* 0x28 */ float field_0x28;
+    /* 0x2C */ float field_0x2C;
+    /* 0x30 */ float field_0x30;
+    /* 0x34 */ float field_0x34;
+    /* 0x38 */ float field_0x38;
+    /* 0x3C */ float field_0x3C;
+    /* 0x40 */ float field_0x40;
+    /* 0x44 */ float field_0x44;
+    /* 0x48 */ float field_0x48;
+    /* 0x4C */ float field_0x4C;
+    /* 0x50 */ float field_0x50;
+    /* 0x54 */ float field_0x54;
+    /* 0x58 */ float field_0x58;
+    /* 0x5C */ float field_0x5C;
+    /* 0x60 */ float field_0x60;
+    /* 0x64 */ float field_0x64;
+    /* 0x68 */ float field_0x68;
+    /* 0x6C */ float field_0x6C;
+};  // Size: 0x70
+
+
+class daAlinkHIO_wallHang_c1 {
+public:
+	/* 0x00 */ int16_t field_0x0;
+	/* 0x02 */ int16_t field_0x2;
+	/* 0x04 */ float field_0x4;
+	/* 0x08 */ float field_0x8;
+	/* 0x0C */ float field_0xC;
+	/* 0x10 */ float field_0x10;
+	/* 0x14 */ float field_0x14;
+	/* 0x18 */ float field_0x18;
+};  // Size: 0x1C
+
+
+class daAlinkHIO_wallFall_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+};  // Size: 0x28
+
+
+class daAlinkHIO_wallCatch_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+	/* 0x28 */ daAlinkHIO_anm_c field_0x28;
+	/* 0x3C */ daAlinkHIO_anm_c field_0x3C;
+	/* 0x50 */ float field_0x50;
+};  // Size: 0x54
+
+
+class daAlinkHIO_roofHang_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ int16_t field_0x14;
+	/* 0x16 */ int16_t field_0x16;
+	/* 0x18 */ int16_t field_0x18;
+	/* 0x1C */ float field_0x1C;
+	/* 0x20 */ float field_0x20;
+	/* 0x24 */ float field_0x24;
+	/* 0x28 */ float field_0x28;
+	/* 0x2C */ float field_0x2C;
+	/* 0x30 */ float field_0x30;
+	/* 0x34 */ float field_0x34;
+	/* 0x38 */ float field_0x38;
+	/* 0x3C */ float field_0x3C;
+	/* 0x40 */ float field_0x40;
+	/* 0x44 */ float field_0x44;
+	/* 0x48 */ float field_0x48;
+};  // Size: 0x4C
+
+
+class daAlinkHIO_pushpull_c1 {
+public:
+	/* 0x00 */ int16_t field_0x0;
+	/* 0x02 */ int16_t field_0x2;
+	/* 0x04 */ int16_t field_0x4;
+	/* 0x06 */ int16_t field_0x6;
+	/* 0x08 */ int16_t field_0x8;
+	/* 0x0A */ int16_t field_0xA;
+	/* 0x0C */ int16_t field_0xC;
+	/* 0x0E */ int16_t field_0xE;
+	/* 0x10 */ float field_0x10;
+	/* 0x14 */ float field_0x14;
+	/* 0x18 */ float field_0x18;
+	/* 0x1C */ float field_0x1C;
+	/* 0x20 */ float field_0x20;
+	/* 0x24 */ float field_0x24;
+	/* 0x28 */ float field_0x28;
+	/* 0x2C */ float field_0x2C;
+	/* 0x30 */ float field_0x30;
+	/* 0x34 */ float field_0x34;
+	/* 0x38 */ float field_0x38;
+};  // Size: 0x3C
+
+
+class daAlinkHIO_pickUp_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+	/* 0x28 */ float field_0x28;
+	/* 0x2C */ float field_0x2C;
+};  // Size: 0x30
+
+
+class daAlinkHIO_crouch_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+	/* 0x28 */ int16_t field_0x28;
+	/* 0x2A */ int16_t field_0x2A;
+	/* 0x2C */ int16_t field_0x2C;
+	/* 0x30 */ float field_0x30;
+	/* 0x34 */ float field_0x34;
+	/* 0x38 */ float field_0x38;
+	/* 0x3C */ float field_0x3C;
+	/* 0x40 */ float field_0x40;
+	/* 0x44 */ float field_0x44;
+	/* 0x48 */ float field_0x48;
+};  // Size: 0x4C
+
+
+class daAlinkHIO_canoe_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ int16_t field_0x14;
+	/* 0x16 */ int16_t field_0x16;
+	/* 0x18 */ float field_0x18;
+	/* 0x1C */ float field_0x1C;
+	/* 0x20 */ float field_0x20;
+	/* 0x24 */ float field_0x24;
+	/* 0x28 */ float field_0x28;
+	/* 0x2C */ float field_0x2C;
+	/* 0x30 */ float field_0x30;
+	/* 0x34 */ float field_0x34;
+	/* 0x38 */ float field_0x38;
+	/* 0x3C */ float field_0x3C;
+	/* 0x40 */ float field_0x40;
+	/* 0x44 */ float field_0x44;
+};  // Size: 0x48
+
+
+class daAlinkHIO_horse_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ daAlinkHIO_anm_c field_0x14;
+    /* 0x28 */ daAlinkHIO_anm_c field_0x28;
+    /* 0x3C */ daAlinkHIO_anm_c field_0x3C;
+    /* 0x50 */ int16_t field_0x50;
+    /* 0x52 */ int16_t field_0x52;
+    /* 0x54 */ int16_t field_0x54;
+    /* 0x56 */ int16_t field_0x56;
+    /* 0x58 */ int16_t field_0x58;
+    /* 0x5A */ int16_t field_0x5A;
+    /* 0x5C */ float field_0x5C;
+    /* 0x60 */ float field_0x60;
+    /* 0x64 */ float field_0x64;
+    /* 0x68 */ float field_0x68;
+};  // Size: 0x6C
+
+class daAlinkHIO_huLight_c1 {
+public:
+	/* 0x00 */ int16_t field_0x0;
+	/* 0x02 */ int16_t field_0x2;
+	/* 0x04 */ int16_t field_0x4;
+	/* 0x06 */ int16_t field_0x6;
+	/* 0x08 */ int16_t field_0x8;
+	/* 0x0A */ int16_t field_0xA;
+	/* 0x0C */ float field_0xC;
+	/* 0x10 */ float field_0x10;
+	/* 0x14 */ float field_0x14;
+	/* 0x18 */ float field_0x18;
+};  // Size: 0x1C
+
+
+class daAlinkHIO_hoCutRA_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ float field_0x14;
+	/* 0x18 */ float field_0x18;
+	/* 0x1C */ float field_0x1C;
+};  // Size: 0x20
+
+
+class daAlinkHIO_hoCutRB_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ float field_0x14;
+	/* 0x18 */ float field_0x18;
+	/* 0x1C */ float field_0x1C;
+};  // Size: 0x20
+
+
+class daAlinkHIO_hoCutLA_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ float field_0x14;
+	/* 0x18 */ float field_0x18;
+	/* 0x1C */ float field_0x1C;
+};  // Size: 0x20
+
+
+class daAlinkHIO_hoCutLB_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ float field_0x14;
+	/* 0x18 */ float field_0x18;
+	/* 0x1C */ float field_0x1C;
+};  // Size: 0x20
+
+
+
+class daAlinkHIO_hoCutCharge_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+	/* 0x28 */ daAlinkHIO_anm_c field_0x28;
+	/* 0x3C */ int16_t field_0x3C;
+	/* 0x3E */ int16_t field_0x3E;
+	/* 0x40 */ float field_0x40;
+	/* 0x44 */ float field_0x44;
+	/* 0x48 */ float field_0x48;
+	/* 0x4C */ float field_0x4C;
+	/* 0x50 */ float field_0x50;
+};  // Size: 0x54
+
+
+class daAlinkHIO_guard_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+	/* 0x28 */ daAlinkHIO_anm_c field_0x28;
+	/* 0x3C */ daAlinkHIO_anm_c field_0x3C;
+	/* 0x50 */ int16_t field_0x50;
+	/* 0x52 */ int16_t field_0x52;
+	/* 0x54 */ int16_t field_0x54;
+	/* 0x56 */ int16_t field_0x56;
+	/* 0x58 */ int16_t field_0x58;
+	/* 0x5C */ float field_0x5C;
+	/* 0x60 */ float field_0x60;
+	/* 0x64 */ float field_0x64;
+	/* 0x68 */ float field_0x68;
+	/* 0x6C */ float field_0x6C;
+	/* 0x70 */ float field_0x70;
+	/* 0x74 */ float field_0x74;
+	/* 0x78 */ float field_0x78;
+	/* 0x7C */ float field_0x7C;
+};  // Size: 0x80
+
+
+class daAlinkHIO_grab_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+	/* 0x28 */ daAlinkHIO_anm_c field_0x28;
+	/* 0x3C */ daAlinkHIO_anm_c field_0x3C;
+	/* 0x50 */ daAlinkHIO_anm_c field_0x50;
+	/* 0x64 */ daAlinkHIO_anm_c field_0x64;
+	/* 0x78 */ daAlinkHIO_anm_c field_0x78;
+	/* 0x8C */ daAlinkHIO_anm_c field_0x8C;
+	/* 0xA0 */ daAlinkHIO_anm_c field_0xA0;
+	/* 0xB4 */ daAlinkHIO_anm_c field_0xB4;
+	/* 0xC8 */ daAlinkHIO_anm_c field_0xC8;
+	/* 0xDC */ int16_t field_0xDC;
+	/* 0xDE */ int16_t field_0xDE;
+	/* 0xE0 */ float field_0xE0;
+};  // Size: 0xE4
+
+
+class daAlinkHIO_gAtPush_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ float field_0x14;
+	/* 0x18 */ float field_0x18;
+	/* 0x1C */ float field_0x1C;
+	/* 0x20 */ float field_0x20;
+};  // Size: 0x24
+
+
+class daAlinkHIO_gAtKick_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ float field_0x14;
+	/* 0x18 */ float field_0x18;
+	/* 0x1C */ float field_0x1C;
+	/* 0x20 */ float field_0x20;
+};  // Size: 0x24
+
+
+class daAlinkHIO_fmChain_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+};  // Size: 0x28
+
+
+class daAlinkHIO_damage_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+	/* 0x28 */ int16_t field_0x28;
+	/* 0x2A */ int16_t field_0x2A;
+	/* 0x2C */ int16_t field_0x2C;
+	/* 0x2E */ int16_t field_0x2E;
+	/* 0x30 */ int16_t field_0x30;
+	/* 0x32 */ int16_t field_0x32;
+	/* 0x34 */ int16_t field_0x34;
+	/* 0x36 */ int16_t field_0x36;
+	/* 0x38 */ int16_t field_0x38;
+    /* 0x3A */ int16_t field_0x3A;
+	/* 0x3C */ int16_t field_0x3C;
+	/* 0x3E */ int16_t field_0x3E;
+    /* 0x40 */ int16_t field_0x40;
+	/* 0x42 */ int16_t field_0x42;
+	/* 0x44 */ int16_t field_0x44;
+    /* 0x46 */ int16_t field_0x46;
+	/* 0x48 */ int16_t field_0x48;
+	/* 0x4A */ int16_t field_0x4A;
+	/* 0x4C */ int16_t field_0x4C;
+	/* 0x50 */ float field_0x50;
+	/* 0x54 */ float field_0x54;
+};  // Size: 0x58
+
+
+class daAlinkHIO_damNormal_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+	/* 0x28 */ daAlinkHIO_anm_c field_0x28;
+	/* 0x3C */ daAlinkHIO_anm_c field_0x3C;
+	/* 0x50 */ int16_t field_0x50;
+	/* 0x52 */ int16_t field_0x52;
+	/* 0x54 */ float field_0x54;
+	/* 0x58 */ float field_0x58;
+	/* 0x5C */ float field_0x5C;
+	/* 0x60 */ float field_0x60;
+};  // Size: 0x64
+
+
+class daAlinkHIO_damLarge_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+	/* 0x28 */ daAlinkHIO_anm_c field_0x28;
+	/* 0x3C */ daAlinkHIO_anm_c field_0x3C;
+	/* 0x50 */ daAlinkHIO_anm_c field_0x50;
+	/* 0x64 */ daAlinkHIO_anm_c field_0x64;
+	/* 0x78 */ daAlinkHIO_anm_c field_0x78;
+	/* 0x8C */ daAlinkHIO_anm_c field_0x8C;
+	/* 0xA0 */ int16_t field_0xA0;
+	/* 0xA4 */ float field_0xA4;
+	/* 0xA8 */ float field_0xA8;
+	/* 0xAC */ float field_0xAC;
+	/* 0xB0 */ float field_0xB0;
+	/* 0xB4 */ float field_0xB4;
+	/* 0xB8 */ float field_0xB8;
+};  // Size: 0xBC
+
+
+class daAlinkHIO_damHuge_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+	/* 0x28 */ daAlinkHIO_anm_c field_0x28;
+	/* 0x3C */ daAlinkHIO_anm_c field_0x3C;
+	/* 0x50 */ daAlinkHIO_anm_c field_0x50;
+	/* 0x64 */ daAlinkHIO_anm_c field_0x64;
+	/* 0x78 */ daAlinkHIO_anm_c field_0x78;
+	/* 0x8C */ daAlinkHIO_anm_c field_0x8C;
+	/* 0xA0 */ int16_t field_0xA0;
+	/* 0xA4 */ float field_0xA4;
+	/* 0xA8 */ float field_0xA8;
+	/* 0xAC */ float field_0xAC;
+	/* 0xB0 */ float field_0xB0;
+	/* 0xB4 */ float field_0xB4;
+	/* 0xB8 */ float field_0xB8;
+};  // Size: 0xBC
+
+
+class daAlinkHIO_damHorse_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+	/* 0x28 */ int16_t field_0x28;
+	/* 0x2A */ int16_t field_0x2A;
+};  // Size: 0x2C
+
+
+class daAlinkHIO_damFall_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+	/* 0x28 */ int16_t field_0x28;
+	/* 0x2A */ int16_t field_0x2A;
+	/* 0x2C */ float field_0x2C;
+	/* 0x30 */ float field_0x30;
+	/* 0x34 */ float field_0x34;
+	/* 0x38 */ float field_0x38;
+	/* 0x3C */ float field_0x3C;
+	/* 0x40 */ float field_0x40;
+	/* 0x44 */ float field_0x44;
+};  // Size: 0x48
+
+
+class daAlinkHIO_damSwim_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+	/* 0x28 */ daAlinkHIO_anm_c field_0x28;
+	/* 0x3C */ daAlinkHIO_anm_c field_0x3C;
+	/* 0x50 */ daAlinkHIO_anm_c field_0x50;
+	/* 0x64 */ daAlinkHIO_anm_c field_0x64;
+	/* 0x78 */ int16_t field_0x78;
+	/* 0x7A */ int16_t field_0x7A;
+	/* 0x7C */ float field_0x7C;
+	/* 0x80 */ float field_0x80;
+	/* 0x84 */ float field_0x84;
+	/* 0x88 */ float field_0x88;
+};  // Size: 0x8C
+
+
+class daAlinkHIO_damCaught_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ int16_t field_0x14;
+	/* 0x16 */ int16_t field_0x16;
+	/* 0x18 */ float field_0x18;
+	/* 0x1C */ float field_0x1C;
+	/* 0x20 */ float field_0x20;
+};  // Size: 0x24
+
+
+class daAlinkHIO_wolf_c1 {
+public:
+    /* 0x00 */ int16_t mMaxNeckTurnH;
+    /* 0x02 */ int16_t mMaxNeckTurnUp;
+    /* 0x04 */ int16_t mMaxNeckTurnDown;
+    /* 0x06 */ int16_t mMaxTiredNeckTurnH;
+    /* 0x08 */ int16_t mMaxTiredNeckTurnUp;
+    /* 0x0A */ int16_t mMaxTiredNeckTurnDown;
+    /* 0x0C */ int16_t mSensesLingerTime;  // ?
+    /* 0x0E */ int16_t mLightDropR;
+    /* 0x10 */ int16_t mLightDropG;
+    /* 0x12 */ int16_t mLightDropB;
+    /* 0x14 */ float mSwampInputRate;  // ?
+};                                   // Size: 0x18
+
+
+class daAlinkHIO_wlMove_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c mSlipAnm;
+    /* 0x14 */ daAlinkHIO_anm_c mRollOverAnm;
+    /* 0x28 */ daAlinkHIO_anm_c mDashAnm;
+    /* 0x3C */ daAlinkHIO_anm_c mDashBounceAnm;
+    /* 0x50 */ int16_t mTurnMax;
+    /* 0x52 */ int16_t mTurnMin;
+    /* 0x54 */ int16_t mRotateAngleRate;
+    /* 0x56 */ int16_t mDashTime;
+    /* 0x58 */ int16_t mDashWaitTime;
+    /* 0x5A */ int16_t mDashTimeSlow;
+    /* 0x5C */ int16_t mDashWaitTimeSlow;
+    /* 0x5E */ int16_t mDashTimeSlow2;
+    /* 0x60 */ int16_t mDashWaitTimeSlow2;
+    /* 0x64 */ float mMaxSpeed;
+    /* 0x68 */ float mAcceleration;
+    /* 0x6C */ float mDeceleration;
+    /* 0x70 */ float mIdleAnmSpeed;
+    /* 0x74 */ float mWalkAnmSpeed;
+    /* 0x78 */ float mFastWalkAnmSpeed;
+    /* 0x7C */ float mRunAnmSpeed;
+    /* 0x80 */ float mFastRunAnmSpeed;
+    /* 0x84 */ float mWalkTransitionRate;
+    /* 0x88 */ float mFastWalkTransitionRate;
+    /* 0x8C */ float mRunTransitionRate;
+    /* 0x90 */ float mFastRunTransitionRate;
+    /* 0x94 */ float mNormalInterpolation;
+    /* 0x98 */ float mWalkRunInterpolation;
+    /* 0x9C */ float mRunAnmMinUnit;
+    /* 0xA0 */ float mSlideInitRate;
+    /* 0xA4 */ float mSlideInitSpeed;
+    /* 0xA8 */ float mSlideDeceleration;
+    /* 0xAC */ float mRollOverSpeed;
+    /* 0xB0 */ float mStartRollOverF;
+    /* 0xB4 */ float field_0xB4;
+    /* 0xB8 */ float field_0xB8;
+    /* 0xBC */ float mIdleInterpolation;
+    /* 0xC0 */ float mRollOverFallHeight;
+    /* 0xC4 */ float mRollOverFallInterpolation;
+    /* 0xC8 */ float mDashMaxSpeed;
+    /* 0xCC */ float mDashRunAnmSpeed;
+    /* 0xD0 */ float mDashAcceleration;
+    /* 0xD4 */ float mDashInitSpeed;
+    /* 0xD8 */ float mDashSideBounceSpeed;
+    /* 0xDC */ float mDashTopBounceSpeed;
+    /* 0xE0 */ float mDashMaxSpeedSlow;
+    /* 0xE4 */ float mDashInitSpeedSlow;
+    /* 0xE8 */ float mDashRunAnmSpeedSlow;
+    /* 0xEC */ float mDashAccelSlow;
+    /* 0xF0 */ float mDashMaxSpeedSlow2;
+    /* 0xF4 */ float mDashInitSpeedSlow2;
+    /* 0xF8 */ float mDashRunAnmSpeedSlow2;
+    /* 0xFC */ float mDashAccelSlow2;
+};  // Size: 0x100
+
+
+class daAlinkHIO_wlMoveNoP_c1 {
+public:
+    /* 0x00 */ int16_t field_0x0;
+    /* 0x02 */ int16_t field_0x2;
+    /* 0x04 */ int16_t field_0x4;
+    /* 0x08 */ float field_0x8;
+    /* 0x0C */ float field_0xC;
+    /* 0x10 */ float field_0x10;
+    /* 0x14 */ float field_0x14;
+    /* 0x18 */ float field_0x18;
+    /* 0x1C */ float field_0x1C;
+    /* 0x20 */ float field_0x20;
+    /* 0x24 */ float field_0x24;
+    /* 0x28 */ float field_0x28;
+    /* 0x2C */ float field_0x2C;
+    /* 0x30 */ float field_0x30;
+    /* 0x34 */ float field_0x34;
+    /* 0x38 */ float field_0x38;
+    /* 0x3C */ float field_0x3C;
+    /* 0x40 */ float field_0x40;
+    /* 0x44 */ float field_0x44;
+};  // Size: 0x48
+
+
+class daAlinkHIO_wlAtnMove_c1 {
+public:
+    /* 0x00 */ int16_t field_0x0;
+    /* 0x02 */ int16_t field_0x2;
+    /* 0x04 */ int16_t field_0x4;
+    /* 0x08 */ float field_0x8;
+    /* 0x0C */ float field_0xC;
+    /* 0x10 */ float field_0x10;
+    /* 0x14 */ float field_0x14;
+    /* 0x18 */ float field_0x18;
+    /* 0x1C */ float field_0x1C;
+    /* 0x20 */ float field_0x20;
+    /* 0x24 */ float field_0x24;
+    /* 0x28 */ float field_0x28;
+    /* 0x2C */ float field_0x2C;
+    /* 0x30 */ float field_0x30;
+    /* 0x34 */ float field_0x34;
+};  // Size: 0x38
+
 
 class daAlinkHIO_wlAutoJump_c1 {
 public:
@@ -988,10 +2064,752 @@ public:
     /* 0x78 */ float field_0x78;
 };  // size = 0x7C
 
-class daAlinkHIO_wlAutoJump_c0 {
+
+class daAlinkHIO_wlSlide_c1 {
 public:
-    //static daAlinkHIO_wlAutoJump_c1 const m;
-};
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ daAlinkHIO_anm_c field_0x14;
+    /* 0x28 */ daAlinkHIO_anm_c field_0x28;
+    /* 0x3C */ daAlinkHIO_anm_c field_0x3C;
+    /* 0x50 */ int16_t field_0x50;
+    /* 0x52 */ int16_t field_0x52;
+    /* 0x54 */ float field_0x54;
+    /* 0x58 */ float field_0x58;
+    /* 0x5C */ float field_0x5C;
+    /* 0x60 */ float field_0x60;
+    /* 0x64 */ float field_0x64;
+    /* 0x68 */ float field_0x68;
+    /* 0x6C */ float field_0x6C;
+    /* 0x70 */ float field_0x70;
+    /* 0x74 */ float field_0x74;
+    /* 0x78 */ float field_0x78;
+};  // Size: 0x7C
+
+
+class daAlinkHIO_wlSideStep_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ daAlinkHIO_anm_c field_0x14;
+    /* 0x28 */ daAlinkHIO_anm_c field_0x28;
+    /* 0x3C */ daAlinkHIO_anm_c field_0x3C;
+    /* 0x50 */ float field_0x50;
+    /* 0x54 */ float field_0x54;
+    /* 0x58 */ float field_0x58;
+    /* 0x5C */ float field_0x5C;
+    /* 0x60 */ float field_0x60;
+    /* 0x64 */ float field_0x64;
+};  // Size: 0x68
+
+
+class daAlinkHIO_wlBackJump_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ daAlinkHIO_anm_c field_0x14;
+    /* 0x28 */ float field_0x28;
+    /* 0x2C */ float field_0x2C;
+    /* 0x30 */ float field_0x30;
+    /* 0x34 */ float field_0x34;
+};  // Size: 0x38
+
+
+class daAlinkHIO_wlRope_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ int16_t field_0x14;
+    /* 0x16 */ int16_t field_0x16;
+    /* 0x18 */ float field_0x18;
+    /* 0x1C */ float field_0x1C;
+    /* 0x20 */ float field_0x20;
+    /* 0x24 */ float field_0x24;
+    /* 0x28 */ float field_0x28;
+    /* 0x2C */ float field_0x2C;
+    /* 0x30 */ float field_0x30;
+    /* 0x34 */ float field_0x34;
+};  // Size: 0x38
+
+
+class daAlinkHIO_wlPush_c1 {
+public:
+    /* 0x00 */ float field_0x0;
+    /* 0x04 */ float field_0x4;
+    /* 0x08 */ float field_0x8;
+    /* 0x0C */ float field_0xC;
+    /* 0x10 */ float field_0x10;
+};  // Size: 0x14
+
+
+class daAlinkHIO_wlPoint_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ daAlinkHIO_anm_c field_0x14;
+    /* 0x28 */ daAlinkHIO_anm_c field_0x28;
+    /* 0x3C */ daAlinkHIO_anm_c field_0x3C;
+    /* 0x50 */ daAlinkHIO_anm_c field_0x50;
+    /* 0x64 */ float field_0x64;
+    /* 0x68 */ float field_0x68;
+    /* 0x6C */ float field_0x6C;
+    /* 0x70 */ float field_0x70;
+    /* 0x74 */ float field_0x74;
+    /* 0x78 */ float field_0x78;
+};  // Size: 0x7C
+
+
+class daAlinkHIO_wlWallHang_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ daAlinkHIO_anm_c field_0x14;
+    /* 0x28 */ daAlinkHIO_anm_c field_0x28;
+    /* 0x3C */ daAlinkHIO_anm_c field_0x3C;
+    /* 0x50 */ daAlinkHIO_anm_c field_0x50;
+    /* 0x64 */ daAlinkHIO_anm_c field_0x64;
+    /* 0x78 */ float field_0x78;
+    /* 0x7C */ float field_0x7C;
+    /* 0x80 */ float field_0x80;
+    /* 0x84 */ float field_0x84;
+    /* 0x88 */ float field_0x88;
+    /* 0x8C */ float field_0x8C;
+    /* 0x90 */ float field_0x90;
+    /* 0x94 */ float field_0x94;
+    /* 0x98 */ float field_0x98;
+};  // Size: 0x9C
+
+
+class daAlinkHIO_wlSwim_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c mSurfaceAnm;
+    /* 0x14 */ daAlinkHIO_anm_c mWaterShakeAnm;
+    /* 0x28 */ daAlinkHIO_anm_c mDashAnm;
+    /* 0x3C */ int16_t mTurnRate;
+    /* 0x3E */ int16_t mTurnMin;
+    /* 0x40 */ int16_t mTurnMax;
+    /* 0x42 */ int16_t mWaitTurnRate;
+    /* 0x44 */ int16_t mWaitTurnMin;
+    /* 0x46 */ int16_t mWaitTurnMax;
+    /* 0x48 */ float mStartHeight;
+    /* 0x4C */ float mSurfaceHeight;
+    /* 0x50 */ float mMaxSpeed;
+    /* 0x54 */ float mDeceleration;
+    /* 0x58 */ float mMaxFallSpeed;
+    /* 0x5C */ float mMaxRiseSpeed;
+    /* 0x60 */ float mBuoyancy;
+    /* 0x64 */ float mIdleAnmSpeed;
+    /* 0x68 */ float mIdleInterpolation;
+    /* 0x6C */ float mIdleOscillationAmount;
+    /* 0x70 */ float mMoveAnmSpeedMin;
+    /* 0x74 */ float mMoveAnmSpeedMax;
+    /* 0x78 */ float mMoveInterpolation;
+    /* 0x7C */ float mClimbHeight;
+    /* 0x80 */ float mMaxSpeedWeak;
+    /* 0x84 */ float mDecelerationWeak;
+    /* 0x88 */ float mIdleAnmSpeedWeak;
+    /* 0x8C */ float mMoveAnmSpeedMinWeak;
+    /* 0x90 */ float mMoveAnmSpeedMaxWeak;
+    /* 0x94 */ float mUnderwaterClimb;
+    /* 0x98 */ float field_0x98;
+    /* 0x9C */ float field_0x9C;
+    /* 0xA0 */ float field_0xA0;
+    /* 0xA4 */ float field_0xA4;
+};  // Size: 0xA8
+
+
+class daAlinkHIO_wlAttack_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c mLandAnm;
+    /* 0x14 */ int16_t mUnkTime;
+    /* 0x16 */ int16_t mComboDuration;
+    /* 0x18 */ float mFallHeight;
+    /* 0x1C */ float mFallInterpolation;
+    /* 0x20 */ float mReadyInterpolation;
+    /* 0x24 */ float mAttackRange;
+    /* 0x28 */ float mJumpBackSpeedH;
+    /* 0x2C */ float mJumpBackSpeedV;
+    /* 0x30 */ float mJumpAttackSpeedV;
+    /* 0x34 */ float mJumpAttackSpeedH;
+};  // Size: 0x38
+
+
+class daAlinkHIO_wlHowl_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ daAlinkHIO_anm_c field_0x14;
+    /* 0x28 */ daAlinkHIO_anm_c field_0x28;
+    /* 0x3C */ daAlinkHIO_anm_c field_0x3C;
+    /* 0x50 */ float field_0x50;
+    /* 0x54 */ float field_0x54;
+    /* 0x58 */ float field_0x58;
+    /* 0x5C */ float field_0x5C;
+};  // Size: 0x60
+
+
+class daAlinkHIO_wlGrab_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ daAlinkHIO_anm_c field_0x14;
+    /* 0x28 */ daAlinkHIO_anm_c field_0x28;
+    /* 0x3C */ daAlinkHIO_anm_c field_0x3C;
+    /* 0x50 */ daAlinkHIO_anm_c field_0x50;
+};  // Size: 0x64
+
+
+class daAlinkHIO_wlChain_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ daAlinkHIO_anm_c field_0x14;
+    /* 0x28 */ daAlinkHIO_anm_c field_0x28;
+    /* 0x3C */ int16_t field_0x3C;
+    /* 0x3E */ int16_t field_0x3E;
+    /* 0x40 */ float field_0x40;
+    /* 0x44 */ float field_0x44;
+    /* 0x48 */ float field_0x48;
+    /* 0x4C */ float field_0x4C;
+    /* 0x50 */ float field_0x50;
+    /* 0x54 */ float field_0x54;
+    /* 0x58 */ float field_0x58;
+};  // Size: 0x5C
+
+
+class daAlinkHIO_wlBall_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ daAlinkHIO_anm_c field_0x14;
+    /* 0x28 */ int16_t field_0x28;
+    /* 0x2C */ float field_0x2C;
+    /* 0x30 */ float field_0x30;
+    /* 0x34 */ float field_0x34;
+};  // Size: 0x38
+
+
+class daAlinkHIO_wlLie_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ daAlinkHIO_anm_c field_0x14;
+    /* 0x28 */ int16_t field_0x28;
+    /* 0x2A */ int16_t field_0x2A;
+    /* 0x2C */ int16_t field_0x2C;
+    /* 0x30 */ float field_0x30;
+    /* 0x34 */ float field_0x34;
+    /* 0x38 */ float field_0x38;
+    /* 0x3C */ float field_0x3C;
+    /* 0x40 */ float field_0x40;
+    /* 0x44 */ float field_0x44;
+    /* 0x48 */ float field_0x48;
+};  // Size: 0x4C
+
+
+class daAlinkHIO_wlLight_c1 {
+public:
+    /* 0x00 */ int16_t field_0x0;
+    /* 0x02 */ int16_t field_0x2;
+    /* 0x04 */ int16_t field_0x4;
+    /* 0x06 */ int16_t field_0x6;
+    /* 0x08 */ int16_t field_0x8;
+    /* 0x0A */ int16_t field_0xA;
+    /* 0x0C */ float field_0xC;
+    /* 0x10 */ float field_0x10;
+    /* 0x14 */ float field_0x14;
+    /* 0x18 */ float field_0x18;
+};  // Size: 0x1C
+
+
+class daAlinkHIO_wlAtWaTl_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ int16_t field_0x14;
+    /* 0x16 */ int16_t field_0x16;
+    /* 0x18 */ float field_0x18;
+    /* 0x1C */ float field_0x1C;
+    /* 0x20 */ float field_0x20;
+    /* 0x24 */ float field_0x24;
+    /* 0x28 */ float field_0x28;
+    /* 0x2C */ float field_0x2C;
+    /* 0x30 */ float field_0x30;
+    /* 0x34 */ float field_0x34;
+    /* 0x38 */ float field_0x38;
+};  // Size: 0x3C
+
+
+class daAlinkHIO_wlAtWaSc_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ int16_t field_0x14;
+    /* 0x16 */ int16_t field_0x16;
+    /* 0x18 */ float field_0x18;
+    /* 0x1C */ float field_0x1C;
+    /* 0x20 */ float field_0x20;
+    /* 0x24 */ float field_0x24;
+    /* 0x28 */ float field_0x28;
+    /* 0x2C */ float field_0x2C;
+    /* 0x30 */ float field_0x30;
+    /* 0x34 */ float field_0x34;
+    /* 0x38 */ float field_0x38;
+};  // Size: 0x3C
+
+
+class daAlinkHIO_wlAtWaLr_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ int16_t field_0x14;
+    /* 0x16 */ int16_t field_0x16;
+    /* 0x18 */ float field_0x18;
+    /* 0x1C */ float field_0x1C;
+    /* 0x20 */ float field_0x20;
+    /* 0x24 */ float field_0x24;
+    /* 0x28 */ float field_0x28;
+    /* 0x2C */ float field_0x2C;
+    /* 0x30 */ float field_0x30;
+    /* 0x34 */ float field_0x34;
+    /* 0x38 */ float field_0x38;
+};  // Size: 0x3C
+
+
+class daAlinkHIO_wlAtRoll_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ float field_0x14;
+    /* 0x18 */ float field_0x18;
+    /* 0x1C */ float field_0x1C;
+};  // Size: 0x20
+
+
+class daAlinkHIO_wlAtNjump_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ float field_0x14;
+    /* 0x18 */ float field_0x18;
+    /* 0x1C */ float field_0x1C;
+    /* 0x20 */ float field_0x20;
+    /* 0x24 */ float field_0x24;
+    /* 0x28 */ float field_0x28;
+    /* 0x2C */ float field_0x2C;
+    /* 0x30 */ float field_0x30;
+    /* 0x34 */ float field_0x34;
+    /* 0x38 */ float field_0x38;
+};  // Size: 0x3C
+
+
+class daAlinkHIO_wlAtLock_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ daAlinkHIO_anm_c field_0x14;
+    /* 0x28 */ daAlinkHIO_anm_c field_0x28;
+    /* 0x3C */ float field_0x3C;
+    /* 0x40 */ float field_0x40;
+    /* 0x44 */ float field_0x44;
+    /* 0x48 */ float field_0x48;
+    /* 0x4C */ float field_0x4C;
+    /* 0x50 */ float field_0x50;
+};  // Size: 0x54
+
+
+class daAlinkHIO_wlAtLand_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ daAlinkHIO_anm_c field_0x14;
+    /* 0x28 */ daAlinkHIO_anm_c field_0x28;
+    /* 0x3C */ float field_0x3C;
+};  // Size: 0x40
+
+
+class daAlinkHIO_wlDamage_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ daAlinkHIO_anm_c field_0x14;
+    /* 0x28 */ float field_0x28;
+};  // Size: 0x2C
+
+
+class daAlinkHIO_wlDamNormal_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ daAlinkHIO_anm_c field_0x14;
+    /* 0x28 */ daAlinkHIO_anm_c field_0x28;
+    /* 0x3C */ daAlinkHIO_anm_c field_0x3C;
+    /* 0x50 */ float field_0x50;
+    /* 0x54 */ float field_0x54;
+    /* 0x58 */ float field_0x58;
+    /* 0x5C */ float field_0x5C;
+};  // Size: 0x60
+
+
+class daAlinkHIO_wlDamLarge_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ daAlinkHIO_anm_c field_0x14;
+    /* 0x28 */ daAlinkHIO_anm_c field_0x28;
+    /* 0x3C */ daAlinkHIO_anm_c field_0x3C;
+    /* 0x50 */ int16_t field_0x50;
+    /* 0x54 */ float field_0x54;
+    /* 0x58 */ float field_0x58;
+    /* 0x5C */ float field_0x5C;
+    /* 0x60 */ float field_0x60;
+    /* 0x64 */ float field_0x64;
+    /* 0x68 */ float field_0x68;
+};  // Size: 0x6C
+
+
+class daAlinkHIO_wlDamHuge_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ daAlinkHIO_anm_c field_0x14;
+    /* 0x28 */ daAlinkHIO_anm_c field_0x28;
+    /* 0x3C */ daAlinkHIO_anm_c field_0x3C;
+    /* 0x50 */ int16_t field_0x50;
+    /* 0x54 */ float field_0x54;
+    /* 0x58 */ float field_0x58;
+    /* 0x5C */ float field_0x5C;
+    /* 0x60 */ float field_0x60;
+    /* 0x64 */ float field_0x64;
+    /* 0x68 */ float field_0x68;
+};  // Size: 0x6C
+
+
+class daAlinkHIO_wlDamFall_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ daAlinkHIO_anm_c field_0x14;
+    /* 0x28 */ int16_t field_0x28;
+    /* 0x2A */ int16_t field_0x2A;
+    /* 0x2C */ float field_0x2C;
+    /* 0x30 */ float field_0x30;
+    /* 0x34 */ float field_0x34;
+    /* 0x38 */ float field_0x38;
+    /* 0x3C */ float field_0x3C;
+};  // Size: 0x40
+
+
+class daAlinkHIO_wlDamCaught_c1 {
+public:
+    /* 0x00 */ int16_t field_0x0;
+    /* 0x02 */ int16_t field_0x2;
+    /* 0x04 */ float field_0x4;
+    /* 0x08 */ float field_0x8;
+    /* 0x0C */ float field_0xC;
+};  // Size: 0x10
+
+
+class daAlinkHIO_wlAtDown_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+	/* 0x28 */ daAlinkHIO_anm_c field_0x28;
+	/* 0x3C */ daAlinkHIO_anm_c field_0x3C;
+	/* 0x50 */ daAlinkHIO_anm_c field_0x50;
+	/* 0x64 */ daAlinkHIO_anm_c field_0x64;
+	/* 0x78 */ daAlinkHIO_anm_c field_0x78;
+	/* 0x8C */ int16_t field_0x8C;
+	/* 0x8E */ int16_t field_0x8E;
+	/* 0x90 */ float field_0x90;
+	/* 0x94 */ float field_0x94;
+	/* 0x98 */ float field_0x98;
+};  // Size: 0x9C
+
+
+class daAlinkHIO_wlAtCjump_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+	/* 0x28 */ float field_0x28;
+	/* 0x2C */ float field_0x2C;
+	/* 0x30 */ float field_0x30;
+	/* 0x34 */ float field_0x34;
+	/* 0x38 */ float field_0x38;
+	/* 0x3C */ float field_0x3C;
+	/* 0x40 */ float field_0x40;
+	/* 0x44 */ float field_0x44;
+	/* 0x48 */ float field_0x48;
+	/* 0x4C */ float field_0x4C;
+	/* 0x50 */ float field_0x50;
+	/* 0x54 */ float field_0x54;
+	/* 0x58 */ float field_0x58;
+	/* 0x5C */ float field_0x5C;
+	/* 0x60 */ float field_0x60;
+};  // Size: 0x64
+
+
+class daAlinkHIO_wlAtBite_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+	/* 0x28 */ int16_t field_0x28;
+	/* 0x2A */ int16_t field_0x2A;
+	/* 0x2C */ float field_0x2C;
+	/* 0x30 */ float field_0x30;
+	/* 0x34 */ float field_0x34;
+	/* 0x38 */ float field_0x38;
+	/* 0x3C */ float field_0x3C;
+	/* 0x40 */ float field_0x40;
+	/* 0x44 */ float field_0x44;
+	/* 0x48 */ float field_0x48;
+	/* 0x4C */ float field_0x4C;
+	/* 0x50 */ float field_0x50;
+	/* 0x54 */ float field_0x54;
+	/* 0x58 */ float field_0x58;
+};  // Size: 0x5C
+
+
+class daAlinkHIO_zwLight_c1 {  // may be wrong
+public:
+    /* 0x00 */ int16_t field_0x0;
+    /* 0x02 */ int16_t field_0x2;
+    /* 0x04 */ int16_t field_0x4;
+    /* 0x06 */ int16_t field_0x6;
+    /* 0x08 */ int16_t field_0x8;
+    /* 0x0A */ int16_t field_0xA;
+    /* 0x0C */ float field_0xC;
+    /* 0x10 */ float field_0x10;
+    /* 0x14 */ float field_0x14;
+    /* 0x18 */ float field_0x18;
+};  // Size: 0x1C
+
+
+class daAlinkHIO_board_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ daAlinkHIO_anm_c field_0x14;
+    /* 0x28 */ daAlinkHIO_anm_c field_0x28;
+    /* 0x3C */ daAlinkHIO_anm_c field_0x3C;
+    /* 0x50 */ float field_0x50;
+    /* 0x54 */ float field_0x54;
+    /* 0x58 */ float field_0x58;
+    /* 0x5C */ float field_0x5C;
+    /* 0x60 */ float field_0x60;
+    /* 0x64 */ float field_0x64;
+    /* 0x68 */ float field_0x68;
+    /* 0x6C */ float field_0x6C;
+    /* 0x70 */ float field_0x70;
+    /* 0x74 */ float field_0x74;
+    /* 0x78 */ float field_0x78;
+    /* 0x7C */ float field_0x7C;
+    /* 0x80 */ float field_0x80;
+    /* 0x84 */ float field_0x84;
+    /* 0x88 */ float field_0x88;
+    /* 0x8C */ float field_0x8C;
+    /* 0x90 */ float field_0x90;
+    /* 0x94 */ float field_0x94;
+    /* 0x98 */ float field_0x98;
+};  // Size: 0x9C
+
+
+class daAlinkHIO_item_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c mOneHandEquipAnm;
+    /* 0x14 */ daAlinkHIO_anm_c mTwoHandEquipAnm;
+    /* 0x28 */ int16_t mItemFPTransitionTimer;
+    /* 0x2A */ int16_t mItemFPMaxUnk;
+    /* 0x2C */ int16_t mItemFPUpMaxUnk;
+    /* 0x2E */ int16_t mWiiItemFPDownMaxUnk;
+    /* 0x30 */ int16_t mWiiItemFPUpMaxUnk;
+    /* 0x34 */ float mOneHandReleaseAnmSpeed;
+    /* 0x38 */ float mTwoHandReleaseAnmSpeed;
+};  // Size: 0x3C
+
+
+class daAlinkHIO_bottle_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ daAlinkHIO_anm_c field_0x14;
+    /* 0x28 */ daAlinkHIO_anm_c field_0x28;
+    /* 0x3C */ daAlinkHIO_anm_c field_0x3C;
+    /* 0x50 */ daAlinkHIO_anm_c field_0x50;
+    /* 0x64 */ daAlinkHIO_anm_c field_0x64;
+    /* 0x78 */ daAlinkHIO_anm_c field_0x78;
+    /* 0x8C */ daAlinkHIO_anm_c field_0x8C;
+    /* 0xA0 */ daAlinkHIO_anm_c field_0xA0;
+};  // Size: 0xB4
+
+
+class daAlinkHIO_boom_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c mThrowAnm;
+    /* 0x14 */ daAlinkHIO_anm_c mCatchAnm;
+    /* 0x28 */ int16_t field_0x28;
+    /* 0x2A */ int16_t mBgThroughTime;
+    /* 0x2C */ float field_0x2c;
+    /* 0x30 */ float field_0x30;
+    /* 0x34 */ float field_0x34;
+    /* 0x38 */ float field_0x38;
+    /* 0x3C */ float field_0x3c;
+    /* 0x40 */ float field_0x40;
+    /* 0x44 */ float field_0x44;
+    /* 0x48 */ float mCatchSpeed;
+};  // Size: 0x4c
+
+
+class daAlinkHIO_ironBall_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ int16_t field_0x14;
+	/* 0x16 */ int16_t field_0x16;
+	/* 0x18 */ float field_0x18;
+	/* 0x1C */ float field_0x1C;
+	/* 0x20 */ float field_0x20;
+	/* 0x24 */ float field_0x24;
+	/* 0x28 */ float field_0x28;
+	/* 0x2C */ float field_0x2C;
+	/* 0x30 */ float field_0x30;
+	/* 0x34 */ float field_0x34;
+	/* 0x38 */ float field_0x38;
+	/* 0x3C */ float field_0x3C;
+	/* 0x40 */ float field_0x40;
+	/* 0x44 */ float field_0x44;
+	/* 0x48 */ float field_0x48;
+	/* 0x4C */ float field_0x4C;
+	/* 0x50 */ float field_0x50;
+	/* 0x54 */ float field_0x54;
+	/* 0x58 */ float field_0x58;
+	/* 0x5C */ float field_0x5C;
+	/* 0x60 */ float field_0x60;
+	/* 0x64 */ float field_0x64;
+	/* 0x68 */ float field_0x68;
+	/* 0x6C */ float field_0x6C;
+	/* 0x70 */ float field_0x70;
+	/* 0x74 */ float field_0x74;
+	/* 0x78 */ float field_0x78;
+	/* 0x7C */ float field_0x7C;
+	/* 0x80 */ float field_0x80;
+	/* 0x84 */ float field_0x84;
+	/* 0x88 */ float field_0x88;
+};  // Size: 0x8C
+
+
+class daAlinkHIO_bow_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c val0;
+    /* 0x14 */ daAlinkHIO_anm_c val5;
+    /* 0x28 */ int16_t vala;
+    /* 0x2A */ int16_t valb;
+    /* 0x2C */ int16_t valc;
+    /* 0x30 */ float vale;
+    /* 0x34 */ float valf;
+    /* 0x38 */ float val10;
+    /* 0x3C */ float val11;
+    /* 0x40 */ float val12;
+    /* 0x44 */ float val13;
+    /* 0x48 */ float val14;
+    /* 0x4C */ float val15;
+    /* 0x50 */ float val16;
+    /* 0x54 */ float val17;
+    /* 0x58 */ float val18;
+    /* 0x5C */ float val19;
+    /* 0x60 */ float val1a;
+    /* 0x64 */ float val1b;
+    /* 0x68 */ float val1c;
+    /* 0x6C */ float val1d;
+};  // Size: 0x70
+
+
+class daAlinkHIO_copyRod_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c mSwingAnm;
+    /* 0x14 */ daAlinkHIO_anm_c mBigSwingAnm;
+    /* 0x28 */ float mBallSpeed;
+    /* 0x2c */ float mBallMaxDistance;
+    /* 0x30 */ float mBallReturnSpeed;
+    /* 0x34 */ float mBossBallMaxDistance;
+};  // Size: 0x38
+
+
+class daAlinkHIO_kandelaar_c1 {
+public:
+	/* 0x00 */ daAlinkHIO_anm_c field_0x0;
+	/* 0x14 */ daAlinkHIO_anm_c field_0x14;
+	/* 0x28 */ daAlinkHIO_anm_c field_0x28;
+	/* 0x3C */ int16_t field_0x3C;
+	/* 0x3E */ int16_t field_0x3E;
+	/* 0x40 */ int16_t field_0x40;
+	/* 0x42 */ int16_t field_0x42;
+	/* 0x44 */ int16_t field_0x44;
+	/* 0x46 */ int16_t field_0x46;
+	/* 0x48 */ int16_t field_0x48;
+	/* 0x4A */ int16_t field_0x4A;
+	/* 0x4C */ float field_0x4C;
+};  // Size: 0x50
+
+
+class daAlinkHIO_bomb_c1 {
+public:
+    /* 0x00 */ int16_t mExplodeTime;
+    /* 0x02 */ int16_t mEnemyBombColorR;
+    /* 0x04 */ int16_t mBombInsectLimitAngle;
+    /* 0x08 */ float mGravity;
+    /* 0x0C */ float mMaxFallSpeed;
+    /* 0x10 */ float mBoundRate;
+    /* 0x14 */ float mStopSpeedY;
+    /* 0x18 */ float mMaxSpeedY;
+    /* 0x1C */ float mEffScale;
+    /* 0x20 */ float mAtRadius;
+    /* 0x24 */ float mPokeBombTrackRate;
+    /* 0x28 */ float mWaterGravity;
+    /* 0x2C */ float mWaterMaxFallSpeed;
+    /* 0x30 */ float mThrowSpeedH;
+    /* 0x34 */ float mThrowSpeedV;
+    /* 0x38 */ float mWaterThrowSpeedH;
+    /* 0x3C */ float mWaterThrowSpeedV;
+    /* 0x40 */ float mWolfThrowSpeedH;
+    /* 0x44 */ float mWolfThrowSpeedV;
+    /* 0x48 */ float mExplodeWaterEffectLimit;
+};  // Size: 0x4C
+
+
+class daAlinkHIO_magneBoots_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c mEquipAnm;
+    /* 0x14 */ float mInputFactor;
+    /* 0x18 */ float mFeetPositionRatio;
+    /* 0x1C */ float mWalkAnmSpeedMax;
+    /* 0x20 */ float mWalkAnmSpeedMin;
+    /* 0x24 */ float mWaterInputFactor;
+    /* 0x28 */ float mWaterStartWalkAnmRate;
+    /* 0x2C */ float mWaterWalkAnmRate;
+    /* 0x30 */ float mMaxMagneFlySpeed;
+    /* 0x34 */ float mMagneFlyAccelRate;
+    /* 0x38 */ float mWaterVelocityY;
+    /* 0x3C */ float mWaterVelocityX;
+    /* 0x40 */ float mWaterVelRateSword;
+    /* 0x44 */ float mZoraWaterInputFactor;
+    /* 0x48 */ float mZoraWaterAnmSpeed;
+};  // Size: 0x4C
+
+
+class daAlinkHIO_spinner_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c field_0x0;
+    /* 0x14 */ int16_t field_0x14;
+    /* 0x16 */ int16_t field_0x16;
+    /* 0x18 */ int16_t field_0x18;
+    /* 0x1A */ int16_t field_0x1A;
+    /* 0x1C */ int16_t field_0x1C;
+    /* 0x20 */ float field_0x20;
+    /* 0x24 */ float field_0x24;
+    /* 0x28 */ float field_0x28;
+    /* 0x2C */ float field_0x2C;
+    /* 0x30 */ float field_0x30;
+    /* 0x34 */ float field_0x34;
+    /* 0x38 */ float field_0x38;
+    /* 0x3C */ float field_0x3C;
+};  // Size: 0x40
+
+
+class daAlinkHIO_hookshot_c1 {
+public:
+    /* 0x00 */ daAlinkHIO_anm_c mShootAnm;
+    /* 0x14 */ daAlinkHIO_anm_c mCeilingStopAnm;
+    /* 0x28 */ daAlinkHIO_anm_c mWallStopAnm;
+    /* 0x3C */ bool mForceStick;
+    /* 0x40 */ float mIdleAnmSpeed;
+    /* 0x44 */ float mStartInterpolation;
+    /* 0x48 */ float mMaxLength;
+    /* 0x4C */ float mShootSpeed;
+    /* 0x50 */ float mReturnSpeed;
+    /* 0x54 */ float mClawReturnSpeed;
+    /* 0x58 */ float mHangAscendSpeed;
+    /* 0x5C */ float mHangDecendSpeed;
+    /* 0x60 */ float mBossMaxLength;
+    /* 0x64 */ float mBossShootSpeed;
+    /* 0x68 */ float mBossReturnSpeed;
+    /* 0x6C */ float mBossClawReturnSpeed;
+};  // Size: 0x70
+
 
 class daHorse_c {
 public:
@@ -1017,267 +2835,12 @@ public:
     /* 0x0898 */ uint32_t mEndResetStateFlg0;
 };
 
-// add actual animation structures later
-    namespace Animations {
-        struct HumanFrontRoll {
-            uint8_t _p0[0x18];                // 8038D7BC
-            float bonk_recovery_anim_factor;  // 8038D7D4
-            float bonk_recoil_anim_speed;     // 8038D7D8
-            uint8_t _p1[0x28];                // 8038D7DC
-            float roll_factor;                // 8038D804
-            uint8_t _p2[0x24];                // 8038d808
-        };
-        static_assert(sizeof(HumanFrontRoll) == 0x70);
+#define daAlinkHIO_swim (*(daAlinkHIO_swim_c1 *)(tp_link_human_swim_addr))
+#define daAlinkHIO_frontRoll (*(daAlinkHIO_frontRoll_c1 *)(tp_link_human_frontroll_addr))
+#define daAlinkHIO_wlMove (*(daAlinkHIO_wlMove_c1 *)(tp_link_wolf_general_addr))
+#define daAlinkHIO_wlSwim (*(daAlinkHIO_wlSwim_c1 *)(tp_link_wolf_swim_addr))
 
-        struct HumanBackJump {
-            uint8_t _p0[0x38];  // 8038D82C
-        };
-        static_assert(sizeof(HumanBackJump) == 0x38);
-
-        struct HumanSideStep {
-            uint8_t _p0[0x68];  // 8038d864
-        };
-        static_assert(sizeof(HumanSideStep) == 0x68);
-
-        struct HumanSlide {
-            uint8_t _p0[0x78];  // 8038d8cc
-        };
-        static_assert(sizeof(HumanSlide) == 0x78);
-
-        struct HumanSwim {
-            uint8_t _p0[0x14];  // 8038ED2C
-            uint16_t diving_anim_frames;
-            uint8_t _p1[0x02];
-            float diving_anim_speed;
-            uint8_t _p2[0x04];
-            float diving_bob_anim_frames;
-            float _p3;
-            uint16_t underwater_dive_anim_frames;
-            uint8_t _p4[0x02];
-            float underwater_dive_anim_speed;
-            uint8_t _p5[0x04];
-            float prep_underwater_dive_anim_speed;
-            float _p6;
-            uint16_t surface_swim_anim_frames;
-            uint8_t _p7[0x02];
-            float surface_swim_anim_speed;
-            float surface_swim_anim_frames_2;
-            float start_swim_anim_frames;
-            float _p8;
-            uint8_t _p9[0x02];
-            uint8_t surface_rotation_speed;
-            uint8_t _p10[0x0D];
-            float distance_from_water_to_surface;
-            float resurface_anim_speed;
-            float forward_swim_speed;
-            float side_swim_speed;
-            float back_swim_speed;
-            float swim_up_speed;
-            float ib_swim_speed;
-            float _p11;
-            float _p12;
-            float _p13;
-            float _p14;
-            float _p15;
-            float idle_anim_speed;
-            float return_to_idle_from_swim_anim_frames;
-            float idle_bob_depth;
-            float ess_forward_swim_anim_speed;
-            float full_forward_swim_anim_speed;
-            float ess_side_swim_anim_speed;
-            float full_side_swim_anim_speed;
-            float ess_back_swim_anim_speed;
-            float full_back_swim_anim_speed;
-            float ready_after_dive_anim_speed;
-            float underwater_swim_anim_speed;
-            float ready_underwater_anim_frames;
-            float _p16;
-            float _p17;
-            float unk_transition_into_swimming;
-            float _p18;
-            float sinking_speed;
-            float _p19;
-            float _p20;
-            float swim_up_max_anim_speed;
-            float swim_up_init_anim_speed;
-            float initial_sinking_speed;
-            float swim_up_max_speed;
-            float dash_swim_max_speed;
-            float _p21;
-            float _p22;
-            float _p23;
-        };
-        static_assert(sizeof(HumanSwim) == 0xFC);
-
-        struct WolfGeneral {
-            uint16_t slide_turn_around_anim_frames1;
-            uint16_t _p0;
-            float slide_turn_around_anim_speed1;
-            uint32_t unk1;
-            float unk2;
-            float unk3;
-            uint16_t slide_turn_around_anim_frames2;
-            uint16_t _p1;
-            float slide_turn_around_anim_speed2;
-            uint32_t unk4;
-            float unk5;
-            float unk6;
-            uint16_t dash_to_walking_anim_frames;
-            uint16_t _p2;
-            float dashing_anim_speed;
-            uint32_t unk7;
-            float unk8;
-            float start_dash_anim_frames;
-            uint16_t unk9;
-            uint16_t _p3;
-            float bonk_recoil_anim_speed;
-            uint32_t unk10;
-            float unk11;
-            float unk12;
-            uint16_t unk_dash_turning;
-            uint16_t unk13;
-            uint16_t dash_anim_frames;
-            uint16_t unk14;
-            uint16_t unk15;
-            uint16_t dash_length_frames;
-            uint16_t dash_reload_time_frames;
-            uint16_t unk17;
-            uint16_t unk18;
-            uint16_t _p4;
-            float unk19;
-            float unk20;
-            float unk21;
-            float unk22;
-            float unk23;
-            float unk24;
-            float unk25;
-            float unk26;
-            float unk27;
-            float dash_to_walk_transition_factor;
-            float dash_to_walk_transition_speed;
-            float dash_to_walk_unk;
-            float inital_dash_transition_factor;
-            float initial_dash_transiiton_unk;
-            float unk28;
-            float unk29;
-            float unk30;
-            float slide_distance_unk;
-            float slide_turn_around_distance;
-            float unk31;
-            float unk32;
-            float unk33;
-            float unk34;
-            float unk35;
-            float unk36;
-            float dash_speed_large_area;
-            float unk38;
-            float unk39;
-            float dash_initial_speed_large_area;
-            float bonk_recoil_horizontal_distance;
-            float bonk_recoil_vertical_distance;
-            float dash_speed_small_area;
-            float dash_initial_speed_small_area;
-            float dash_anim_speed;
-            float unk41;
-            float unk42;
-            float unk43;
-            float unk44;
-            float unk45;
-        };
-        static_assert(sizeof(WolfGeneral) == 0x100);
-
-        struct WolfSwim {
-            uint16_t surfacing_anim_frames;
-            uint16_t _p0;
-            float surfacing_anim_speed;
-            uint32_t _p1;
-            float inital_surfacing_anim_frames;
-            float unk1;
-            uint16_t unk2;
-            uint16_t _p2;
-            float unk3;
-            uint32_t unk4;
-            float unk5;
-            float unk6;
-            uint16_t dash_to_swim_anim_frames;
-            uint16_t _p3;
-            float initial_dash_anim_speed;
-            uint32_t unk7;
-            float initial_dash_anim_frames;
-            float unk8;
-            uint16_t surface_turning_speed_factor;
-            uint16_t surface_turning_speed;
-            uint16_t surface_turning_speed2;
-            uint16_t unk9;
-            uint16_t unk10;
-            uint16_t unk11;
-            float distance_from_water_to_surface;
-            float unk12;
-            float dash_swim_speed;
-            float dash_to_swim_speed_decrease_factor;
-            float gravity_entering_water_sinking;
-            float gravity_in_water_rising;
-            float gravity_in_water_rising_factor;
-            float dash_to_swim_anim_speed;
-            float swim_to_idle_anim_frames;
-            float idle_bobbing_depth;
-            float unk13;
-            float unk14;
-            float idle_to_swim_anim_frames;
-            float climb_out_of_water_unk;
-            float swim_speed;
-            float unk15;
-            float idle_doggy_padle_anim_speed;
-            float idle_to_swim_anim_speed;
-            float swim_anim_speed;
-            float unk16;
-            float unk17;
-            float unk18;
-            float unk19;
-            float unk20;
-        };
-        static_assert(sizeof(WolfSwim) == 0xA8);
-
-    };  // namespace Animations
-#define tp_link_human_swim (*(Animations::HumanSwim *)(tp_link_human_swim_addr))
-#define tp_link_human_frontroll (*(Animations::HumanFrontRoll *)(tp_link_human_frontroll_addr))
-#define tp_link_wolf_general (*(Animations::WolfGeneral *)(tp_link_wolf_general_addr))
-#define tp_link_wolf_swim (*(Animations::WolfSwim *)(tp_link_wolf_swim_addr))
-
-    namespace Clawshot {
-        struct ClawshotProperty {
-            uint8_t _p0[0x04];                       // 8038E9C0
-            uint16_t arm_animation1;                 // 8038E9C4 affects first person anim while firing
-            uint8_t _p1[0x02];                       // 8038E9C6
-            uint16_t arm_animation2;                 // 8038E9C8 affects first person anim while firing
-            uint8_t _p20[0x22];                      // 8038E9CA
-            uint16_t wall_hang_anim_speed;           // 8038E9EC
-            uint8_t _p3[0x02];                       // 8038E9EE
-            uint16_t wall_hang_anim;                 // 8038E9F0 has something to do with wall anim but not speed specifically
-            uint8_t _p4[0x06];                       // 8038EAF2
-            uint16_t second_clawshot_wait_frames;    // 8038EAF8 how long before you can use clawshot 2 when hanging from wall (ceiling is different)
-            uint8_t _p5[0x06];                       // 8038EAFA
-            uint16_t third_person_ready_anim_angle;  // 8038EA00 data type is wrong probably
-            uint16_t third_person_ready_anim_speed;  // 8038EA02 data type is wrong probably
-            float first_person_ready_anim_frames;    // 8038EA04
-            float extension_rate;                    // 8038EA08
-            float speed;                             // 8038EA0C
-            float retraction_rate;                   // 8038EA10
-            float pull_rate;                         // 8038EA14
-            uint8_t _p6[0x1C];                       // 8038EA18
-        };                                           // struct ClawshotProperty
-        static_assert(sizeof(ClawshotProperty) == 0x74);
-
-        struct ClawshotBG {
-            uint8_t _p0[0x30];   // 801087B0
-            uint32_t is_target;  // 801087E0
-            uint8_t _p1[0x44];   // 801087E4
-        };                       // struct ClawshotBG // pretty sure this actually needs to be a function pointer
-        static_assert(sizeof(ClawshotBG) == 0x78);
-    };  // namespace Clawshot
-
-#define tp_clawshot (*(Clawshot::ClawshotProperty *)tp_clawshot_addr)
-#define tp_clawshot_bg (*(Clawshot::ClawshotBG *)tp_clawshot_checkbg_addr)
+#define daAlinkHIO_hookshot (*(daAlinkHIO_hookshot_c1 *)tp_clawshot_addr)
 
 typedef int (*daAlink_c__checkStageName_t)(const char*);
 #define daAlink_c__checkStageName ((daAlink_c__checkStageName_t)daAlink_c__checkStageName_addr)

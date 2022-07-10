@@ -3,140 +3,148 @@
 
 #include <stdint.h>
 #include "../../dolphin/mtx/vec.h"
+#include "../../dolphin/pad/pad.h"
 #include "../../addrs.h"
+#include "../JKernel/JKRDisposer.h"
+#include "../../SSystem/SComponent/c_API_controller_pad.h"
 
-namespace Controller {
-    namespace Pad {
-        const uint16_t DPAD_LEFT = 0x0001;
-        const uint16_t DPAD_RIGHT = 0x0002;
-        const uint16_t DPAD_DOWN = 0x0004;
-        const uint16_t DPAD_UP = 0x0008;
-        const uint16_t Z = 0x0010;
-        const uint16_t R = 0x0020;
-        const uint16_t L = 0x0040;
-        const uint16_t A = 0x0100;
-        const uint16_t B = 0x0200;
-        const uint16_t X = 0x0400;
-        const uint16_t Y = 0x0800;
-        const uint16_t START = 0x1000;
-    }  // namespace Pad
+typedef void (*callbackFn)(int, void*);
 
-    struct PadStatus {
-        uint16_t sval;
-        int8_t control_x;
-        int8_t control_y;
-        int8_t c_x;
-        int8_t c_y;
-        uint8_t trig_L;
-        uint8_t trig_R;
-        uint8_t _p01[0x27];
+namespace CButton {
+enum {
+    DPAD_LEFT = 0x0001,
+    DPAD_RIGHT = 0x0002,
+    DPAD_DOWN = 0x0004,
+    DPAD_UP = 0x0008,
+    Z = 0x0010,
+    R = 0x0020,
+    L = 0x0040,
+    A = 0x0100,
+    B = 0x0200,
+    X = 0x0400,
+    Y = 0x0800,
+    START = 0x1000,
+};
+}
+
+struct JUTGamePad : public JKRDisposer {
+public:
+    enum EStickMode {};
+    enum EWhichStick {};
+    enum EPadPort {
+        Port_Unknown = -1,  // used by JUTException
+        Port_1,
+        Port_2,
+        Port_3,
+        Port_4,
     };
-    static_assert(sizeof(PadStatus) == 0x30);
 
-#ifdef WII_PLATFORM
+    uint32_t getButton() const { return mButton.mButton; }
 
-    namespace Mote {
-        const uint16_t DPAD_LEFT = 0x0001;
-        const uint16_t DPAD_RIGHT = 0x0002;
-        const uint16_t DPAD_DOWN = 0x0004;
-        const uint16_t DPAD_UP = 0x0008;
-        const uint16_t PLUS = 0x0010;
-        const uint16_t TWO = 0x0100;
-        const uint16_t ONE = 0x0200;
-        const uint16_t B = 0x0400;
-        const uint16_t A = 0x0800;
-        const uint16_t MINUS = 0x1000;
-        const uint16_t Z = 0x2000;
-        const uint16_t C = 0x4000;
-        const uint16_t HOME = 0x8000;
-    }  // namespace Pad
+    uint32_t getTrigger() const { return mButton.mTrigger; }
 
-    struct Pointer {
-        Vec2 pos;                   // 8044BB84
-        uint8_t _p1[0x20];          // 8044BB8C
-        float scr_dist;             // 8044BBAC // Relative distance of the remote to the sensor bar
-    };
-    static_assert(sizeof(Pointer) == 0x2C);
+    float getMainStickX() const { return mMainStick.mPosX; }
 
-    struct MoteStatus {
-        uint8_t _unk1[4];           // 8044BB60
-        uint8_t _p1[2];             // 8044BB64
-        uint16_t buttons;           // 8044BB66
-        uint8_t _p2[2];             // 8044BB68
-        uint16_t buttons_down;      // 8044BB6A
-        uint8_t _p3[2];             // 8044BB6C
-        uint16_t buttons_up;        // 8044BB6E
-        Vec wiimote_acc;            // 8044BB70
-        float wiimote_acc_strength; // 8044BB7C
-        float wiimote_shake;        // 8044BB80 // Unsure of the real meaning of this, needs more verification
-        Pointer pointer;            // 8044BB84
-        uint8_t _p4[8];             // 8044BBB0
-        float horizontal;           // 8044BBB8 // Goes from 0.0 to 1.0, shows how much the remote is horizontal
-        float vertical;             // 8044BBBC // Goes from -1.0 to 1.0, shows how much the remote is vertical (up is 1.0, down is -1.0)
-        uint8_t _p5[4];             // 8044BBC0
-        Vec2 stick;                 // 8044BBC4
-        Vec nunchuck_acc;           // 8044BBCC
-        float nunchuck_acc_strength;// 8044BBD8
-        float nunchuck_shake;       // 8044BBDC // Unsure of the real meaning of this, needs more verification
-        uint8_t _p6[0x1CF0];        // 8044BBE0
-        float stick_amplitude;      // 8044D8D0
-        uint8_t _p7[0x5AAC];        // 8044D8D4
-    };
-    static_assert(sizeof(MoteStatus) == 0x7820);
-#endif
+    float getMainStickY() const { return mMainStick.mPosY; }
 
-    struct PadButton {
-        uint8_t analog_cardinal;
-        uint8_t c_cardinal;
-        uint16_t buttons;
-        uint8_t _p1[2];
-        uint16_t buttons_down;
-        uint8_t _p2[8];
-        float l_analog;
-        float r_analog;
-        uint8_t _p4[2];
-        uint16_t sval;
-        uint8_t _p3[0xA4];
-    };
-    static_assert(sizeof(PadButton) == 0xC0);
+    float getMainStickValue() const { return mMainStick.mValue; }
 
-    struct PadMStick{
-        Vec2 control_analog;
-        uint8_t _p0[0x38];
-    };
-    static_assert(sizeof(PadMStick) == 0x40);
+    int16_t getMainStickAngle() const { return mMainStick.mAngle; }
 
-    struct PadSStick{
-        Vec2 c_analog;
-        uint8_t _p0[0x38];
-    };
-    static_assert(sizeof(PadSStick) == 0x40);
+    float getSubStickX() const { return mSubStick.mPosX; }
 
-    struct CPadInfo{
-        uint8_t _p0[0x30];
-        uint32_t input;
-        uint32_t triggerInput;
-        uint8_t _p1[0xC8];
-    };
-    static_assert(sizeof(CPadInfo) == 0x100);
+    float getSubStickY() const { return mSubStick.mPosY; }
 
-#define tp_mPadStatus (*(Controller::PadStatus *)tp_mPadStatus_addr)
-#define tp_mPadButton (*(Controller::PadButton *)tp_mPadButton_addr)
-#define tp_mPadMStick (*(Controller::PadMStick *)tp_mPadMStick_addr)
-#define tp_mPadSStick (*(Controller::PadSStick *)tp_mPadSStick_addr)
-#define tp_cPadInfo (*(Controller::CPadInfo *)tp_cPadInfo_addr)
-#ifdef WII_PLATFORM
-#define tp_mPad (*(Controller::MoteStatus *)tp_mPad_addr)
-#endif
+    float getSubStickValue() const { return mSubStick.mValue; }
 
-    uint16_t buttons_down();
-    uint16_t buttons_pressed();
-    void set_buttons_down(uint16_t buttons);
-    void set_buttons_pressed(uint16_t buttons);
-    bool is_down(uint16_t buttons);
-    bool is_pressed(uint16_t buttons);
-}  // namespace Controller
+    int16_t getSubStickAngle() const { return mSubStick.mAngle; }
 
+    uint8_t getAnalogA() const { return mButton.mAnalogA; }
+
+    uint8_t getAnalogB() const { return mButton.mAnalogB; }
+
+    uint8_t getAnalogL() const { return mButton.mAnalogL; }
+
+    uint8_t getAnalogR() const { return mButton.mAnalogR; }
+
+    int8_t getErrorStatus() const { return mErrorStatus; }
+
+    uint32_t testTrigger(uint32_t button) const { return mButton.mTrigger & button; }
+
+    bool isPushing3ButtonReset() const {
+        bool isPushingReset = false;
+
+        if (mPortNum != -1 && mButtonReset.mReset != false) {
+            isPushingReset = true;
+        }
+        return isPushingReset;
+    }
+
+    struct CButton {
+        /* 0x00 */ uint32_t mButton;
+        /* 0x04 */ uint32_t mTrigger;  // Pressed Buttons
+        /* 0x08 */ uint32_t mRelease;  // Released Buttons
+        /* 0x0C */ uint8_t mAnalogA;
+        /* 0x0D */ uint8_t mAnalogB;
+        /* 0x0E */ uint8_t mAnalogL;
+        /* 0x0F */ uint8_t mAnalogR;
+        /* 0x10 */ float mAnalogLf;
+        /* 0x14 */ float mAnalogRf;
+        /* 0x18 */ uint32_t mRepeat;
+        /* 0x1C */ uint32_t field_0x1c;
+        /* 0x20 */ uint32_t field_0x20;
+        /* 0x24 */ uint32_t field_0x24;
+        /* 0x28 */ uint32_t field_0x28;
+        /* 0x2C */ uint32_t field_0x2c;
+    };  // Size: 0x30
+
+    struct C3ButtonReset {
+        /* 0x0 */ bool mReset;
+    };  // Size: 0x4
+
+    struct CStick {
+        /* 0x0 */ float mPosX;
+        /* 0x4 */ float mPosY;
+        /* 0x8 */ float mValue;
+        /* 0xC */ int16_t mAngle;
+        /* 0xE */ int8_t field_0xe;
+        /* 0xF */ int8_t field_0xf;
+    };  // Size: 0x10
+
+    struct CRumble {
+        enum ERumble {
+            VAL_0 = 0,
+            VAL_1 = 1,
+            VAL_2 = 2,
+        };
+
+        /* 0x00 */ uint32_t field_0x0;
+        /* 0x04 */ uint32_t field_0x4;
+        /* 0x08 */ uint8_t* field_0x8;
+        /* 0x0C */ uint32_t field_0xc;
+        /* 0x10 */ uint8_t* field_0x10;
+    };  // Size: 0x14
+
+    /* 0x18 */ CButton mButton;
+    /* 0x48 */ CStick mMainStick;
+    /* 0x58 */ CStick mSubStick;
+    /* 0x68 */ CRumble mRumble;
+    /* 0x7C */ int16_t mPortNum;
+    /* 0x7E */ int8_t mErrorStatus;
+    /* 0x80 */ JSULink<JUTGamePad> mLink;
+    /* 0x90 */ uint32_t mPadRecord;
+    /* 0x94 */ uint32_t mPadReplay;
+    /* 0x98 */ C3ButtonReset mButtonReset;
+    /* 0x9C */ uint8_t field_0x9c[4];
+    /* 0xA0 */ int64_t mResetTime;
+    /* 0xA8 */ uint8_t field_0xa8;
+};
+
+#define tp_mPadStatus (*(PADStatus *)tp_mPadStatus_addr)
+#define tp_mPadButton (*(JUTGamePad::CButton *)tp_mPadButton_addr)
+#define tp_mPadMStick (*(JUTGamePad::CStick *)tp_mPadMStick_addr)
+#define tp_mPadSStick (*(JUTGamePad::CStick *)tp_mPadSStick_addr)
+#define tp_cPadInfo ((interface_of_controller_pad *)tp_cPadInfo_addr)
 
 typedef void (*tp_JUTGamePadRead_t)(void);
 #define tp_JUTGamePadRead ((tp_JUTGamePadRead_t)tp_JUTGamePadRead_addr)

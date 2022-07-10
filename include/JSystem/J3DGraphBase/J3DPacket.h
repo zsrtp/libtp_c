@@ -14,6 +14,23 @@ class J3DMtxBuffer;
 class J3DShape;
 class J3DTexMtx;
 class J3DTexture;
+class J3DPacket;
+
+class J3DDrawBuffer {
+public:
+    J3DPacket** mpBuf;
+    uint32_t mBufSize;
+    uint32_t mDrawType;
+    uint32_t mSortType;
+    float mZNear;
+    float mZFar;
+    float mZRatio;
+    Mtx* mpZMtx;
+    J3DPacket* mpCallBackPacket;
+};
+
+typedef void (*J3DDrawBuffer__entryImm_t)(J3DDrawBuffer*, J3DPacket* packet, uint16_t);
+#define J3DDrawBuffer__entryImm ((J3DDrawBuffer__entryImm_t)J3DDrawBuffer__entryImm_addr)
 
 class J3DDisplayListObj {
 public:
@@ -24,15 +41,28 @@ public:
 
 class J3DPacket {
 public:
-    inline void clear() {
+    J3DPacket() {
+        mpNextSibling = NULL;
+        mpFirstChild = NULL;
+        mpUserData = NULL;
+    }
+
+    void clear() {
         mpNextSibling = NULL;
         mpFirstChild = NULL;
     }
-    void* vtable;
-    J3DPacket* mpNextSibling;
-    J3DPacket* mpFirstChild;
-    void* mpUserData;
+
+    J3DPacket* getNextPacket() const { return mpNextSibling; }
+
+    /* 0x00 */ void* vtable;
+    /* 0x04 */ J3DPacket* mpNextSibling;
+    /* 0x08 */ J3DPacket* mpFirstChild;
+    /* 0x0C */ void* mpUserData;
 };
+
+#define J3DPacket__entry_addr 0x80312750
+typedef bool (*J3DPacket__entry_t)(J3DPacket*, J3DDrawBuffer*);
+#define J3DPacket__entry ((J3DPacket__entry_t)J3DPacket__entry_addr)
 
 class J3DDrawPacket : public J3DPacket {
 public:

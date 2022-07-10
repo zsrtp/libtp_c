@@ -5,21 +5,27 @@
 #include "../JSupport/JSUList.h"
 #include "../JGeometry.h"
 #include "../../dolphin/mtx/mtx.h"
+#include "../../addrs.h"
 
 struct J2DAnmTransform{};
 
+class J2DPane;
+
+typedef void (*J2DPane__J2DPane1_t)(J2DPane* thisx);
+#define J2DPane__J2DPane1 ((J2DPane__J2DPane1_t)J2DPane__J2DPane1_addr)
+
 class J2DPane {
 public:
-    J2DPane();
-    virtual ~J2DPane();
+    J2DPane() {
+        J2DPane__J2DPane1(this);
+    }
 
-    // inlines
     float getHeight() const { return mBounds.getHeight(); }
     float getWidth() const { return mBounds.getWidth(); }
-    JSUTree<J2DPane>* getFirstChild() { return mPaneTree.getFirstChild(); }
-    const JSUTree<J2DPane>* getPaneTree() { return &mPaneTree; }
+    //JSUTree<J2DPane>* getFirstChild() { return mPaneTree.getFirstChild(); }
+    //const JSUTree<J2DPane>* getPaneTree() { return &mPaneTree; }
 
-private:
+    /* 0x000 */ void* vtable;
     /* 0x004 */ uint16_t _4;
     /* 0x006 */ uint8_t _6[2];
     /* 0x008 */ int id;
@@ -48,7 +54,8 @@ private:
     /* 0x0d0 */ float mScaleY;
     /* 0x0d4 */ float mTranslateX;
     /* 0x0d8 */ float mTranslateY;
-    /* 0x0dc */ JSUTree<J2DPane> mPaneTree;
+    /* 0x0dc */ // JSUTree<J2DPane> mPaneTree;
+                uint8_t temp[0xF8 - 0xDC];
     /* 0x0f8 */ const J2DAnmTransform* mTransform;
     /* 0x0fc */ uint32_t _fc;
 };
