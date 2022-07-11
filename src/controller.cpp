@@ -1,5 +1,6 @@
 #include "../include/JSystem/JUtility/JUTGamePad.h"
 #include "../include/controller.h"
+#include "../include/m_Do/m_Re_controller_pad.h"
 
 #ifdef GCN_PLATFORM
 #define mPad (tp_mPadButton)
