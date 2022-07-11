@@ -62,7 +62,8 @@ struct TBox {
     T i, f;
 };
 
-template<> struct TBox<TVec2<float> > {
+template <>
+struct TBox<TVec2<float>> {
     float getWidth() const { return f.x - i.x; }
     float getHeight() const { return f.y - i.y; }
 
@@ -73,7 +74,7 @@ template<> struct TBox<TVec2<float> > {
         f.add(pos);
     }
 
-    bool intersect(const TBox<TVec2<float> >& other) {
+    bool intersect(const TBox<TVec2<float>>& other) {
         i.setMax(other.i);
         f.setMin(other.f);
         return isValid();
@@ -83,14 +84,17 @@ template<> struct TBox<TVec2<float> > {
 };
 
 template <typename T>
-struct TBox2 : TBox<TVec2<T> > {
+struct TBox2 : TBox<TVec2<T>> {
     TBox2() {}
     TBox2(float x0, float y0, float x1, float y1) { set(x0, y0, x1, y1); }
 
-    inline const TBox2& operator=(const TBox2& rhs) { *(TBox<TVec2<T> >*)this = rhs; }
+    inline const TBox2& operator=(const TBox2& rhs) { *(TBox<TVec2<T>>*)this = rhs; }
     void set(const TBox2& other) { set(other.i, other.f); }
     void set(const TVec2<float>& i, const TVec2<float> f) { this->i.set(i), this->f.set(f); }
-    void set(float x0, float y0, float x1, float y1) { this->i.set(x0, y0); this->f.set(x1, y1); }
+    void set(float x0, float y0, float x1, float y1) {
+        this->i.set(x0, y0);
+        this->f.set(x1, y1);
+    }
 };
 
 }  // namespace JGeometry

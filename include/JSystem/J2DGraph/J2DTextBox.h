@@ -32,14 +32,13 @@ typedef void (*J2DTextBox__setFont_t)(J2DTextBox* thisx, JUTFont* font);
 typedef void (*J2DTextBox__setString_t)(J2DTextBox* thisx, const char* str, ...);
 #define J2DTextBox__setString ((J2DTextBox__setString_t)J2DTextBox__setString_addr)
 
-typedef void (*J2DTextBox__draw2_t)(J2DTextBox* thisx, float x, float y, float size, J2DTextBoxHBinding binding);
+typedef void (*J2DTextBox__draw2_t)(J2DTextBox* thisx, float x, float y, float size,
+                                    J2DTextBoxHBinding binding);
 #define J2DTextBox__draw2 ((J2DTextBox__draw2_t)J2DTextBox__draw2_addr)
 
 class J2DTextBox : public J2DPane {
 public:
-    J2DTextBox() {
-        J2DTextBox__J2DTextBox1(this);
-    }
+    J2DTextBox() { J2DTextBox__J2DTextBox1(this); }
 
     struct TFontSize {
         /* 0x0 */ float mSizeX;

@@ -4,13 +4,9 @@
 #include "../d_stage.h"
 #include "../save/d_save.h"
 
-struct dEvDtStaff_c {
+struct dEvDtStaff_c {};
 
-};
-
-struct dEvDtEvent_c {
-
-};
+struct dEvDtEvent_c {};
 
 struct dEvDtData_c {};
 

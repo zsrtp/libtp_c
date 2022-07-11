@@ -8,7 +8,7 @@ extern "C" void PSMTXConcat(const Mtx, const Mtx, Mtx);
 extern "C" void PSMTXScale(Mtx, float, float, float);
 extern "C" void PSMTXTrans(Mtx matrix, float x_trans, float y_trans, float z_trans);
 
-#define mDoMtx_stack_c__now (*(Mtx *)(mDoMtx_stack_c__now_addr))
+#define mDoMtx_stack_c__now (*(Mtx*)(mDoMtx_stack_c__now_addr))
 
 typedef void (*mDoMtx_XYZrotM__t)(Mtx, short, short, short);
 #define mDoMtx_XYZrotM ((mDoMtx_XYZrotM__t)mDoMtx_XYZrotM__addr)

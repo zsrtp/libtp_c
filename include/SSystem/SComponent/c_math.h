@@ -13,6 +13,6 @@ struct RNG {
     int32_t r22;
 };
 
-#define tp_rng (*(RNG *)(tp_rng_addr))
+#define tp_rng (*(RNG*)(tp_rng_addr))
 
 #endif /* C_MATH_H */

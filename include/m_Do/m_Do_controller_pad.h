@@ -4,7 +4,7 @@
 #include "../JSystem/JUtility/JUTGamePad.h"
 #include "../addrs.h"
 
-#define mDoCPd_c__m_gamePad ((JUTGamePad **)mDoCPd_c__m_gamePad_addr)
+#define mDoCPd_c__m_gamePad ((JUTGamePad**)mDoCPd_c__m_gamePad_addr)
 
 class mDoCPd_c {
 public:
@@ -53,7 +53,8 @@ public:
     static float getAnalogR(uint32_t pad) { return getCpadInfo(pad).mTriggerRight; }
     static float getAnalogL(uint32_t pad) { return getCpadInfo(pad).mTriggerLeft; }
     // static int isConnect(uint32_t pad) { return JUTGamePad::getPortStatus(pad) == 0; }
-    // static void stopMotorWaveHard(uint32_t pad) { return mDoCPd_c__m_gamePad[pad]->stopMotorWaveHard(); }
+    // static void stopMotorWaveHard(uint32_t pad) { return
+    // mDoCPd_c__m_gamePad[pad]->stopMotorWaveHard(); }
 };
 
 inline void mDoCPd_ANALOG_CONV(uint8_t analog, float& param_1) {

@@ -15,13 +15,9 @@ class dBgS_LinkLinChk : dBgS_LinChk {
 public:
 };
 
-class dBgS_RopeLinChk : dBgS_LinChk {
+class dBgS_RopeLinChk : dBgS_LinChk {};
 
-};
-
-class dBgS_BoomerangLinChk : dBgS_LinChk {
-
-};
+class dBgS_BoomerangLinChk : dBgS_LinChk {};
 
 class dBgS_ArrowLinChk : dBgS_LinChk {
     /* 800781D8 */ dBgS_ArrowLinChk();

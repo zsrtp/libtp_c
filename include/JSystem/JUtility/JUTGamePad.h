@@ -142,11 +142,11 @@ public:
     /* 0xA8 */ uint8_t field_0xa8;
 };
 
-#define tp_mPadStatus (*(PADStatus *)tp_mPadStatus_addr)
-#define tp_mPadButton (*(JUTGamePad::CButton *)tp_mPadButton_addr)
-#define tp_mPadMStick (*(JUTGamePad::CStick *)tp_mPadMStick_addr)
-#define tp_mPadSStick (*(JUTGamePad::CStick *)tp_mPadSStick_addr)
-#define tp_cPadInfo ((interface_of_controller_pad *)tp_cPadInfo_addr)
+#define tp_mPadStatus (*(PADStatus*)tp_mPadStatus_addr)
+#define tp_mPadButton (*(JUTGamePad::CButton*)tp_mPadButton_addr)
+#define tp_mPadMStick (*(JUTGamePad::CStick*)tp_mPadMStick_addr)
+#define tp_mPadSStick (*(JUTGamePad::CStick*)tp_mPadSStick_addr)
+#define tp_cPadInfo ((interface_of_controller_pad*)tp_cPadInfo_addr)
 
 typedef void (*tp_JUTGamePadRead_t)(void);
 #define tp_JUTGamePadRead ((tp_JUTGamePadRead_t)tp_JUTGamePadRead_addr)

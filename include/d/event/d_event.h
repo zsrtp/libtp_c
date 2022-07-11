@@ -61,7 +61,13 @@ public:
     /* 0x128 */ uint8_t mCompulsory;
     /* 0x129 */ bool field_0x129;
     /* 0x12C */ int field_0x12c;
-};  // Size = 0x130
+#ifdef WII_PLATFORM
+    /* 0x130 */ uint8_t field_0x130;
+#endif
+};
+
+#ifdef GCN_PLATFORM
 static_assert(sizeof(dEvt_control_c) == 0x130);
+#endif
 
 #endif /* D_EVENT_D_EVENT_H */

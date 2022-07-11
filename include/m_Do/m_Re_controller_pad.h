@@ -27,9 +27,9 @@ enum {
 #endif
 
 struct Pointer {
-    Vec2 pos;                   // 8044BB84
-    uint8_t _p1[0x20];          // 8044BB8C
-    float scr_dist;             // 8044BBAC // Relative distance of the remote to the sensor bar
+    Vec2 pos;           // 8044BB84
+    uint8_t _p1[0x20];  // 8044BB8C
+    float scr_dist;     // 8044BBAC // Relative distance of the remote to the sensor bar
 };
 static_assert(sizeof(Pointer) == 0x2C);
 
@@ -68,16 +68,20 @@ public:
         /* 0x000C */ uint32_t mReleaseButton;
         /* 0x0010 */ Vec wiimote_acc;             // 8044BB70
         /* 0x001C */ float wiimote_acc_strength;  // 8044BB7C
-        /* 0x0020 */ float wiimote_shake;         // 8044BB80 // Unsure of the real meaning of this, needs more verification
-        /* 0x0024 */ Pointer pointer;             // 8044BB84
-        /* 0x0050 */ uint8_t _p4[8];              // 8044BBB0
-        /* 0x0058 */ float horizontal;            // 8044BBB8 // Goes from 0.0 to 1.0, shows how much the remote is horizontal
-        /* 0x005C */ float vertical;              // 8044BBBC // Goes from -1.0 to 1.0, shows how much the remote is vertical (up is 1.0, down is -1.0)
-        /* 0x0060 */ uint8_t _p5[4];              // 8044BBC0
-        /* 0x0064 */ Vec2 stick;                  // 8044BBC4
-        /* 0x006C */ Vec nunchuck_acc;            // 8044BBCC
-        /* 0x0078 */ float nunchuck_acc_strength; // 8044BBD8
-        /* 0x007C */ float nunchuck_shake;        // 8044BBDC // Unsure of the real meaning of this, needs more verification
+        /* 0x0020 */ float wiimote_shake;  // 8044BB80 // Unsure of the real meaning of this, needs
+                                           // more verification
+        /* 0x0024 */ Pointer pointer;      // 8044BB84
+        /* 0x0050 */ uint8_t _p4[8];       // 8044BBB0
+        /* 0x0058 */ float horizontal;     // 8044BBB8 // Goes from 0.0 to 1.0, shows how much the
+                                           // remote is horizontal
+        /* 0x005C */ float vertical;       // 8044BBBC // Goes from -1.0 to 1.0, shows how much the
+                                           // remote is vertical (up is 1.0, down is -1.0)
+        /* 0x0060 */ uint8_t _p5[4];       // 8044BBC0
+        /* 0x0064 */ Vec2 stick;           // 8044BBC4
+        /* 0x006C */ Vec nunchuck_acc;     // 8044BBCC
+        /* 0x0078 */ float nunchuck_acc_strength;  // 8044BBD8
+        /* 0x007C */ float nunchuck_shake;  // 8044BBDC // Unsure of the real meaning of this, needs
+                                            // more verification
         /* 0x0080 */ uint8_t field_0x80[0x554 - 0x80];
         /* 0x0554 */ int field_0x554;
         /* 0x0558 */ uint8_t field_0x558[0x5e0 - 0x558];
@@ -126,11 +130,11 @@ public:
         /* 0x1E00 */ int field_0x1e00;
         /* 0x1E04 */ uint8_t field_0x1e04;
         /* 0x1E05 */ uint8_t field_0x1e05;
-    };  //Size: 0x1E08
+    };  // Size: 0x1E08
 };
 
 #ifdef WII_PLATFORM
-#define tp_mPad (*(mReCPd::Pad *)tp_mPad_addr)
+#define tp_mPad (*(mReCPd::Pad*)tp_mPad_addr)
 #endif
 
 #endif /* M_RE_CONTROLLER_PAD_H */

@@ -7,10 +7,10 @@
 
 #include "../addrs.h"
 
-typedef void (*tp_memset_t)(void *addr, int value, uint32_t size);
-typedef void *(*tp_memalign_t)(int32_t align, uint32_t size);
-typedef void *(*tp_memcpy_t)(void *dest, void *src, size_t size);
-typedef void (*tp_free_t)(void *addr);
+typedef void (*tp_memset_t)(void* addr, int value, uint32_t size);
+typedef void* (*tp_memalign_t)(int32_t align, uint32_t size);
+typedef void* (*tp_memcpy_t)(void* dest, void* src, size_t size);
+typedef void (*tp_free_t)(void* addr);
 typedef int (*tp_sprintf_t)(const char* string, const char* format, ...);
 typedef int (*tp_vsnprintf_t)(const char* string, size_t n, const char* format, va_list);
 typedef char* (*tp_strcpy_t)(char* dst, const char* src);

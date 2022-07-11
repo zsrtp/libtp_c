@@ -17,9 +17,9 @@ struct MatrixPtr {
 };
 
 struct MatrixInfo {
-    MatrixPtr *matrix_info;
+    MatrixPtr* matrix_info;
 };
 
-#define tp_matrixInfo (*(MatrixInfo *)(tp_matrixPtr_addr))
+#define tp_matrixInfo (*(MatrixInfo*)(tp_matrixPtr_addr))
 
 #endif

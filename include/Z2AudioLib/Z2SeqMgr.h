@@ -57,10 +57,12 @@ public:
     /* 0xBE */ uint8_t field_0xbe;
     /* 0xBF */ uint8_t field_0xbf;
     /* 0xC0 */ uint8_t field_0xc0;
+#ifdef GCN_PLATFORM
     /* 0xC1 */ uint8_t field_0xc1;
     /* 0xC2 */ uint8_t field_0xc2;
     /* 0xC3 */ uint8_t field_0xc3;
     /* 0xC4 */ uint8_t field_0xc4;
+#endif
     /* 0xC8 */ float field_0xc8;
     /* 0xCC */ float field_0xcc;
     /* 0xD0 */ uint8_t mFlags;

@@ -7,7 +7,7 @@
 #include "../JSystem/JAudio2/JAIStreamMgr.h"
 
 class Z2SoundMgr {
-public:    
+public:
     /* 0x000 */ void* vtable;
     /* 0x004 */ JAISeMgr mSeMgr;
     /* 0x728 */ JAISeqMgr mSeqMgr;

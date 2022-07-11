@@ -15,8 +15,8 @@ void setEventFlag(uint16_t flag) {
 
 // Set Savefile spawn info
 void setReturnPlace(const char* stage, int8_t room, uint8_t spawn) {
-    dSv_player_return_place_c__set(&g_dComIfG_gameInfo.info.getPlayer().mPlayerReturnPlace,
-                                    stage, room, spawn);
+    dSv_player_return_place_c__set(&g_dComIfG_gameInfo.info.getPlayer().mPlayerReturnPlace, stage,
+                                   room, spawn);
 }
 
 void setNextStageName(const char* name) {
@@ -34,6 +34,5 @@ void setNextStageRoom(int8_t room) {
 void setNextStagePoint(int16_t point) {
     g_dComIfG_gameInfo.play.mNextStage.setPoint(point);
 }
-
 
 #endif

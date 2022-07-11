@@ -16,7 +16,7 @@ struct fopAcM_prm_class {
     /* 0x10 */ csXyz mAngle;  // rotation
     /* 0x16 */ uint16_t mEnemyNo;
     /* 0x18 */ uint8_t mScale[3];
-    /* 0x1B */ uint8_t mGbaName;     // from WW, maybe a different parameter here
+    /* 0x1B */ uint8_t mGbaName;    // from WW, maybe a different parameter here
     /* 0x1C */ int32_t mParentPId;  // parent process ID
     /* 0x20 */ int8_t mSubtype;
     /* 0x21 */ int8_t mRoomNo;
@@ -73,6 +73,6 @@ typedef void (*fopAcM_create_t)(int16_t, uint32_t, const cXyz*, int, const csXyz
                                 int8_t);
 #define fopAcM_create ((fopAcM_create_t)fopAcM_create_addr)
 
-#define g_fopAcTg_Queue (*(node_list_class *)(g_fopAcTg_Queue_addr))
+#define g_fopAcTg_Queue (*(node_list_class*)(g_fopAcTg_Queue_addr))
 
 #endif

@@ -10,9 +10,21 @@
 #endif
 
 void setGamepadButtons(uint16_t buttons) {
+#ifdef GCN_PLATFORM
     mPad.mButton = buttons;
+#endif
+
+#ifdef WII_PLATFORM
+    tp_mPad.mHoldButton = buttons;
+#endif
 }
 
 void setGamepadTrig(uint16_t buttons) {
+#ifdef GCN_PLATFORM
     mPad.mTrigger = buttons;
+#endif
+
+#ifdef WII_PLATFORM
+    tp_mPad.mTrigButton = buttons;
+#endif
 }
