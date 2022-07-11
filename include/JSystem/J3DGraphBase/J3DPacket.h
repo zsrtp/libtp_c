@@ -60,10 +60,6 @@ public:
     /* 0x0C */ void* mpUserData;
 };
 
-#define J3DPacket__entry_addr 0x80312750
-typedef bool (*J3DPacket__entry_t)(J3DPacket*, J3DDrawBuffer*);
-#define J3DPacket__entry ((J3DPacket__entry_t)J3DPacket__entry_addr)
-
 class J3DDrawPacket : public J3DPacket {
 public:
     int mFlags;

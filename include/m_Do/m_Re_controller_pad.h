@@ -3,7 +3,7 @@
 
 #include "../dolphin/mtx/vec.h"
 #include "../dolphin/mtx/mtx.h"
-#include "../../addrs.h"
+#include "../addrs.h"
 #include <stdint.h>
 
 #ifdef WII_PLATFORM
@@ -34,6 +34,7 @@ struct Pointer {
 static_assert(sizeof(Pointer) == 0x2C);
 
 class mReCPd {
+public:
     struct Pad {
         struct Acc {
             /* 0x000 */ Vec field_0x0[120];

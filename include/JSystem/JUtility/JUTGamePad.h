@@ -10,6 +10,7 @@
 
 typedef void (*callbackFn)(int, void*);
 
+#ifdef GCN_PLATFORM
 namespace CButton {
 enum {
     DPAD_LEFT = 0x0001,
@@ -26,6 +27,7 @@ enum {
     START = 0x1000,
 };
 }
+#endif
 
 struct JUTGamePad : public JKRDisposer {
 public:
