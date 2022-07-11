@@ -6,6 +6,26 @@
 #include "../addrs.h"
 #include <stdint.h>
 
+#ifdef WII_PLATFORM
+namespace CButton {
+enum {
+    DPAD_LEFT = 0x1,
+    DPAD_RIGHT = 0x2,
+    DPAD_DOWN = 0x4,
+    DPAD_UP = 0x8,
+    PLUS = 0x10,
+    TWO = 0x100,
+    ONE = 0x200,
+    B = 0x400,
+    A = 0x800,
+    MINUS = 0x1000,
+    Z = 0x2000,
+    C = 0x4000,
+    HOME = 0x8000,
+};
+}
+#endif
+
 struct Pointer {
     Vec2 pos;                   // 8044BB84
     uint8_t _p1[0x20];          // 8044BB8C
