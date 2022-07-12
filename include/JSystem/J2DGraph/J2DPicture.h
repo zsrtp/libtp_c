@@ -27,7 +27,8 @@ public:
 typedef void (*J2DPicture__J2DPicture4_t)(void* addr, const ResTIMG* img);
 #define J2DPicture__J2DPicture4 ((J2DPicture__J2DPicture4_t)J2DPicture__J2DPicture4_addr)
 
-typedef void (*J2DPicture__draw_t)(void* addr, float xpos, float ypos, float width, float height, bool mirrorX, bool mirrorY, bool tumble);
+typedef void (*J2DPicture__draw_t)(void* addr, float xpos, float ypos, float width, float height,
+                                   bool mirrorX, bool mirrorY, bool tumble);
 #define J2DPicture__draw ((J2DPicture__draw_t)J2DPicture__draw_addr)
 
 #endif

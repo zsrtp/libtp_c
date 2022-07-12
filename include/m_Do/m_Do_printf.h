@@ -5,7 +5,7 @@
 
 #include "../addrs.h"
 
-typedef void (*tp_osReport_t)(const char *string, ...);
+typedef void (*tp_osReport_t)(const char* string, ...);
 #define tp_osReport ((tp_osReport_t)tp_osReport_addr)
 
 #endif

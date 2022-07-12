@@ -70,7 +70,6 @@ public:
     /* 0x1D4 */ uint8_t mWtrChkMode;
 };
 
-class dBgS_LinkAcch : public dBgS_Acch {
-};
+class dBgS_LinkAcch : public dBgS_Acch {};
 
 #endif /* D_BG_D_BG_S_ACCH_H */

@@ -9,6 +9,6 @@ struct LoadingInfo {
     uint8_t _p0[0x04];   // 80450CE4
 };
 
-#define tp_fopScnRq (*(LoadingInfo *)(tp_fopScnRq_addr))
+#define tp_fopScnRq (*(LoadingInfo*)(tp_fopScnRq_addr))
 
 #endif

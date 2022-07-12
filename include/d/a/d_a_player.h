@@ -19,8 +19,7 @@ public:
     /* 0x48 */ ResTIMG* field_0x48;
 };
 
-struct daPy_boomerangMove_c {
-};
+struct daPy_boomerangMove_c {};
 
 struct JKRHeap;
 
@@ -91,7 +90,7 @@ public:
     /* 0x0568 */ uint8_t mCutType;
     /* 0x0569 */ uint8_t mComboCutCount;
 #ifdef WII_PLATFORM
-    uint8_t unk_field0[4]; // might be part of fopAc_ac_c, fix later
+    uint8_t unk_field0[4];  // might be part of fopAc_ac_c, fix later
 #endif
     /* 0x056A */ uint8_t mSpecialMode;  // maybe needs better name
     /* 0x056B */ uint8_t field_0x56b;

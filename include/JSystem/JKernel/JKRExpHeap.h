@@ -44,9 +44,9 @@ public:
     CMemBlock* mTailUsedList;
 };
 
-#define zeldaHeap (*(JKRExpHeap **)(tp_zeldaHeap_addr))
-#define gameHeap (*(JKRExpHeap **)(tp_gameHeap_addr))
-#define archiveHeap (*(JKRExpHeap **)(tp_archiveHeap_addr))
+#define zeldaHeap (*(JKRExpHeap**)(tp_zeldaHeap_addr))
+#define gameHeap (*(JKRExpHeap**)(tp_gameHeap_addr))
+#define archiveHeap (*(JKRExpHeap**)(tp_archiveHeap_addr))
 
 typedef int32_t (*JKRExpHeap__getUsedSize_t)(uint8_t);
 #define JKRExpHeap__getUsedSize ((JKRExpHeap__getUsedSize_t)JKRExpHeap__getUsedSize_addr)
@@ -58,6 +58,7 @@ typedef int32_t (*JKRHeap__getTotalFreeSize_t)(JKRHeap* addr);
 #define JKRHeap__getTotalFreeSize ((JKRHeap__getTotalFreeSize_t)JKRHeap__getTotalFreeSize_addr)
 
 typedef int32_t (*JKRExpHeap__do_getTotalFreeSize_t)(JKRExpHeap* addr);
-#define JKRExpHeap__do_getTotalFreeSize ((JKRExpHeap__do_getTotalFreeSize_t)JKRExpHeap__do_getTotalFreeSize_addr)
+#define JKRExpHeap__do_getTotalFreeSize                                                            \
+    ((JKRExpHeap__do_getTotalFreeSize_t)JKRExpHeap__do_getTotalFreeSize_addr)
 
 #endif /* JKREXPHEAP_H */

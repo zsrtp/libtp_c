@@ -41,10 +41,10 @@ public:
     }
 
     JSUTree<JKRHeap>& getHeapTree() { return mChildTree; }
-    //void appendDisposer(JKRDisposer* disposer) { mDisposerList.append(&disposer->mLink); }
-    //void removeDisposer(JKRDisposer* disposer) { mDisposerList.remove(&disposer->mLink); }
-    //void lock() { OSLockMutex(&mMutex); }
-    //void unlock() { OSUnlockMutex(&mMutex); }
+    // void appendDisposer(JKRDisposer* disposer) { mDisposerList.append(&disposer->mLink); }
+    // void removeDisposer(JKRDisposer* disposer) { mDisposerList.remove(&disposer->mLink); }
+    // void lock() { OSLockMutex(&mMutex); }
+    // void unlock() { OSUnlockMutex(&mMutex); }
     uint32_t getHeapSize() { return mSize; }
 
 public:
@@ -66,7 +66,9 @@ public:
 
 public:
     static void setState_uint32_tID_(TState* state, uint32_t id) { state->mId = id; }
-    static void setState_uUsedSize_(TState* state, uint32_t usedSize) { state->mUsedSize = usedSize; }
+    static void setState_uUsedSize_(TState* state, uint32_t usedSize) {
+        state->mUsedSize = usedSize;
+    }
     static void setState_uint32_tCheckCode_(TState* state, uint32_t checkCode) {
         state->mCheckCode = checkCode;
     }

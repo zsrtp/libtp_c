@@ -25,6 +25,7 @@ public:
     /* 0x68 */ int mMaxActiveSe;
 };  // Size: 0x6C
 
+#ifdef GCN_PLATFORM
 class JAISeMgr : public JAISeqDataUser, public JAISoundActivity {
 public:
     /* 0x008 */ JAIAudience* mAudience;
@@ -33,5 +34,15 @@ public:
     /* 0x014 */ JAISeCategoryMgr mCategoryMgrs[16];
     /* 0x6D4 */ JAISoundParamsMove mParams;
 };  // Size: 0x724
+#endif
+
+#ifdef WII_PLATFORM
+class JAISeMgr {
+public:
+    /* 0x000 */ uint8_t field_0x0[0x18];
+    /* 0x018 */ JAISeCategoryMgr mCategoryMgrs[16];
+    /* 0x6D8 */ JAISoundParamsMove mParams;
+};  // Size: 0x728
+#endif
 
 #endif /* JAISEMGR_H */

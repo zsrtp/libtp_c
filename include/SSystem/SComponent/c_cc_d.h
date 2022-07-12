@@ -32,9 +32,7 @@ public:
     /* 0x20 */ cM3dGCyl mCyl;
 };  // Size = 0x34
 
-class cCcD_TriAttr {
-
-};
+class cCcD_TriAttr {};
 
 class cCcD_DivideInfo {
 public:
@@ -127,7 +125,6 @@ public:
 
 class cCcD_GObjInf : cCcD_Obj {
 public:
-
 };
 
 #endif /* C_CC_D_H */

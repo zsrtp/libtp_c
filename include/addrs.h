@@ -123,7 +123,7 @@
 #define GXGetScissor_addr 0x80360548
 #define wgPipe_addr 0xCC008000
 
-//misc functions (sort later)
+// misc functions (sort later)
 #define tp_cDyl_InitAsync_addr 0x80018764
 #define tp_fapGm_Execute_addr 0x80018a6c
 #define tp_draw_console_addr 0x802e8384
@@ -133,7 +133,7 @@
 #define tp_query042_addr 0x8024bfec
 #define tp_cc_at_check_addr 0x80087c04
 
-//d_save
+// d_save
 #define dSv_player_item_c__setItem_addr 0x80032fb8
 #define dSv_player_item_c__getItem_addr 0x80033030
 #define dSv_player_item_record_c__setBombNum_addr 0x80033f6c
@@ -157,10 +157,10 @@
 #define dSv_event_c__onEventBit_addr 0x8003498c
 #define dSv_player_return_place_c__set_addr 0x80032d1c
 
-//d_meter2_info
+// d_meter2_info
 #define g_meter2_info_addr 0x80430188
 
-//d_com_inf_game
+// d_com_inf_game
 #define dComIfGs_setSelectItemIndex_addr 0x8002dcc4
 #define dComIfGs_getMixItemIndex_addr 0x8002ddc8
 #define dComIfGs_setMixItemIndex_addr 0x8002dd08
@@ -171,16 +171,16 @@
 #define dComIfGs_onZoneSwitch_addr 0x8002d94c
 #define dComIfGs_onOneZoneSwitch_addr 0x8002da9c
 
-//d_stage
+// d_stage
 #define dStage_nextStage_c__set_addr 0x80023e28
 
-//d_menu_window
+// d_menu_window
 #define dMw_c__isEventCheck_addr 0x801fcf84
 
-//m_Do_audio
+// m_Do_audio
 #define mDoAud_seStartLevel_addr 0x8014113c
 
-//JKernel
+// JKernel
 #define JKernel__operator_new_addr 0x802cec4c
 #define JKernel__operator_delete_addr 0x802ced3c
 #define JKRArchive__getResource2_addr 0x802d5c64
@@ -193,58 +193,58 @@
 #define JKRExpHeap__do_getTotalFreeSize_addr 0x802cfc84
 #define JKRHeap__alloc_addr 0x802ce474
 
-//J3DSys
+// J3DSys
 #define j3dSys_addr 0x80434ac8
 
-//J3DPacket
+// J3DPacket
 #define J3DDrawBuffer__entryImm_addr 0x8032548c
 #define J3DPacket__entry_addr 0x80312750
 
-//J2DPicture
+// J2DPicture
 #define J2DPicture__J2DPicture4_addr 0x802fc708
 #define J2DPicture__draw_addr 0x802fdc70
 
-//J2DPane
+// J2DPane
 #define J2DPane__J2DPane1_addr 0x802f5bf8
 
-//J2DTextBox
+// J2DTextBox
 #define J2DTextBox__J2DTextBox1_addr 0x802ff660
 #define J2DTextBox__setFont_addr 0x80300278
 #define J2DTextBox__setString_addr 0x80300660
 #define J2DTextBox__draw2_addr 0x80300490
 
-//d_a_alink
+// d_a_alink
 #define daAlink_c__checkStageName_addr 0x8009da60
 
-//f_op_actor_mng
+// f_op_actor_mng
 #define fopAcM_create_addr 0x80019D98
 #define g_fopAcTg_Queue_addr 0x803A35E0
 
-//f_op_actor_iter
+// f_op_actor_iter
 #define fopAcIt_Judge_addr 0x800197f8
 
-//f_pc_searcher
+// f_pc_searcher
 #define fpcSch_JudgeForPName_addr 0x80023578
 
-//d_kankyo
+// d_kankyo
 #define g_env_light_addr 0x8042ca54
 
-//d_s_play
+// d_s_play
 #define sPauseTimer_addr 0x80451125
 
 // d_cc_s
 #define dCcS__draw_addr 0x800872d0
 
-//m_Do_graphic
+// m_Do_graphic
 #define dScnPly_BeforeOfPaint_addr 0x80008424
 
-//m_Do_ext
+// m_Do_ext
 #define mDoExt_getMesgFont_addr 0x800149f0
 
-//m_Do_controller_pad
+// m_Do_controller_pad
 #define mDoCPd_c__m_gamePad_addr 0x803DD2D8
 
-//m_Do_mtx
+// m_Do_mtx
 #define mDoMtx_stack_c__now_addr 0x80450c2c
 #define mDoMtx_XYZrotM__addr 0x8000c164
 #define mDoMtx_stack_c__scaleM_addr 0x8000ce38
@@ -369,7 +369,7 @@
 #define GXGetScissor_addr 0x80361378
 #define wgPipe_addr 0xCC008000
 
-//function hooks (move to correct categories later)
+// function hooks (move to correct categories later)
 #define tp_cDyl_InitAsync_addr 0x8001880c
 #define tp_fapGm_Execute_addr 0x80018b14
 #define tp_draw_console_addr 0x802e9184
@@ -379,7 +379,7 @@
 #define tp_query042_addr 0x8024c690
 #define tp_cc_at_check_addr 0x80087d34
 
-//d_save
+// d_save
 #define dSv_player_item_c__setItem_addr 0x80033060
 #define dSv_player_item_c__getItem_addr 0x800330d8
 #define dSv_player_item_record_c__setBombNum_addr 0x80034014
@@ -403,10 +403,10 @@
 #define dSv_event_c__onEventBit_addr 0x80034abc
 #define dSv_player_return_place_c__set_addr 0x80032dc4
 
-//d_meter2_info
+// d_meter2_info
 #define g_meter2_info_addr 0x80432148
 
-//d_com_inf_game
+// d_com_inf_game
 #define dComIfGs_setSelectItemIndex_addr 0x8002dd6c
 #define dComIfGs_getMixItemIndex_addr 0x8002de70
 #define dComIfGs_setMixItemIndex_addr 0x8002ddb0
@@ -417,16 +417,16 @@
 #define dComIfGs_onZoneSwitch_addr 0x8002d9f4
 #define dComIfGs_onOneZoneSwitch_addr 0x8002db44
 
-//d_stage
+// d_stage
 #define dStage_nextStage_c__set_addr 0x80023ed0
 
-//d_menu_window
+// d_menu_window
 #define dMw_c__isEventCheck_addr 0x801fd248
 
-//m_Do_audio
+// m_Do_audio
 #define mDoAud_seStartLevel_addr 0x80141348
 
-//JKernel
+// JKernel
 #define JKernel__operator_new_addr 0x802cfa4c
 #define JKernel__operator_delete_addr 0x802cfb3c
 #define JKRArchive__getResource2_addr 0x802d6a64
@@ -439,52 +439,52 @@
 #define JKRExpHeap__do_getTotalFreeSize_addr 0x802d0a84
 #define JKRHeap__alloc_addr 0x802cf274
 
-//J3DSys
+// J3DSys
 #define j3dSys_addr 0x80436a88
 
-//J3DPacket
+// J3DPacket
 #define J3DDrawBuffer__entryImm_addr 0x8032628c
 #define J3DPacket__entry_addr 0x80313550
 
-//J2DPicture
+// J2DPicture
 #define J2DPicture__J2DPicture4_addr 0x802fd508
 #define J2DPicture__draw_addr 0x802fea70
 
-//J2DPane
+// J2DPane
 #define J2DPane__J2DPane1_addr 0x802f69f8
 
-//J2DTextBox
+// J2DTextBox
 #define J2DTextBox__J2DTextBox1_addr 0x80300460
 #define J2DTextBox__setFont_addr 0x80301078
 #define J2DTextBox__setString_addr 0x80301460
 #define J2DTextBox__draw2_addr 0x80301290
 
-//d_a_alink
+// d_a_alink
 #define daAlink_c__checkStageName_addr 0x8009dc6c
 
-//f_op_actor_mng
+// f_op_actor_mng
 #define fopAcM_create_addr 0x80019e40
 #define g_fopAcTg_Queue_addr 0x803a52c0
 
-//f_op_actor_iter
+// f_op_actor_iter
 #define fopAcIt_Judge_addr 0x800198a0
 
-//f_pc_searcher
+// f_pc_searcher
 #define fpcSch_JudgeForPName_addr 0x80023620
 
-//d_kankyo
+// d_kankyo
 #define g_env_light_addr 0x8042ea14
 
-//d_s_play
+// d_s_play
 #define sPauseTimer_addr 0x804530ED
 
-//m_Do_ext
+// m_Do_ext
 #define mDoExt_getMesgFont_addr 0x800149a4
 
-//m_Do_controller_pad
+// m_Do_controller_pad
 #define mDoCPd_c__m_gamePad_addr 0x803df278
 
-//m_Do_mtx
+// m_Do_mtx
 #define mDoMtx_stack_c__now_addr 0x803df410
 #define mDoMtx_XYZrotM__addr 0x8000c118
 #define mDoMtx_stack_c__scaleM_addr 0x8000cdec
@@ -609,7 +609,7 @@
 #define GXGetScissor_addr 0x803629e4
 #define wgPipe_addr 0xCC008000
 
-//function hooks (move to correct categories later)
+// function hooks (move to correct categories later)
 #define tp_cDyl_InitAsync_addr 0x80018764
 #define tp_fapGm_Execute_addr 0x80018a6c
 #define tp_draw_console_addr 0x802ea820
@@ -619,7 +619,7 @@
 #define tp_query042_addr 0x8024d954
 #define tp_cc_at_check_addr 0x80087c44
 
-//d_save
+// d_save
 #define dSv_player_item_c__setItem_addr 0x80032fb8
 #define dSv_player_item_c__getItem_addr 0x80033030
 #define dSv_player_item_record_c__setBombNum_addr 0x80033f6c
@@ -643,10 +643,10 @@
 #define dSv_event_c__onEventBit_addr 0x8003498c
 #define dSv_player_return_place_c__set_addr 0x80032d1c
 
-//d_meter2_info
+// d_meter2_info
 #define g_meter2_info_addr 0x8042a2c8
 
-//d_com_inf_game
+// d_com_inf_game
 #define dComIfGs_setSelectItemIndex_addr 0x8002dcc4
 #define dComIfGs_getMixItemIndex_addr 0x8002ddc8
 #define dComIfGs_setMixItemIndex_addr 0x8002dd08
@@ -657,16 +657,16 @@
 #define dComIfGs_onZoneSwitch_addr 0x8002d94c
 #define dComIfGs_onOneZoneSwitch_addr 0x8002da9c
 
-//d_stage
+// d_stage
 #define dStage_nextStage_c__set_addr 0x80023e28
 
-//d_menu_window
+// d_menu_window
 #define dMw_c__isEventCheck_addr 0x801fd67c
 
-//m_Do_audio
+// m_Do_audio
 #define mDoAud_seStartLevel_addr 0x80141188
 
-//JKernel
+// JKernel
 #define JKernel__operator_new_addr 0x802d10e8
 #define JKernel__operator_delete_addr 0x802d11d8
 #define JKRArchive__getResource2_addr 0x802d8100
@@ -679,52 +679,52 @@
 #define JKRExpHeap__do_getTotalFreeSize_addr 0x802d2120
 #define JKRHeap__alloc_addr 0x802d0910
 
-//J3DSys
+// J3DSys
 #define j3dSys_addr 0x8042ec08
 
-//J3DPacket
+// J3DPacket
 #define J3DDrawBuffer__entryImm_addr 0x80327928
 #define J3DPacket__entry_addr 0x80314bec
 
-//J2DPicture
+// J2DPicture
 #define J2DPicture__J2DPicture4_addr 0x802feba4
 #define J2DPicture__draw_addr 0x8030010c
 
-//J2DPane
+// J2DPane
 #define J2DPane__J2DPane1_addr 0x802f8094
 
-//J2DTextBox
+// J2DTextBox
 #define J2DTextBox__J2DTextBox1_addr 0x80301afc
 #define J2DTextBox__setFont_addr 0x80302714
 #define J2DTextBox__setString_addr 0x80302afc
 #define J2DTextBox__draw2_addr 0x8030292c
 
-//d_a_alink
+// d_a_alink
 #define daAlink_c__checkStageName_addr 0x8009da98
 
-//f_op_actor_mng
+// f_op_actor_mng
 #define fopAcM_create_addr 0x80019d98
 #define g_fopAcTg_Queue_addr 0x8039d740
 
-//f_op_actor_iter
+// f_op_actor_iter
 #define fopAcIt_Judge_addr 0x800197f8
 
-//f_pc_searcher
+// f_pc_searcher
 #define fpcSch_JudgeForPName_addr 0x80023578
 
-//d_kankyo
+// d_kankyo
 #define g_env_light_addr 0x80426b94
 
-//d_s_play
+// d_s_play
 #define sPauseTimer_addr 0x8044b265
 
-//m_Do_ext
+// m_Do_ext
 #define mDoExt_getMesgFont_addr 0x800149f0
 
-//m_Do_controller_pad
+// m_Do_controller_pad
 #define mDoCPd_c__m_gamePad_addr 0x803d7418
 
-//m_Do_mtx
+// m_Do_mtx
 #define mDoMtx_stack_c__now_addr 0x803d75b0
 #define mDoMtx_XYZrotM__addr 0x8000c164
 #define mDoMtx_stack_c__scaleM_addr 0x8000ce38
@@ -850,7 +850,7 @@
 #define GXGetScissor_addr 0x80360b70
 #define wgPipe_addr 0xCC008000
 
-//misc functions (sort later)
+// misc functions (sort later)
 #define tp_cDyl_InitAsync_addr 0x8001e300
 #define tp_fapGm_Execute_addr 0x8001e6b0
 #define tp_draw_console_addr 0x802fb3ac
@@ -860,7 +860,7 @@
 #define tp_query042_addr 0x80238c6c
 #define tp_cc_at_check_addr 0x800846b4
 
-//d_save
+// d_save
 #define dSv_player_item_c__setItem_addr 0x80037738
 #define dSv_player_item_c__getItem_addr 0x80039ee0
 #define dSv_player_item_record_c__setBombNum_addr 0x80038318
@@ -885,23 +885,23 @@
 #define dSv_player_get_item_c__isFirstBit_addr 0x8003827c
 #define dSv_player_return_place_c__set_addr 0x800374b4
 
-//d_meter2_info
+// d_meter2_info
 #define g_meter2_info_addr 0x804bcb78
 
-//d_com_inf_game
+// d_com_inf_game
 #define dComIfGs_setSelectItemIndex_addr 0x8800323d4
 #define dComIfGs_getMixItemIndex_addr 0x800324c0
 #define dComIfGs_setMixItemIndex_addr 0x80032418
 #define dComIfGs_onZoneSwitch_addr 0x8003207c
 #define dComIfGs_onOneZoneSwitch_addr 0x800321b0
 
-//d_stage
+// d_stage
 #define dStage_nextStage_c__set_addr 0x8002897c
 
-//d_menu_window
+// d_menu_window
 #define dMw_c__isEventCheck_addr 0x801e3334
 
-//JKernel
+// JKernel
 #define JKernel__operator_new_addr 0x802e2b2c
 #define JKernel__operator_delete_addr 0x802e2b74
 #define JKRArchive__getResource2_addr 0x802e8cac
@@ -914,52 +914,52 @@
 #define JKRExpHeap__do_getTotalFreeSize_addr 0x802e3b40
 #define JKRHeap__alloc_addr 0x802e2468
 
-//J3DSys
+// J3DSys
 #define j3dSys_addr 0x804c3620
 
-//J3DPacket
+// J3DPacket
 #define J3DDrawBuffer__entryImm_addr 0x8032f8f4
 #define J3DPacket__entry_addr 0x80322cf4
 
-//J2DPicture
+// J2DPicture
 #define J2DPicture__J2DPicture4_addr 0x8030ef10
 #define J2DPicture__draw_addr 0x80310278
 
-//J2DPane
+// J2DPane
 #define J2DPane__J2DPane1_addr 0x80308834
 
-//J2DTextBox
+// J2DTextBox
 #define J2DTextBox__J2DTextBox1_addr 0x80311cf4
 #define J2DTextBox__setFont_addr 0x80312830
 #define J2DTextBox__setString_addr 0x80312bc8
 #define J2DTextBox__draw2_addr 0x80312a20
 
-//d_a_alink
+// d_a_alink
 #define daAlink_c__checkStageName_addr 0x80096734
 
-//f_op_actor_mng
+// f_op_actor_mng
 #define fopAcM_create_addr 0x8001f868
 #define g_fopAcTg_Queue_addr 0x8047e138
 
-//f_op_actor_iter
+// f_op_actor_iter
 #define fopAcIt_Judge_addr 0x8001f460
 
-//f_pc_searcher
+// f_pc_searcher
 #define fpcSch_JudgeForPName_addr 0x80028150
 
-//d_kankyo
+// d_kankyo
 #define g_env_light_addr 0x804b944c
 
-//d_s_play
+// d_s_play
 #define sPauseTimer_addr 0x8053ae1d
 
-//m_Do_ext
+// m_Do_ext
 #define mDoExt_getMesgFont_addr 0x800198e4
 
-//m_Do_controller_pad
+// m_Do_controller_pad
 #define mDoCPd_c__m_gamePad_addr 0x8044ba50
 
-//m_Do_mtx
+// m_Do_mtx
 #define mDoMtx_stack_c__now_addr 0x80453500
 #define mDoMtx_XYZrotM__addr 0x8001283c
 #define mDoMtx_stack_c__scaleM_addr 0x80013454
@@ -1085,7 +1085,7 @@
 #define GXGetScissor_addr 0x8034b9d8
 #define wgPipe_addr 0xCC008000
 
-//misc functions (sort later)
+// misc functions (sort later)
 #define tp_cDyl_InitAsync_addr 0x8001e4b8
 #define tp_fapGm_Execute_addr 0x8001e868
 #define tp_draw_console_addr 0x802e61ac
@@ -1095,7 +1095,7 @@
 #define tp_query042_addr 0x802383bc
 #define tp_cc_at_check_addr 0x80084a40
 
-//d_save
+// d_save
 #define dSv_player_item_c__setItem_addr 0x80037904
 #define dSv_player_item_c__getItem_addr 0x8003a15c
 #define dSv_player_item_record_c__setBombNum_addr 0x800384e4
@@ -1120,43 +1120,43 @@
 #define dSv_player_get_item_c__isFirstBit_addr 0x80038448
 #define dSv_player_return_place_c__set_addr 0x80037680
 
-//d_meter2_info
+// d_meter2_info
 #define g_meter2_info_addr 0x804a4ab8
 
-//d_com_inf_game
+// d_com_inf_game
 #define dComIfGs_setSelectItemIndex_addr 0x880032590
 #define dComIfGs_getMixItemIndex_addr 0x8003267c
 #define dComIfGs_setMixItemIndex_addr 0x800325d4
 #define dComIfGs_onZoneSwitch_addr 0x800338ac
 #define dComIfGs_onOneZoneSwitch_addr 0x800339e0
 
-//d_stage
+// d_stage
 #define dStage_nextStage_c__set_addr 0x80028b40
 
-//d_menu_window
+// d_menu_window
 #define dMw_c__isEventCheck_addr 0x801e2760
 
-//JKernel
+// JKernel
 #define JKernel__operator_new_addr 0x802cd92c
 #define JKRArchive__getResource2_addr 0x802d49a0
 
-//J2DPicture
+// J2DPicture
 #define J2DPicture__J2DPicture4_addr 0x802f9d10
 #define J2DPicture__draw_addr 0x802fb078
 
-//d_a_alink
+// d_a_alink
 #define daAlink_c__checkStageName_addr 0x80098268
 
-//f_op_actor_mng
+// f_op_actor_mng
 #define fopAcM_create_addr 0x80021024
 
-//f_op_actor_iter
+// f_op_actor_iter
 #define fopAcIt_Judge_addr 0x80020c1c
 
-//f_pc_searcher
+// f_pc_searcher
 #define fpcSch_JudgeForPName_addr 0x80029944
 
-//d_kankyo
+// d_kankyo
 #define g_env_light_addr 0x8047b274
 #endif
 
@@ -1279,7 +1279,7 @@
 #define GXGetScissor_addr 0x8034b5a8
 #define wgPipe_addr 0xCC008000
 
-//misc functions (sort later)
+// misc functions (sort later)
 #define tp_cDyl_InitAsync_addr 0x8001e3ec
 #define tp_fapGm_Execute_addr 0x8001e79c
 #define tp_draw_console_addr 0x802e5d7c
@@ -1289,7 +1289,7 @@
 #define tp_query042_addr 0x80238468
 #define tp_cc_at_check_addr 0x800849d8
 
-//d_save
+// d_save
 #define dSv_player_item_c__setItem_addr 0x80037850
 #define dSv_player_item_c__getItem_addr 0x8003a090
 #define dSv_player_item_record_c__setBombNum_addr 0x80038430
@@ -1314,43 +1314,43 @@
 #define dSv_player_get_item_c__isFirstBit_addr 0x80038394
 #define dSv_player_return_place_c__set_addr 0x800375cc
 
-//d_meter2_info
+// d_meter2_info
 #define g_meter2_info_addr 0x804a41a0
 
-//d_com_inf_game
+// d_com_inf_game
 #define dComIfGs_setSelectItemIndex_addr 0x800324dc
 #define dComIfGs_getMixItemIndex_addr 0x800325c8
 #define dComIfGs_setMixItemIndex_addr 0x80032520
 #define dComIfGs_onZoneSwitch_addr 0x80032184
 #define dComIfGs_onOneZoneSwitch_addr 0x800322b8
 
-//d_stage
+// d_stage
 #define dStage_nextStage_c__set_addr 0x80028a8c
 
-//d_menu_window
+// d_menu_window
 #define dMw_c__isEventCheck_addr 0x801e2a58
 
-//JKernel
+// JKernel
 #define JKernel__operator_new_addr 0x802cd4fc
 #define JKRArchive__getResource2_addr 0x802d367c
 
-//J2DPicture
+// J2DPicture
 #define J2DPicture__J2DPicture4_addr 0x802f98e0
 #define J2DPicture__draw_addr 0x802fac48
 
-//d_a_alink
+// d_a_alink
 #define daAlink_c__checkStageName_addr 0x80096b4c
 
-//f_op_actor_mng
+// f_op_actor_mng
 #define fopAcM_create_addr 0x8001f954
 
-//f_op_actor_iter
+// f_op_actor_iter
 #define fopAcIt_Judge_addr 0x8001f54c
 
-//f_pc_searcher
+// f_pc_searcher
 #define fpcSch_JudgeForPName_addr 0x80028260
 
-//d_kankyo
+// d_kankyo
 #define g_env_light_addr 0x804a0a54
 
 #endif

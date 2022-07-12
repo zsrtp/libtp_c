@@ -23,6 +23,10 @@ class Z2SeMgr {
 public:
     /* 0x000 */ JAISoundHandle mSoundHandle[24];
     /* 0x060 */ JAISoundHandles field_0x60;
+#ifdef WII_PLATFORM
+    /* 0x68 */ uint32_t field_0x68;
+    /* 0x6C */ uint8_t field_0x6c[0x10];
+#endif
     /* 0x068 */ Z2MultiSeObj mLevelObjSe[10];
     /* 0x1D0 */ uint8_t mLevelObjectSeCount;
     /* 0x1D4 */ Z2MultiSeObj mMultiTriggerSe[10];

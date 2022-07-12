@@ -565,6 +565,6 @@ public:
 
 static_assert(sizeof(dScnKy_env_light_c) == 4880);
 
-#define g_env_light (*(dScnKy_env_light_c *)(g_env_light_addr))
+#define g_env_light (*(dScnKy_env_light_c*)(g_env_light_addr))
 
 #endif /* D_KANKYO_D_KANKYO_H */

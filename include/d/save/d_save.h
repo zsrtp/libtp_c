@@ -564,10 +564,10 @@ public:
     /* 0x5 */ uint8_t unk5;
     /* 0x6 */ uint16_t mCalibrateDist;  // Wii pointer horizontal calibration. Default is 0x015E
     /* 0x8 */ uint8_t mCalValue;        // Wii pointer vertical calibration. Default is 0x00
-    /* 0x9 */ bool mShortCut;      // Wii icon shortcut enabled/disabled.
+    /* 0x9 */ bool mShortCut;           // Wii icon shortcut enabled/disabled.
     /* 0xA */ uint8_t mCameraControl;   // 0 : normal, 1 : inverted
-    /* 0xB */ bool mPointer;       // Wii pointer enabled/disabled.
-};  // Size: 0xC
+    /* 0xB */ bool mPointer;            // Wii pointer enabled/disabled.
+};                                      // Size: 0xC
 
 class dSv_player_c {
 public:
@@ -804,9 +804,10 @@ static_assert(sizeof(dSv_info_c) == 0xF38);
 
 #ifdef WII_PLATFORM
 struct HomeMenuSts {
-    uint8_t is_visible; //              8053A968 // No idea if it is actually its true purpose, but it seems to work
+    uint8_t is_visible;  //              8053A968 // No idea if it is actually its true purpose, but
+                         //              it seems to work
 };
-#endif // WII_PLATFORM
+#endif  // WII_PLATFORM
 
 // Functions
 typedef void (*dSv_player_item_c__setItem_t)(void* addr, int32_t slot, uint8_t item);
@@ -816,31 +817,40 @@ typedef uint8_t (*dSv_player_item_c__getItem_t)(void* addr, int32_t slot, bool i
 #define dSv_player_item_c__getItem ((dSv_player_item_c__getItem_t)dSv_player_item_c__getItem_addr)
 
 typedef void (*dSv_player_item_record_c__setBombNum_t)(void* addr, uint8_t idx, uint8_t i_no);
-#define dSv_player_item_record_c__setBombNum ((dSv_player_item_record_c__setBombNum_t)dSv_player_item_record_c__setBombNum_addr)
+#define dSv_player_item_record_c__setBombNum                                                       \
+    ((dSv_player_item_record_c__setBombNum_t)dSv_player_item_record_c__setBombNum_addr)
 
 typedef void (*dSv_player_get_item_c__onFirstBit_t)(void* addr, uint8_t item);
-#define dSv_player_get_item_c__onFirstBit ((dSv_player_get_item_c__onFirstBit_t)dSv_player_get_item_c__onFirstBit_addr)
+#define dSv_player_get_item_c__onFirstBit                                                          \
+    ((dSv_player_get_item_c__onFirstBit_t)dSv_player_get_item_c__onFirstBit_addr)
 
 typedef void (*dSv_player_get_item_c__offFirstBit_t)(void* addr, uint8_t item);
-#define dSv_player_get_item_c__offFirstBit ((dSv_player_get_item_c__offFirstBit_t)dSv_player_get_item_c__offFirstBit_addr)
+#define dSv_player_get_item_c__offFirstBit                                                         \
+    ((dSv_player_get_item_c__offFirstBit_t)dSv_player_get_item_c__offFirstBit_addr)
 
 typedef uint8_t (*dSv_player_item_record_c__getBombNum_t)(void* addr, uint8_t bag);
-#define dSv_player_item_record_c__getBombNum ((dSv_player_item_record_c__getBombNum_t)dSv_player_item_record_c__getBombNum_addr)
+#define dSv_player_item_record_c__getBombNum                                                       \
+    ((dSv_player_item_record_c__getBombNum_t)dSv_player_item_record_c__getBombNum_addr)
 
 typedef uint8_t (*dSv_player_status_a_c__getSelectItemIndex_t)(void* addr, int32_t idx);
-#define dSv_player_status_a_c__getSelectItemIndex ((dSv_player_status_a_c__getSelectItemIndex_t)dSv_player_status_a_c__getSelectItemIndex_addr)
+#define dSv_player_status_a_c__getSelectItemIndex                                                  \
+    ((dSv_player_status_a_c__getSelectItemIndex_t)dSv_player_status_a_c__getSelectItemIndex_addr)
 
 typedef bool (*dSv_player_status_b_c__isTransformLV_t)(void* addr, int32_t flag);
-#define dSv_player_status_b_c__isTransformLV ((dSv_player_status_b_c__isTransformLV_t)dSv_player_status_b_c__isTransformLV_addr)
+#define dSv_player_status_b_c__isTransformLV                                                       \
+    ((dSv_player_status_b_c__isTransformLV_t)dSv_player_status_b_c__isTransformLV_addr)
 
 typedef void (*dSv_player_status_b_c__onTransformLV_t)(void* addr, int32_t flag);
-#define dSv_player_status_b_c__onTransformLV ((dSv_player_status_b_c__onTransformLV_t)dSv_player_status_b_c__onTransformLV_addr)
+#define dSv_player_status_b_c__onTransformLV                                                       \
+    ((dSv_player_status_b_c__onTransformLV_t)dSv_player_status_b_c__onTransformLV_addr)
 
 typedef uint8_t (*dSv_light_drop_c__getLightDropNum_t)(void* addr, uint8_t area);
-#define dSv_light_drop_c__getLightDropNum ((dSv_light_drop_c__getLightDropNum_t)dSv_light_drop_c__getLightDropNum_addr)
+#define dSv_light_drop_c__getLightDropNum                                                          \
+    ((dSv_light_drop_c__getLightDropNum_t)dSv_light_drop_c__getLightDropNum_addr)
 
 typedef void (*dSv_light_drop_c__setLightDropNum_t)(void* addr, uint8_t area, uint8_t num);
-#define dSv_light_drop_c__setLightDropNum ((dSv_light_drop_c__setLightDropNum_t)dSv_light_drop_c__setLightDropNum_addr)
+#define dSv_light_drop_c__setLightDropNum                                                          \
+    ((dSv_light_drop_c__setLightDropNum_t)dSv_light_drop_c__setLightDropNum_addr)
 
 typedef void (*dSv_info_c__onSwitch_t)(void* addr, int i_no, int i_roomNo);
 #define dSv_info_c__onSwitch ((dSv_info_c__onSwitch_t)dSv_info_c__onSwitch_addr)
@@ -873,19 +883,24 @@ typedef void (*dSv_event_c__offEventBit_t)(void* addr, uint16_t flag);
 #define dSv_event_c__offEventBit ((dSv_event_c__offEventBit_t)dSv_event_c__offEventBit_addr)
 
 typedef bool (*dSv_memBit_c__isDungeonItem_t)(void* addr, int32_t flag);
-#define dSv_memBit_c__isDungeonItem ((dSv_memBit_c__isDungeonItem_t)dSv_memBit_c__isDungeonItem_addr)
+#define dSv_memBit_c__isDungeonItem                                                                \
+    ((dSv_memBit_c__isDungeonItem_t)dSv_memBit_c__isDungeonItem_addr)
 
 typedef void (*dSv_memBit_c__onDungeonItem_t)(void* addr, int32_t flag);
-#define dSv_memBit_c__onDungeonItem ((dSv_memBit_c__onDungeonItem_t)dSv_memBit_c__onDungeonItem_addr)
+#define dSv_memBit_c__onDungeonItem                                                                \
+    ((dSv_memBit_c__onDungeonItem_t)dSv_memBit_c__onDungeonItem_addr)
 
-typedef void (*dSv_player_return_place_c__set_t)(void* addr, char const* i_name, int8_t roomNo, uint8_t pointNo);
-#define dSv_player_return_place_c__set ((dSv_player_return_place_c__set_t)dSv_player_return_place_c__set_addr)
+typedef void (*dSv_player_return_place_c__set_t)(void* addr, char const* i_name, int8_t roomNo,
+                                                 uint8_t pointNo);
+#define dSv_player_return_place_c__set                                                             \
+    ((dSv_player_return_place_c__set_t)dSv_player_return_place_c__set_addr)
 
 #ifdef WII_PLATFORM
 typedef bool (*dSv_player_get_item_c__isFirstBit_t)(void* addr, uint8_t idx);
-#define dSv_player_get_item_c__isFirstBit ((dSv_player_get_item_c__isFirstBit_t)dSv_player_get_item_c__isFirstBit_addr)
+#define dSv_player_get_item_c__isFirstBit                                                          \
+    ((dSv_player_get_item_c__isFirstBit_t)dSv_player_get_item_c__isFirstBit_addr)
 
-#define tp_homeMenuSts (*(HomeMenuSts *)(tp_homeMenuSts_addr))
-#endif // WII_PLATFORM
+#define tp_homeMenuSts (*(HomeMenuSts*)(tp_homeMenuSts_addr))
+#endif  // WII_PLATFORM
 
 #endif /* D_SAVE_D_SAVE_H */

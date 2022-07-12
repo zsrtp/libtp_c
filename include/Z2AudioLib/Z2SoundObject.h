@@ -21,7 +21,6 @@ public:
 
 class Z2SoundObjSimple : protected Z2SoundObjBase {
 public:
-
 };
 
 class Z2SoundObjAnime : protected Z2SoundObjBase {

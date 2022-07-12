@@ -15,10 +15,10 @@ typedef double (*tp_ceil_t)(double x);
 typedef double (*tp_copysign_t)(double x, double y);
 typedef double (*tp_cos_t)(double x);
 typedef double (*tp_floor_t)(double x);
-typedef double (*tp_frexp_t)(double x, int *exponent);
+typedef double (*tp_frexp_t)(double x, int* exponent);
 typedef double (*tp_ldexp_t)(double x, int exponent);
 #ifndef WII_PLATFORM
-typedef double (*tp_modf_t)(double x, double *iptr);
+typedef double (*tp_modf_t)(double x, double* iptr);
 #endif
 typedef double (*tp_sin_t)(double x);
 typedef double (*tp_tan_t)(double x);
@@ -52,4 +52,4 @@ typedef double (*tp_sqrt_t)(double x);
 #define tp_fastSqrt ((tp_fastSqrt_t)tp_fastSqrt_addr)
 #define tp_sqrt ((tp_sqrt_t)tp_sqrt_addr)
 
-#endif // !LIB_TP_MATH
+#endif  // !LIB_TP_MATH

@@ -16,8 +16,7 @@ private:
     uint32_t mId;
 };
 
-struct JASTrack {
-};
+struct JASTrack {};
 
 struct JAISoundStatus_ {
     void init() {
@@ -51,7 +50,7 @@ public:
     uint32_t getUserData() const { return status_.user_data; }
     bool isHandleAttached() const { return handle_ != NULL; }
 
-	/* 0x00 */ void* vtable;
+    /* 0x00 */ void* vtable;
     /* 0x04 */ JAISoundHandle* handle_;
     /* 0x08 */ JAIAudible* audible_;
     /* 0x0C */ JAIAudience* audience_;

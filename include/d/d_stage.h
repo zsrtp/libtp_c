@@ -211,16 +211,14 @@ struct dStage_objectNameInf {
     int8_t mSubtype;
 };  // Size: 0xC
 
-enum TimePass {
-    TIME_STOP,
-    TIME_MOVE
-};
+enum TimePass { TIME_STOP, TIME_MOVE };
 
 // Functions
 typedef void (*tp_setTimePass_t)(TimePass flag);
 #define dStage_roomControl_c__setTimePass ((tp_setTimePass_t)tp_setTimePass_addr)
 
-typedef void (*dStage_nextStage_c__set_t)(void* addr, const char* stage, int8_t room, int16_t point, int8_t layer, int8_t wipe, uint8_t wipe_speed);
+typedef void (*dStage_nextStage_c__set_t)(void* addr, const char* stage, int8_t room, int16_t point,
+                                          int8_t layer, int8_t wipe, uint8_t wipe_speed);
 #define dStage_nextStage_c__set ((dStage_nextStage_c__set_t)dStage_nextStage_c__set_addr)
 
 #endif /* D_D_STAGE_H */
