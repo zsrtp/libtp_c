@@ -1138,17 +1138,44 @@
 
 // JKernel
 #define JKernel__operator_new_addr 0x802cd92c
+#define JKernel__operator_delete_addr 0x802cd974
 #define JKRArchive__getResource2_addr 0x802d49a0
+#define tp_zeldaHeap_addr 0x80521044
+#define tp_gameHeap_addr 0x80521040
+#define tp_archiveHeap_addr 0x8052104c
+#define JKRExpHeap__getUsedSize_addr 0x802ce9a4
+#define JKRHeap__getFreeSize_addr 0x802cd480
+#define JKRHeap__getTotalFreeSize_addr 0x802cd490
+#define JKRExpHeap__do_getTotalFreeSize_addr 0x802ce940
+#define JKRHeap__alloc_addr 0x802cd268
+
+// J3DSys
+#define j3dSys_addr 0x804a9fc0
+
+// J3DPacket
+#define J3DDrawBuffer__entryImm_addr 0x8031a6f4
+#define J3DPacket__entry_addr 0x8030daf4
+
 
 // J2DPicture
 #define J2DPicture__J2DPicture4_addr 0x802f9d10
 #define J2DPicture__draw_addr 0x802fb078
+
+// J2DPane
+#define J2DPane__J2DPane1_addr 0x802f3634
+
+// J2DTextBox
+#define J2DTextBox__J2DTextBox1_addr 0x802fcaf4
+#define J2DTextBox__setFont_addr 0x802fd630
+#define J2DTextBox__setString_addr 0x802fd9c8
+#define J2DTextBox__draw2_addr 0x802fd820
 
 // d_a_alink
 #define daAlink_c__checkStageName_addr 0x80098268
 
 // f_op_actor_mng
 #define fopAcM_create_addr 0x80021024
+#define g_fopAcTg_Queue_addr 0x80466038
 
 // f_op_actor_iter
 #define fopAcIt_Judge_addr 0x80020c1c
@@ -1158,6 +1185,21 @@
 
 // d_kankyo
 #define g_env_light_addr 0x8047b274
+
+// d_s_play
+#define sPauseTimer_addr 0x805215f5
+
+// m_Do_ext
+#define mDoExt_getMesgFont_addr 0x8001998c
+
+// m_Do_controller_pad
+#define mDoCPd_c__m_gamePad_addr 0x80433958
+
+// m_Do_mtx
+#define mDoMtx_stack_c__now_addr 0x8043b408
+#define mDoMtx_XYZrotM__addr 0x800128dc
+#define mDoMtx_stack_c__scaleM_addr 0x800134f4
+
 #endif
 
 #ifdef WII_NTSCU_12
