@@ -332,7 +332,7 @@ static_assert(sizeof(dComIfG_inf_c) == 0x1DE10);
 #define g_dComIfG_gameInfo (*(dComIfG_inf_c*)(tp_gameInfo_addr))
 
 // move this later
-#define tp_bossFlags (*(uint8_t*)(tp_sConsole_addr + 8))
+#define tp_bossFlags (*(volatile uint8_t*)(tp_sConsole_addr + 8))
 
 struct TitleScreenPtr {
     uint8_t _p0[0x59];             // 0x00
