@@ -660,7 +660,7 @@ inline void dComIfGs_setBombNum(uint8_t idx, uint8_t num) {
 }
 
 #ifdef WII_PLATFORM
-bool dComIfGs_isItemFirstBit(uint8_t flag) {
+inline bool dComIfGs_isItemFirstBit(uint8_t flag) {
     return dSv_player_get_item_c__isFirstBit(&g_dComIfG_gameInfo.info.getPlayer().getGetItem(),
                                              flag);
 }
@@ -731,7 +731,7 @@ inline uint8_t dComIfGs_getBombNum(uint8_t bagIdx) {
 }
 
 #ifdef WII_PLATFORM
-uint16_t dComIfGs_getRupee() {
+inline uint16_t dComIfGs_getRupee() {
     return g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusA().getRupee();
 }
 #else

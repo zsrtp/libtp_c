@@ -44,9 +44,45 @@ public:
     CMemBlock* mTailUsedList;
 };
 
-#define zeldaHeap (*(JKRExpHeap**)(tp_zeldaHeap_addr))
-#define gameHeap (*(JKRExpHeap**)(tp_gameHeap_addr))
-#define archiveHeap (*(JKRExpHeap**)(tp_archiveHeap_addr))
+extern "C"
+{
+    extern JKRHeap* AssertHeap;
+    extern JKRHeap* DbPrintHeap;
+    extern JKRHeap* gameHeap;
+    extern JKRHeap* zeldaHeap;
+    extern JKRHeap* commandHeap;
+    extern JKRHeap* archiveHeap;     // Archive heap pointer
+    extern JKRHeap* j2dHeap;
+
+#ifndef WII_PLATFORM
+    extern JKRHeap* HostIOHeap;
+#endif     // WII_PLATFORM
+}
+
+extern "C" {
+/**
+ *	@brief Allocates a number of bytes in a given heap
+ *
+ *	@param heap The heap pointer
+ *	@param size The number of bytes to be allocated
+ *	@param alignment The amount of bytes that the address of the memory should be aligned to. Negative values will
+ *	allocate from the tail of the heap instead of the head.
+ */
+void* do_alloc_JKRExpHeap( void* heap, uint32_t size, int32_t alignment );
+
+/**
+ *	@brief Frees a number of bytes in a given heap
+ *
+ *	@param heap The heap pointer
+ *	@param size The number of bytes to be freed
+ */
+void do_free_JKRExpHeap( void* heap, void* ptr );
+}
+
+// TODO Change hardcoded addresses to names linked through .lst files.
+// #define zeldaHeap (*(JKRExpHeap**)(tp_zeldaHeap_addr))
+// #define gameHeap (*(JKRExpHeap**)(tp_gameHeap_addr))
+// #define archiveHeap (*(JKRExpHeap**)(tp_archiveHeap_addr))
 
 typedef int32_t (*JKRExpHeap__getUsedSize_t)(uint8_t);
 #define JKRExpHeap__getUsedSize ((JKRExpHeap__getUsedSize_t)JKRExpHeap__getUsedSize_addr)

@@ -76,11 +76,11 @@ public:
     static void* getState_(TState* state) { return getState_buf_(state); }
 };
 
-typedef void* (*JKRHeap__alloc_t)(uint32_t size, int align, JKRHeap* heap);
-#define JKRHeap__alloc ((JKRHeap__alloc_t)JKRHeap__alloc_addr)
+// typedef void* (*JKRHeap__alloc_t)(uint32_t size, int align, JKRHeap* heap);
+// #define JKRHeap__alloc ((JKRHeap__alloc_t)JKRHeap__alloc_addr)
 
-inline void* operator new(uint32_t size) {
-    return JKRHeap__alloc(size, 4, NULL);
-}
+// inline void* operator new(uint32_t size) {
+//     return JKRHeap__alloc(size, 4, NULL);
+// }
 
 #endif /* JKRHEAP_H */

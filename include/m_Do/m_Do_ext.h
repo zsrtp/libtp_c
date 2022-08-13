@@ -9,6 +9,7 @@
 #include "../SSystem/SComponent/c_xyz.h"
 #include "../SSystem/SComponent/c_sxyz.h"
 #include "gcn_c/include/gfx.h"
+#include "libtp_c/include/JSystem/JKernel/JKRExpHeap.h"
 
 struct J3DAnmTransform {};
 
@@ -82,4 +83,21 @@ public:
     /* 0x4 */ J3DAnmTransform* mAnmTransform;
 };  // Size = 0x8
 
+namespace m_Do_ext
+{
+    extern "C"
+    {
+        extern JKRHeap* AssertHeap;
+        extern JKRHeap* DbPrintHeap;
+        extern JKRHeap* gameHeap;
+        extern JKRHeap* zeldaHeap;
+        extern JKRHeap* commandHeap;
+        extern JKRHeap* archiveHeap;     // Archive heap pointer
+        extern JKRHeap* j2dHeap;
+
+#ifndef WII_PLATFORM
+        extern JKRHeap* HostIOHeap;
+#endif     // WII_PLATFORM
+    }
+}     // namespace m_Do_ext
 #endif /* M_DO_M_DO_EXT_H */

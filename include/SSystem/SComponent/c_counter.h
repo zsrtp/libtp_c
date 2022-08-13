@@ -12,7 +12,7 @@ struct cCounter {
 
 #define g_Counter (*(cCounter*)(tp_globalCounters_addr))
 
-uint32_t cCt_getFrameCount() {
+inline uint32_t cCt_getFrameCount() {
     return g_Counter.game_counter;
 }
 
