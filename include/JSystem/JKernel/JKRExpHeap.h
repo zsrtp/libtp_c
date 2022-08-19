@@ -2,6 +2,7 @@
 #define JKREXPHEAP_H
 
 #include "JKRHeap.h"
+#include "../../defines.h"
 
 class JKRExpHeap : public JKRHeap {
 public:
@@ -84,17 +85,16 @@ void do_free_JKRExpHeap( void* heap, void* ptr );
 // #define gameHeap (*(JKRExpHeap**)(tp_gameHeap_addr))
 // #define archiveHeap (*(JKRExpHeap**)(tp_archiveHeap_addr))
 
-typedef int32_t (*JKRExpHeap__getUsedSize_t)(uint8_t);
-#define JKRExpHeap__getUsedSize ((JKRExpHeap__getUsedSize_t)JKRExpHeap__getUsedSize_addr)
+LIBTP_DEFINE_FUNC(getUsedSize__10JKRExpHeapCFUc, JKRExpHeap__getUsedSize_unsigned,
+    int32_t, JKRExpHeap__getUsedSize, (uint8_t))
 
-typedef int32_t (*JKRHeap__getFreeSize_t)(JKRHeap* addr);
-#define JKRHeap__getFreeSize ((JKRHeap__getFreeSize_t)JKRHeap__getFreeSize_addr)
+LIBTP_DEFINE_FUNC(getFreeSize__7JKRHeapFv, JKRHeap__getFreeSize_void_,
+    int32_t, JKRHeap__getFreeSize, (JKRHeap* addr))
 
-typedef int32_t (*JKRHeap__getTotalFreeSize_t)(JKRHeap* addr);
-#define JKRHeap__getTotalFreeSize ((JKRHeap__getTotalFreeSize_t)JKRHeap__getTotalFreeSize_addr)
+LIBTP_DEFINE_FUNC(getTotalFreeSize__7JKRHeapFv, JKRHeap__getTotalFreeSize_void_,
+    int32_t, JKRHeap__getTotalFreeSize, (JKRHeap* addr))
 
-typedef int32_t (*JKRExpHeap__do_getTotalFreeSize_t)(JKRExpHeap* addr);
-#define JKRExpHeap__do_getTotalFreeSize                                                            \
-    ((JKRExpHeap__do_getTotalFreeSize_t)JKRExpHeap__do_getTotalFreeSize_addr)
+LIBTP_DEFINE_FUNC(do_getTotalFreeSize__10JKRExpHeapFv, JKRExpHeap__do_getTotalFreeSize_void_,
+    int32_t, JKRExpHeap__do_getTotalFreeSize, (JKRExpHeap* addr))
 
 #endif /* JKREXPHEAP_H */

@@ -3,28 +3,28 @@
 #include "../include/m_Do/m_Re_controller_pad.h"
 
 #ifdef GCN_PLATFORM
-#define mPad (tp_mPadButton)
+#define mPad_ (mPadButton)
 #endif
 #ifdef WII_PLATFORM
-#define mPad (tp_mPad)
+#define mPad_ (mPad)
 #endif
 
 void setGamepadButtons(uint16_t buttons) {
 #ifdef GCN_PLATFORM
-    mPad.mButton = buttons;
+    mPad_.mButton = buttons;
 #endif
 
 #ifdef WII_PLATFORM
-    tp_mPad.mHoldButton = buttons;
+    mPad.mHoldButton = buttons;
 #endif
 }
 
 void setGamepadTrig(uint16_t buttons) {
 #ifdef GCN_PLATFORM
-    mPad.mTrigger = buttons;
+    mPad_.mTrigger = buttons;
 #endif
 
 #ifdef WII_PLATFORM
-    tp_mPad.mTrigButton = buttons;
+    mPad.mTrigButton = buttons;
 #endif
 }

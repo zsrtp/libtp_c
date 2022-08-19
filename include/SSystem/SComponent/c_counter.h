@@ -10,7 +10,7 @@ struct cCounter {
     uint32_t non_menu_counter;
 };
 
-#define g_Counter (*(cCounter*)(tp_globalCounters_addr))
+extern cCounter g_Counter;
 
 inline uint32_t cCt_getFrameCount() {
     return g_Counter.game_counter;

@@ -16,7 +16,7 @@ void setReturnPlace(const char* stage, int8_t room, uint8_t spawn) {
 }
 
 void setNextStageName(const char* name) {
-    tp_strcpy((char*)g_dComIfG_gameInfo.play.mNextStage.mStage, name);
+    strcpy((char*)g_dComIfG_gameInfo.play.mNextStage.mStage, name);
 }
 
 void setNextStageLayer(int8_t layer) {

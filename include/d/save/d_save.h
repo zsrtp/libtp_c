@@ -2,6 +2,7 @@
 #define D_SAVE_D_SAVE_H
 
 #include "../../SSystem/SComponent/c_xyz.h"
+#include "../../defines.h"
 #include <stdint.h>
 
 #define DEFAULT_SELECT_ITEM_INDEX 0
@@ -810,97 +811,84 @@ struct HomeMenuSts {
 #endif  // WII_PLATFORM
 
 // Functions
-typedef void (*dSv_player_item_c__setItem_t)(void* addr, int32_t slot, uint8_t item);
-#define dSv_player_item_c__setItem ((dSv_player_item_c__setItem_t)dSv_player_item_c__setItem_addr)
+LIBTP_DEFINE_FUNC(setItem__17dSv_player_item_cFiUc, dSv_player_item_c__setItem_int_,
+    void, dSv_player_item_c__setItem, (void* addr, int32_t slot, uint8_t item));
 
-typedef uint8_t (*dSv_player_item_c__getItem_t)(void* addr, int32_t slot, bool is_combo_item);
-#define dSv_player_item_c__getItem ((dSv_player_item_c__getItem_t)dSv_player_item_c__getItem_addr)
+LIBTP_DEFINE_FUNC(getItem__17dSv_player_item_cCFib, dSv_player_item_c__getItem_int_,
+    uint8_t, dSv_player_item_c__getItem, (void* addr, int32_t slot, bool is_combo_item));
 
-typedef void (*dSv_player_item_record_c__setBombNum_t)(void* addr, uint8_t idx, uint8_t i_no);
-#define dSv_player_item_record_c__setBombNum                                                       \
-    ((dSv_player_item_record_c__setBombNum_t)dSv_player_item_record_c__setBombNum_addr)
+LIBTP_DEFINE_FUNC(setBombNum__24dSv_player_item_record_cFUcUc, dSv_player_item_record_c__setBombNum_unsigned,
+    void, dSv_player_item_record_c__setBombNum, (void* addr, uint8_t idx, uint8_t i_no));
 
-typedef void (*dSv_player_get_item_c__onFirstBit_t)(void* addr, uint8_t item);
-#define dSv_player_get_item_c__onFirstBit                                                          \
-    ((dSv_player_get_item_c__onFirstBit_t)dSv_player_get_item_c__onFirstBit_addr)
+LIBTP_DEFINE_FUNC(onFirstBit__21dSv_player_get_item_cFUc, dSv_player_get_item_c__onFirstBit_unsigned,
+    void, dSv_player_get_item_c__onFirstBit, (void* addr, uint8_t item));
 
-typedef void (*dSv_player_get_item_c__offFirstBit_t)(void* addr, uint8_t item);
-#define dSv_player_get_item_c__offFirstBit                                                         \
-    ((dSv_player_get_item_c__offFirstBit_t)dSv_player_get_item_c__offFirstBit_addr)
+LIBTP_DEFINE_FUNC(offFirstBit__21dSv_player_get_item_cFUc, dSv_player_get_item_c__offFirstBit_unsigned,
+    void, dSv_player_get_item_c__offFirstBit, (void* addr, uint8_t item))
 
-typedef uint8_t (*dSv_player_item_record_c__getBombNum_t)(void* addr, uint8_t bag);
-#define dSv_player_item_record_c__getBombNum                                                       \
-    ((dSv_player_item_record_c__getBombNum_t)dSv_player_item_record_c__getBombNum_addr)
+LIBTP_DEFINE_FUNC(getBombNum__24dSv_player_item_record_cCFUc, dSv_player_item_record_c__getBombNum_unsigned,
+    uint8_t, dSv_player_item_record_c__getBombNum, (void* addr, uint8_t bag))
 
-typedef uint8_t (*dSv_player_status_a_c__getSelectItemIndex_t)(void* addr, int32_t idx);
-#define dSv_player_status_a_c__getSelectItemIndex                                                  \
-    ((dSv_player_status_a_c__getSelectItemIndex_t)dSv_player_status_a_c__getSelectItemIndex_addr)
+LIBTP_DEFINE_FUNC(getSelectItemIndex__21dSv_player_status_a_cCFi, dSv_player_status_a_c__getSelectItemIndex_int_,
+    uint8_t, dSv_player_status_a_c__getSelectItemIndex, (void* addr, int32_t idx));
 
-typedef bool (*dSv_player_status_b_c__isTransformLV_t)(void* addr, int32_t flag);
-#define dSv_player_status_b_c__isTransformLV                                                       \
-    ((dSv_player_status_b_c__isTransformLV_t)dSv_player_status_b_c__isTransformLV_addr)
+LIBTP_DEFINE_FUNC(isTransformLV__21dSv_player_status_b_cCFi, dSv_player_status_b_c__isTransformLV_int_,
+    bool, dSv_player_status_b_c__isTransformLV, (void* addr, int32_t flag))
 
-typedef void (*dSv_player_status_b_c__onTransformLV_t)(void* addr, int32_t flag);
-#define dSv_player_status_b_c__onTransformLV                                                       \
-    ((dSv_player_status_b_c__onTransformLV_t)dSv_player_status_b_c__onTransformLV_addr)
+LIBTP_DEFINE_FUNC(onTransformLV__21dSv_player_status_b_cFi, dSv_player_status_b_c__onTransformLV_int_,
+    void, dSv_player_status_b_c__onTransformLV, (void* addr, int32_t flag))
 
-typedef uint8_t (*dSv_light_drop_c__getLightDropNum_t)(void* addr, uint8_t area);
-#define dSv_light_drop_c__getLightDropNum                                                          \
-    ((dSv_light_drop_c__getLightDropNum_t)dSv_light_drop_c__getLightDropNum_addr)
+LIBTP_DEFINE_FUNC(getLightDropNum__16dSv_light_drop_cCFUc, dSv_light_drop_c__getLightDropNum_unsigned,
+    uint8_t, dSv_light_drop_c__getLightDropNum, (void* addr, uint8_t area));
 
-typedef void (*dSv_light_drop_c__setLightDropNum_t)(void* addr, uint8_t area, uint8_t num);
-#define dSv_light_drop_c__setLightDropNum                                                          \
-    ((dSv_light_drop_c__setLightDropNum_t)dSv_light_drop_c__setLightDropNum_addr)
+LIBTP_DEFINE_FUNC(setLightDropNum__16dSv_light_drop_cFUcUc, dSv_light_drop_c__setLightDropNum_unsigned,
+    void, dSv_light_drop_c__setLightDropNum, (void* addr, uint8_t area, uint8_t num));
 
-typedef void (*dSv_info_c__onSwitch_t)(void* addr, int i_no, int i_roomNo);
-#define dSv_info_c__onSwitch ((dSv_info_c__onSwitch_t)dSv_info_c__onSwitch_addr)
+LIBTP_DEFINE_FUNC(onSwitch__10dSv_info_cFii, dSv_info_c__onSwitch_int_,
+    void, dSv_info_c__onSwitch, (void* addr, int i_no, int i_roomNo))
 
-typedef void (*dSv_info_c__offSwitch_t)(void* addr, int i_no, int i_roomNo);
-#define dSv_info_c__offSwitch ((dSv_info_c__offSwitch_t)dSv_info_c__offSwitch_addr)
+LIBTP_DEFINE_FUNC(offSwitch__10dSv_info_cFii, dSv_info_c__offSwitch_int_,
+    void, dSv_info_c__offSwitch, (void* addr, int i_no, int i_roomNo))
 
-typedef bool (*dSv_memBit_c__isSwitch_t)(void* addr, int i_no);
-#define dSv_memBit_c__isSwitch ((dSv_memBit_c__isSwitch_t)dSv_memBit_c__isSwitch_addr)
+LIBTP_DEFINE_FUNC(isSwitch__12dSv_memBit_cCFi, dSv_memBit_c__isSwitch_int_,
+    bool, dSv_memBit_c__isSwitch, (void* addr, int i_no))
 
-typedef void (*dSv_memBit_c__onSwitch_t)(void* addr, int i_no);
-#define dSv_memBit_c__onSwitch ((dSv_memBit_c__onSwitch_t)dSv_memBit_c__onSwitch_addr)
+LIBTP_DEFINE_FUNC(onSwitch__12dSv_memBit_cFi, dSv_memBit_c__onSwitch_int_,
+    void, dSv_memBit_c__onSwitch, (void* addr, int i_no))
 
-typedef void (*dSv_memBit_c__offSwitch_t)(void* addr, int i_no);
-#define dSv_memBit_c__offSwitch ((dSv_memBit_c__offSwitch_t)dSv_memBit_c__offSwitch_addr)
+LIBTP_DEFINE_FUNC(offSwitch__12dSv_memBit_cFi, dSv_memBit_c__offSwitch_int_,
+    void, dSv_memBit_c__offSwitch, (void* addr, int i_no))
 
-typedef void (*tp_getSave_t)(void* addr, int32_t areaID);
-#define tp_getSave ((tp_getSave_t)tp_getSave_addr)
+LIBTP_DEFINE_FUNC(getSave__10dSv_info_cFi, dSv_info_c__getSave_int_,
+    void, tp_getSave, (void* addr, int32_t areaID))
 
-typedef void (*tp_putSave_t)(void* addr, int32_t areaID);
-#define tp_putSave ((tp_putSave_t)tp_putSave_addr)
+LIBTP_DEFINE_FUNC(putSave__10dSv_info_cFi, dSv_info_c__putSave_int_,
+    void, tp_putSave, (void* addr, int32_t areaID))
 
-typedef bool (*dSv_event_c__isEventBit_t)(void* addr, uint16_t flag);
-#define dSv_event_c__isEventBit ((dSv_event_c__isEventBit_t)dSv_event_c__isEventBit_addr)
+LIBTP_DEFINE_FUNC(isEventBit__11dSv_event_cCFUs, dSv_event_c__isEventBit_unsigned,
+    bool, dSv_event_c__isEventBit, (void* addr, uint16_t flag))
 
-typedef void (*dSv_event_c__onEventBit_t)(void* addr, uint16_t flag);
-#define dSv_event_c__onEventBit ((dSv_event_c__onEventBit_t)dSv_event_c__onEventBit_addr)
+LIBTP_DEFINE_FUNC(onEventBit__11dSv_event_cFUs, dSv_event_c__onEventBit_unsigned,
+    void, dSv_event_c__onEventBit, (void* addr, uint16_t flag))
 
-typedef void (*dSv_event_c__offEventBit_t)(void* addr, uint16_t flag);
-#define dSv_event_c__offEventBit ((dSv_event_c__offEventBit_t)dSv_event_c__offEventBit_addr)
+LIBTP_DEFINE_FUNC(offEventBit__11dSv_event_cFUs, dSv_event_c__offEventBit_unsigned,
+    void, dSv_event_c__offEventBit, (void* addr, uint16_t flag))
 
-typedef bool (*dSv_memBit_c__isDungeonItem_t)(void* addr, int32_t flag);
-#define dSv_memBit_c__isDungeonItem                                                                \
-    ((dSv_memBit_c__isDungeonItem_t)dSv_memBit_c__isDungeonItem_addr)
+LIBTP_DEFINE_FUNC(isDungeonItem__12dSv_memBit_cCFi, dSv_memBit_c__isDungeonItem_int_,
+    bool, dSv_memBit_c__isDungeonItem, (void* addr, int32_t flag))
 
-typedef void (*dSv_memBit_c__onDungeonItem_t)(void* addr, int32_t flag);
-#define dSv_memBit_c__onDungeonItem                                                                \
-    ((dSv_memBit_c__onDungeonItem_t)dSv_memBit_c__onDungeonItem_addr)
+LIBTP_DEFINE_FUNC(onDungeonItem__12dSv_memBit_cFi, dSv_memBit_c__onDungeonItem_int_,
+    void, dSv_memBit_c__onDungeonItem, (void* addr, int32_t flag))
 
-typedef void (*dSv_player_return_place_c__set_t)(void* addr, char const* i_name, int8_t roomNo,
-                                                 uint8_t pointNo);
-#define dSv_player_return_place_c__set                                                             \
-    ((dSv_player_return_place_c__set_t)dSv_player_return_place_c__set_addr)
+LIBTP_DEFINE_FUNC(set__25dSv_player_return_place_cFPCcScUc, dSv_player_return_place_c__set_char,
+    void, dSv_player_return_place_c__set, (void* addr, char const* i_name, int8_t roomNo, uint8_t pointNo))
 
 #ifdef WII_PLATFORM
-typedef bool (*dSv_player_get_item_c__isFirstBit_t)(void* addr, uint8_t idx);
-#define dSv_player_get_item_c__isFirstBit                                                          \
-    ((dSv_player_get_item_c__isFirstBit_t)dSv_player_get_item_c__isFirstBit_addr)
+extern "C" {
+extern bool dSv_player_get_item_c__isFirstBit_unsigned(void* addr, uint8_t idx);
+}
 
-#define tp_homeMenuSts (*(HomeMenuSts*)(tp_homeMenuSts_addr))
+extern HomeMenuSts homeMenuSts;
 #endif  // WII_PLATFORM
 
 #endif /* D_SAVE_D_SAVE_H */

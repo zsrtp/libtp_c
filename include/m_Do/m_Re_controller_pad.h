@@ -134,7 +134,8 @@ public:
 };
 
 #ifdef WII_PLATFORM
-#define tp_mPad (*(mReCPd::Pad*)tp_mPad_addr)
+#define mPad mReCPd__m_pad
+extern mReCPd::Pad mPad;
 #endif
 
 #endif /* M_RE_CONTROLLER_PAD_H */

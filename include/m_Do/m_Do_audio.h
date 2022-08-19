@@ -10,7 +10,9 @@ public:
     Z2AudioMgr mAudioMgr;
 };
 
-#define g_mDoAud_zelAudio (*(mDoAud_zelAudio_c*)(tp_zelAudio_addr))
+extern "C" {
+extern mDoAud_zelAudio_c g_mDoAud_zelAudio;
+}
 
 // Functions
 #ifdef GCN_PLATFORM

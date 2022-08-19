@@ -5,6 +5,7 @@
 #include "../../dolphin/mtx/vec.h"
 #include "../../dolphin/pad/pad.h"
 #include "../../addrs.h"
+#include "../../defines.h"
 #include "../JKernel/JKRDisposer.h"
 #include "../../SSystem/SComponent/c_API_controller_pad.h"
 
@@ -142,13 +143,26 @@ public:
     /* 0xA8 */ uint8_t field_0xa8;
 };
 
-#define tp_mPadStatus (*(PADStatus*)tp_mPadStatus_addr)
-#define tp_mPadButton (*(JUTGamePad::CButton*)tp_mPadButton_addr)
-#define tp_mPadMStick (*(JUTGamePad::CStick*)tp_mPadMStick_addr)
-#define tp_mPadSStick (*(JUTGamePad::CStick*)tp_mPadSStick_addr)
-#define tp_cPadInfo ((interface_of_controller_pad*)tp_cPadInfo_addr)
+#ifdef WII_PLATFORM
+#define mPadStatus JUTGamePad__mPadStatus
+#define mPadButton JUTGamePad__mPadButton
+#define mPadMStick JUTGamePad__mPadMStick
+#define mPadSStick JUTGamePad__mPadSStick
+#define cPadInfo mDoCPd_c__m_cpadInfo
+#else
+#define mPadStatus mPadStatus__10JUTGamePad
+#define mPadButton mPadButton__10JUTGamePad
+#define mPadMStick mPadMStick__10JUTGamePad
+#define mPadSStick mPadSStick__10JUTGamePad
+#define cPadInfo m_cpadInfo__8mDoCPd_c
+#endif
+extern PADStatus mPadStatus;
+extern JUTGamePad::CButton mPadButton;
+extern JUTGamePad::CStick mPadMStick;
+extern JUTGamePad::CStick mPadSStick;
+extern interface_of_controller_pad cPadInfo[4];
 
-typedef void (*tp_JUTGamePadRead_t)(void);
-#define tp_JUTGamePadRead ((tp_JUTGamePadRead_t)tp_JUTGamePadRead_addr)
+LIBTP_DEFINE_FUNC(read__10JUTGamePadFv, JUTGamePad__read_void_,
+    void, JUTGamePadRead, (void))
 
 #endif /* JUTGAMEPAD_H */

@@ -4,6 +4,7 @@
 #include "../addrs.h"
 #include "save/d_save.h"
 #include "../f_op/f_op_actor.h"
+#include "../defines.h"
 
 struct stage_vrboxcol_info_class {};
 
@@ -214,11 +215,20 @@ struct dStage_objectNameInf {
 enum TimePass { TIME_STOP, TIME_MOVE };
 
 // Functions
-typedef void (*tp_setTimePass_t)(TimePass flag);
-#define dStage_roomControl_c__setTimePass ((tp_setTimePass_t)tp_setTimePass_addr)
+LIBTP_DEFINE_FUNC(SetTimePass__20dStage_roomControl_cFi, dStage_roomControl_c__SetTimePass_int_,
+    void, dStage_roomControl_c__setTimePass, (TimePass flag))
 
 typedef void (*dStage_nextStage_c__set_t)(void* addr, const char* stage, int8_t room, int16_t point,
                                           int8_t layer, int8_t wipe, uint8_t wipe_speed);
+#ifdef dStage_nextStage_c__set_addr
 #define dStage_nextStage_c__set ((dStage_nextStage_c__set_t)dStage_nextStage_c__set_addr)
+#else
+#ifdef WII_PLATFORM
+#define dStage_nextStage_c__set dStage_nextStage_c__set_char
+#else
+#define dStage_nextStage_c__set set__18dStage_nextStage_cFPCcScsScScUc
+#endif
+extern dStage_nextStage_c__set_t dStage_nextStage_c__set;
+#endif
 
 #endif /* D_D_STAGE_H */

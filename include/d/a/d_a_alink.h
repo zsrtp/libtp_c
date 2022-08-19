@@ -17,6 +17,7 @@
 #include "../particle/d_particle.h"
 #include "../particle/d_particle_copoly.h"
 #include "../../JSystem/J2DGraph/J2DPane.h"
+#include "../../defines.h"
 
 class J2DScreen {};
 class J2DAnmBase {};
@@ -2720,14 +2721,32 @@ public:
     /* 0x0898 */ uint32_t mEndResetStateFlg0;
 };
 
-#define daAlinkHIO_swim (*(daAlinkHIO_swim_c1*)(tp_link_human_swim_addr))
-#define daAlinkHIO_frontRoll (*(daAlinkHIO_frontRoll_c1*)(tp_link_human_frontroll_addr))
-#define daAlinkHIO_wlMove (*(daAlinkHIO_wlMove_c1*)(tp_link_wolf_general_addr))
-#define daAlinkHIO_wlSwim (*(daAlinkHIO_wlSwim_c1*)(tp_link_wolf_swim_addr))
+#ifdef WII_PLATFORM
+#define daAlinkHIO_swim daAlinkHIO_swim_c0__m
+#define daAlinkHIO_frontRoll daAlinkHIO_frontRoll_c0__m
+#define daAlinkHIO_wlMove daAlinkHIO_wlMove_c0__m
+#define daAlinkHIO_wlSwim daAlinkHIO_wlSwim_c0__m
+#else
+#define daAlinkHIO_swim m__18daAlinkHIO_swim_c0
+#define daAlinkHIO_frontRoll m__23daAlinkHIO_frontRoll_c0
+#define daAlinkHIO_wlMove m__20daAlinkHIO_wlMove_c0
+#define daAlinkHIO_wlSwim m__20daAlinkHIO_wlSwim_c0
+#endif
+extern "C" {
+extern daAlinkHIO_swim_c1 daAlinkHIO_swim;
+extern daAlinkHIO_frontRoll_c1 daAlinkHIO_frontRoll;
+extern daAlinkHIO_wlMove_c1 daAlinkHIO_wlMove;
+extern daAlinkHIO_wlSwim_c1 daAlinkHIO_wlSwim;
+}
 
-#define daAlinkHIO_hookshot (*(daAlinkHIO_hookshot_c1*)tp_clawshot_addr)
+#ifdef WII_PLATFORM
+#define daAlinkHIO_hookshot daAlinkHIO_hookshot_c0__m
+#else
+#define daAlinkHIO_hookshot m__22daAlinkHIO_hookshot_c0
+#endif
+extern daAlinkHIO_hookshot_c1 daAlinkHIO_hookshot;
 
-typedef int (*daAlink_c__checkStageName_t)(const char*);
-#define daAlink_c__checkStageName ((daAlink_c__checkStageName_t)daAlink_c__checkStageName_addr)
+LIBTP_DEFINE_FUNC(checkStageName__9daAlink_cFPCc, daAlink_c__checkStageName_char,
+    int, daAlink_c__checkStageName, (const char*))
 
 #endif /* D_A_D_A_ALINK_H */

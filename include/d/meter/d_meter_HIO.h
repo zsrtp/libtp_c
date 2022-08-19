@@ -1331,6 +1331,8 @@ public:
 
 static_assert(sizeof(dMeter_cursorHIO_c) == 68);
 
-#define g_drawHIO (*(dMeter_drawHIO_c*)tp_draw_addr)
+extern "C" {
+extern dMeter_drawHIO_c g_drawHIO;
+}
 
 #endif /* D_METER_D_METER_HIO_H */

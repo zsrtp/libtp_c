@@ -11,7 +11,7 @@ public:
     // Controller Ports 1 - 4
     enum { PAD_0, PAD_1, PAD_2, PAD_3 };
 
-    static interface_of_controller_pad& getCpadInfo(uint32_t pad) { return tp_cPadInfo[pad]; }
+    static interface_of_controller_pad& getCpadInfo(uint32_t pad) { return cPadInfo[pad]; }
     static JUTGamePad* getGamePad(uint32_t pad) { return mDoCPd_c__m_gamePad[pad]; }
     static uint32_t getTrig(uint32_t pad) { return getCpadInfo(pad).mPressedButtonFlags; }
     static uint32_t getTrigLockL(uint32_t pad) { return getCpadInfo(pad).mTrigLockL; }

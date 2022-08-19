@@ -1,6 +1,7 @@
 #ifndef LIB_TP_ADDRS
 #define LIB_TP_ADDRS
 
+#ifndef REL_MODULE
 #ifdef GCN_NTSCU
 // System
 #define tp_memset_addr 0x8026f95c
@@ -245,7 +246,7 @@
 #define mDoCPd_c__m_gamePad_addr 0x803DD2D8
 
 // m_Do_mtx
-#define mDoMtx_stack_c__now_addr 0x80450c2c
+#define mDoMtx_stack_c__now_addr 0x803dd470
 #define mDoMtx_XYZrotM__addr 0x8000c164
 #define mDoMtx_stack_c__scaleM_addr 0x8000ce38
 
@@ -889,7 +890,7 @@
 #define g_meter2_info_addr 0x804bcb78
 
 // d_com_inf_game
-#define dComIfGs_setSelectItemIndex_addr 0x8800323d4
+#define dComIfGs_setSelectItemIndex_addr 0x800323d4
 #define dComIfGs_getMixItemIndex_addr 0x800324c0
 #define dComIfGs_setMixItemIndex_addr 0x80032418
 #define dComIfGs_onZoneSwitch_addr 0x8003207c
@@ -1124,7 +1125,7 @@
 #define g_meter2_info_addr 0x804a4ab8
 
 // d_com_inf_game
-#define dComIfGs_setSelectItemIndex_addr 0x880032590
+#define dComIfGs_setSelectItemIndex_addr 0x80032590
 #define dComIfGs_getMixItemIndex_addr 0x8003267c
 #define dComIfGs_setMixItemIndex_addr 0x800325d4
 #define dComIfGs_onZoneSwitch_addr 0x800338ac
@@ -1396,5 +1397,6 @@
 #define g_env_light_addr 0x804a0a54
 
 #endif
+#endif  // !REL_MODULE
 
 #endif  // LIB_TP_ADDRS

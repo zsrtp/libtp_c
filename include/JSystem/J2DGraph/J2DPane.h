@@ -11,8 +11,8 @@ struct J2DAnmTransform {};
 
 class J2DPane;
 
-typedef void (*J2DPane__J2DPane1_t)(J2DPane* thisx);
-#define J2DPane__J2DPane1 ((J2DPane__J2DPane1_t)J2DPane__J2DPane1_addr)
+LIBTP_DEFINE_FUNC(__ct__7J2DPaneFv, J2DPane__J2DPane_void_,
+    void, J2DPane__J2DPane1, (J2DPane* thisx))
 
 class J2DPane {
 public:

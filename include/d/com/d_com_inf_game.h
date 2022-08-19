@@ -329,10 +329,9 @@ public:
 static_assert(sizeof(dComIfG_inf_c) == 0x1DE10);
 #endif
 
-#define g_dComIfG_gameInfo (*(dComIfG_inf_c*)(tp_gameInfo_addr))
+extern dComIfG_inf_c g_dComIfG_gameInfo;
 
-// move this later
-#define tp_bossFlags (*(volatile uint8_t*)(tp_sConsole_addr + 8))
+extern volatile uint8_t bossFlags;
 
 struct TitleScreenPtr {
     uint8_t _p0[0x59];             // 0x00
@@ -341,10 +340,10 @@ struct TitleScreenPtr {
 struct TitleScreenInfo {
     TitleScreenPtr* title_screen_info;
 };
-#define tp_titleScreenInfo (*(TitleScreenInfo*)(tp_titleScreenPtr_addr))
+extern TitleScreenInfo l_fpcNdRq_Queue;
 
-typedef int (*tp_getLayerNo_t)(const char* stageName, int roomId, int layerOverride);
-#define tp_getLayerNo ((tp_getLayerNo_t)tp_getLayerNo_addr)
+LIBTP_DEFINE_FUNC(getLayerNo_common_common__14dComIfG_play_cFPCcii, dComIfG_play_c__getLayerNo_common_common_char,
+    int, tp_getLayerNo, (const char* stageName, int roomId, int layerOverride))
 
 // Inline Functions
 inline void dComIfGs_setItem(int slot_no, uint8_t item_no) {
@@ -557,15 +556,14 @@ inline uint8_t dComIfGs_getSelectItemIndex(int idx) {
         &g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusA(), idx);
 }
 
-typedef void (*dComIfGs_setSelectItemIndex_t)(int32_t idx, uint8_t item);
-#define dComIfGs_setSelectItemIndex                                                                \
-    ((dComIfGs_setSelectItemIndex_t)dComIfGs_setSelectItemIndex_addr)
+LIBTP_DEFINE_FUNC(dComIfGs_setSelectItemIndex__FiUc, dComIfGs_setSelectItemIndex_int_,
+    void, dComIfGs_setSelectItemIndex, (int32_t idx, uint8_t item))
 
-typedef uint8_t (*dComIfGs_getMixItemIndex_t)(int32_t idx);
-#define dComIfGs_getMixItemIndex ((dComIfGs_getMixItemIndex_t)dComIfGs_getMixItemIndex_addr)
+LIBTP_DEFINE_FUNC(dComIfGs_getMixItemIndex__Fi, dComIfGs_getMixItemIndex_int_,
+    uint8_t, dComIfGs_getMixItemIndex, (int32_t idx))
 
-typedef void (*dComIfGs_setMixItemIndex_t)(int32_t idx, uint8_t item);
-#define dComIfGs_setMixItemIndex ((dComIfGs_setMixItemIndex_t)dComIfGs_setMixItemIndex_addr)
+LIBTP_DEFINE_FUNC(dComIfGs_setMixItemIndex__FiUc, dComIfGs_setMixItemIndex_int_,
+    void, dComIfGs_setMixItemIndex, (int32_t idx, uint8_t item))
 
 inline void dComIfGp_setItem(uint8_t slot, uint8_t i_no) {
     g_dComIfG_gameInfo.play.setItem(slot, i_no);
@@ -631,11 +629,12 @@ inline dEvent_manager_c& dComIfGp_getEventManager() {
     return g_dComIfG_gameInfo.play.getEventManager();
 }
 #else
-typedef dEvt_control_c& (*dComIfGp_getEvent_t)(void);
-#define dComIfGp_getEvent ((dComIfGp_getEvent_t)dComIfGp_getEvent_addr)
 
-typedef dEvent_manager_c& (*dComIfGp_getEventManager_t)(void);
-#define dComIfGp_getEventManager ((dComIfGp_getEventManager_t)dComIfGp_getEventManager_addr)
+LIBTP_DEFINE_FUNC(dComIfGp_getEvent__Fv, dComIfGp_getEvent__Fv,
+    dEvt_control_c&, dComIfGp_getEvent, (void))
+
+LIBTP_DEFINE_FUNC(dComIfGp_getEventManager__Fv, ,
+    dEvent_manager_c&, dComIfGp_getEventManager, (void))
 #endif
 
 inline void dComIfGs_setTime(float pTime) {
@@ -661,12 +660,13 @@ inline void dComIfGs_setBombNum(uint8_t idx, uint8_t num) {
 
 #ifdef WII_PLATFORM
 inline bool dComIfGs_isItemFirstBit(uint8_t flag) {
-    return dSv_player_get_item_c__isFirstBit(&g_dComIfG_gameInfo.info.getPlayer().getGetItem(),
+    return dSv_player_get_item_c__isFirstBit_unsigned(&g_dComIfG_gameInfo.info.getPlayer().getGetItem(),
                                              flag);
 }
 #else
-typedef bool (*dComIfGs_isItemFirstBit_t)(uint8_t item);
-#define dComIfGs_isItemFirstBit ((dComIfGs_isItemFirstBit_t)dComIfGs_isItemFirstBit_addr)
+
+LIBTP_DEFINE_FUNC(dComIfGs_isItemFirstBit__FUc, dComIfGs_isItemFirstBit__FUc,
+    bool, dComIfGs_isItemFirstBit, (uint8_t item))
 #endif
 
 inline uint8_t dComIfGs_getWalletSize() {
@@ -735,15 +735,16 @@ inline uint16_t dComIfGs_getRupee() {
     return g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusA().getRupee();
 }
 #else
-typedef uint16_t (*dComIfGs_getRupee_t)(void);
-#define dComIfGs_getRupee ((dComIfGs_getRupee_t)dComIfGs_getRupee_addr)
+
+LIBTP_DEFINE_FUNC(dComIfGs_getRupee__Fv, dComIfGs_getRupee__Fv,
+    uint16_t, dComIfGs_getRupee, (void))
 #endif
 
-typedef void (*dComIfGs_onOneZoneSwitch_t)(int, int);
-#define dComIfGs_onOneZoneSwitch ((dComIfGs_onOneZoneSwitch_t)dComIfGs_onOneZoneSwitch_addr)
+LIBTP_DEFINE_FUNC(dComIfGs_onOneZoneSwitch__Fii, dComIfGs_onOneZoneSwitch_int_,
+    void, dComIfGs_onOneZoneSwitch, (int, int))
 
-typedef void (*dComIfGs_onZoneSwitch_t)(int, int);
-#define dComIfGs_onZoneSwitch ((dComIfGs_onZoneSwitch_t)dComIfGs_onZoneSwitch_addr)
+LIBTP_DEFINE_FUNC(dComIfGs_onZoneSwitch__Fii, dComIfGs_onZoneSwitch_int_,
+    void, dComIfGs_onZoneSwitch, (int, int))
 
 class dComIfAc_gameInfo {
 public:
@@ -752,7 +753,7 @@ public:
     uint8_t field_0x6[3];
 };
 
-#define g_dComIfAc_gameInfo (*(dComIfAc_gameInfo*)tp_actor_addr)
-#define fopAc_ac_c__stopStatus (*(uint32_t*)tp_actor_stopstatus_addr)
+extern dComIfAc_gameInfo g_dComIfAc_gameInfo;
+extern uint32_t fopAc_ac_c__stopStatus;
 
 #endif /* D_COM_D_COM_INF_GAME_H */

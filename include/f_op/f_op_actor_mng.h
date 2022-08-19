@@ -2,6 +2,7 @@
 #define F_OP_ACTOR_MNG_H_
 
 #include "f_op_actor.h"
+#include "../defines.h"
 
 struct fopAcM_prmBase_class {
     /* 0x00 */ uint32_t field_0x00;
@@ -69,10 +70,11 @@ inline csXyz& fopAcM_GetAngle_p(fopAc_ac_c* pActor) {
     return pActor->mCurrent.mAngle;
 }
 
-typedef void (*fopAcM_create_t)(int16_t, uint32_t, const cXyz*, int, const csXyz*, const cXyz*,
-                                int8_t);
-#define fopAcM_create ((fopAcM_create_t)fopAcM_create_addr)
+LIBTP_DEFINE_FUNC(fopAcM_create__FsUlPC4cXyziPC5csXyzPC4cXyzSc, fopAcM_create_short_,
+    void, fopAcM_create, (int16_t, uint32_t, const cXyz*, int, const csXyz*, const cXyz*, int8_t))
 
-#define g_fopAcTg_Queue (*(node_list_class*)(g_fopAcTg_Queue_addr))
+extern "C" {
+extern node_list_class g_fopAcTg_Queue;
+}
 
 #endif
