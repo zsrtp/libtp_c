@@ -216,7 +216,7 @@ enum TimePass { TIME_STOP, TIME_MOVE };
 
 // Functions
 LIBTP_DEFINE_FUNC(SetTimePass__20dStage_roomControl_cFi, dStage_roomControl_c__SetTimePass_int_,
-    void, dStage_roomControl_c__setTimePass, (TimePass flag))
+                  void, dStage_roomControl_c__setTimePass, (TimePass flag))
 
 typedef void (*dStage_nextStage_c__set_t)(void* addr, const char* stage, int8_t room, int16_t point,
                                           int8_t layer, int8_t wipe, uint8_t wipe_speed);

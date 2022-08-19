@@ -119,8 +119,7 @@ struct OSThread {
     void* data[2];
 };
 
-struct OSModuleInfo
-{
+struct OSModuleInfo {
     uint32_t id;
     OSModuleInfo* next;
     OSModuleInfo* prev;
@@ -143,27 +142,25 @@ struct OSModuleInfo
     uint32_t moduleAlignment;
     uint32_t bssAlignment;
     uint32_t fixSize;
-} __attribute__( ( __packed__ ) );
+} __attribute__((__packed__));
 
-struct OSModuleList
-{
+struct OSModuleList {
     OSModuleInfo* first;
     OSModuleInfo* last;
     const char* unk;
-} __attribute__( ( __packed__ ) );
+} __attribute__((__packed__));
 
-static_assert( sizeof( OSModuleInfo ) == 0x4C );
-static_assert( sizeof( OSModuleList ) == 0xC );
+static_assert(sizeof(OSModuleInfo) == 0x4C);
+static_assert(sizeof(OSModuleList) == 0xC);
 
-extern "C"
-{
-    bool OSLink( OSModuleInfo* newModule, void* bss );
-    bool OSLinkFixed( OSModuleInfo* newModule, void* bss );
-    bool OSUnlink( OSModuleInfo* module );
+extern "C" {
+bool OSLink(OSModuleInfo* newModule, void* bss);
+bool OSLinkFixed(OSModuleInfo* newModule, void* bss);
+bool OSUnlink(OSModuleInfo* module);
 
-    bool OSDisableInterrupts();
-    bool OSRestoreInterrupts( bool enable );
+bool OSDisableInterrupts();
+bool OSRestoreInterrupts(bool enable);
 
-    extern OSModuleList osModuleList;
+extern OSModuleList osModuleList;
 }
 #endif

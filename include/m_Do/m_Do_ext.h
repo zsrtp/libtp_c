@@ -83,21 +83,19 @@ public:
     /* 0x4 */ J3DAnmTransform* mAnmTransform;
 };  // Size = 0x8
 
-namespace m_Do_ext
-{
-    extern "C"
-    {
-        extern JKRHeap* AssertHeap;
-        extern JKRHeap* DbPrintHeap;
-        extern JKRHeap* gameHeap;
-        extern JKRHeap* zeldaHeap;
-        extern JKRHeap* commandHeap;
-        extern JKRHeap* archiveHeap;     // Archive heap pointer
-        extern JKRHeap* j2dHeap;
+namespace m_Do_ext {
+extern "C" {
+extern JKRHeap* AssertHeap;
+extern JKRHeap* DbPrintHeap;
+extern JKRHeap* gameHeap;
+extern JKRHeap* zeldaHeap;
+extern JKRHeap* commandHeap;
+extern JKRHeap* archiveHeap;  // Archive heap pointer
+extern JKRHeap* j2dHeap;
 
 #ifndef WII_PLATFORM
-        extern JKRHeap* HostIOHeap;
-#endif     // WII_PLATFORM
-    }
-}     // namespace m_Do_ext
+extern JKRHeap* HostIOHeap;
+#endif  // WII_PLATFORM
+}
+}  // namespace m_Do_ext
 #endif /* M_DO_M_DO_EXT_H */

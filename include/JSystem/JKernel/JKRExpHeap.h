@@ -45,19 +45,18 @@ public:
     CMemBlock* mTailUsedList;
 };
 
-extern "C"
-{
-    extern JKRHeap* AssertHeap;
-    extern JKRHeap* DbPrintHeap;
-    extern JKRHeap* gameHeap;
-    extern JKRHeap* zeldaHeap;
-    extern JKRHeap* commandHeap;
-    extern JKRHeap* archiveHeap;     // Archive heap pointer
-    extern JKRHeap* j2dHeap;
+extern "C" {
+extern JKRHeap* AssertHeap;
+extern JKRHeap* DbPrintHeap;
+extern JKRHeap* gameHeap;
+extern JKRHeap* zeldaHeap;
+extern JKRHeap* commandHeap;
+extern JKRHeap* archiveHeap;  // Archive heap pointer
+extern JKRHeap* j2dHeap;
 
 #ifndef WII_PLATFORM
-    extern JKRHeap* HostIOHeap;
-#endif     // WII_PLATFORM
+extern JKRHeap* HostIOHeap;
+#endif  // WII_PLATFORM
 }
 
 extern "C" {
@@ -66,10 +65,10 @@ extern "C" {
  *
  *	@param heap The heap pointer
  *	@param size The number of bytes to be allocated
- *	@param alignment The amount of bytes that the address of the memory should be aligned to. Negative values will
- *	allocate from the tail of the heap instead of the head.
+ *	@param alignment The amount of bytes that the address of the memory should be aligned to.
+ *Negative values will allocate from the tail of the heap instead of the head.
  */
-void* do_alloc_JKRExpHeap( void* heap, uint32_t size, int32_t alignment );
+void* do_alloc_JKRExpHeap(void* heap, uint32_t size, int32_t alignment);
 
 /**
  *	@brief Frees a number of bytes in a given heap
@@ -77,7 +76,7 @@ void* do_alloc_JKRExpHeap( void* heap, uint32_t size, int32_t alignment );
  *	@param heap The heap pointer
  *	@param size The number of bytes to be freed
  */
-void do_free_JKRExpHeap( void* heap, void* ptr );
+void do_free_JKRExpHeap(void* heap, void* ptr);
 }
 
 // TODO Change hardcoded addresses to names linked through .lst files.
@@ -86,15 +85,15 @@ void do_free_JKRExpHeap( void* heap, void* ptr );
 // #define archiveHeap (*(JKRExpHeap**)(tp_archiveHeap_addr))
 
 LIBTP_DEFINE_FUNC(getUsedSize__10JKRExpHeapCFUc, JKRExpHeap__getUsedSize_unsigned,
-    int32_t, JKRExpHeap__getUsedSize, (uint8_t))
+                  int32_t, JKRExpHeap__getUsedSize, (uint8_t))
 
 LIBTP_DEFINE_FUNC(getFreeSize__7JKRHeapFv, JKRHeap__getFreeSize_void_,
-    int32_t, JKRHeap__getFreeSize, (JKRHeap* addr))
+                  int32_t, JKRHeap__getFreeSize, (JKRHeap* addr))
 
 LIBTP_DEFINE_FUNC(getTotalFreeSize__7JKRHeapFv, JKRHeap__getTotalFreeSize_void_,
-    int32_t, JKRHeap__getTotalFreeSize, (JKRHeap* addr))
+                  int32_t, JKRHeap__getTotalFreeSize, (JKRHeap* addr))
 
 LIBTP_DEFINE_FUNC(do_getTotalFreeSize__10JKRExpHeapFv, JKRExpHeap__do_getTotalFreeSize_void_,
-    int32_t, JKRExpHeap__do_getTotalFreeSize, (JKRExpHeap* addr))
+                  int32_t, JKRExpHeap__do_getTotalFreeSize, (JKRExpHeap* addr))
 
 #endif /* JKREXPHEAP_H */

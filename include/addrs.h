@@ -1157,7 +1157,6 @@
 #define J3DDrawBuffer__entryImm_addr 0x8031a6f4
 #define J3DPacket__entry_addr 0x8030daf4
 
-
 // J2DPicture
 #define J2DPicture__J2DPicture4_addr 0x802f9d10
 #define J2DPicture__draw_addr 0x802fb078

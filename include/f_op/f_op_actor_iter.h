@@ -16,7 +16,7 @@ void* fpcSch_JudgeForPName(void*, void*);
 }
 
 LIBTP_DEFINE_FUNC(fopAcIt_Judge__FPFPvPv_PvPv, fopAcIt_Judge_void,
-    void*, fopAcIt_Judge, (fopAcIt_JudgeFunc, void*))
+                  void*, fopAcIt_Judge, (fopAcIt_JudgeFunc, void*))
 
 extern "C" {
 inline void* fopAcM_SearchByName(int16_t name) {

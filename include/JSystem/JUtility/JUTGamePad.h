@@ -163,6 +163,6 @@ extern JUTGamePad::CStick mPadSStick;
 extern interface_of_controller_pad cPadInfo[4];
 
 LIBTP_DEFINE_FUNC(read__10JUTGamePadFv, JUTGamePad__read_void_,
-    void, JUTGamePadRead, (void))
+                  void, JUTGamePadRead, (void))
 
 #endif /* JUTGAMEPAD_H */
