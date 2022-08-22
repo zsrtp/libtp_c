@@ -1,8 +1,9 @@
 #include "utils.h"
 #include <cstring>
+#include "defines.h"
 
 // Toggles save event flags
-void setEventFlag(uint16_t flag) {
+KEEP_FUNC void setEventFlag(uint16_t flag) {
     if (dComIfGs_isEventBit(flag)) {
         dComIfGs_offEventBit(flag);
     } else {
@@ -11,23 +12,23 @@ void setEventFlag(uint16_t flag) {
 }
 
 // Set Savefile spawn info
-void setReturnPlace(const char* stage, int8_t room, uint8_t spawn) {
+KEEP_FUNC void setReturnPlace(const char* stage, int8_t room, uint8_t spawn) {
     dSv_player_return_place_c__set(&g_dComIfG_gameInfo.info.getPlayer().mPlayerReturnPlace, stage,
                                    room, spawn);
 }
 
-void setNextStageName(const char* name) {
+KEEP_FUNC void setNextStageName(const char* name) {
     strcpy((char*)g_dComIfG_gameInfo.play.mNextStage.mStage, name);
 }
 
-void setNextStageLayer(int8_t layer) {
+KEEP_FUNC void setNextStageLayer(int8_t layer) {
     g_dComIfG_gameInfo.play.mNextStage.setLayer(layer);
 }
 
-void setNextStageRoom(int8_t room) {
+KEEP_FUNC void setNextStageRoom(int8_t room) {
     g_dComIfG_gameInfo.play.mNextStage.setRoomNo(room);
 }
 
-void setNextStagePoint(int16_t point) {
+KEEP_FUNC void setNextStagePoint(int16_t point) {
     g_dComIfG_gameInfo.play.mNextStage.setPoint(point);
 }
