@@ -1,4 +1,5 @@
 #include "utils.h"
+#include <cstring>
 
 // Toggles save event flags
 void setEventFlag(uint16_t flag) {

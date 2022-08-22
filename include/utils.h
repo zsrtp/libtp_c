@@ -1,8 +1,8 @@
 #ifndef UTILS_H
 #define UTILS_H
 
+#include <cstdint>
 #include "d/com/d_com_inf_game.h"
-#include "msl_c/string.h"
 
 // Toggles save event flags
 void setEventFlag(uint16_t flag);
