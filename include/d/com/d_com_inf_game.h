@@ -342,7 +342,7 @@ struct TitleScreenInfo {
 };
 extern TitleScreenInfo l_fpcNdRq_Queue;
 
-LIBTP_DEFINE_FUNC(getLayerNo_common_common__14dComIfG_play_cFPCcii, dComIfG_play_c__getLayerNo_common_common_char,
+LIBTP_DEFINE_FUNC(getLayerNo_common_common__14dComIfG_play_cFPCcii, dComIfG_play_c__getLayerNo_common_common_char_const____int__int_,
                   int, tp_getLayerNo, (const char* stageName, int roomId, int layerOverride))
 
 // Inline Functions
@@ -556,13 +556,13 @@ inline uint8_t dComIfGs_getSelectItemIndex(int idx) {
         &g_dComIfG_gameInfo.info.getPlayer().getPlayerStatusA(), idx);
 }
 
-LIBTP_DEFINE_FUNC(dComIfGs_setSelectItemIndex__FiUc, dComIfGs_setSelectItemIndex_int_,
+LIBTP_DEFINE_FUNC(dComIfGs_setSelectItemIndex__FiUc, dComIfGs_setSelectItemIndex_int__unsigned_char_,
                   void, dComIfGs_setSelectItemIndex, (int32_t idx, uint8_t item))
 
 LIBTP_DEFINE_FUNC(dComIfGs_getMixItemIndex__Fi, dComIfGs_getMixItemIndex_int_,
                   uint8_t, dComIfGs_getMixItemIndex, (int32_t idx))
 
-LIBTP_DEFINE_FUNC(dComIfGs_setMixItemIndex__FiUc, dComIfGs_setMixItemIndex_int_,
+LIBTP_DEFINE_FUNC(dComIfGs_setMixItemIndex__FiUc, dComIfGs_setMixItemIndex_int__unsigned_char_,
                   void, dComIfGs_setMixItemIndex, (int32_t idx, uint8_t item))
 
 inline void dComIfGp_setItem(uint8_t slot, uint8_t i_no) {
@@ -660,7 +660,7 @@ inline void dComIfGs_setBombNum(uint8_t idx, uint8_t num) {
 
 #ifdef WII_PLATFORM
 inline bool dComIfGs_isItemFirstBit(uint8_t flag) {
-    return dSv_player_get_item_c__isFirstBit_unsigned(
+    return dSv_player_get_item_c__isFirstBit_unsigned_char__const(
         &g_dComIfG_gameInfo.info.getPlayer().getGetItem(), flag);
 }
 #else
@@ -740,10 +740,10 @@ LIBTP_DEFINE_FUNC(dComIfGs_getRupee__Fv, dComIfGs_getRupee__Fv,
                   uint16_t, dComIfGs_getRupee, (void))
 #endif
 
-LIBTP_DEFINE_FUNC(dComIfGs_onOneZoneSwitch__Fii, dComIfGs_onOneZoneSwitch_int_,
+LIBTP_DEFINE_FUNC(dComIfGs_onOneZoneSwitch__Fii, dComIfGs_onOneZoneSwitch_int__int_,
                   void, dComIfGs_onOneZoneSwitch, (int, int))
 
-LIBTP_DEFINE_FUNC(dComIfGs_onZoneSwitch__Fii, dComIfGs_onZoneSwitch_int_,
+LIBTP_DEFINE_FUNC(dComIfGs_onZoneSwitch__Fii, dComIfGs_onZoneSwitch_int__int_,
                   void, dComIfGs_onZoneSwitch, (int, int))
 
 class dComIfAc_gameInfo {

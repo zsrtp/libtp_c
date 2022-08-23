@@ -70,7 +70,7 @@ inline csXyz& fopAcM_GetAngle_p(fopAc_ac_c* pActor) {
     return pActor->mCurrent.mAngle;
 }
 
-LIBTP_DEFINE_FUNC(fopAcM_create__FsUlPC4cXyziPC5csXyzPC4cXyzSc, fopAcM_create_short_,
+LIBTP_DEFINE_FUNC(fopAcM_create__FsUlPC4cXyziPC5csXyzPC4cXyzSc, fopAcM_create_short__unsigned_long__cXyz_const____int__csXyz_const____cXyz_const____signed_char_,
                   void, fopAcM_create, (int16_t, uint32_t, const cXyz*, int, const csXyz*, const cXyz*, int8_t))
 
 extern "C" {
